@@ -52,7 +52,7 @@ export class DiffBoxComponent implements OnInit {
         section.lineNumbers.added.start + section.lineNumbers.added.lines);
     });
 
-    return lineRanges.reduce((prev, curr) => {
+    return lineRanges.reduce((prev: Array<any>, curr) => {
       if (prev) {
         return prev.concat(" ").concat(curr);
       } else {
@@ -87,7 +87,7 @@ export class DiffBoxComponent implements OnInit {
       });
     });
 
-    return sectionLines.reduce((prev, curr) => {
+    return sectionLines.reduce((prev: Array<any>, curr) => {
       if (prev) {
         return prev.concat({ highlightedContent: "<span class='hljs-comment'>...some lines skipped...</span>" }).concat(curr);
       } else {
