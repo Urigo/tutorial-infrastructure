@@ -1,8 +1,8 @@
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {PatchDefinition} from "./patch-definition";
 import {Http} from "@angular/http";
 import {parseMultiPatch} from "git-patch-parser";
+import {TutorialDefinition, TutorialBundle} from "./tutorial-definition";
 
 function capitalizeFirstLetter(message) {
   return message.charAt(0).toUpperCase() + message.slice(1);
@@ -46,13 +46,13 @@ function doMapping(parsedData) {
 
 @Injectable()
 export class TutorialRegistryCache {
-  private cache: Map<string, PatchDefinition>;
+  private cache: Map<string, TutorialBundle>;
 
   constructor(private http: Http) {
-    this.cache = new Map();
+    this.cache = new Map<string, TutorialBundle>();
   }
 
-  set(id: string, patch: PatchDefinition): PatchDefinition {
+  set(id: string, patch: TutorialBundle): TutorialBundle {
     this.cache.set(id, patch);
 
     return patch;
@@ -62,7 +62,7 @@ export class TutorialRegistryCache {
     return this.cache.size;
   }
 
-  getObject(id: string): PatchDefinition {
+  getObject(id: string): TutorialBundle {
     if (this.cache.has(id)) {
       return this.cache.get(id);
     }
@@ -71,19 +71,25 @@ export class TutorialRegistryCache {
     }
   }
 
-  get(id: string, fallbackUrl?: string): Observable<PatchDefinition> {
+  load(id: string, tutorialData : TutorialDefinition): Observable<TutorialBundle> {
     if (this.cache.has(id)) {
       return Observable.of(this.cache.get(id));
     }
     else {
-      let obs = this.http
-        .get(fallbackUrl)
+      let obs = <Observable<TutorialBundle>>this.http
+        .get(tutorialData.patchFile)
         .map(res => res.text())
         .map(parseMultiPatch)
         .map(parseOutStepNumberAndComment)
-        .map(doMapping);
+        .map(doMapping)
+        .map(parsedTutorial => {
+          return <TutorialBundle>{
+            steps: parsedTutorial,
+            tutorial: tutorialData
+          }
+        });
 
-      obs.subscribe((patch: PatchDefinition) => {
+      obs.subscribe((patch: TutorialBundle) => {
         this.set(id, patch);
       });
 

@@ -10,8 +10,6 @@
     "lib": ["es6", "dom"],
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
     "types": [
       "core-js",
       "hammerjs",
@@ -26,8 +24,7 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
-    "typings"
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

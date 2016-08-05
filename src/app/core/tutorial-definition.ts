@@ -12,3 +12,8 @@ export interface TutorialStep {
   name: string;
   template: string;
 }
+
+export interface TutorialBundle {
+  tutorial: TutorialDefinition,
+  steps: Array<any>
+}

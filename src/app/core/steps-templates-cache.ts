@@ -8,7 +8,7 @@ export class StepsTemplatesCache {
   private cache : Map<string, string>;
 
   constructor(private http:Http) {
-    this.cache = new Map();
+    this.cache = new Map<string, string>();
   }
 
   private set(id:string, content:string) {
@@ -23,7 +23,7 @@ export class StepsTemplatesCache {
     return this.cache.get(this.buildId(step, tutorialId));
   }
 
-  public get(step:string, tutorialId:string, fallbackUrl?:string) : Observable<any> {
+  public load(step:string, tutorialId:string, fallbackUrl?:string) : Observable<any> {
     let id = this.buildId(step, tutorialId);
 
     if (this.cache.has(id)) {

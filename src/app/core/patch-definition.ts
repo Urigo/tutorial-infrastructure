@@ -6,6 +6,7 @@ export interface ChangeLocation {
 export interface LineContent {
   content: string;
   type: string
+  highlightedContent?: string
 }
 
 export interface SingleChange {
@@ -24,4 +25,12 @@ export interface PatchDefinition {
   files: Array<FileModification>;
   message: string;
   sha: string;
+}
+
+export interface ParsedPatchDefinition {
+    files:Array<SingleChange>;
+    message:string;
+    sha:string;
+    stepNumber:string;
+    summary:string;
 }
