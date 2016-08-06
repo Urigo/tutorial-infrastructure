@@ -24,6 +24,6 @@ export class PatchLoadResolve implements CanActivate<any> {
       data.tutorialObject.id,
       data.stepObject.template);
 
-    return tutorialPatchObservable.concat(stepHtmlObservable).concat(Observable.of(true));
+    return tutorialPatchObservable.concat(stepHtmlObservable).map(() => true);
   }
 }
