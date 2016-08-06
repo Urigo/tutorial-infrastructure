@@ -24,23 +24,6 @@ var commonConfig = {
 
 };
 
-
-var clientConfig = {
-  target: 'web',
-  entry: './src/client',
-  output: {
-    path: root('dist/client')
-  },
-  node: {
-    global: true,
-    __dirname: true,
-    __filename: true,
-    process: true,
-    Buffer: false
-  }
-};
-
-
 var serverConfig = {
   target: 'node',
   entry: './src/server', // use the entry file of the node server if everything is ts rather than es5
@@ -76,12 +59,9 @@ var defaultConfig = {
 
 var webpackMerge = require('webpack-merge');
 module.exports = [
-  // Client
-  webpackMerge({}, defaultConfig, commonConfig, clientConfig),
-
   // Server
   webpackMerge({}, defaultConfig, commonConfig, serverConfig)
-]
+];
 
 // Helpers
 function checkNodeImport(context, request, cb) {
@@ -93,5 +73,5 @@ function checkNodeImport(context, request, cb) {
 
 function root(args) {
   args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
+  return path.join.apply(path, [__dirname, "../"].concat(args));
 }
