@@ -42,5 +42,7 @@ export function ngApp(req, res) {
     preboot: false // { appRoot: 'app' } // your top level app component selector
   };
 
-  res.render('index', config);
+  res.render('index', config, (err, html) => {
+    res.status(200).send(html.replace(`<script src="/index.js"></script>`, ""));
+  });
 }
