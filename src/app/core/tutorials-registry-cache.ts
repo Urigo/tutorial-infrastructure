@@ -91,7 +91,7 @@ export class TutorialRegistryCache {
         this.set(id, patch);
       });
 
-      return obs.map(res => true);
+      return obs;
     }
   }
 }

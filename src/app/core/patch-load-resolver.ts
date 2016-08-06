@@ -6,7 +6,7 @@ import {StepsTemplatesCache} from "./steps-templates-cache";
 import {TutorialRouteData} from "./tutorial-routes";
 
 @Injectable()
-export class PatchLoadResolve implements CanActivate<any> {
+export class PatchLoadResolve implements CanActivate {
   constructor(private cache: TutorialRegistryCache,
               private templatesCache: StepsTemplatesCache) {
 
@@ -17,7 +17,7 @@ export class PatchLoadResolve implements CanActivate<any> {
 
     let tutorialPatchObservable = this.cache.load(
       data.tutorialObject.id,
-      data.tutorialObject);
+      data.tutorialObject).map(res => true);
 
     let stepHtmlObservable = this.templatesCache.load(
       data.stepObject.name,

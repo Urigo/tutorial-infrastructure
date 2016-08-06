@@ -59,7 +59,7 @@ let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
 
   setTimeout(() => {
-    generateStaticWebsite("localhost", server.address().port, APP_ROUTES, "./static-website/");
+    generateStaticWebsite("localhost", server.address().port, APP_ROUTES, "./static-website/", './src/assets');
   }, 2000);
 });
 

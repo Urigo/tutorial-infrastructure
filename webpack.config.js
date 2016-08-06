@@ -1,33 +1,41 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 var commonConfig = {
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 version']
+    })
+  ],
+  sassLoader: {},
   resolve: {
-    extensions: ['', '.ts', '.js', '.json', '.css', '.scss']
+    extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
   },
   module: {
     loaders: [
       // TypeScript
-      { test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader'] },
-      { test: /\.html$/, loader: 'raw-loader' },
-      { test: /\.css$/, loader: 'raw-loader' },
-      { test: /\.json$/, loader: 'raw-loader' },
+      {test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader']},
+      {test: /\.html$/, loader: 'raw-loader'},
+      {test: /\.css$/, loader: 'raw-loader'},
+      {test: /\.json$/, loader: 'raw-loader'},
       {
         test: /\.scss$/,
         exclude: root('src', 'app'),
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+        loader: ExtractTextPlugin.extract('raw', 'css?sourceMap!postcss!sass')
       },
       // all css required in src/app files will be merged in js files
       {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'}
     ],
     preLoaders: [
       // needed to lower the filesize of angular due to inline source-maps
-      { test: /\.js$/, loader: 'source-map-loader' }
+      {test: /\.js$/, loader: 'source-map-loader'}
     ],
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(true)
+    new webpack.optimize.OccurenceOrderPlugin(true),
+    new ExtractTextPlugin('css/[name].[hash].css', {disable: false})
   ]
 
 };
@@ -67,7 +75,6 @@ var serverConfig = {
 };
 
 
-
 // Default config
 var defaultConfig = {
   context: __dirname,
@@ -79,7 +86,6 @@ var defaultConfig = {
     filename: 'index.js'
   }
 }
-
 
 
 var webpackMerge = require('webpack-merge');
@@ -94,7 +100,8 @@ module.exports = [
 // Helpers
 function checkNodeImport(context, request, cb) {
   if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
-    cb(null, 'commonjs ' + request); return;
+    cb(null, 'commonjs ' + request);
+    return;
   }
   cb();
 }

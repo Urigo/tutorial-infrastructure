@@ -4,6 +4,7 @@ const mkdirp = require("mkdirp");
 const path = require("path");
 const _ = require("lodash");
 const rimraf = require("rimraf");
+const copydir = require("copy-dir");
 
 function ensureDirectoryExistence(filePath) {
   var dirname = path.dirname(filePath);
@@ -14,7 +15,7 @@ function ensureDirectoryExistence(filePath) {
   fs.mkdirSync(dirname);
 }
 
-export function generateStaticWebsite(baseHost, port, routesArray, outputLocation) {
+export function generateStaticWebsite(baseHost, port, routesArray, outputLocation, assetsDirectory) {
   function generateStaticForUrl(fullBaseUrl, urlPath): Promise<string> {
     let url = fullBaseUrl + urlPath;
 
@@ -33,7 +34,14 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
     })
   }
 
-  rimraf.sync("Cleaning output directory: " + outputLocation);
+  rimraf.sync(outputLocation);
+  copydir.sync(assetsDirectory, path.join(outputLocation, path.basename(assetsDirectory)), function(stat, filepath, filename) {
+    if(stat === 'file' && (path.extname(filepath) === '.md' || path.extname(filepath) === '.patch')) {
+      return false;
+    }
+
+    return true;
+  });
 
   let fullBaseUrl = "http://" + baseHost + ":" + port;
   let urlsToLoad = ["/"];
