@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en"><head>
+  <title>Angular 2 Universal Starter</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Angular 2 Universal">
+  <meta name="keywords" content="Angular 2,Universal">
+  <meta name="author" content="PatrickJS">
+
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <base href="/">
+
+<style>.diffbox[_ngcontent-nlm-6] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-nlm-6] pre[_ngcontent-nlm-6] {
+    background: transparent;
+    border: none; }
+  .diffbox[_ngcontent-nlm-6] .title-panel[_ngcontent-nlm-6] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-nlm-6] .title-panel[_ngcontent-nlm-6] .github-commit-link[_ngcontent-nlm-6] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] .scroll-container[_ngcontent-nlm-6] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] pre[_ngcontent-nlm-6] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] pre.line-added[_ngcontent-nlm-6] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] pre.line-removed[_ngcontent-nlm-6] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] .line-content[_ngcontent-nlm-6] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] .line-content[_ngcontent-nlm-6] .hljs-comment[_ngcontent-nlm-6] {
+        color: #777; }
+    .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] .line-numbers[_ngcontent-nlm-6] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-nlm-6] .code-container[_ngcontent-nlm-6] .line-numbers[_ngcontent-nlm-6] .line-number[_ngcontent-nlm-6] {
+        color: #aaa;
+        font-style: italic; }</style></head>
+<body>
+
+  <app><router-outlet></router-outlet><tutorial><div class="tutorial-container"></div></tutorial><undefined><p>Let's start building our Angular 2.0 Meteor Socially app.</p>
+<p>In this step, we will:</p>
+<ul>
+<li>Setup Meteor and create a working app</li>
+<li>Become familiar with the app's structure</li>
+<li>Connect an Angular 2 front end</li>
+<li>Run the application in the browser</li>
+</ul>
+<h1 id="meteor-setup">Meteor Setup</h1>
+<p>First step — let's install Meteor!</p>
+<p>Open your command line and paste this command:</p>
+<pre><code>$ curl https://install.meteor.com/ | sh
+</code></pre><blockquote>
+<p>If you are on a Windows machine, go <a href="https://www.meteor.com/install">here</a> to install Meteor.</p>
+</blockquote>
+<p>Now let's create our app — write this in the command line:</p>
+<pre><code>$ meteor create socially
+</code></pre><p>Now let's see what we've got. Go into the new folder:</p>
+<pre><code>$ cd socially
+</code></pre><p>Run the app like so:</p>
+<pre><code>$ meteor
+
+=&gt; Started proxy
+=&gt; Started MongoDB.
+=&gt; Started your app.
+&gt;=&gt; App running at: http://localhost:3000/
+</code></pre><p>Now go to <a href="http://localhost:3000/">http://localhost:3000/</a>
+and look at the amazing app that's running on your computer!</p>
+<p>We now have a fully functional app which includes both a server and a client!</p>
+<p>The default Meteor app starts life with three files in the <code>client</code> directory: one <code>js</code>, one <code>html</code> and one <code>css</code> file.</p>
+<p>We are going to add our own files for this tutorial. So let's start by deleting these files:</p>
+<pre><code>- /client/main.css    (delete)
+- /client/main.html   (delete)
+- /client/main.js     (delete)
+- /server/main.js     (delete)
+</code></pre><p>Now we can start building our app.</p>
+<p>Create a new <code>index.html</code> file in the client folder, and place this code inside. Then run the app again.</p>
+<diffbox step="0.1" tutorial="angular2-meteor-socially" _nghost-nlm-6=""><div _ngcontent-nlm-6="" class="diffbox">
+    <div _ngcontent-nlm-6="" class="title-panel">
+        <span _ngcontent-nlm-6="" class="step-number">0.1</span> <span _ngcontent-nlm-6="" class="commit-summary">Add client/index.html</span>
+        <a _ngcontent-nlm-6="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/335056eca16783962451e42d5933b37ebcd4618e">client/index.html</a>
+    </div>
+    <div _ngcontent-nlm-6="" class="code-container">
+        <div _ngcontent-nlm-6="" class="scroll-container">
+            <div _ngcontent-nlm-6="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-number">1</pre><pre _ngcontent-nlm-6="" class="line-number">2</pre><pre _ngcontent-nlm-6="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-nlm-6="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Nothing here<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox>
+
+<p>And Meteor build tool refreshes automatically and our app is updated in the browser.</p>
+<p>Note that there is no <code>&amp;lt;html&amp;gt;</code> tag and no <code>&amp;lt;head&amp;gt;</code> tags in our code.</p>
+<p>This is because of how Meteor structures and serves files to the client.</p>
+<p>Meteor scans all the HTML files in your application and concatenates them together to make it simpler for us.</p>
+<p>Concatenation means merging the content of all <code>HTML</code>, <code>HEAD</code> and <code>BODY</code> tags found inside these HTML files together.</p>
+<p>So in our case, Meteor found our <code>index.html</code> file, recognized it was meant for the client only (because it's inside the <code>client</code> folder), found the <code>BODY</code> tag inside and added it's content to the <code>BODY</code> tag of the main generated file.</p>
+<blockquote>
+<p>(<code>right-click</code> -&gt; <code>inspect element</code> on the page to see the generated file Meteor served to the client)</p>
+</blockquote>
+<h1 id="adding-angular-2-and-its-dependencies">Adding Angular 2 and its dependencies</h1>
+<p>It's time to add Angular 2 to our stack!</p>
+<p>In the command line, launch those commands:</p>
+<pre><code>$ meteor remove blaze-html-templates
+$ meteor add angular2-compilers barbatus:angular2-runtime
+
+$ meteor npm install --save meteor-node-stubs reflect-metadata angular2-meteor angular2-meteor-polyfills@^0.1.1 rxjs@5.0.0-beta.6 zone.js@^0.6.6 @angular/core@^2.0.0-rc.4 @angular/common@^2.0.0-rc.4 @angular/compiler@^2.0.0-rc.4 @angular/platform-browser@^2.0.0-rc.4 @angular/platform-browser-dynamic
+</code></pre><blockquote>
+<p>You might see a lot of warning messages if you are using NPM v2, it is okay and if you are interested to know more about these warning, you can <a href="http://blog.npmjs.org/post/110924823920/npm-weekly-5">read here</a>.</p>
+</blockquote>
+<p><strong>Why <code>angular2-compilers</code>?</strong></p>
+<p>In order to use:</p>
+<ul>
+<li><code>TypeScript</code></li>
+<li>the replacement for <code>blaze-html-templates</code> package</li>
+<li>to support SCSS, SASS and LESS</li>
+</ul>
+<p><strong>Why <code>barbatus:angular2-runtime</code>?</strong></p>
+<p>To avoid importing <code>reflect-metatada</code> and <code>zone.js</code> (more about it <a href="https://github.com/Urigo/angular2-meteor#install-package">here</a>).</p>
+<h2 id="typescript">Typescript</h2>
+<p>An Angular 2 Meteor app can be written in regular JavaScript (ES5), the new JavaScript (ES2015 aka ES6) or TypeScript on both the server and the client.</p>
+<p>TypeScript is the recommended choice by the Angular team so in this tutorial, we'll be using TypeScript.</p>
+<p>Don't worry if you're not familiar with TypeScript. Valid ES6 or ES5 JavaScript is a valid TypeScript and we will explain new concepts when we would need them in the tutorial.</p>
+<blockquote>
+<p>If you'd like to deep dive into TypeScript, we recommend the <a href="http://www.typescriptlang.org/Tutorial">official tutorial</a>.</p>
+</blockquote>
+<p>To start we need to add a TypeScript configuration file named <code>tsconfig.json</code> into our project:</p>
+<diffbox step="0.3" tutorial="angular2-meteor-socially" _nghost-nlm-6=""><div _ngcontent-nlm-6="" class="diffbox">
+    <div _ngcontent-nlm-6="" class="title-panel">
+        <span _ngcontent-nlm-6="" class="step-number">0.3</span> <span _ngcontent-nlm-6="" class="commit-summary">Add TypeScript configuration file</span>
+        <a _ngcontent-nlm-6="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/1070b2df8b3574df01f0b48f329e85c48fdef26a">tsconfig.json</a>
+    </div>
+    <div _ngcontent-nlm-6="" class="code-container">
+        <div _ngcontent-nlm-6="" class="scroll-container">
+            <div _ngcontent-nlm-6="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-number">1</pre><pre _ngcontent-nlm-6="" class="line-number">2</pre><pre _ngcontent-nlm-6="" class="line-number">3</pre><pre _ngcontent-nlm-6="" class="line-number">4</pre><pre _ngcontent-nlm-6="" class="line-number">5</pre><pre _ngcontent-nlm-6="" class="line-number">6</pre><pre _ngcontent-nlm-6="" class="line-number">7</pre><pre _ngcontent-nlm-6="" class="line-number">8</pre><pre _ngcontent-nlm-6="" class="line-number">9</pre><pre _ngcontent-nlm-6="" class="line-number">10</pre><pre _ngcontent-nlm-6="" class="line-number">11</pre><pre _ngcontent-nlm-6="" class="line-number">12</pre><pre _ngcontent-nlm-6="" class="line-number">13</pre><pre _ngcontent-nlm-6="" class="line-number">14</pre><pre _ngcontent-nlm-6="" class="line-number">15</pre><pre _ngcontent-nlm-6="" class="line-number">16</pre><pre _ngcontent-nlm-6="" class="line-number">17</pre><pre _ngcontent-nlm-6="" class="line-number">18</pre><pre _ngcontent-nlm-6="" class="line-number">19</pre><pre _ngcontent-nlm-6="" class="line-number">20</pre><pre _ngcontent-nlm-6="" class="line-number">21</pre>
+            </div>
+            <div _ngcontent-nlm-6="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-added" className="line-added">{</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  <span class="hljs-string">"compilerOptions"</span>: {</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"module"</span>: <span class="hljs-string">"commonjs"</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"target"</span>: <span class="hljs-string">"es5"</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"isolatedModules"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"moduleResolution"</span>: <span class="hljs-string">"node"</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"removeComments"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"noImplicitAny"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"sourceMap"</span>: <span class="hljs-literal">true</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  },</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  <span class="hljs-string">"filesGlob"</span>: [</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"client/**/*.ts"</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"server/**/*.ts"</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"typings/**/*.d.ts"</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  ],</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  <span class="hljs-string">"exclude"</span>: [</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">    <span class="hljs-string">"node_modules"</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  ]</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox>
+
+<p>Those are the basic configurations to run an Angular 2.0 Meteor app.</p>
+<p>To learn more about Typescript compiler options, <a href="http://www.typescriptlang.org/docs/handbook/compiler-options.html">click here</a>.</p>
+<h3 id="typescript-typings">TypeScript Typings</h3>
+<p>We need to let Typescript know about all the types in the libraries we depend upon.</p>
+<p>In order to do that — thus adding full type-checking support at this stage — we'll use a special tool for typings installation
+and management called <code>typings</code>. You can find more information about it <a href="https://github.com/typings/typings">here</a>.</p>
+<p>In our case, we'll need to execute commands as follows to install all dependencies:</p>
+<pre><code>    $ sudo npm install typings -g
+    $ typings init
+    $ typings install es6-promise --save
+    $ typings install dt~es6-shim --global --save
+    $ typings install registry:env/meteor --global --save
+</code></pre><p>If you look into the typings folder after the execution, you'll find there a definition file called <code>index.d.ts</code>.</p>
+<p>This is a top level definition file that links all other definition files installed by <code>typings</code>.</p>
+<blockquote>
+<p>Note that in some cases, your IDE can mark your code as "error" or "warning" because of missing Typings - this will not prevent you from running your app, but it is highly recommended to resolve those errors.</p>
+</blockquote>
+<p>That's it! Now we can use Angular 2's power in our Meteor app!</p>
+<h1 id="root-component">Root Component</h1>
+<p>Angular 2 code is structured as a tree of components.</p>
+<p>Each component is a controller with an attached view.</p>
+<p>Since it's a tree, there should be a root component and branch components
+that stem out of it. So let's create our root component.</p>
+<p>Create a new <code>app.ts</code> file inside of the <code>client</code> folder.</p>
+<diffbox step="0.6" tutorial="angular2-meteor-socially" _nghost-nlm-6=""><div _ngcontent-nlm-6="" class="diffbox">
+    <div _ngcontent-nlm-6="" class="title-panel">
+        <span _ngcontent-nlm-6="" class="step-number">0.6</span> <span _ngcontent-nlm-6="" class="commit-summary">Create the root component</span>
+        <a _ngcontent-nlm-6="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/bcab86d86dc10cef0c5a08aa49c2a1b7e669bb4f">client/app.ts</a>
+    </div>
+    <div _ngcontent-nlm-6="" class="code-container">
+        <div _ngcontent-nlm-6="" class="scroll-container">
+            <div _ngcontent-nlm-6="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-number">1</pre><pre _ngcontent-nlm-6="" class="line-number">2</pre><pre _ngcontent-nlm-6="" class="line-number">3</pre><pre _ngcontent-nlm-6="" class="line-number">4</pre><pre _ngcontent-nlm-6="" class="line-number">5</pre><pre _ngcontent-nlm-6="" class="line-number">6</pre><pre _ngcontent-nlm-6="" class="line-number">7</pre><pre _ngcontent-nlm-6="" class="line-number">8</pre><pre _ngcontent-nlm-6="" class="line-number">9</pre><pre _ngcontent-nlm-6="" class="line-number">10</pre><pre _ngcontent-nlm-6="" class="line-number">11</pre><pre _ngcontent-nlm-6="" class="line-number">12</pre><pre _ngcontent-nlm-6="" class="line-number">13</pre>
+            </div>
+            <div _ngcontent-nlm-6="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { bootstrap } from <span class="hljs-string">'@angular/platform-browser-dynamic'</span>;</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"> </pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./app.html'</span>;</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"> </pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">@Component({</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  selector: <span class="hljs-string">'app'</span>,</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  template</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">})</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"><span class="hljs-keyword">class</span> Socially { }</pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added"> </pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">bootstrap(Socially);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox>
+
+<p>First we're importing the dependencies we needed from <code>@angular/core</code> and <code>@angular/platform-browser-dynamic</code>. This is not a folder and files in your directory, but a reference to CommonJS modules aliased as <code>@angular/core</code> and <code>@angular/platform-browser-dynamic</code>, which in fact located under your <code>node_modules</code> directory.</p>
+<p>Notice, the Component's selector matches the <code>&amp;lt;app&amp;gt;</code> tag we will provide in <code>index.html</code> below, and the View template creates the view.</p>
+<p>The class, Socially, inherits from <code>@Component</code> which is part of Angular 2.</p>
+<p>Finally, we <code>bootstrap</code> our component, thus, marking it as the root component.</p>
+<blockquote>
+<p>You can see another example of Meteor's power and simplicity - no need to include this file anywhere. Meteor takes care of it by going through all the files in the project and include them automatically.</p>
+</blockquote>
+<p>Our component has the template defined with the <code>template</code> property, let's create the template:</p>
+<diffbox step="0.7" tutorial="angular2-meteor-socially" _nghost-nlm-6=""><div _ngcontent-nlm-6="" class="diffbox">
+    <div _ngcontent-nlm-6="" class="title-panel">
+        <span _ngcontent-nlm-6="" class="step-number">0.7</span> <span _ngcontent-nlm-6="" class="commit-summary">Add the main component HTML file</span>
+        <a _ngcontent-nlm-6="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/791a429827802c0cc1b7dd9ccb13b872d803b5a5">client/app.html</a>
+    </div>
+    <div _ngcontent-nlm-6="" class="code-container">
+        <div _ngcontent-nlm-6="" class="scroll-container">
+            <div _ngcontent-nlm-6="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-nlm-6="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-added" className="line-added">Hello World!</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox>
+
+<p>The only thing left before we can run our app is to import the root module and
+add the <code>&amp;lt;app&amp;gt;</code> tag to <code>index.html</code>.</p>
+<diffbox hideRemoved="true" step="0.8" tutorial="angular2-meteor-socially" _nghost-nlm-6=""><div _ngcontent-nlm-6="" class="diffbox">
+    <div _ngcontent-nlm-6="" class="title-panel">
+        <span _ngcontent-nlm-6="" class="step-number">0.8</span> <span _ngcontent-nlm-6="" class="commit-summary">Use the main component in the index.html file</span>
+        <a _ngcontent-nlm-6="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/39f54375fbb81b2af93ec56cff1d6e70db4798a2">client/index.html</a>
+    </div>
+    <div _ngcontent-nlm-6="" class="code-container">
+        <div _ngcontent-nlm-6="" class="scroll-container">
+            <div _ngcontent-nlm-6="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-number">1</pre><pre _ngcontent-nlm-6="" class="line-number">2</pre><pre _ngcontent-nlm-6="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-nlm-6="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-nlm-6="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-nlm-6="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">app</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app</span>&gt;</span></pre><pre _ngcontent-nlm-6="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox>
+
+<p>Importing the root module every time looks like a repetitive task.
+Here comes some good news — the Angular 2 Meteor package recognizes the file named <code>app.ts</code>.
+If you have one in the app root folder, the package will import it for you without even having to ask.</p>
+<p>Let's run the app:</p>
+<pre><code>$ meteor
+</code></pre><blockquote>
+<p>If the template doesn't change, it may be because your browser is caching the original template.
+Learn <a href="https://developer.chrome.com/devtools/docs/settings">how to disable caching during development</a> in Chrome.</p>
+</blockquote>
+<p>And we have our first Angular 2.0 Meteor app working!</p>
+<p>Let's go through some of the technologies we used till now:</p>
+<h1 id="npm">npm</h1>
+<p>Npm stands for Node Packages Manager, which manages your dependencies and external packages.</p>
+<p>Meteor supports NPM packages (starting from 1.3), and when we created our project - a file named <code>package.json</code> was created - this file contains the project's npm dependencies and some other metadata.</p>
+<p>To install the current project dependencies, type in the command line <code>npm install</code>.</p>
+<p>We also used Meteor packages (<code>meteor add ...</code>).  Meteor packages have some abilities that npm packages don't have yet so we will use some packages from there as well.</p>
+<h2 id="es6-modules-and-commonjs">ES6 Modules and CommonJS</h2>
+<p>Meteor supports <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/statements/import">ES6 modules</a> out of the box.</p>
+<p>This feature provides the ability to use <code>import</code> / <code>export</code> statements and gives you a full control for modules loading and dependencies.</p>
+<p>You can read more about how modules work and how it's based on CommonJS <a href="http://docs.meteor.com/#/full/modules">on the Meteor docs</a>.</p>
+<h1 id="summary">Summary</h1>
+<p>Let's continue to <a href="/tutorials/angular2/static-template">step 1</a> and add some content to our application.</p>
+</undefined></app>
+
+  
+
+
+</body></html>

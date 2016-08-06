@@ -30,10 +30,15 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}))
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
 import { ngApp } from './main.node';
+import {APP_ROUTES} from "./app/tutorials/tutorials";
+import {generateStaticWebsite} from "./generate-static";
 // Routes with html5pushstate
 // ensure routes match client-side-app
 app.get('/', ngApp);
-app.get('/tutorials/angular2/socially/bootstrap', ngApp);
+
+APP_ROUTES.forEach((route) => {
+  app.get("/" + route.path, ngApp);
+});
 
 // use indexFile over ngApp only when there is too much load on the server
 function indexFile(req, res) {
@@ -52,10 +57,9 @@ app.get('*', function(req, res) {
 // Server
 let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
+
+  setTimeout(() => {
+    generateStaticWebsite("localhost", server.address().port, APP_ROUTES, "./static-website/");
+  }, 2000);
 });
 
-
-app.use((req, res, next) => {
-  console.log(res);
-  next();
-});

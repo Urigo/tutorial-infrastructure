@@ -9,7 +9,6 @@ import {Router} from "@angular/router";
 })
 @Injectable()
 export class AppComponent {
-  constructor(router : Router) {
-    router.events.subscribe(console.log);
+  constructor() {
   }
 }
