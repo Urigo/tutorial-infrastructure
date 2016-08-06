@@ -1,0 +1,78 @@
+.diffbox {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+
+  margin: 1.5em 0;
+
+  pre {
+    background: transparent;
+    border: none;
+  }
+
+  .title-panel {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto;
+
+    .github-commit-link {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important;
+    }
+  }
+
+  .code-container {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8;
+
+    .scroll-container {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden;
+    }
+
+    pre {
+      margin: 0;
+      padding: 0;
+
+      background-color: transparent;
+
+      &.line-added {
+        background: #eaffea;
+      }
+
+      &.line-removed {
+        background: #ff9ea2;
+      }
+    }
+
+    .line-content {
+      padding-left: 36px;
+      overflow: hidden;
+
+      .hljs-comment {
+        color: #777;
+      }
+    }
+
+    .line-numbers {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px;
+
+      .line-number {
+        color: #aaa;
+        font-style: italic;
+      }
+    }
+  }
+}

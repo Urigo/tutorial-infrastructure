@@ -7,6 +7,7 @@ export interface LineContent {
   content: string;
   type: string
   highlightedContent?: string
+  cssClass?: string
 }
 
 export interface SingleChange {

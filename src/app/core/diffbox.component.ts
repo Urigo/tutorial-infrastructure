@@ -7,24 +7,10 @@ import * as hljs from "highlight.js";
 
 @Component({
   selector: "diffbox",
-  template: `
-    <div class="diffbox">
-        <div class="title-panel">
-            <span class="step-number">{{step}}</span> <span class="commit-summary">{{diffDetails.summary}}</span>
-            <a target="_blank" class="github-commit-link" [href]="buildGitHubLink()">{{filename}}</a>
-        </div>
-        <div class="code-container">
-            <div class="scroll-container">
-                  <div class="line-numbers">
-                    <pre *ngFor="let lineNumber of getLineNumbers()" class="line-number">{{lineNumber}}</pre>
-                  </div>
-                  <div class="code-lines">
-                    <pre *ngFor="let line of getLines()" class="" [innerHTML]="line.highlightedContent"></pre>
-                  </div>
-            </div>
-        </div>
-    </div>
-`
+  templateUrl: "./diffbox.component.html",
+  styleUrls: [
+    "./diffbox.component.scss"
+  ]
 })
 export class DiffBoxComponent implements OnInit {
   @Input("step") step: string;
@@ -107,6 +93,7 @@ export class DiffBoxComponent implements OnInit {
         }
 
         line.highlightedContent = highlightedContent || " ";
+        line.cssClass = "line-" + line.type;
 
         return line;
       });
