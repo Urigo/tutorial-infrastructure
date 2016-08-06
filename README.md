@@ -4,7 +4,7 @@ To run:
 
     $ npm install
     $ typings install
-    $ npm run server
+    $ npm run start
     
 Open you browser [http://localhost:3000](http://localhost:3000) !
     
