@@ -20,7 +20,7 @@ export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>)
       config.push(<Route>{
         path: stepUrl,
         component: TutorialPage,
-        resolve: [PatchLoadResolve],
+        canActivate: [PatchLoadResolve],
         data: <TutorialRouteData>{
           stepObject: step,
           tutorialObject: tutorial

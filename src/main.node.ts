@@ -1,3 +1,8 @@
+// the polyfills must be the first thing imported in node.js
+// import 'angular2-universal/polyfills'; // polyfills are moved to server.ts
+
+
+// Angular 2 Universal
 import {
   REQUEST_URL,
   ORIGIN_URL,
@@ -8,8 +13,11 @@ import {
 
 import { provideRouter } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+
+// Application
 import {AppComponent} from './app/app.component';
 import {APP_ROUTES} from "./app/tutorials/tutorials";
+import {TUTORIALS_PROVIDERS} from "./app/core/tutorials-providers";
 
 export function ngApp(req, res) {
   let baseUrl = '/';
@@ -24,11 +32,15 @@ export function ngApp(req, res) {
       {provide: APP_BASE_HREF, useValue: baseUrl},
     ],
     providers: [
+      TUTORIALS_PROVIDERS,
       {provide: REQUEST_URL, useValue: url},
       NODE_HTTP_PROVIDERS,
       provideRouter(APP_ROUTES),
       NODE_LOCATION_PROVIDERS
     ],
+    bootloader: false,
+    server: true,
+    client: false,
     async: true,
     preboot: false // { appRoot: 'app' } // your top level app component selector
   };

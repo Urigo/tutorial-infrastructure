@@ -1,19 +1,19 @@
 import {Injectable} from "@angular/core";
 import {TutorialRegistryCache} from "./tutorials-registry-cache";
-import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {CanActivate} from "@angular/router";
 import {Observable} from "rxjs";
 import {StepsTemplatesCache} from "./steps-templates-cache";
 import {TutorialRouteData} from "./tutorial-routes";
 
 @Injectable()
-export class PatchLoadResolve implements Resolve<any> {
+export class PatchLoadResolve implements CanActivate<any> {
   constructor(private cache: TutorialRegistryCache,
               private templatesCache: StepsTemplatesCache) {
 
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    let data: TutorialRouteData = <TutorialRouteData>route.data;
+  canActivate(route): Observable<any> {
+    let data: TutorialRouteData = <TutorialRouteData>route._routeConfig.data;
 
     let tutorialPatchObservable = this.cache.load(
       data.tutorialObject.id,
@@ -24,6 +24,6 @@ export class PatchLoadResolve implements Resolve<any> {
       data.tutorialObject.id,
       data.stepObject.template);
 
-    return tutorialPatchObservable.concat(stepHtmlObservable);
+    return tutorialPatchObservable.concat(stepHtmlObservable).concat(Observable.of(true));
   }
 }

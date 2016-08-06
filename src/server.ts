@@ -1,4 +1,6 @@
+// the polyfills must be the first thing imported in node.js
 import 'angular2-universal/polyfills';
+
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
@@ -27,16 +29,15 @@ app.use(bodyParser.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
-
+import { serverApi } from './backend/api';
+// Our API for demos only
+app.get('/data.json', serverApi);
 
 import { ngApp } from './main.node';
 // Routes with html5pushstate
 // ensure routes match client-side-app
 app.get('/', ngApp);
-app.get('/about', ngApp);
-app.get('/about/*', ngApp);
-app.get('/home', ngApp);
-app.get('/home/*', ngApp);
+app.get('/tutorials/angular2/socially/bootstrap', ngApp);
 
 // use indexFile over ngApp only when there is too much load on the server
 function indexFile(req, res) {
@@ -55,4 +56,10 @@ app.get('*', function(req, res) {
 // Server
 let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
+});
+
+
+app.use((req, res, next) => {
+  console.log(res);
+  next();
 });
