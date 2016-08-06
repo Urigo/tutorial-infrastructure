@@ -1,12 +1,15 @@
-import {Injectable, OnInit, Component, DynamicComponentLoader, ViewContainerRef} from "@angular/core";
+import {
+  Injectable,
+  OnInit,
+  Component,
+  DynamicComponentLoader,
+  ViewContainerRef} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
-import {Observable} from "rxjs";
-import {Http} from "@angular/http";
 import {DiffBoxComponent} from "./diffbox.component";
 import {StepsTemplatesCache} from "./steps-templates-cache";
 
-function generateDyanmicComponent(template = "Oops, tutorial template is not available") {
+function generateDynamicComponent(template = "Oops, tutorial template is not available") {
   @Component({
     template,
     directives: [DiffBoxComponent]
@@ -37,7 +40,13 @@ export class TutorialPage implements OnInit {
     this.route.data.subscribe((routeData: any) => {
       this.tutorial = <TutorialDefinition>routeData.tutorialObject;
       this.step = <TutorialStep>routeData.stepObject;
-      this.dynamicComponentLoader.loadNextToLocation(generateDyanmicComponent(this.stepsTemplatesCache.getHtml(this.step.name, this.tutorial.id)), this.viewContainerRef);
+
+      this.dynamicComponentLoader.loadNextToLocation(
+        generateDynamicComponent(
+          this.stepsTemplatesCache.getHtml(
+            this.step.name,
+            this.tutorial.id)),
+        this.viewContainerRef);
     });
   }
 }

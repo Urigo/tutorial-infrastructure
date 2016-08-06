@@ -12,7 +12,7 @@
     "clean-start": "npm run clean-install && npm start",
     "watch": "webpack --watch --progress --profile",
     "build": "rimraf dist && webpack --progress --profile --bail",
-    "server": "webpack-dev-server --inline --progress --port 8080",
+    "server": "webpack-dev-server --inline --progress --port 3000",
     "lint": "tslint --force \"src/**/*.ts\"",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",

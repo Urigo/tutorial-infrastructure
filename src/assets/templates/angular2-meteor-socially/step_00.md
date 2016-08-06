@@ -52,7 +52,7 @@ Now we can start building our app.
 
 Create a new `index.html` file in the client folder, and place this code inside. Then run the app again.
 
-<diffbox tutorial="angular2-meteor-socially" step="0.1" filename="TEST"></diffbox>
+<diffbox tutorial="angular2-meteor-socially" step="0.1"></diffbox>
 
 And Meteor build tool refreshes automatically and our app is updated in the browser.
 

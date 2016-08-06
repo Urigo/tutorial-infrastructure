@@ -65,8 +65,7 @@ export class TutorialRegistryCache {
   getObject(id: string): TutorialBundle {
     if (this.cache.has(id)) {
       return this.cache.get(id);
-    }
-    else {
+    } else {
       return;
     }
   }
@@ -74,8 +73,7 @@ export class TutorialRegistryCache {
   load(id: string, tutorialData : TutorialDefinition): Observable<TutorialBundle> {
     if (this.cache.has(id)) {
       return Observable.of(this.cache.get(id));
-    }
-    else {
+    } else {
       let obs = <Observable<TutorialBundle>>this.http
         .get(tutorialData.patchFile)
         .map(res => res.text())
@@ -86,7 +84,7 @@ export class TutorialRegistryCache {
           return <TutorialBundle>{
             steps: parsedTutorial,
             tutorial: tutorialData
-          }
+          };
         });
 
       obs.subscribe((patch: TutorialBundle) => {

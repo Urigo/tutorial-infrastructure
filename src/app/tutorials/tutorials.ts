@@ -1,5 +1,5 @@
-import {Angular2MeteorSociallyTutorial} from "./angular2-meteor-socially";
+import {ANGULAR2_METEOR_SOCIALLY} from "./angular2-meteor-socially";
 
 export const ALL_TUTORIALS = [
-  Angular2MeteorSociallyTutorial
+  ANGULAR2_METEOR_SOCIALLY
 ];
