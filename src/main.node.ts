@@ -38,9 +38,6 @@ export function ngApp(req, res) {
       provideRouter(APP_ROUTES),
       NODE_LOCATION_PROVIDERS
     ],
-    bootloader: false,
-    server: true,
-    client: false,
     async: true,
     preboot: false // { appRoot: 'app' } // your top level app component selector
   };
