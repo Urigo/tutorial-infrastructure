@@ -14,7 +14,9 @@ At the moment, while developing, try access:
     
     
 ## TODO
-    
+
+- Simplify webpack build
 - DiffBox CSS [use this](https://github.com/meteor/tutorial-tools/blob/master/tutorial-diff-box/diff-box.less)
 - Implement Angular Universal compiler (in order to create static HTML files, [use this](https://github.com/angular/universal-starter/blob/master/webpack.config.js))
 - Remove angular2-meteor website and split the infrastructure for the usage.   
+- Prepare for publish as NPM package

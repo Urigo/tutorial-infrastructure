@@ -1,8 +1,8 @@
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {parseMultiPatch} from "git-patch-parser";
 import {TutorialDefinition, TutorialBundle} from "./tutorial-definition";
+const gitPatchParser = require("git-patch-parser");
 
 function capitalizeFirstLetter(message) {
   return message.charAt(0).toUpperCase() + message.slice(1);
@@ -79,7 +79,7 @@ export class TutorialRegistryCache {
       let obs = <Observable<TutorialBundle>>this.http
         .get(tutorialData.patchFile)
         .map(res => res.text())
-        .map(parseMultiPatch)
+        .map(gitPatchParser.parseMultiPatch)
         .map(parseOutStepNumberAndComment)
         .map(doMapping)
         .map(parsedTutorial => {

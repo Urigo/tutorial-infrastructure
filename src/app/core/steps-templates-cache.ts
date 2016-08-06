@@ -1,7 +1,7 @@
 import {Observable} from "rxjs";
-import * as marked from "marked";
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
+const marked = require("marked");
 
 @Injectable()
 export class StepsTemplatesCache {

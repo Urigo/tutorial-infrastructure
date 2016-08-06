@@ -1,47 +1,13 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Angular 2 App | ng2-webpack</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
-  <title><%= webpackConfig.metadata.title %></title>
-
-  <meta name="description" content="<%= webpackConfig.metadata.title %>">
-
-  <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
-
-  <!-- base url -->
-  <base href="<%= webpackConfig.metadata.baseUrl %>">
-
-
+    <base href="/">
 </head>
-
 <body>
-
-  <app>
-    Loading...
-  </app>
-
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-
-  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
-
-
+    <app>Loading...</app>
 </body>
 </html>
