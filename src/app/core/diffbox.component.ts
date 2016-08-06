@@ -15,6 +15,7 @@ import * as hljs from "highlight.js";
 export class DiffBoxComponent implements OnInit {
   @Input("step") step: string;
   @Optional() @Input("filename") optionalFilename: string;
+  @Optional() @Input("hideRemoved") hideRemoved: boolean;
   @Input("tutorial") tutorialName: string;
 
   private diffDetails: ParsedPatchDefinition;
@@ -76,7 +77,7 @@ export class DiffBoxComponent implements OnInit {
 
   getLines() {
     const sectionLines = this.currentFileModification.map((section) => {
-      return section.lines.map((line: LineContent) => {
+      let allLines = section.lines.map((line: LineContent) => {
         let highlightedContent = null;
 
         if (line.content) {
@@ -97,6 +98,13 @@ export class DiffBoxComponent implements OnInit {
 
         return line;
       });
+
+      if (this.hideRemoved) {
+        return allLines.filter(item => item.type !== "removed");
+      }
+      else {
+        return allLines;
+      }
     });
 
     return sectionLines.reduce((prev: Array<any>, curr) => {

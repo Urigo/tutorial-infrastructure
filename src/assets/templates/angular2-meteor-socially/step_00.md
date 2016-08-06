@@ -105,7 +105,7 @@ Don't worry if you're not familiar with TypeScript. Valid ES6 or ES5 JavaScript 
 
 To start we need to add a TypeScript configuration file named `tsconfig.json` into our project:
 
-0.3
+<diffbox tutorial="angular2-meteor-socially" step="0.3"></diffbox>
 
 Those are the basic configurations to run an Angular 2.0 Meteor app.
 
@@ -145,7 +145,7 @@ that stem out of it. So let's create our root component.
 
 Create a new `app.ts` file inside of the `client` folder.
 
-0.6
+<diffbox tutorial="angular2-meteor-socially" step="0.6"></diffbox>
 
 First we're importing the dependencies we needed from `@angular/core` and `@angular/platform-browser-dynamic`. This is not a folder and files in your directory, but a reference to CommonJS modules aliased as `@angular/core` and `@angular/platform-browser-dynamic`, which in fact located under your `node_modules` directory.
 
@@ -159,12 +159,12 @@ Finally, we `bootstrap` our component, thus, marking it as the root component.
 
 Our component has the template defined with the `template` property, let's create the template:
 
-0.7
+<diffbox tutorial="angular2-meteor-socially" step="0.7"></diffbox>
 
 The only thing left before we can run our app is to import the root module and
 add the `&lt;app&gt;` tag to `index.html`.
 
-0.8
+<diffbox tutorial="angular2-meteor-socially" step="0.8" hideRemoved="true"></diffbox>
 
 Importing the root module every time looks like a repetitive task.
 Here comes some good news — the Angular 2 Meteor package recognizes the file named `app.ts`.
