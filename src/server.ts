@@ -29,10 +29,6 @@ app.use(bodyParser.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
-import { serverApi } from './backend/api';
-// Our API for demos only
-app.get('/data.json', serverApi);
-
 import { ngApp } from './main.node';
 // Routes with html5pushstate
 // ensure routes match client-side-app
