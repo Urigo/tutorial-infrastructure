@@ -45,9 +45,29 @@
       }
     },
     "@angular/router": {
-      "version": "3.0.0-alpha.8",
-      "from": "@angular/router@3.0.0-alpha.8",
-      "resolved": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-alpha.8.tgz"
+      "version": "3.0.0-beta.2",
+      "from": "@angular/router@3.0.0-beta.2",
+      "resolved": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-beta.2.tgz"
+    },
+    "@angular2-material/button": {
+      "version": "2.0.0-alpha.6",
+      "from": "@angular2-material/button@latest",
+      "resolved": "https://registry.npmjs.org/@angular2-material/button/-/button-2.0.0-alpha.6.tgz"
+    },
+    "@angular2-material/card": {
+      "version": "2.0.0-alpha.6",
+      "from": "@angular2-material/card@latest",
+      "resolved": "https://registry.npmjs.org/@angular2-material/card/-/card-2.0.0-alpha.6.tgz"
+    },
+    "@angular2-material/core": {
+      "version": "2.0.0-alpha.6",
+      "from": "@angular2-material/core@latest",
+      "resolved": "https://registry.npmjs.org/@angular2-material/core/-/core-2.0.0-alpha.6.tgz"
+    },
+    "@angular2-material/toolbar": {
+      "version": "2.0.0-alpha.6",
+      "from": "@angular2-material/toolbar@latest",
+      "resolved": "https://registry.npmjs.org/@angular2-material/toolbar/-/toolbar-2.0.0-alpha.6.tgz"
     },
     "angular2-express-engine": {
       "version": "0.15.3",
@@ -258,6 +278,67 @@
         }
       }
     },
+    "autoprefixer": {
+      "version": "6.4.0",
+      "from": "autoprefixer@latest",
+      "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-6.4.0.tgz",
+      "dependencies": {
+        "postcss-value-parser": {
+          "version": "3.3.0",
+          "from": "postcss-value-parser@>=3.2.3 <4.0.0",
+          "resolved": "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz"
+        },
+        "normalize-range": {
+          "version": "0.1.2",
+          "from": "normalize-range@>=0.1.2 <0.2.0",
+          "resolved": "https://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz"
+        },
+        "num2fraction": {
+          "version": "1.2.2",
+          "from": "num2fraction@>=1.2.2 <2.0.0",
+          "resolved": "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz"
+        },
+        "browserslist": {
+          "version": "1.3.5",
+          "from": "browserslist@>=1.3.5 <1.4.0",
+          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.3.5.tgz"
+        },
+        "caniuse-db": {
+          "version": "1.0.30000517",
+          "from": "caniuse-db@>=1.0.30000515 <2.0.0",
+          "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000517.tgz"
+        },
+        "postcss": {
+          "version": "5.1.1",
+          "from": "postcss@>=5.1.1 <6.0.0",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.1.1.tgz",
+          "dependencies": {
+            "supports-color": {
+              "version": "3.1.2",
+              "from": "supports-color@>=3.1.2 <4.0.0",
+              "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-3.1.2.tgz",
+              "dependencies": {
+                "has-flag": {
+                  "version": "1.0.0",
+                  "from": "has-flag@>=1.0.0 <2.0.0",
+                  "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-1.0.0.tgz"
+                }
+              }
+            },
+            "source-map": {
+              "version": "0.5.6",
+              "from": "source-map@>=0.5.6 <0.6.0",
+              "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.6.tgz"
+            },
+            "js-base64": {
+              "version": "2.1.9",
+              "from": "js-base64@>=2.1.9 <3.0.0",
+              "resolved": "https://registry.npmjs.org/js-base64/-/js-base64-2.1.9.tgz"
+            }
+          }
+        }
+      }
+    },
     "body-parser": {
       "version": "1.15.2",
       "from": "body-parser@>=1.15.1 <2.0.0",
@@ -369,6 +450,18 @@
               }
             }
           }
+        }
+      }
+    },
+    "copy-dir": {
+      "version": "0.3.0",
+      "from": "copy-dir@latest",
+      "resolved": "https://registry.npmjs.org/copy-dir/-/copy-dir-0.3.0.tgz",
+      "dependencies": {
+        "mkdir-p": {
+          "version": "0.0.7",
+          "from": "mkdir-p@>=0.0.4 <0.1.0",
+          "resolved": "https://registry.npmjs.org/mkdir-p/-/mkdir-p-0.0.7.tgz"
         }
       }
     },
