@@ -1,5 +1,5 @@
 <ul *ngIf="tutorialDetails" class="tutorial-steps-list">
-    <li class="step-item" *ngFor="let step of tutorialDetails.steps">
+    <li class="step-item" *ngFor="let step of tutorialDetails.steps" routerLinkActive="active-step" [routerLinkActiveOptions]="{exact: true}">
         <a class="step-link" [routerLink]="getStepLink(step)">{{step.name}}</a>
     </li>
 </ul>
