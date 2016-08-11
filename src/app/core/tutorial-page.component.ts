@@ -5,7 +5,7 @@ import {
   DynamicComponentLoader,
   ViewContainerRef
 } from "@angular/core";
-import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
 import {DiffBoxComponent} from "./diffbox.component";
 import {StepsTemplatesCache} from "./steps-templates-cache";
@@ -13,6 +13,7 @@ import {TutorialRouteData} from "./tutorial-routes";
 
 function generateDynamicComponent(template = "Oops, tutorial template is not available") {
   @Component({
+    selector: "tutorial-page",
     template,
     directives: [DiffBoxComponent]
   })
