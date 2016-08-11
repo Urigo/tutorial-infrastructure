@@ -21,6 +21,16 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
       url: "/dynamic-template",
       name: "Dynamic Templates",
       template: "/assets/templates/angular2-meteor-socially/step_02.md"
+    },
+    {
+      url: "/3-way-data-binding",
+      name: "3-way Data Binding",
+      template: "/assets/templates/angular2-meteor-socially/step_03.md"
+    },
+    {
+      url: "/adding-removing-objects-and-angular-event-handling",
+      name: "Data Management",
+      template: "/assets/templates/angular2-meteor-socially/step_04.md"
     }
   ]
 };

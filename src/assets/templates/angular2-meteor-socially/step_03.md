@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_03.md"}}
-{{> downloadPreviousStep stepName="step_02"}}
-
 Now we have a client side application that creates and renders its own data.
 
 So, if we were in any framework other than Meteor, we would likely start implementing a series of REST endpoints to connect the server to the client.
@@ -37,7 +34,7 @@ So first, let's define our first parties collection that will store all our part
 
 In a separate folder called `collections`, add a file called `parties.ts`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.1"></diffbox>
 
 We've just created a file called `parties.ts`, that contains a CommonJS module called `collections/parties`. 
 This work is done by the TypeScript compiler behind the scenes.
@@ -68,15 +65,15 @@ To use it, we need to install it from NPM:
 
 Let's change `bootstrap` to load from `angular2-meteor-auto-bootstrap` instead of `@angular/platform-browser-dynamic` as follows:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.4"></diffbox>
     
 Now let's import the `Parties` from collections:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.2"></diffbox>
 
 and let's bind to the Cursor:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.5"></diffbox>
 
 
 # Inserting Parties from the Console
@@ -122,11 +119,11 @@ let's initialize our server with the same parties as we had before.
 Let's add a file called `load-parties.ts` inside of "server" folder
 and implement `loadParties` method inside to load parties:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.7"></diffbox>
 
 Then create `main.ts` to run this method on Meteor startup:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="3.9"}}
+<diffbox tutorial="angular2-meteor-socially" step="3.9"></diffbox>
 
 Now run the app and you should see the list of parties on the screen.
 If not, please, run
@@ -144,5 +141,3 @@ In this chapter you saw how easy and fast it is:
 - to create a full connection between our client data and the server using Meteor
 - to create a simple Angular 2 UI and render a Mongo collection on the page with the help of `Angular2-Meteor`
 - to load initial parties on the server side when the app launches
-
-{{/template}}
