@@ -10,10 +10,11 @@ import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
 import {DiffBoxComponent} from "./diffbox.component";
 import {StepsTemplatesCache} from "./steps-templates-cache";
 import {TutorialRouteData} from "./tutorial-routes";
+import {ActivatedTutorial} from "./current-tutorial";
 
 function generateDynamicComponent(template = "Oops, tutorial template is not available") {
   @Component({
-    selector: "tutorial-page",
+    selector: "tutorial-page-content",
     template,
     directives: [DiffBoxComponent]
   })
@@ -25,7 +26,7 @@ function generateDynamicComponent(template = "Oops, tutorial template is not ava
 
 @Injectable()
 @Component({
-  selector: "tutorial",
+  selector: "tutorial-page",
   template: `<div class="tutorial-container" #dynamic></div>`
 })
 export class TutorialPage implements OnInit {
@@ -35,7 +36,8 @@ export class TutorialPage implements OnInit {
   constructor(private stepsTemplatesCache: StepsTemplatesCache,
               private route: ActivatedRoute,
               private dynamicComponentLoader: DynamicComponentLoader,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private currentTutorial: ActivatedTutorial) {
   }
 
   ngOnInit() {
@@ -43,6 +45,9 @@ export class TutorialPage implements OnInit {
       let routeData = <TutorialRouteData>data;
       this.tutorial = <TutorialDefinition>routeData.tutorialObject;
       this.step = <TutorialStep>routeData.stepObject;
+
+      this.currentTutorial.updateCurrentTutorial(this.tutorial);
+      this.currentTutorial.updateCurrentStep(this.step);
 
       this.dynamicComponentLoader.loadNextToLocation(
         generateDynamicComponent(

@@ -99,11 +99,11 @@ export class DiffBoxComponent implements OnInit {
         return line;
       });
 
-      if (this.hideRemoved) {
-        return allLines.filter(item => item.type !== "removed");
+      if (this.hideRemoved === false) {
+        return allLines;
       }
       else {
-        return allLines;
+        return allLines.filter(item => item.type !== "removed");
       }
     });
 

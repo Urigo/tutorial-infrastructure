@@ -5,26 +5,6 @@
   bottom: 0;
   overflow: auto;
   z-index: 100;
-
-  .nav-block {
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid #CFD8DC;
-    color: #546E7A;
-
-    a {
-      text-decoration: none;
-      color: #536E7A;
-      display: block;
-    }
-
-    .nav-title {
-      font-size: 14px;
-      padding: 16px 16px;
-      margin: 0;
-      background-color: #ECEFF1;
-    }
-  }
 }
 
 .l-pinned-top {
