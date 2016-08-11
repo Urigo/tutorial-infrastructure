@@ -50,6 +50,12 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
   routesArray.forEach((route: any) => {
     if (route.path != "**") {
       urlsToLoad.push("/" + route.path);
+
+      if (route.children && route.children.length > 0) {
+        route.children.forEach((child: any) => {
+          urlsToLoad.push("/" + child.path);
+        });
+      }
     }
   });
 

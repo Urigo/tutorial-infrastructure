@@ -1,9 +1,11 @@
-<nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
-    <steps-list></steps-list>
-</nav>
-<div class="top-navigation">
-    <a md-raised-button tutorialNavigation="previous">Previous</a>
-    <a md-raised-button codeDiffButton>Code Diff</a>
-    <a md-raised-button tutorialNavigation="next">Next</a>
+<div class="tutorials-container">
+    <nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <steps-list></steps-list>
+    </nav>
+    <div class="top-navigation">
+        <a md-raised-button tutorialNavigation="previous">Previous</a>
+        <a md-raised-button codeDiffButton>Code Diff</a>
+        <a md-raised-button tutorialNavigation="next">Next</a>
+    </div>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet> 
