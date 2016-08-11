@@ -1,9 +1,13 @@
-import {Component} from "@angular/core";
+import {Component, Injectable} from "@angular/core";
 
 @Component({
   selector: "main",
-  template: "Main page"
+  templateUrl: "./main.component.html",
+  styleUrls: [
+    "./main.component.scss"
+  ]
 })
+@Injectable()
 export class MainComponent {
-
+  constructor() {}
 }

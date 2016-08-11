@@ -1,0 +1,32 @@
+.hero {
+  padding: 3rem 0;
+  background-image: url("/assets/images/angular-bg.png");
+  background-color: #333333;
+  text-align: center;
+
+  h1 {
+    color: #f6f6f6;
+    font-size: 1.7rem;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    .buttons {
+      margin-bottom: 20px;
+    }
+
+    .main-logo {
+      width: 260px;
+      height: 260px;
+      background-image: url("/assets/images/logo-large.png");
+      background-repeat: no-repeat;
+      margin: 0 auto 3rem;
+      background-size: 132%;
+      background-position: -48px;
+    }
+  }
+}
