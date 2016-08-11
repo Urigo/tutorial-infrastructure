@@ -47,17 +47,19 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
   let urlsToLoad = ["/"];
   let promises = [];
 
-  routesArray.forEach((route: any) => {
-    if (route.path != "**") {
-      urlsToLoad.push("/" + route.path);
+  let handleRoutesArray = (arr, base = "/") => {
+    arr.forEach((route: any) => {
+      if (route.path != "**") {
+        urlsToLoad.push(base + route.path);
 
-      if (route.children && route.children.length > 0) {
-        route.children.forEach((child: any) => {
-          urlsToLoad.push("/" + child.path);
-        });
+        if (route.children && route.children.length > 0) {
+          handleRoutesArray(route.children, base + route.path + "/");
+        }
       }
-    }
-  });
+    });
+  };
+
+  handleRoutesArray(routesArray);
 
   urlsToLoad.forEach((url) => {
     console.log("Generating static file for: " + url);
