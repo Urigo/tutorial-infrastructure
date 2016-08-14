@@ -15,7 +15,7 @@ import {ActivatedTutorial} from "./current-tutorial";
 function generateDynamicComponent(template = "Oops, tutorial template is not available") {
   @Component({
     selector: "tutorial-page-content",
-    template: `<div ngNonBindable>${template}</div>`,
+    template,
     directives: [DiffBoxComponent]
   })
   class DynamicComponent {

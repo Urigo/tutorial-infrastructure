@@ -9,7 +9,7 @@
                 <pre *ngFor="let lineNumber of getLineNumbers()" class="line-number">{{lineNumber}}</pre>
             </div>
             <div class="line-content">
-                <pre *ngFor="let line of getLines()" [className]="line.cssClass" [innerHTML]="line.highlightedContent"></pre>
+                <pre *ngFor="let line of getLines()" [innerHTML]="line.highlightedContent" [className]="line.cssClass || ''"></pre>
             </div>
         </div>
     </div>

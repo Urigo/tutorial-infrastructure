@@ -1,7 +1,7 @@
 import {Observable} from "rxjs";
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
-const marked = require("marked");
+let markdown = require("markdown").markdown;
 
 @Injectable()
 export class StepsTemplatesCache {
@@ -19,6 +19,16 @@ export class StepsTemplatesCache {
     return this.cache.get(this.buildId(step, tutorialId));
   }
 
+  private escapeAngularBindings(html: string): string {
+    return html.replace(/<code/g, "<code ngNonBindable");
+  }
+
+  private unescapeDiffBox(html: string): string {
+    return html.replace(/(&lt;diffbox.*?&gt;)/g, (res) => {
+      return res.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+    }).replace(/&lt;\/diffbox&gt;/g, "</diffbox>");
+  }
+
   public load(step: string, tutorialId: string, fallbackUrl?: string): Observable<any> {
     let id = this.buildId(step, tutorialId);
 
@@ -28,7 +38,9 @@ export class StepsTemplatesCache {
       let obs = this.http
         .get(fallbackUrl)
         .map(res => res.text())
-        .map(text => marked(text));
+        .map(text => markdown.toHTML(text))
+        .map(this.escapeAngularBindings)
+        .map(this.unescapeDiffBox);
 
       obs.subscribe((content: string) => {
         this.set(id, content);

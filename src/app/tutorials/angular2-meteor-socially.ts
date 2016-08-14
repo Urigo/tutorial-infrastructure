@@ -31,6 +31,11 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
       url: "/adding-removing-objects-and-angular-event-handling",
       name: "Data Management",
       template: "/assets/templates/angular2-meteor-socially/step_04.md"
+    },
+    {
+      url: "/routing-and-multiple-views",
+      name: "Routing & Multiple Views",
+      template: "/assets/templates/angular2-meteor-socially/step_05.md"
     }
   ]
 };
