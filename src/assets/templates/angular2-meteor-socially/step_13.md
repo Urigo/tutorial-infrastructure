@@ -1,5 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_13.md"}} {{> downloadPreviousStep stepName="step_12"}}
-
 In this and next steps we are going to:
 
 - add party invitations;
@@ -14,7 +12,7 @@ First of all, we'll need to render a list of all users to invite on the page. Si
 
 Let's create a new file `server/users.ts` and add a new publication there. We can start by finding all uninvited users, specifically, users who are not invited and not the current user.
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.1"></diffbox>
 
 Notice that we've made use of a special Mongo selector [`$nin`](https://docs.mongodb.org/manual/reference/operator/query/nin/),
 meaning "not in", to sift out users that have already been invited to this party so far.
@@ -23,7 +21,7 @@ that are "not equal" to the user's id.
 
 Next, import the users publication to be defined on the server during startup:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.2"></diffbox>
 
 As you can see above, we've introduced a new party property — "invited", which is going to be an array of all invited user IDs.
 
@@ -31,11 +29,11 @@ Don't forget to update your `party.d.ts` declaration file to reflect changes of 
 
 Now, let's load the uninvited users of a particular party into the `PartyDetails` component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.3"></diffbox>
 
 Then, render the uninvited users on the `PartyDetails`'s page:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.5"></diffbox>
 
 # Implementing Pipes
 
@@ -45,7 +43,7 @@ For that purpose we could create a private component method and call it each tim
 
 Let's add a new folder "client/lib" and place a new file `pipes.ts`. We'll add our new `displayName` pipe inside of it:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.6"></diffbox>
 
 As you can see, there are a couple of things to remember in order to create a pipe:
 
@@ -54,11 +52,11 @@ As you can see, there are a couple of things to remember in order to create a pi
 
 To make use of the created pipe, change the markup of the `PartyDetails`'s template to:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.7"></diffbox>
 
 And, finally, import the new pipe into the component and add it to the view decorator:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="13.8"}}
+<diffbox tutorial="angular2-meteor-socially" step="13.8"></diffbox>
 
 If you were familiar with Angular 1's filters concept, you might believe that Angular 2's pipes are very similar. This is both true and not. While the view syntax and aims they are used for are the same, there are some important differences. The main one is that Angular 2 can now efficiently handle _stateful_ pipes, whereas stateful filters were discouraged in Angular 1. Another thing to note is that Angular 2 pipes are defined in the unique and elegant Angular 2 way, i.e., using classes and class metadata, the same as for components and their views.
 
@@ -75,5 +73,3 @@ In this step, we learned about:
 - some Mongo query operators like `$nin` & `$ne`
 
 In the next step we'll look at using Meteor methods as a way to securely verify client-side data changes on the server.
-
-{{/template}}

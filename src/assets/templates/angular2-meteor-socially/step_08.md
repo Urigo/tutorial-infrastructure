@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_08.md"}}
-{{> downloadPreviousStep stepName="step_07"}}
-
 In this section we'll look at how to:
 
 - implement security for an app using Meteor and Angular 2 API
@@ -47,15 +44,15 @@ Now we are going to add `angular2-meteor-accounts-ui` which is a package that co
 
 Let's add the `<login-buttons>` tag below of the party form in the PartiesList's template:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.2"></diffbox>
 
 Then, import the dependencies:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.3"></diffbox>
 
 Now let's create main stylesheet file (with `.scss` extension), and import the SCSS file from the package:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.4"></diffbox>
 
 Run the code, you'll see a login link below the form. Click on the link and then "create  account" to sign up. Try to log in and log out.
 
@@ -67,7 +64,7 @@ Now that we have our account system, we can start defining our security rules fo
 
 Let's go to the "collection" folder and specify what actions are allowed:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.5"></diffbox>
 
 In only 10 lines of code we've specified that inserts, updates and removes can only be completed if a user is logged in.
 
@@ -86,13 +83,13 @@ use, [`Meteor.user()`](http://docs.meteor.com/#/full/meteor_user) and [`Meteor.u
 For now, we are going to keep it simple in this app and allow every logged-in user to change a party.
 Change the click handler of the "Add" button in the `parties-form.ts`, `addParty`, to save the user ID as well. Also, it'd be useful to add an alert prompting the user to log in if she wants to add or update a party:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.6"></diffbox>
 
 > Notice that you'll need to update the Party type in the `party.d.ts` definition file with the optional new property: `owner?: string`.
 
 Let's do the user check in `party-details.ts`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.7"></diffbox>
 
 Typing each time `Meteor.user()` or `Meteor.userId()` might seems tedious.
 Not to mention that there is no way to use these functions in the component templates currently.
@@ -104,7 +101,7 @@ and exports two services for the usage in Angular 2. Besides that, it has two co
 
 Now you can specify if a component can be accessed only when a user is logged in using the `@RequireUser` annotation.
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="8.9"}}
+<diffbox tutorial="angular2-meteor-socially" step="8.9"></diffbox>
 
 # InjectUser
 
@@ -214,5 +211,3 @@ We've added two powerful features to our app:
 - the "accounts-ui" package that comes with features like user login, logout, registration
   and complete UI supporting them;
 - restricted access to the party details page, with access available for logged-in users only.
-
-{{/template}}

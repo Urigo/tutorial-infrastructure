@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_11.md"}}
-{{> downloadPreviousStep stepName="step_09"}}
-
 So far, we've been building our app and testing only in a web browser,
 however Meteor has been designed to work across different platforms — your socially website can become an iOS or Android app with just a few commands.
 
@@ -83,5 +80,3 @@ If you want to point your app to the previously deployed server, run:
 # Summary
 
 Now that we have seen how easy it is to deploy our app and run it on mobile, let's get to adding some more features. In the [next step](/tutorials/angular2/search-sort-pagination-and-reactive-vars) we'll look at adding party sorting and pagination.
-
-{{/template}}

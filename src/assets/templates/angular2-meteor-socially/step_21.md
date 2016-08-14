@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_21.md"}}
-{{> downloadPreviousStep stepName="step_20"}}
-
 This step of the tutorial teaches us how to add mobile support for iOS and Android and how to elegantly reuse code using the es2015 modules.
 
 In this tutorial's example we will differentiate the login part of the project: in the browser users will login using email and password and in the mobile app users will login with SMS verification.
@@ -27,11 +24,11 @@ We're going to keep the view and the component for the web under `*.web.html` an
 
 First thing to do is to rename `login.html` to `login.web.html`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.2"></diffbox>
 
 Let's do the same with `login.ts` file but with one small change which is a new `template` property:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.3"></diffbox>
 
 
 ### SMS verification
@@ -53,23 +50,23 @@ Until this changes you can use `mys:accounts-phone` which fixes that issue.
 
 A template of a mobile version will be pretty much the same as for browsers:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.6"></diffbox>
 
 We can use the same directives in the component as in Web version, so let's create a basic component without any functionality:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.5"></diffbox>
 
 SMS verification is a two-step process. First thing to do is to verify a phone number.
 
 Let's create a form for that:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.7"></diffbox>
 
 It's a simple form, basically the same as the form with Email and password verification we did in previous chapters.
 
 We can now take care of the logic. Let's create a `send` method:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.8"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.8"></diffbox>
 
 What we did? Few things:
 
@@ -81,7 +78,7 @@ Great, we're half way there!
 
 Now we need to verify that code. We will keep all the logic under `verify` method:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.9"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.9"></diffbox>
 
 As you can see, we used `Accounts.verifyPhone` with proper arguments to call the verification process.
 
@@ -92,7 +89,7 @@ There are two more things that you should notice.
 
 We have all the logic, we still need to create a view for it:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.10"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.10"></diffbox>
 
 It seems like both versions are ready.
 
@@ -100,7 +97,7 @@ We can now move on to `client/app.ts`.
 
 Just as you can use `Meteor.isServer` and `Meteor.isClient` to separate your client-side and server-side code, you can use `Meteor.isCordova` to separate your Cordova-specific code from the rest of your code.
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="21.11"}}
+<diffbox tutorial="angular2-meteor-socially" step="21.11"></diffbox>
 
 As you can see, we're importing both version of Login Component. But only one is being used, depending on Meteor.isCordova value.
 
@@ -112,5 +109,3 @@ And that's it!
 ## Summary
 
 In this tutorial we showed how to make our code behave differently in mobile and web platforms. We did this by creating separate es2015 modules with specific code for mobile and web, and using them based on the platform that runs the application.
-
-{{/template}}

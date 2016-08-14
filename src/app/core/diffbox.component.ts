@@ -43,7 +43,7 @@ export class DiffBoxComponent implements OnInit {
       } else if (availableFiles.length === 0) {
         throw new Error(`Something went wrong, unable to find files in your commit ${this.diffDetails.sha}!`);
       } else {
-        throw new Error(`Multiple files available in commit ${this.diffDetails.sha}, please specify one: ${availableFiles.join(", ")}`);
+        throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(", ")}`);
       }
     } else {
       this.filename = this.optionalFilename;

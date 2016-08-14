@@ -1,5 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_10.md"}}
-
 Now that we have a working app, we can go public!
 
 One way to operate your app with confidence is to use Galaxy, the service built by Meteor Development Group specifically to run Meteor apps.
@@ -31,5 +29,3 @@ Congratulations, you've made a working app that you can now use with your friend
 You can download the source code of the app up to this point [here](https://github.com/Urigo/meteor-angular2.0-socially/archive/step_09.zip).
 
 In the next step, we'll take a detour to see that while we were building a web app, we've also created a pretty nice mobile app along the way.
-
-{{/template}}

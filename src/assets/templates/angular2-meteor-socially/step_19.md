@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_19.md"}}
-{{> downloadPreviousStep stepName="step_18"}}
-
 This part of the tutorial will cover the usage of third-party libraries with angular2-meteor.
 
 Parts of this tutorial are also relevant for users who uses only Meteor, without angular2-meteor, because the solution for third-party libraries comes from Meteor packaging manager - **Atmosphere**.
@@ -87,5 +84,3 @@ import {
 Atmosphere packages has few advantages over node modules. The most important one is that you cannot specify in node module which files should be on the client-side and which will be used on the server-side. You can always create two packages with -client and -server suffixes.
 
 We recommend you to read more about packages in [Meteor Docs](http://docs.meteor.com/#/full/packagejs).
-
-{{/template}}

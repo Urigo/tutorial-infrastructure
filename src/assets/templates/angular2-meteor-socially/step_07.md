@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_07.md"}}
-{{> downloadPreviousStep stepName="step_06"}}  
-
 In this step we will:
 
 - review the file structure of our Socially app so far,
@@ -50,12 +47,12 @@ is sometimes called "duck typing". More on that you can read [here](http://www.t
 
 Let's create our `party.d.ts` file and place it inside the _typings_ folder with the following content:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="7.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="7.1"></diffbox>
 
 Wherever Party is used, we can declare the type. Let's start by clarifying the parties collection in `collections/parties.ts`.
 Change the code to:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="7.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="7.2"></diffbox>
 
 As you can see, we used a generic type `Mongo.Collection<>` with the class parameter set to `Party` instead of just basic
 `Mongo.Collection` class.
@@ -72,9 +69,9 @@ Isn’t it cool?! We’ve made our app more bug resistant with only a few change
 
 Finally, let’s change `Object` to `Party` in the `PartiesList` and `PartyDetails` components to make our code look right:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="7.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="7.3"></diffbox>
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="7.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="7.4"></diffbox>
 
 ## TypeScript Configuration and IDEs
 
@@ -177,5 +174,3 @@ In this step we discovered how to make our TypeScript code less buggy with:
 - creating a `tsconfig.json` file for loading files and specifying compiler options
 
 In the [next step](/tutorials/angular2/user-accounts-authentication-and-permissions) we'll look at creating user accounts and securing server data access.
-
-{{/template}}

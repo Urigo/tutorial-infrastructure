@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_06.md"}}
-{{> downloadPreviousStep stepName="step_05"}}  
-
 In this step we are going to:
 
 - add a form to the party details view
@@ -18,11 +15,11 @@ through a special attribute, though with different syntax from Angular 1. We'll 
 
 Let's change `party-details.html` into a form, so that we can edit the party details:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="6.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="6.2"></diffbox>
 
 Notice we have a routerLink button on the page that redirects back to the list (from our previous step's challenge). Here is how to do that:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="6.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="6.1"></diffbox>
 
 ## ngModel
 
@@ -31,7 +28,7 @@ the Model-Driven binding where the `ControlGroup` instance is used.
 
 The syntax looks a bit different, using both square and rounded brackets: `[(ngModel)]`. `ngModel` binds to the party properties and fills out the inputs, and vice versa:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="6.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="6.3"></diffbox>
 
 Let's do a little test to see how form controls and events work in Angular 2. Start by binding to `party.name` below the input, then experiment by changing the input's text.
 
@@ -67,7 +64,7 @@ But let's keep the party details view simple for now, without using form control
 
 As a finishing touch, let's add a submit event handler that saves the current party:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="6.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="6.4"></diffbox>
 
 # Summary
 
@@ -75,5 +72,3 @@ In this step, we learned:
 
 - how two-way data binding works in Angular 2 using `[(ngModel)]`
 - how to bind inputs to the view and save the data
-
-{{/template}}

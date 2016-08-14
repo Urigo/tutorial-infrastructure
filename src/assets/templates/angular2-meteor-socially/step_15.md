@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_15.md"}}
-{{> downloadPreviousStep stepName="step_14"}}
-
 In this step we are going to show or hide
 different parts of the app's UI depending the user's current state: either logged-in or anonymous.
 
@@ -37,14 +34,14 @@ the user property into the PartiesList component, since this is what our attribu
 binding will depend on. User injection was already mentioned in step 8,
 so let's make practical use of it now:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.1"></diffbox>
 
 As you can see, we've added a new `isOwner` method to the component,
 thus, we allow only a party owner to remove the party.
 
 Then, change the template to use the `hidden` attribute:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.2"></diffbox>
 
 Now run the app. Make sure you have added _barbatus:ng2-meteor-accounts_ for it to work.
 
@@ -65,13 +62,13 @@ Let's disable these inputs for users that are not owners.
 
 We will get an `isOwner` property when the party owner matches the logged-in user id:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.3"></diffbox>
 
 `isOwner` can be used before the subscription has finished, so we must check if the `party` property is available before checking if the party owner matches.
 
 Then, let's add our new `[disabled]` condition to the party details template:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.4"></diffbox>
 
 # Using `ngIf`
 
@@ -86,11 +83,11 @@ and the invitation list to the party owners and to everybody if the party is pub
 
 We've already added our `isOwner` variable. Let's add two more: `isPublic` and `isInvited`.
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.5"></diffbox>
 
 Then, make use of the properties in the template:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="15.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="15.6"></diffbox>
 
 # Summary
 
@@ -99,5 +96,3 @@ used two of the attributes to make our app better: `hidden` and `disabled`.
 
 The difference between `ngIf` and `hidden` was highlighted, and based on that, `ngIf`
 was used to make the party details page securer and visually better.
-
-{{/template}}

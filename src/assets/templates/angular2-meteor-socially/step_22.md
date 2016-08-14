@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_22.md"}}
-{{> downloadPreviousStep stepName="step_21"}}
-
 Ionic is a CSS and JavaScript framework. It is highly recommended that before starting this step you will get yourself familiar with its [documentation](http://ionicframework.com/docs/v2).
 
 In this step we will learn how to add Ionic library into our project, and use its powerful directives to create cross platform mobile (Android & iOS) applications.
@@ -23,11 +20,11 @@ Let's go to `/node_modules/ionic-angular/ionic.scss`, copy and paste it to `clie
 
 Now we can remove or just disable that import with `Ionicons` (something around 39th line):
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.2"></diffbox>
 
 Now let's import that file into `main.scss`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.3"></diffbox>
 
 
 ### Separate web and mobile things
@@ -42,51 +39,51 @@ Since there will be two main components we still need to rename `app.ts` to `app
 
 Great so far! You probably noticed that template also has to change:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.7"></diffbox>
 
 Web version of Socially Component no longer needs web/mobile separation, it's going to use only web versions of all components.
 
 For now, there are still two versions of `Login` component, let's take care of it:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.8"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.8"></diffbox>
 
 Because of moving Socially component we need to update all relatives paths:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.9"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.9"></diffbox>
 
 ### Main entry point
 
 One thing is missing, the client-side entry point, let's create it:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.10"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.10"></diffbox>
 
 Since we're going to choose between mobile and web version of Socially component we need to defer the bootstrap process somehow.
 
 Let's wrap `bootstrap` with a function:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.11"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.11"></diffbox>
 
 Awesome! We also removed `reflect-metadata` because we want to move it on top of our app.
 The great place for placing it will be `client/main.ts`.
 
 Let's run our app inside recently created entry point:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.12"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.12"></diffbox>
 
 We can now take care of the mobile part.
 
 So far, we still don't have main mobile component but let's create a space for that by creating a `client/imports/app/app.mobile.ts` that looks like this:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.13"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.13"></diffbox>
 
 Now we can run proper version of our app depending on `Meteor.isCordova`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.14"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.14"></diffbox>
 
 In mobile environment, we need to wait for device to be ready.
 The `deviceready` event comes with help:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.15"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.15"></diffbox>
 
 
 ### Enhanced by Ionic
@@ -96,11 +93,11 @@ It seems like you're ready to start your journey with Ionic framework.
 At the very beginning, we need to specify a navigation.
 Let's put this inside `app.mobile.html`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.16"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.16"></diffbox>
 
 Now we can move on to create the Socially component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.17"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.17"></diffbox>
 
 As you can see, there is no `selector` defined.
 
@@ -119,7 +116,7 @@ Everything seems to be ready to be bootstraped. With Ionic, we won't be using An
 
 We have to use it to bootstrap an App. We also need to use few providers from `angular2-meteor`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.18"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.18"></diffbox>
 
 Amazing! Socially works on browsers and also as a mobile app that uses Ionic framework!
 
@@ -129,13 +126,13 @@ We will create a mechanism that adds `web` or `mobile` class to `<body/>` elemen
 
 First thing to do is to defined those classes:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.19"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.19"></diffbox>
 
 As you can see, we fixed an issue with scrollbar.
 
 We all like JavaScript so let's move now to more interesting part! We will create a `setClass` function:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.20"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.20"></diffbox>
 
 **Different selector problem**
 
@@ -165,7 +162,7 @@ will be changed to:
 
 Let's now implement it:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.22"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.22"></diffbox>
 
 ### Using Ionic components
 
@@ -173,19 +170,19 @@ Our main Page would be `PartiesList`, just like in the web version of Socially.
 
 Since we want to keep the logic and only change a view, let's move whole PartiesList class to separate file `parties-list.class.ts`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.23"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.23"></diffbox>
 
 We need to add few import statements:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.24"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.24"></diffbox>
 
 Let's also use `InjectUser` on that class:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.25"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.25"></diffbox>
 
 It seems like we can move on to create a web version of PartiesList component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.26"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.26"></diffbox>
 
 As you can see, we removed few import statements that have been used in class by itself.
 
@@ -195,32 +192,32 @@ We can now remove `parties-list.ts` file.
 
 Last thing to do on web side of our App is to update `app.web.ts` file:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.29"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.29"></diffbox>
 
 Let's take care of the mobile part.
 
 We need a mobile template for PartiesList:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.30"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.30"></diffbox>
 
 There is no template without a component!
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.31"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.31"></diffbox>
 
 Did you noticed missing selector?
 As I mentioned before, there is no need to use selector option on component that is used as a Page.
 
 We want to display a list of parties with RSVPs. We can achieve this by adding `RsvpPipe` to the component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.32"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.32"></diffbox>
 
 And by using `ionCard` component with few other very helpful components:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.33"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.33"></diffbox>
 
 Let's set PartiesList component as the default Page of our App:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.34"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.34"></diffbox>
 
 ### Fixing jalik:ufs in development mode
 
@@ -232,15 +229,15 @@ So if you upload a file in development there might be a problem when running an 
 
 But we will take care of it!
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.35"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.35"></diffbox>
 
 Now we can just add it to the component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.36"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.36"></diffbox>
 
 and implement it in the view:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.37"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.37"></diffbox>
 
 ### Fixing fonts
 
@@ -252,7 +249,7 @@ That plugin needs to know which font we want to use and where it should be avail
 
 Configuration is pretty easy, you will catch it by just looking on an example:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="22.39"}}
+<diffbox tutorial="angular2-meteor-socially" step="22.39"></diffbox>
 
 Now `roboto-regular.ttf` is availbe under `http://localhost:3000/fonts/roboto-regular.ttf`.
 
@@ -265,5 +262,3 @@ In this tutorial we showed how to use Ionic and how to separate the whole view f
 We also learned how to share component between platforms, and change the view only!
 
 We also used Ionic directives in order to provide user-experience of mobile platform instead of regular responsive layout of website.
-
-{{/template}}

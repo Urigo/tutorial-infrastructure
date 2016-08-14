@@ -1,6 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_14.md"}}
-{{> downloadPreviousStep stepName="step_13"}}
-
 In this step we will learn how to use Meteor Methods to
 implement server side logic of the party invitation feature.
 
@@ -16,13 +13,13 @@ This is one of the great Meteor concepts that allows for rapid UI changes.
 
 Let's create a new file `collections/methods.ts`, and add the following `invite` Meteor Method:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.0"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.0"></diffbox>
 
 We used a special API method `Meteor.methods` to register
 a new Meteor Method. Again, don't forget to import your created `methods.ts` module
 in the server's `main.ts` module to have the Methods defined properly:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.2"></diffbox>
 
 ### Latency Compensation
 
@@ -33,7 +30,7 @@ even before the server is contacted proceed to an [Introduction to Latency Compe
 
 But to make it happen, we need to define our Methods on the client side as well. Let's import our Methods in `client/app.ts`:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.3"></diffbox>
 
 ### Validating Methods with Check
 
@@ -58,11 +55,11 @@ At this point, we are ready to add a call to the new Method from the client.
 Let's add a new button right after each username or email in that
 list of users to invite in the `PartyDetails`'s template:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.4"></diffbox>
 
 And then, change the component to handle the click event and invite a user:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.5"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.5"></diffbox>
 
 ### Updating Invited Users Reactively
 
@@ -77,14 +74,14 @@ in the local Mongo storage. If we wrap the line where
 we get the new party with the `autorun` method, this code should
 re-run reactively:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.6"></diffbox>
 
 Now its time to update our users list.
 We'll move the line that gets the users list into a
 separate method, provided with the list of IDs of already invited users;
 and call it whenever we need: right in the above `autorun` method after the party assignment and in the subscription, like that:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.7"></diffbox>
 
 Here comes test time. Let's add a couple of new users.
 Then login as an old user and add a new party.
@@ -104,29 +101,29 @@ First of all, let's make parties list a bit more secure,
 which means two things: showing private parties to those who have been invited
 or to owners, and elaborate routing activation defense for the party details view:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.8"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.8"></diffbox>
 
 The next thing is a party invitee response to the invitation itself. Here, as usual,
 we'll need to update the server side and UI. For the server,
 let's add a new `reply` Meteor Method:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.9"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.9"></diffbox>
 
 As you can see, a new property, called "rsvp", was added
 above to collect user responses of this particular party.
 One more thing. Let's update the party declaration file to
 make TypeScript resolve and compile with no warnings:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.10"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.10"></diffbox>
 
 For the UI, let's add three new buttons onto the party details view.
 These will be "yes", "no", "maybe" buttons and users responses accordingly:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.11"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.11"></diffbox>
 
 Then, handle click events in the PartyDetails component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.12"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.12"></diffbox>
 
 ### Rsvp Pipe
 
@@ -139,7 +136,7 @@ associated with this, provided as a parameter we'll call "response".
 
 Add a new pipe to the `lib/pipes.ts` as follows:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.13"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.13"></diffbox>
 
 Let's take a look at our 'rsvp' pipe closely. The pipe extends `MeteorComponent` and
 uses its `autorun` method to watch for the party's updates.
@@ -169,11 +166,11 @@ class SubStrPipe {
 
 Let's make use of this pipe in the `PartiesList` component:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.14"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.14"></diffbox>
 
 And then in the component itself:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="14.15"}}
+<diffbox tutorial="angular2-meteor-socially" step="14.15"></diffbox>
 
 Now it's testing time! Check that an invited user is able to reply to an
 invitation, and also verify that the party's statistics update properly and reactively.
@@ -201,5 +198,3 @@ a big thumbs-up for that!
 Though, some places in the app can certainly be improved. For example,
 we still show some private information to all invited users, which should be designated only for the party owner.
 We'll fix this in the next step.
-
-{{/template}}

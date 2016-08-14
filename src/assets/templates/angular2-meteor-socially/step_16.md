@@ -1,5 +1,3 @@
-{{#template name="tutorials.socially.angular2.step_16.md"}}
-{{> downloadPreviousStep stepName="step_15"}}
 As you see, our app looks far from fancy using only
 pure HTML templates. It urgently needs graphical design improvements
 to be usable. We are going to fix this issue in the next three steps starting
@@ -13,7 +11,7 @@ We are going to imploy this package of Google Maps components for Angular 2.
 
 # Adding Location Coordinates
 
-Having maps on board, we can make use of latitute and
+Having maps on board, we can make use of latitude and
 longitute coordinates, which are most precise location information possible.
 And of course, we'll show everything on the map to make this information
 comprehensive for users.
@@ -32,20 +30,20 @@ It will require, though, some changes in other parts of the app, where `Party` t
 
 Let's add those changes consequently, starting from `Party` type itself:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.1"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.1"></diffbox>
 
 Then, change the parties, that are created and added on the server initially, accordingly:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.2"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.2"></diffbox>
 
 The PartiesForm component needs to be changed too to reflect type changes:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.3"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.3"></diffbox>
 
 Lastly, we are updating the parties publications. It's interesting to
 see what a small change is required to update the parties search by location: it needs only to point out that "location" property has been moved to "location.name", thanks to Mongo's flexible API:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.4"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.4"></diffbox>
 
 Now when we are done with updates, let's reset the database in case it has
 parties of the old type (remember how to do it? Execute `meteor reset`). Then, run the app to make sure that everything is alright and
@@ -64,12 +62,12 @@ globally.
 
 Setting up global dependencies:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.6"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.6"></diffbox>
 
 The maps package contains two major directives: one is to render a HTML container with Google Maps,
 another one is to visualize a map marker. Let's add a maps markup to the PartyDetails component's template:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.7"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.7"></diffbox>
 
 It needs some explanation. Our markup now contains these two directives.
 As you can see, parent map container directive has a party marker directive as a child element, so that it can be
@@ -81,7 +79,7 @@ In addition, location property binding has been corrected to reflect new type ch
 
 Here come changes to the component itself, including imports, new coordinates properties, and maps click event handler:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.8"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.8"></diffbox>
 
 It's going to work in a scenario as follows:
 
@@ -100,7 +98,7 @@ The last change will be about CSS styles. To show the map container of a specifi
 we'll have to set element styles. Since we'll need styles for that for two pages, let's create
 a separate CSS file for the whole app, which is, anyways, will be useful on the next steps:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.9" filename="client/css/main.scss"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.9" filename="client/css/main.scss"></diffbox>
 
 As usual, having introduced new feature, we are finishing it up with testing.
 Let's create a new party with the location name set to some existing place you know, and go to the details page. Click on the maps at the
@@ -113,7 +111,7 @@ the point you've just pointed out.
 Adding multiple markers on the parties front page should be straightforward now.
 Here is the markup:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.10"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.10"></diffbox>
 
 As you can see, we are looping through the all parties and adding a new marker for each party,
 having checked if the current party has location coordinates available.
@@ -121,7 +119,7 @@ We are also setting the minimum zoom and zero central coordinates on the map to 
 
 Lastly, import dependecies:
 
-{{> DiffBox tutorialName="meteor-angular2-socially" step="16.11"}}
+<diffbox tutorial="angular2-meteor-socially" step="16.11"></diffbox>
 
 # Summary
 
@@ -129,5 +127,3 @@ It turned to be quite easy to add location cooordinates to the parties and make
 changes to the UI, which included Google Maps and location markers on them.
 
 Now we are all set to proceed to more radical visual design changes.
-
-{{/template}}
