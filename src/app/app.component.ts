@@ -2,6 +2,7 @@ import {Component, Injectable} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {MD_TOOLBAR_DIRECTIVES} from "@angular2-material/toolbar";
 import {MD_BUTTON_DIRECTIVES} from "@angular2-material/button";
+import "../../node_modules/highlight.js/styles/default.css";
 
 @Component({
   selector: "app",

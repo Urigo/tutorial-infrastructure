@@ -7,8 +7,35 @@
   z-index: 100;
 }
 
+.right-buttons {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px;
+}
+
+.tutorial-title {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.top-navigation {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50;
+}
+
+.tutorial-content {
+  margin-top: 60px;
+  padding: 20px;
+}
+
 .tutorials-container {
-  padding-left: 240px;
+  padding-left: 230px;
 }
 
 .l-pinned-top {

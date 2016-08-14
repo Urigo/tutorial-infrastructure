@@ -3,9 +3,16 @@
         <steps-list></steps-list>
     </nav>
     <div class="top-navigation">
-        <a md-raised-button tutorialNavigation="previous">Previous</a>
-        <a md-raised-button codeDiffButton>Code Diff</a>
-        <a md-raised-button tutorialNavigation="next">Next</a>
+        <span class="tutorial-title" stepName>
+            Title
+        </span>
+        <div class="right-buttons">
+            <a md-raised-button tutorialNavigation="previous">Previous</a>
+            <a md-raised-button codeDiffButton>Code Diff</a>
+            <a md-raised-button tutorialNavigation="next">Next</a>
+        </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="tutorial-content">
+        <router-outlet></router-outlet>
+    </div>
 </div>
