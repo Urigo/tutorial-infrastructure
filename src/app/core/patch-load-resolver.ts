@@ -6,7 +6,7 @@ import {StepsTemplatesCache} from "./steps-templates-cache";
 import {TutorialRouteData} from "./tutorial-routes";
 
 @Injectable()
-export class PatchLoadResolve implements Resolve {
+export class PatchLoadResolve implements Resolve<any> {
   constructor(private cache: TutorialRegistryCache,
               private templatesCache: StepsTemplatesCache) {
 
