@@ -1,0 +1,641 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-obb-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-obb-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+
+.fill-remaining-space[_ngcontent-obb-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+.step-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.step-link {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.active-step a {
+  font-weight: bold; }
+
+.tutorial-steps-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.md-primary {
+  background: #263238 !important; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-obb-5] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-obb-5] ul[_ngcontent-obb-5] {
+    margin-top: 8px; }
+
+.right-buttons[_ngcontent-obb-5] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-obb-5] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-obb-5] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-obb-5] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-obb-5] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-obb-5] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-obb-5] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-obb-5] {
+  float: left; }
+
+.l-right[_ngcontent-obb-5] {
+  float: right; }
+
+.l-relative[_ngcontent-obb-5], .docs-content[_ngcontent-obb-5] {
+  position: relative; }
+
+.l-absolute[_ngcontent-obb-5] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-obb-5] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-obb-5] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-obb-5] {
+  padding-top: 64px; }</style><style>.diffbox[_ngcontent-obb-11] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-obb-11] .title-panel[_ngcontent-obb-11] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-obb-11] .title-panel[_ngcontent-obb-11] .github-commit-link[_ngcontent-obb-11] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] .scroll-container[_ngcontent-obb-11] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] pre[_ngcontent-obb-11] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] pre.line-added[_ngcontent-obb-11] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] pre.line-removed[_ngcontent-obb-11] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] .line-content[_ngcontent-obb-11] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] .line-content[_ngcontent-obb-11] .hljs-comment[_ngcontent-obb-11] {
+        color: #777; }
+    .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] .line-numbers[_ngcontent-obb-11] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-obb-11] .code-container[_ngcontent-obb-11] .line-numbers[_ngcontent-obb-11] .line-number[_ngcontent-obb-11] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-obb-1=""><md-toolbar _ngcontent-obb-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-obb-1="" href="/"><img _ngcontent-obb-1="" class="logo" src="/assets/images/logo.png"></a>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
+    <span _ngcontent-obb-1="" class="fill-remaining-space"></span>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
+    <button _ngcontent-obb-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-obb-1=""></router-outlet><tutorial _nghost-obb-5=""><div _ngcontent-obb-5="" class="tutorials-container">
+    <nav _ngcontent-obb-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <steps-list _ngcontent-obb-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/bindings">7. Bindings</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/next-steps">25. Next Steps</a>
+    </li>
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-obb-5="" class="top-navigation">
+        <span _ngcontent-obb-5="" class="tutorial-title" stepName="">Folder Structure</span>
+        <div _ngcontent-obb-5="" class="right-buttons">
+            <a _ngcontent-obb-5="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/angular2/socially/bindings">Previous</a>
+            <a _ngcontent-obb-5="" class="md-primary" codeDiffButton="" md-raised-button="">Code Diff</a>
+            <a _ngcontent-obb-5="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/users-and-authentication">Next</a>
+        </div>
+    </div>
+    <div _ngcontent-obb-5="" class="tutorial-content">
+        <router-outlet _ngcontent-obb-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this step we will:</p>
+
+<ul><li>review the file structure of our Socially app so far,</li><li>look closer into certain TypeScript features, since having a better understanding of the primary programming language of this package would be surely beneficial</li></ul>
+
+<h1>File Structure</h1>
+
+<p>As you have probably noticed, our tutorial app has a strict modular structure at this point:
+there are no pure JavaScript files that are being bundled together and auto-executed, so Meteor's file loading conventions doesn't have any effect.
+Even more, every <code ngNonBindable="">.ts</code> file is being compiled into a separate CommonJS module, which we can then import whenever we need to.</p>
+
+<p>There is another thing worth mentioning once more. As you know, Meteor has two special folders: <em>client</em> and <em>server</em>.
+We can benefit from them (and have already done so in this app) by allowing access to the client side modules from the client side only and, accordingly, to server side modules from the server side.
+Everything outside of those folders will be available to the both client and server.
+It’s no wonder why this is a recommended approach in Meteor, and this is why we’ve been doing it so far.
+Let's stick to it further.</p>
+
+<h1>TypeScript</h1>
+
+<p>TypeScript is a rather new language that has been growing in <a href="https://www.google.com/trends/explore#q=%2Fm%2F0n50hxv">popularity</a> since it's creation 3 years ago. TypeScript has one of the fullest implementations of ES2015 features on the market: including some experimental features, pseudo type-checking and a rich toolset developed by Microsoft and the TypeScript community. It has support already in all major IDEs including Visual Studio, WebStorm, Sublime, Atom, etc.</p>
+
+<p>One of the biggest issues in JavaScript is making code less bug-prone and more suitable for big projects. In the OOP world, well-known solutions include modularity and strict type-checking. While OOP is available in JavaScript in some way, it turned out to be very hard to create good type-checking. One always needs to impose a certain number of rules to follow to make a JavaScript compiler more effective. For many years, we’ve seen around a number of solutions including the Closure Compiler and GWT from Google, a bunch of C#-to-JavaScript compilers and others.</p>
+
+<p>This was, for sure, one of the problems the TypeScript team were striving to solve: to create a language that would inherit the flexibility of JavaScript while, at the same time, having effective and optional type-checking with minimum effort required from the user.</p>
+
+<h2>Type Declaration Files</h2>
+
+<p>As you may have noticed, Angular2-Meteor package itself installs a number of type declaration (<code ngNonBindable="">.d.ts</code>) files into the <em>typings</em> folder. These are files of a special kind where you describe the interfaces for your classes along with signatures of the methods and types of the parameters they take, so that TypeScript will be able to refer to these files to verify the correctness of your class's API. Of course, the flexibility is still there so if you don’t want to declare types you can skip them right away.</p>
+
+<p>Keep in mind, type-checking is not delivered in the outputted JavaScript. It is only extra sugar for your development environment, and adds no weight to the outputted .js file.</p>
+
+<p>Some of the typings files have names <code ngNonBindable="">angular2.d.ts</code> and <code ngNonBindable="">meteor.d.ts</code>, which, as you can guess, are used to verify that API of Meteor and Angular 2 are being used correctly in your code</p>
+
+<p>But as you remember, we've mentioned so far only one declaration file <code ngNonBindable="">angular2-meteor.d.ts</code> and used it in the TypeScript config (on the first step), that's thanks to a special TypeScript syntax construction that can link together one declaration files with other declaration files as well as TypeScript files. If you look inside of <code ngNonBindable="">angular2-meteor.d.ts</code> you'll see Angular 2 and Meteor declaration files are linked there by:</p>
+
+<pre><code ngNonBindable="">/// &lt;reference path="../angular2/angular2.d.ts" /&gt;
+/// &lt;reference path="../meteor/meteor.d.ts" /&gt;</code></pre>
+
+<p>Let’s create our own declaration file for our project in order to learn this type-checking better.</p>
+
+<h2>Custom Type Declaration File</h2>
+
+<p>There is one definite place in our app where we could make use of types to avoid potential bugs.
+We are going to declare a <code ngNonBindable="">Party</code> interface, you should already be familiar with its properties: "name", "description" and "location". We can make the "Description" property optional.
+TypeScript's type-checking bases on the "shapes" that types have. And intefaces are TypeScript's means to describe these type "shapes", which
+is sometimes called "duck typing". More on that you can read <a href="http://www.typescriptlang.org/Handbook#interfaces">here</a>.</p>
+
+<p>Let's create our <code ngNonBindable="">party.d.ts</code> file and place it inside the <em>typings</em> folder with the following content:</p>
+
+<p><diffbox step="7.1" tutorial="angular2-meteor-socially" _nghost-obb-11=""><div _ngcontent-obb-11="" class="diffbox">
+    <div _ngcontent-obb-11="" class="title-panel">
+        <span _ngcontent-obb-11="" class="step-number">7.1</span> <span _ngcontent-obb-11="" class="commit-summary">Declare Party type</span>
+        <a _ngcontent-obb-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/3f66e2fdf6137b8504874eed9415ca4af3ce5dbf">typings/party.d.ts</a>
+    </div>
+    <div _ngcontent-obb-11="" class="code-container">
+        <div _ngcontent-obb-11="" class="scroll-container">
+            <div _ngcontent-obb-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-number">1</pre><pre _ngcontent-obb-11="" class="line-number">2</pre><pre _ngcontent-obb-11="" class="line-number">3</pre><pre _ngcontent-obb-11="" class="line-number">4</pre><pre _ngcontent-obb-11="" class="line-number">5</pre><pre _ngcontent-obb-11="" class="line-number">6</pre>
+            </div>
+            <div _ngcontent-obb-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-added" className="line-added"><span class="hljs-keyword">interface</span> Party {</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  _id?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  name: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  description?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  location: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Wherever Party is used, we can declare the type. Let's start by clarifying the parties collection in <code ngNonBindable="">collections/parties.ts</code>.
+Change the code to:</p>
+
+<p><diffbox step="7.2" tutorial="angular2-meteor-socially" _nghost-obb-11=""><div _ngcontent-obb-11="" class="diffbox">
+    <div _ngcontent-obb-11="" class="title-panel">
+        <span _ngcontent-obb-11="" class="step-number">7.2</span> <span _ngcontent-obb-11="" class="commit-summary">Define parties collection with Party type</span>
+        <a _ngcontent-obb-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/6d53f6599362dc13f902b43947d4fcc1aa5f27a7">collections/parties.ts</a>
+    </div>
+    <div _ngcontent-obb-11="" class="code-container">
+        <div _ngcontent-obb-11="" class="scroll-container">
+            <div _ngcontent-obb-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-number">1</pre><pre _ngcontent-obb-11="" class="line-number">2</pre><pre _ngcontent-obb-11="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-obb-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Mongo} from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-obb-11="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> Parties = <span class="hljs-keyword">new</span> Mongo.Collection&lt;Party&gt;(<span class="hljs-string">'parties'</span>);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see, we used a generic type <code ngNonBindable="">Mongo.Collection&lt;&gt;</code> with the class parameter set to <code ngNonBindable="">Party</code> instead of just basic
+<code ngNonBindable="">Mongo.Collection</code> class.</p>
+
+<p>Now let’s fiddle with it. Go to the <em>client/parties-form/parties-form.ts</em> file and change “location” property to, say,
+“newLocation”. Run the app. You should see in the console a warning saying in a nutshell: there is no “newLocation” property defined on the <code ngNonBindable="">Party</code> type.</p>
+
+<p>Let’s torture it more. Go to the <em>client/parties-list/parties-list.ts</em>.
+There you’ll see the "parties" property assigned to the <code ngNonBindable="">Mongo.Cursor&lt;Object&gt;</code> type. As you can see, TypeScript considers this construct acceptable even there is no <code ngNonBindable="">Party</code> type mentioned. That’s because Object type is the base class to all types available in JavaScript, so TypeScript doesn’t swear confronting to the OOP principles.</p>
+
+<p>But let’s change it to <code ngNonBindable="">Mongo.Cursor&lt;string&gt;</code>. Run the app and you will see the compiler is unhappy with you again. TypeScript doesn’t know how to convert <code ngNonBindable="">Mongo.Cursor&lt;string&gt;</code> to <code ngNonBindable="">Mongo.Cursor&lt;Party&gt;</code>, so it considers the assignment to be wrong.</p>
+
+<p>Isn’t it cool?! We’ve made our app more bug resistant with only a few changes!</p>
+
+<p>Finally, let’s change <code ngNonBindable="">Object</code> to <code ngNonBindable="">Party</code> in the <code ngNonBindable="">PartiesList</code> and <code ngNonBindable="">PartyDetails</code> components to make our code look right:</p>
+
+<p><diffbox step="7.3" tutorial="angular2-meteor-socially" _nghost-obb-11=""><div _ngcontent-obb-11="" class="diffbox">
+    <div _ngcontent-obb-11="" class="title-panel">
+        <span _ngcontent-obb-11="" class="step-number">7.3</span> <span _ngcontent-obb-11="" class="commit-summary">Correct parties cursor to be of the exact type</span>
+        <a _ngcontent-obb-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/a9a7ebd1187a97695fe062aca4df5c363dbc5021">client/imports/parties-list/parties-list.ts</a>
+    </div>
+    <div _ngcontent-obb-11="" class="code-container">
+        <div _ngcontent-obb-11="" class="scroll-container">
+            <div _ngcontent-obb-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-number">13</pre><pre _ngcontent-obb-11="" class="line-number">14</pre><pre _ngcontent-obb-11="" class="line-number">15</pre><pre _ngcontent-obb-11="" class="line-number">16</pre><pre _ngcontent-obb-11="" class="line-number">17</pre><pre _ngcontent-obb-11="" class="line-number">18</pre><pre _ngcontent-obb-11="" class="line-number">19</pre>
+            </div>
+            <div _ngcontent-obb-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-context" className="line-context">  directives: [PartiesForm, ROUTER_DIRECTIVES]</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartiesList {</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  parties: Mongo.Cursor&lt;Party&gt;;</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-obb-11="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.parties = Parties.find();</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="7.4" tutorial="angular2-meteor-socially" _nghost-obb-11=""><div _ngcontent-obb-11="" class="diffbox">
+    <div _ngcontent-obb-11="" class="title-panel">
+        <span _ngcontent-obb-11="" class="step-number">7.4</span> <span _ngcontent-obb-11="" class="commit-summary">Correct party property to be of Party type</span>
+        <a _ngcontent-obb-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/4fa06cf7f29ec4e10b3f2b93e4ef28e56b66f2f5">client/imports/party-details/party-details.ts</a>
+    </div>
+    <div _ngcontent-obb-11="" class="code-container">
+        <div _ngcontent-obb-11="" class="scroll-container">
+            <div _ngcontent-obb-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-number">12</pre><pre _ngcontent-obb-11="" class="line-number">13</pre><pre _ngcontent-obb-11="" class="line-number">14</pre><pre _ngcontent-obb-11="" class="line-number">15</pre><pre _ngcontent-obb-11="" class="line-number">16</pre><pre _ngcontent-obb-11="" class="line-number">17</pre><pre _ngcontent-obb-11="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-obb-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-obb-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartyDetails {</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context">  partyId: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-obb-11="" class="line-added" className="line-added">  party: Party;</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-obb-11="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>(private route: ActivatedRoute, private ngZone: NgZone) {}</pre><pre _ngcontent-obb-11="" class="line-context" className="line-context"> </pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<h2>TypeScript Configuration and IDEs</h2>
+
+<p>As you already know from the bootstrapping step, TypeScript is generally configured by a special JSON file called <a href="https://github.com/Microsoft/typescript/wiki/tsconfig.json"><em>tsconfig.json</em></a>.</p>
+
+<p>As mentioned, the TypeScript language today has development plugins in many <a href="https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support">popular IDEs</a>, including Visual Studio, WebStorm, Sublime, Atom etc. These plugins work in the same style as it's become de facto today — compile, using TypeScript shell command, <code ngNonBindable="">.ts</code> and <code ngNonBindable="">tsconfig.json</code> files update automatically as you change them.
+With that, if you've configured your project right with declaration files in place you'll get a bunch of invaluable features such as better code completion and instantaneous highlighting of compilation errors.</p>
+
+<p>If you use one of the mentioned IDEs, you've likely noticed that a bunch of the code lines
+are now marked in red, indicating the TypeScript plugins don't work right quite yet.</p>
+
+<p>That's because most of the plugins recognize <em>tsconfig.json</em> as well if it's placed in the root folder,
+but so far our <em>tsconfig.json</em> contains only a "files" property, which is certainly not enough for
+a general compilation. At the same time, Angular2-Meteor's TypeScript compiler, defaults most of the
+compilation options internally to fit our needs. To fix plugins, let's set up our <em>tsconfig.json</em>
+properly with the options that will make plugins understand our needs and the structure of our app.</p>
+
+<p><code ngNonBindable="">json
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "isolatedModules": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "client/**/*.ts",
+    "server/**/*.ts",
+    "typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+</code></p>
+
+<p><strong>CompilerOptions:</strong></p>
+
+<ul><li><code ngNonBindable="">experimentalDecorators</code> - Enables experimental support for ES7 decorators.</li><li><code ngNonBindable="">module</code> - Specify module code generation</li><li><code ngNonBindable="">target</code> - Specify ECMAScript target version</li><li><code ngNonBindable="">isolatedModules</code> - Unconditionally emit imports for unresolved files</li><li><code ngNonBindable="">moduleResolution</code> - Determine how modules get resolved</li><li><code ngNonBindable="">emitDecoratorMetadata</code> - Emit design-type metadata for decorated declarations in source</li><li><code ngNonBindable="">removeComments</code> - Remove all comments except copy-right header comments beginning with</li><li><code ngNonBindable="">noImplicitAny</code> - Raise error on expressions and declarations with an implied 'any' type</li><li><code ngNonBindable="">sourceMap</code> - Generates corresponding '.map' file</li></ul>
+
+<p>Now, let's go to any of the <code ngNonBindable="">.ts</code> files and check if all that annoying redness has disappeared.</p>
+
+<blockquote><p>Note: you may need to reload you IDE to pick up the latest changes to the config.</p></blockquote>
+
+<p>Please note, since the Meteor environment is quite specific, some of the <code ngNonBindable="">tsconfig.json</code> options won't make sense in Meteor. You can read about the exceptions <a href="https://github.com/barbatus/typescript#compiler-options">here</a>.
+TypeScript compiler of this package supports some additional options that might be useful in the Meteor environment.
+They can be included in the "meteorCompilerOptions" section of <em>tsconfig.json</em> and described <a href="https://github.com/barbatus/ts-compilers#typescript-config">here</a>.</p>
+
+<h3>IDE Specific Configurations</h3>
+
+<h5>Atom</h5>
+
+<p>If you are using <a href="atom.io">Atom</a> as your editor with the <a href="https://github.com/TypeStrong/atom-typescript">Atom-TypeScript plugin</a>, use the following configuration to automatically generate your <code ngNonBindable="">tsconfig.json</code> file:</p>
+
+<pre><code ngNonBindable="">{
+ "atom": {
+    "rewriteTsconfig": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "classic",
+    "experimentalDecorators": true
+  },
+  "filesGlob": [
+    "**/*.ts"
+  ],
+  "files": []
+}</code></pre>
+
+<h1>Challange</h1>
+
+<p>We've tried out type-checking for the <code ngNonBindable="">Party</code> type in a couple of places in this step.
+There are still some places left where the type is used but parameters are not defined, for example,
+the party saving method. Try to correct remaining places to use <code ngNonBindable="">Party</code> as this step's challenge.</p>
+
+<h1>Summary</h1>
+
+<p>In this step we discovered how to make our TypeScript code less buggy with:</p>
+
+<ul><li>the benefits of type-checking</li><li>type declaration files for verifying library APIs</li><li>custom declaration files to check our own projects APIs</li><li>TSD for loading declaration files easily</li><li>creating a <code ngNonBindable="">tsconfig.json</code> file for loading files and specifying compiler options</li></ul>
+
+<p>In the <a href="/tutorials/angular2/user-accounts-authentication-and-permissions">next step</a> we'll look at creating user accounts and securing server data access.</p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>
