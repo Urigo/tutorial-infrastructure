@@ -50,4 +50,11 @@ code {
 
 .md-primary {
   background: $darkerBgColor !important;
+  color: white !important;
+  cursor: pointer !important;
+
+  &[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important;
+  }
 }
