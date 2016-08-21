@@ -89,6 +89,9 @@ export class DiffBoxComponent implements OnInit {
           } else if (ext === "less") {
             fileType = "css";
           }
+          else if (fileType === "ts") {
+            fileType = "typescript";
+          }
 
           highlightedContent = hljs.highlight(fileType, line.content, true).value;
         }
