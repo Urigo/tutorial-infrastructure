@@ -58,3 +58,27 @@ code {
     cursor: not-allowed !important;
   }
 }
+
+tutorial-page-content {
+  pre {
+    code[ngnonbindable] {
+      background: $shellBgColor;
+      display: block;
+      width: 90%;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  }
+}
+
+.diffbox {
+  border-radius: 10px;
+
+  .title-panel {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .code-container {
+    border-radius: 0 0 10px 10px;
+  }
+}

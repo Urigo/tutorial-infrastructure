@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <base href="/">
-    <style>.logo[_ngcontent-ain-1] {
+    <style>.logo[_ngcontent-xyp-1] {
   width: auto;
   height: 2em; }
 
-.main-toolbar[_ngcontent-ain-1] {
+.main-toolbar[_ngcontent-xyp-1] {
   z-index: 1000;
   position: fixed;
   top: 0;
@@ -17,7 +17,7 @@
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
   background: #90A4AE; }
 
-.fill-remaining-space[_ngcontent-ain-1] {
+.fill-remaining-space[_ngcontent-xyp-1] {
   -ms-flex: 1 1 auto;
       flex: 1 1 auto; }</style><style>/*
 
@@ -221,28 +221,42 @@ code {
   .md-primary[disabled] {
     color: lightgray !important;
     cursor: not-allowed !important; }
-</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-ain-5] {
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-xyp-5] {
   background: #ECEFF1;
   width: 232px;
   bottom: 0;
   overflow: auto;
   z-index: 100;
   border-right: 1px solid rgba(0, 0, 0, 0.3); }
-  .side-nav[_ngcontent-ain-5] ul[_ngcontent-ain-5] {
+  .side-nav[_ngcontent-xyp-5] ul[_ngcontent-xyp-5] {
     margin-top: 8px; }
 
-.right-buttons[_ngcontent-ain-5] {
+.right-buttons[_ngcontent-xyp-5] {
   float: right;
   margin-right: 250px;
   margin-top: 10px; }
 
-.tutorial-title[_ngcontent-ain-5] {
+.tutorial-title[_ngcontent-xyp-5] {
   margin: 15px;
   float: left;
   font-size: larger;
   font-weight: bold; }
 
-.top-navigation[_ngcontent-ain-5] {
+.top-navigation[_ngcontent-xyp-5] {
   position: fixed;
   margin-top: -60px;
   width: 100%;
@@ -250,82 +264,82 @@ code {
   height: 60px;
   z-index: 50; }
 
-.tutorial-content[_ngcontent-ain-5] {
+.tutorial-content[_ngcontent-xyp-5] {
   margin-top: 60px;
   padding: 20px; }
 
-.tutorials-container[_ngcontent-ain-5] {
+.tutorials-container[_ngcontent-xyp-5] {
   padding-left: 230px; }
 
-.l-pinned-top[_ngcontent-ain-5] {
+.l-pinned-top[_ngcontent-xyp-5] {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px; }
 
-.l-pinned-left[_ngcontent-ain-5] {
+.l-pinned-left[_ngcontent-xyp-5] {
   position: fixed;
   top: 0px;
   left: 0px;
   bottom: 0px; }
 
-.l-left[_ngcontent-ain-5] {
+.l-left[_ngcontent-xyp-5] {
   float: left; }
 
-.l-right[_ngcontent-ain-5] {
+.l-right[_ngcontent-xyp-5] {
   float: right; }
 
-.l-relative[_ngcontent-ain-5], .docs-content[_ngcontent-ain-5] {
+.l-relative[_ngcontent-xyp-5], .docs-content[_ngcontent-xyp-5] {
   position: relative; }
 
-.l-absolute[_ngcontent-ain-5] {
+.l-absolute[_ngcontent-xyp-5] {
   position: absolute; }
 
-.l-fixed[_ngcontent-ain-5] {
+.l-fixed[_ngcontent-xyp-5] {
   position: fixed; }
 
-.l-offset-side-nav[_ngcontent-ain-5] {
+.l-offset-side-nav[_ngcontent-xyp-5] {
   padding-left: 232px; }
 
-.l-offset-nav[_ngcontent-ain-5] {
-  padding-top: 64px; }</style><style>.diffbox[_ngcontent-ain-11] {
+.l-offset-nav[_ngcontent-xyp-5] {
+  padding-top: 64px; }</style><style>.diffbox[_ngcontent-xyp-11] {
   border: 1px solid #eee;
   -webkit-text-size-adjust: 100%;
   margin: 1.5em 0; }
-  .diffbox[_ngcontent-ain-11] .title-panel[_ngcontent-ain-11] {
+  .diffbox[_ngcontent-xyp-11] .title-panel[_ngcontent-xyp-11] {
     padding: 5px 12px;
     background: #eee;
     border-bottom: solid 1px #eee;
     color: #333;
     overflow: auto; }
-    .diffbox[_ngcontent-ain-11] .title-panel[_ngcontent-ain-11] .github-commit-link[_ngcontent-ain-11] {
+    .diffbox[_ngcontent-xyp-11] .title-panel[_ngcontent-xyp-11] .github-commit-link[_ngcontent-xyp-11] {
       float: right;
       color: black;
       text-decoration: none;
       border-bottom: none !important; }
-  .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] {
+  .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] {
     overflow-x: auto;
     position: relative;
     padding: 9px 3px 3px 0;
     background: #f8f8f8; }
-    .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] .scroll-container[_ngcontent-ain-11] {
+    .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] .scroll-container[_ngcontent-xyp-11] {
       display: inline-block;
       min-width: 100%;
       overflow: hidden; }
-    .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] pre[_ngcontent-ain-11] {
+    .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] pre[_ngcontent-xyp-11] {
       margin: 0;
       padding: 0;
       background-color: transparent; }
-      .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] pre.line-added[_ngcontent-ain-11] {
+      .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] pre.line-added[_ngcontent-xyp-11] {
         background: #eaffea; }
-      .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] pre.line-removed[_ngcontent-ain-11] {
+      .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] pre.line-removed[_ngcontent-xyp-11] {
         background: #ff9ea2; }
-    .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] .line-content[_ngcontent-ain-11] {
+    .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] .line-content[_ngcontent-xyp-11] {
       padding-left: 36px;
       overflow: hidden; }
-      .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] .line-content[_ngcontent-ain-11] .hljs-comment[_ngcontent-ain-11] {
+      .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] .line-content[_ngcontent-xyp-11] .hljs-comment[_ngcontent-xyp-11] {
         color: #777; }
-    .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] .line-numbers[_ngcontent-ain-11] {
+    .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] .line-numbers[_ngcontent-xyp-11] {
       text-align: right;
       -moz-user-select: none;
       -khtml-user-select: none;
@@ -333,26 +347,26 @@ code {
       -o-user-select: none;
       position: absolute;
       width: 25px; }
-      .diffbox[_ngcontent-ain-11] .code-container[_ngcontent-ain-11] .line-numbers[_ngcontent-ain-11] .line-number[_ngcontent-ain-11] {
+      .diffbox[_ngcontent-xyp-11] .code-container[_ngcontent-xyp-11] .line-numbers[_ngcontent-xyp-11] .line-number[_ngcontent-xyp-11] {
         color: #aaa;
         font-style: italic; }</style></head><body><universal-styles></universal-styles>
 
 
-<app _nghost-ain-1=""><md-toolbar _ngcontent-ain-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
-    <a _ngcontent-ain-1="" href="/"><img _ngcontent-ain-1="" class="logo" src="/assets/images/logo.png"></a>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
-    <span _ngcontent-ain-1="" class="fill-remaining-space"></span>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
-    <button _ngcontent-ain-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
+<app _nghost-xyp-1=""><md-toolbar _ngcontent-xyp-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-xyp-1="" href="/"><img _ngcontent-xyp-1="" class="logo" src="/assets/images/logo.png"></a>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
+    <span _ngcontent-xyp-1="" class="fill-remaining-space"></span>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
+    <button _ngcontent-xyp-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
  </md-toolbar-row>  </div></md-toolbar>
-<router-outlet _ngcontent-ain-1=""></router-outlet><tutorial _nghost-ain-5=""><div _ngcontent-ain-5="" class="tutorials-container">
-    <nav _ngcontent-ain-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
-        <steps-list _ngcontent-ain-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
+<router-outlet _ngcontent-xyp-1=""></router-outlet><tutorial _nghost-xyp-5=""><div _ngcontent-xyp-5="" class="tutorials-container">
+    <nav _ngcontent-xyp-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <steps-list _ngcontent-xyp-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
     <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
         <a class="step-link" href="/tutorials/angular2/socially/bootstrap">1. Bootstrap</a>
     </li><li class="step-item" routerLinkActive="active-step">
@@ -407,16 +421,16 @@ code {
 </ul>
 </steps-list>
     </nav>
-    <div _ngcontent-ain-5="" class="top-navigation">
-        <span _ngcontent-ain-5="" class="tutorial-title" stepName="">AngularJS Pipes</span>
-        <div _ngcontent-ain-5="" class="right-buttons">
-            <a _ngcontent-ain-5="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/angular2/socially/search-sort-pagination-and-reactive-vars">Previous</a>
-            <a _ngcontent-ain-5="" class="md-primary" codeDiffButton="" md-raised-button="">Code Diff</a>
-            <a _ngcontent-ain-5="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/meteor-methods">Next</a>
+    <div _ngcontent-xyp-5="" class="top-navigation">
+        <span _ngcontent-xyp-5="" class="tutorial-title" stepName="">AngularJS Pipes</span>
+        <div _ngcontent-xyp-5="" class="right-buttons">
+            <a _ngcontent-xyp-5="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/angular2/socially/search-sort-pagination-and-reactive-vars">Previous</a>
+            <a _ngcontent-xyp-5="" class="md-primary" codeDiffButton="" md-raised-button="">Code Diff</a>
+            <a _ngcontent-xyp-5="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/meteor-methods">Next</a>
         </div>
     </div>
-    <div _ngcontent-ain-5="" class="tutorial-content">
-        <router-outlet _ngcontent-ain-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this and next steps we are going to:</p>
+    <div _ngcontent-xyp-5="" class="tutorial-content">
+        <router-outlet _ngcontent-xyp-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this and next steps we are going to:</p>
 
 <ul><li>add party invitations;</li><li>filter data with Angular2 pipes</li><li>learn about Meteor methods</li></ul>
 
@@ -428,18 +442,18 @@ code {
 
 <p>Let's create a new file <code ngNonBindable="">server/users.ts</code> and add a new publication there. We can start by finding all uninvited users, specifically, users who are not invited and not the current user.</p>
 
-<p><diffbox step="13.1" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.1</span> <span _ngcontent-ain-11="" class="commit-summary">Add uninvited users publication</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/ecae3b5a8513d550c613ce0e3f041159e88a2808">server/users.ts</a>
+<p><diffbox step="13.1" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.1</span> <span _ngcontent-xyp-11="" class="commit-summary">Add uninvited users publication</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/ecae3b5a8513d550c613ce0e3f041159e88a2808">server/users.ts</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">1</pre><pre _ngcontent-ain-11="" class="line-number">2</pre><pre _ngcontent-ain-11="" class="line-number">3</pre><pre _ngcontent-ain-11="" class="line-number">4</pre><pre _ngcontent-ain-11="" class="line-number">5</pre><pre _ngcontent-ain-11="" class="line-number">6</pre><pre _ngcontent-ain-11="" class="line-number">7</pre><pre _ngcontent-ain-11="" class="line-number">8</pre><pre _ngcontent-ain-11="" class="line-number">9</pre><pre _ngcontent-ain-11="" class="line-number">10</pre><pre _ngcontent-ain-11="" class="line-number">11</pre><pre _ngcontent-ain-11="" class="line-number">12</pre><pre _ngcontent-ain-11="" class="line-number">13</pre><pre _ngcontent-ain-11="" class="line-number">14</pre><pre _ngcontent-ain-11="" class="line-number">15</pre><pre _ngcontent-ain-11="" class="line-number">16</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">1</pre><pre _ngcontent-xyp-11="" class="line-number">2</pre><pre _ngcontent-xyp-11="" class="line-number">3</pre><pre _ngcontent-xyp-11="" class="line-number">4</pre><pre _ngcontent-xyp-11="" class="line-number">5</pre><pre _ngcontent-xyp-11="" class="line-number">6</pre><pre _ngcontent-xyp-11="" class="line-number">7</pre><pre _ngcontent-xyp-11="" class="line-number">8</pre><pre _ngcontent-xyp-11="" class="line-number">9</pre><pre _ngcontent-xyp-11="" class="line-number">10</pre><pre _ngcontent-xyp-11="" class="line-number">11</pre><pre _ngcontent-xyp-11="" class="line-number">12</pre><pre _ngcontent-xyp-11="" class="line-number">13</pre><pre _ngcontent-xyp-11="" class="line-number">14</pre><pre _ngcontent-xyp-11="" class="line-number">15</pre><pre _ngcontent-xyp-11="" class="line-number">16</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Parties} from <span class="hljs-string">'../collections/parties.ts'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">Meteor.publish(<span class="hljs-string">'uninvited'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">partyId:<span class="hljs-built_in">string</span></span>) </span>{</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  <span class="hljs-keyword">let</span> party = Parties.findOne(partyId);</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  <span class="hljs-keyword">if</span> (!party)</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'404'</span>, <span class="hljs-string">'No such party!'</span>);</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  <span class="hljs-keyword">return</span> Meteor.users.find({</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    _id: {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      $nin: party.invited || [],</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      $ne: <span class="hljs-keyword">this</span>.userId</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  });</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">});</pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Parties} from <span class="hljs-string">'../collections/parties.ts'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">Meteor.publish(<span class="hljs-string">'uninvited'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">partyId:<span class="hljs-built_in">string</span></span>) </span>{</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  <span class="hljs-keyword">let</span> party = Parties.findOne(partyId);</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  <span class="hljs-keyword">if</span> (!party)</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'404'</span>, <span class="hljs-string">'No such party!'</span>);</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  <span class="hljs-keyword">return</span> Meteor.users.find({</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    _id: {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      $nin: party.invited || [],</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      $ne: <span class="hljs-keyword">this</span>.userId</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  });</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">});</pre>
             </div>
         </div>
     </div>
@@ -452,18 +466,18 @@ that are "not equal" to the user's id.</p>
 
 <p>Next, import the users publication to be defined on the server during startup:</p>
 
-<p><diffbox step="13.2" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.2</span> <span _ngcontent-ain-11="" class="commit-summary">Import users publications on the server start</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/3a52a1aecd142febeacff530743c6d8cb75087bb">server/main.ts</a>
+<p><diffbox step="13.2" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.2</span> <span _ngcontent-xyp-11="" class="commit-summary">Import users publications on the server start</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/3a52a1aecd142febeacff530743c6d8cb75087bb">server/main.ts</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">1</pre><pre _ngcontent-ain-11="" class="line-number">2</pre><pre _ngcontent-ain-11="" class="line-number">3</pre><pre _ngcontent-ain-11="" class="line-number">4</pre><pre _ngcontent-ain-11="" class="line-number">5</pre><pre _ngcontent-ain-11="" class="line-number">6</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">1</pre><pre _ngcontent-xyp-11="" class="line-number">2</pre><pre _ngcontent-xyp-11="" class="line-number">3</pre><pre _ngcontent-xyp-11="" class="line-number">4</pre><pre _ngcontent-xyp-11="" class="line-number">5</pre><pre _ngcontent-xyp-11="" class="line-number">6</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {loadParties} from <span class="hljs-string">'./load-parties.ts'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Meteor} from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'./parties.ts'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'./users.ts'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">Meteor.startup(loadParties);</pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {loadParties} from <span class="hljs-string">'./load-parties.ts'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Meteor} from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'./parties.ts'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'./users.ts'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">Meteor.startup(loadParties);</pre>
             </div>
         </div>
     </div>
@@ -475,18 +489,18 @@ that are "not equal" to the user's id.</p>
 
 <p>Now, let's load the uninvited users of a particular party into the <code ngNonBindable="">PartyDetails</code> component:</p>
 
-<p><diffbox step="13.3" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.3</span> <span _ngcontent-ain-11="" class="commit-summary">Load uninvited users</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/fb14aed013e1a96a78f82109d4619301dd6a3788">client/imports/party-details/party-details.ts</a>
+<p><diffbox step="13.3" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.3</span> <span _ngcontent-xyp-11="" class="commit-summary">Load uninvited users</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/fb14aed013e1a96a78f82109d4619301dd6a3788">client/imports/party-details/party-details.ts</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">4</pre><pre _ngcontent-ain-11="" class="line-number">5</pre><pre _ngcontent-ain-11="" class="line-number">6</pre><pre _ngcontent-ain-11="" class="line-number">7</pre><pre _ngcontent-ain-11="" class="line-number">8</pre><pre _ngcontent-ain-11="" class="line-number">9</pre><pre _ngcontent-ain-11="" class="line-number">10</pre><pre _ngcontent-ain-11="" class="line-number"> </pre><pre _ngcontent-ain-11="" class="line-number">17</pre><pre _ngcontent-ain-11="" class="line-number">18</pre><pre _ngcontent-ain-11="" class="line-number">19</pre><pre _ngcontent-ain-11="" class="line-number">20</pre><pre _ngcontent-ain-11="" class="line-number">21</pre><pre _ngcontent-ain-11="" class="line-number">22</pre><pre _ngcontent-ain-11="" class="line-number">23</pre><pre _ngcontent-ain-11="" class="line-number"> </pre><pre _ngcontent-ain-11="" class="line-number">30</pre><pre _ngcontent-ain-11="" class="line-number">31</pre><pre _ngcontent-ain-11="" class="line-number">32</pre><pre _ngcontent-ain-11="" class="line-number">33</pre><pre _ngcontent-ain-11="" class="line-number">34</pre><pre _ngcontent-ain-11="" class="line-number">35</pre><pre _ngcontent-ain-11="" class="line-number">36</pre><pre _ngcontent-ain-11="" class="line-number">37</pre><pre _ngcontent-ain-11="" class="line-number">38</pre><pre _ngcontent-ain-11="" class="line-number">39</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">4</pre><pre _ngcontent-xyp-11="" class="line-number">5</pre><pre _ngcontent-xyp-11="" class="line-number">6</pre><pre _ngcontent-xyp-11="" class="line-number">7</pre><pre _ngcontent-xyp-11="" class="line-number">8</pre><pre _ngcontent-xyp-11="" class="line-number">9</pre><pre _ngcontent-xyp-11="" class="line-number">10</pre><pre _ngcontent-xyp-11="" class="line-number"> </pre><pre _ngcontent-xyp-11="" class="line-number">17</pre><pre _ngcontent-xyp-11="" class="line-number">18</pre><pre _ngcontent-xyp-11="" class="line-number">19</pre><pre _ngcontent-xyp-11="" class="line-number">20</pre><pre _ngcontent-xyp-11="" class="line-number">21</pre><pre _ngcontent-xyp-11="" class="line-number">22</pre><pre _ngcontent-xyp-11="" class="line-number">23</pre><pre _ngcontent-xyp-11="" class="line-number"> </pre><pre _ngcontent-xyp-11="" class="line-number">30</pre><pre _ngcontent-xyp-11="" class="line-number">31</pre><pre _ngcontent-xyp-11="" class="line-number">32</pre><pre _ngcontent-xyp-11="" class="line-number">33</pre><pre _ngcontent-xyp-11="" class="line-number">34</pre><pre _ngcontent-xyp-11="" class="line-number">35</pre><pre _ngcontent-xyp-11="" class="line-number">36</pre><pre _ngcontent-xyp-11="" class="line-number">37</pre><pre _ngcontent-xyp-11="" class="line-number">38</pre><pre _ngcontent-xyp-11="" class="line-number">39</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { RequireUser } from <span class="hljs-string">'angular2-meteor-accounts-ui'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { MeteorComponent } from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Mongo } from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./party-details.html'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-ain-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartyDetails extends MeteorComponent {</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  partyId: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  party: Party;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  users: Mongo.Cursor&lt;<span class="hljs-built_in">Object</span>&gt;;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>(private route: ActivatedRoute) {</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>();</pre><pre _ngcontent-ain-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'party'</span>, <span class="hljs-keyword">this</span>.partyId, () =&gt; {</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">        <span class="hljs-keyword">this</span>.party = Parties.findOne(<span class="hljs-keyword">this</span>.partyId);</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">      }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'uninvited'</span>, partyId, () =&gt; {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">    });</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  }</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { RequireUser } from <span class="hljs-string">'angular2-meteor-accounts-ui'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { MeteorComponent } from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Mongo } from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./party-details.html'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-xyp-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartyDetails extends MeteorComponent {</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  partyId: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  party: Party;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  users: Mongo.Cursor&lt;<span class="hljs-built_in">Object</span>&gt;;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>(private route: ActivatedRoute) {</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>();</pre><pre _ngcontent-xyp-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'party'</span>, <span class="hljs-keyword">this</span>.partyId, () =&gt; {</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">        <span class="hljs-keyword">this</span>.party = Parties.findOne(<span class="hljs-keyword">this</span>.partyId);</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">      }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'uninvited'</span>, partyId, () =&gt; {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">    });</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  }</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre>
             </div>
         </div>
     </div>
@@ -494,18 +508,18 @@ that are "not equal" to the user's id.</p>
 
 <p>Then, render the uninvited users on the <code ngNonBindable="">PartyDetails</code>'s page:</p>
 
-<p><diffbox step="13.5" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.5</span> <span _ngcontent-ain-11="" class="commit-summary">Render uninvited users</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/b0836c05291db268df65c21b5ea91883500ee531">client/imports/party-details/party-details.html</a>
+<p><diffbox step="13.5" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.5</span> <span _ngcontent-xyp-11="" class="commit-summary">Render uninvited users</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/b0836c05291db268df65c21b5ea91883500ee531">client/imports/party-details/party-details.html</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">11</pre><pre _ngcontent-ain-11="" class="line-number">12</pre><pre _ngcontent-ain-11="" class="line-number">13</pre><pre _ngcontent-ain-11="" class="line-number">14</pre><pre _ngcontent-ain-11="" class="line-number">15</pre><pre _ngcontent-ain-11="" class="line-number">16</pre><pre _ngcontent-ain-11="" class="line-number">17</pre><pre _ngcontent-ain-11="" class="line-number">18</pre><pre _ngcontent-ain-11="" class="line-number">19</pre><pre _ngcontent-ain-11="" class="line-number">20</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">11</pre><pre _ngcontent-xyp-11="" class="line-number">12</pre><pre _ngcontent-xyp-11="" class="line-number">13</pre><pre _ngcontent-xyp-11="" class="line-number">14</pre><pre _ngcontent-xyp-11="" class="line-number">15</pre><pre _ngcontent-xyp-11="" class="line-number">16</pre><pre _ngcontent-xyp-11="" class="line-number">17</pre><pre _ngcontent-xyp-11="" class="line-number">18</pre><pre _ngcontent-xyp-11="" class="line-number">19</pre><pre _ngcontent-xyp-11="" class="line-number">20</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">"['/']"</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  Users to invite:</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let user of users"</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{{ user.emails[0].address }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">"['/']"</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  Users to invite:</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let user of users"</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{{ user.emails[0].address }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre>
             </div>
         </div>
     </div>
@@ -519,18 +533,18 @@ that are "not equal" to the user's id.</p>
 
 <p>Let's add a new folder "client/lib" and place a new file <code ngNonBindable="">pipes.ts</code>. We'll add our new <code ngNonBindable="">displayName</code> pipe inside of it:</p>
 
-<p><diffbox step="13.6" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.6</span> <span _ngcontent-ain-11="" class="commit-summary">Add new pipe to render user name</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/7c7ae83fa8d17e58f977154247b4ae8b0f845deb">client/imports/pipes/pipes.ts</a>
+<p><diffbox step="13.6" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.6</span> <span _ngcontent-xyp-11="" class="commit-summary">Add new pipe to render user name</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/7c7ae83fa8d17e58f977154247b4ae8b0f845deb">client/imports/pipes/pipes.ts</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">1</pre><pre _ngcontent-ain-11="" class="line-number">2</pre><pre _ngcontent-ain-11="" class="line-number">3</pre><pre _ngcontent-ain-11="" class="line-number">4</pre><pre _ngcontent-ain-11="" class="line-number">5</pre><pre _ngcontent-ain-11="" class="line-number">6</pre><pre _ngcontent-ain-11="" class="line-number">7</pre><pre _ngcontent-ain-11="" class="line-number">8</pre><pre _ngcontent-ain-11="" class="line-number">9</pre><pre _ngcontent-ain-11="" class="line-number">10</pre><pre _ngcontent-ain-11="" class="line-number">11</pre><pre _ngcontent-ain-11="" class="line-number">12</pre><pre _ngcontent-ain-11="" class="line-number">13</pre><pre _ngcontent-ain-11="" class="line-number">14</pre><pre _ngcontent-ain-11="" class="line-number">15</pre><pre _ngcontent-ain-11="" class="line-number">16</pre><pre _ngcontent-ain-11="" class="line-number">17</pre><pre _ngcontent-ain-11="" class="line-number">18</pre><pre _ngcontent-ain-11="" class="line-number">19</pre><pre _ngcontent-ain-11="" class="line-number">20</pre><pre _ngcontent-ain-11="" class="line-number">21</pre><pre _ngcontent-ain-11="" class="line-number">22</pre><pre _ngcontent-ain-11="" class="line-number">23</pre><pre _ngcontent-ain-11="" class="line-number">24</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">1</pre><pre _ngcontent-xyp-11="" class="line-number">2</pre><pre _ngcontent-xyp-11="" class="line-number">3</pre><pre _ngcontent-xyp-11="" class="line-number">4</pre><pre _ngcontent-xyp-11="" class="line-number">5</pre><pre _ngcontent-xyp-11="" class="line-number">6</pre><pre _ngcontent-xyp-11="" class="line-number">7</pre><pre _ngcontent-xyp-11="" class="line-number">8</pre><pre _ngcontent-xyp-11="" class="line-number">9</pre><pre _ngcontent-xyp-11="" class="line-number">10</pre><pre _ngcontent-xyp-11="" class="line-number">11</pre><pre _ngcontent-xyp-11="" class="line-number">12</pre><pre _ngcontent-xyp-11="" class="line-number">13</pre><pre _ngcontent-xyp-11="" class="line-number">14</pre><pre _ngcontent-xyp-11="" class="line-number">15</pre><pre _ngcontent-xyp-11="" class="line-number">16</pre><pre _ngcontent-xyp-11="" class="line-number">17</pre><pre _ngcontent-xyp-11="" class="line-number">18</pre><pre _ngcontent-xyp-11="" class="line-number">19</pre><pre _ngcontent-xyp-11="" class="line-number">20</pre><pre _ngcontent-xyp-11="" class="line-number">21</pre><pre _ngcontent-xyp-11="" class="line-number">22</pre><pre _ngcontent-xyp-11="" class="line-number">23</pre><pre _ngcontent-xyp-11="" class="line-number">24</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Pipe } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">@Pipe({</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  name: <span class="hljs-string">'displayName'</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">})</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DisplayName {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  transform(user: Meteor.User): <span class="hljs-built_in">string</span> {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (!user) {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (user.username) {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> user.username;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (user.emails) {</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> user.emails[<span class="hljs-number">0</span>].address;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  }</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">}</pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Pipe } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">@Pipe({</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  name: <span class="hljs-string">'displayName'</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">})</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DisplayName {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  transform(user: Meteor.User): <span class="hljs-built_in">string</span> {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (!user) {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (user.username) {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> user.username;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (user.emails) {</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> user.emails[<span class="hljs-number">0</span>].address;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  }</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">}</pre>
             </div>
         </div>
     </div>
@@ -542,18 +556,18 @@ that are "not equal" to the user's id.</p>
 
 <p>To make use of the created pipe, change the markup of the <code ngNonBindable="">PartyDetails</code>'s template to:</p>
 
-<p><diffbox step="13.7" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.7</span> <span _ngcontent-ain-11="" class="commit-summary">Make use of the pipe in the template</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/d1d74fd2d9a7f9b1e1c0879b400cba187ad64bce">client/imports/party-details/party-details.html</a>
+<p><diffbox step="13.7" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.7</span> <span _ngcontent-xyp-11="" class="commit-summary">Make use of the pipe in the template</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/d1d74fd2d9a7f9b1e1c0879b400cba187ad64bce">client/imports/party-details/party-details.html</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">15</pre><pre _ngcontent-ain-11="" class="line-number">16</pre><pre _ngcontent-ain-11="" class="line-number">17</pre><pre _ngcontent-ain-11="" class="line-number">18</pre><pre _ngcontent-ain-11="" class="line-number">19</pre><pre _ngcontent-ain-11="" class="line-number">20</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">15</pre><pre _ngcontent-xyp-11="" class="line-number">16</pre><pre _ngcontent-xyp-11="" class="line-number">17</pre><pre _ngcontent-xyp-11="" class="line-number">18</pre><pre _ngcontent-xyp-11="" class="line-number">19</pre><pre _ngcontent-xyp-11="" class="line-number">20</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  Users to invite:</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let user of users"</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{{ user | displayName }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  Users to invite:</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let user of users"</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{{ user | displayName }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre>
             </div>
         </div>
     </div>
@@ -561,18 +575,18 @@ that are "not equal" to the user's id.</p>
 
 <p>And, finally, import the new pipe into the component and add it to the view decorator:</p>
 
-<p><diffbox step="13.8" tutorial="angular2-meteor-socially" _nghost-ain-11=""><div _ngcontent-ain-11="" class="diffbox">
-    <div _ngcontent-ain-11="" class="title-panel">
-        <span _ngcontent-ain-11="" class="step-number">13.8</span> <span _ngcontent-ain-11="" class="commit-summary">Import DisplayName pipe and add it to the view</span>
-        <a _ngcontent-ain-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/c22f4b187304e611b24132997392f8036fd26f29">client/imports/party-details/party-details.ts</a>
+<p><diffbox step="13.8" tutorial="angular2-meteor-socially" _nghost-xyp-11=""><div _ngcontent-xyp-11="" class="diffbox">
+    <div _ngcontent-xyp-11="" class="title-panel">
+        <span _ngcontent-xyp-11="" class="step-number">13.8</span> <span _ngcontent-xyp-11="" class="commit-summary">Import DisplayName pipe and add it to the view</span>
+        <a _ngcontent-xyp-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/c22f4b187304e611b24132997392f8036fd26f29">client/imports/party-details/party-details.ts</a>
     </div>
-    <div _ngcontent-ain-11="" class="code-container">
-        <div _ngcontent-ain-11="" class="scroll-container">
-            <div _ngcontent-ain-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-number">4</pre><pre _ngcontent-ain-11="" class="line-number">5</pre><pre _ngcontent-ain-11="" class="line-number">6</pre><pre _ngcontent-ain-11="" class="line-number">7</pre><pre _ngcontent-ain-11="" class="line-number">8</pre><pre _ngcontent-ain-11="" class="line-number">9</pre><pre _ngcontent-ain-11="" class="line-number">10</pre><pre _ngcontent-ain-11="" class="line-number"> </pre><pre _ngcontent-ain-11="" class="line-number">13</pre><pre _ngcontent-ain-11="" class="line-number">14</pre><pre _ngcontent-ain-11="" class="line-number">15</pre><pre _ngcontent-ain-11="" class="line-number">16</pre><pre _ngcontent-ain-11="" class="line-number">17</pre><pre _ngcontent-ain-11="" class="line-number">18</pre><pre _ngcontent-ain-11="" class="line-number">19</pre>
+    <div _ngcontent-xyp-11="" class="code-container">
+        <div _ngcontent-xyp-11="" class="scroll-container">
+            <div _ngcontent-xyp-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-number">4</pre><pre _ngcontent-xyp-11="" class="line-number">5</pre><pre _ngcontent-xyp-11="" class="line-number">6</pre><pre _ngcontent-xyp-11="" class="line-number">7</pre><pre _ngcontent-xyp-11="" class="line-number">8</pre><pre _ngcontent-xyp-11="" class="line-number">9</pre><pre _ngcontent-xyp-11="" class="line-number">10</pre><pre _ngcontent-xyp-11="" class="line-number"> </pre><pre _ngcontent-xyp-11="" class="line-number">13</pre><pre _ngcontent-xyp-11="" class="line-number">14</pre><pre _ngcontent-xyp-11="" class="line-number">15</pre><pre _ngcontent-xyp-11="" class="line-number">16</pre><pre _ngcontent-xyp-11="" class="line-number">17</pre><pre _ngcontent-xyp-11="" class="line-number">18</pre><pre _ngcontent-xyp-11="" class="line-number">19</pre>
             </div>
-            <div _ngcontent-ain-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { RequireUser } from <span class="hljs-string">'angular2-meteor-accounts-ui'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { MeteorComponent } from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { DisplayName } from <span class="hljs-string">'../pipes/pipes.ts'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Mongo } from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./party-details.html'</span>;</pre><pre _ngcontent-ain-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  selector: <span class="hljs-string">'party-details'</span>,</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">  directives: [ROUTER_DIRECTIVES]</pre><pre _ngcontent-ain-11="" class="line-added" className="line-added">  pipes: [DisplayName]</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context">@RequireUser()</pre><pre _ngcontent-ain-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartyDetails extends MeteorComponent {</pre>
+            <div _ngcontent-xyp-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { RequireUser } from <span class="hljs-string">'angular2-meteor-accounts-ui'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { MeteorComponent } from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { DisplayName } from <span class="hljs-string">'../pipes/pipes.ts'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Mongo } from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./party-details.html'</span>;</pre><pre _ngcontent-xyp-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  selector: <span class="hljs-string">'party-details'</span>,</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">  directives: [ROUTER_DIRECTIVES]</pre><pre _ngcontent-xyp-11="" class="line-added" className="line-added">  pipes: [DisplayName]</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context">@RequireUser()</pre><pre _ngcontent-xyp-11="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartyDetails extends MeteorComponent {</pre>
             </div>
         </div>
     </div>
