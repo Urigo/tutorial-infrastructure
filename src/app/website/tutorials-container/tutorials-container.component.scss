@@ -1,10 +1,14 @@
 .side-nav {
   background: #ECEFF1;
-  box-shadow: 3px 0 6px rgba(0,0,0,0.3);
   width: 232px;
   bottom: 0;
   overflow: auto;
   z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+  ul {
+    margin-top: 8px;
+  }
 }
 
 .right-buttons {

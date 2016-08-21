@@ -18,15 +18,15 @@ var commonConfig = {
       // TypeScript
       {test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader']},
       {test: /\.html$/, loader: 'raw-loader'},
-      {test: /\.css$/, loader: 'raw-loader'},
+      {test: /\.css$/, loaders: ['css-loader', 'raw-loader']},
       {test: /\.json$/, loader: 'raw-loader'},
       {
         test: /\.scss$/,
         exclude: root('src', 'app'),
-        loader: ExtractTextPlugin.extract('raw', 'css?sourceMap!postcss!sass')
+        loaders: ["raw-loader", "sass-loader"]
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'}
+      {test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!postcss!sass'}
     ],
     preLoaders: [
       // needed to lower the filesize of angular due to inline source-maps
@@ -35,7 +35,7 @@ var commonConfig = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
-    new ExtractTextPlugin('css/[name].[hash].css', {disable: false})
+    new ExtractTextPlugin('css/[name].css', {disable: false})
   ]
 
 };

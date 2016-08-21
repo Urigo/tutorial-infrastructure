@@ -31,7 +31,7 @@ app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
 import { ngApp } from './main.node';
 import {APP_ROUTES} from "./app/tutorials/tutorials";
-import {generateStaticWebsite} from "./generate-static";
+import {generateStaticWebsite} from "./app/core/generate-static";
 // Routes with html5pushstate
 // ensure routes match client-side-app
 app.get('/', ngApp);
@@ -58,8 +58,8 @@ app.get('*', function(req, res) {
 let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
 
-  /*setTimeout(() => {
-    generateStaticWebsite("localhost", server.address().port, APP_ROUTES, "./static-website/", './src/assets');
-  }, 2000);*/
+  // setTimeout(() => {
+  //   generateStaticWebsite("localhost", server.address().port, APP_ROUTES, "./static-website/", './src/assets');
+  // }, 2000);
 });
 

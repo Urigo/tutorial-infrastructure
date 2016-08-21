@@ -1,38 +1,4 @@
 <!DOCTYPE html><html lang="en"><head>
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            padding-top: 64px;
-        }
-
-        .step-item {
-            margin: 0;
-            padding: 0;
-            border-bottom: 1px solid #CFD8DC;
-            color: #546E7A;
-        }
-
-        .step-link {
-            text-decoration: none;
-            color: #536E7A;
-            display: block;
-            font-size: 14px;
-            padding: 16px 16px;
-            margin: 0;
-            background-color: #ECEFF1;
-        }
-
-        .active-step > a{
-            font-weight: bold;
-        }
-
-        .tutorial-steps-list {
-            list-style: none;
-            padding-left: 0;
-        }
-    </style>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
     <title>Angular2-Meteor</title>
     <meta charset="UTF-8">
@@ -40,104 +6,127 @@
     <meta name="keywords" content="Angular 2,Universal">
     <meta name="author" content="PatrickJS">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link ref="stylesheet" href="css/main.css">
     <base href="/">
-<style>.logo[_ngcontent-trd-1] {
+<style>.logo[_ngcontent-afg-1] {
   width: auto;
   height: 2em; }
 
-.main-toolbar[_ngcontent-trd-1] {
+.main-toolbar[_ngcontent-afg-1] {
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3); }
 
-.fill-remaining-space[_ngcontent-trd-1] {
+.fill-remaining-space[_ngcontent-afg-1] {
   -ms-flex: 1 1 auto;
-      flex: 1 1 auto; }</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-trd-5] {
+      flex: 1 1 auto; }</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-afg-5] {
   background: #ECEFF1;
-  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
   width: 232px;
   bottom: 0;
   overflow: auto;
-  z-index: 100; }
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-afg-5] ul[_ngcontent-afg-5] {
+    margin-top: 8px; }
 
-.tutorials-container[_ngcontent-trd-5] {
-  padding-left: 240px; }
+.right-buttons[_ngcontent-afg-5] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
 
-.l-pinned-top[_ngcontent-trd-5] {
+.tutorial-title[_ngcontent-afg-5] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-afg-5] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-afg-5] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-afg-5] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-afg-5] {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px; }
 
-.l-pinned-left[_ngcontent-trd-5] {
+.l-pinned-left[_ngcontent-afg-5] {
   position: fixed;
   top: 0px;
   left: 0px;
   bottom: 0px; }
 
-.l-left[_ngcontent-trd-5] {
+.l-left[_ngcontent-afg-5] {
   float: left; }
 
-.l-right[_ngcontent-trd-5] {
+.l-right[_ngcontent-afg-5] {
   float: right; }
 
-.l-relative[_ngcontent-trd-5], .docs-content[_ngcontent-trd-5] {
+.l-relative[_ngcontent-afg-5], .docs-content[_ngcontent-afg-5] {
   position: relative; }
 
-.l-absolute[_ngcontent-trd-5] {
+.l-absolute[_ngcontent-afg-5] {
   position: absolute; }
 
-.l-fixed[_ngcontent-trd-5] {
+.l-fixed[_ngcontent-afg-5] {
   position: fixed; }
 
-.l-offset-side-nav[_ngcontent-trd-5] {
+.l-offset-side-nav[_ngcontent-afg-5] {
   padding-left: 232px; }
 
-.l-offset-nav[_ngcontent-trd-5] {
-  padding-top: 64px; }</style><style>.diffbox[_ngcontent-trd-11] {
+.l-offset-nav[_ngcontent-afg-5] {
+  padding-top: 64px; }</style><style>.diffbox[_ngcontent-afg-11] {
   border: 1px solid #eee;
   -webkit-text-size-adjust: 100%;
   margin: 1.5em 0; }
-  .diffbox[_ngcontent-trd-11] pre[_ngcontent-trd-11] {
-    background: transparent;
-    border: none;
-    white-space: pre-wrap; }
-  .diffbox[_ngcontent-trd-11] .title-panel[_ngcontent-trd-11] {
+  .diffbox[_ngcontent-afg-11] .title-panel[_ngcontent-afg-11] {
     padding: 5px 12px;
     background: #eee;
     border-bottom: solid 1px #eee;
     color: #333;
     overflow: auto; }
-    .diffbox[_ngcontent-trd-11] .title-panel[_ngcontent-trd-11] .github-commit-link[_ngcontent-trd-11] {
+    .diffbox[_ngcontent-afg-11] .title-panel[_ngcontent-afg-11] .github-commit-link[_ngcontent-afg-11] {
       float: right;
       color: black;
       text-decoration: none;
       border-bottom: none !important; }
-  .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] {
+  .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] {
     overflow-x: auto;
     position: relative;
     padding: 9px 3px 3px 0;
     background: #f8f8f8; }
-    .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] .scroll-container[_ngcontent-trd-11] {
+    .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] .scroll-container[_ngcontent-afg-11] {
       display: inline-block;
       min-width: 100%;
       overflow: hidden; }
-    .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] pre[_ngcontent-trd-11] {
+    .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] pre[_ngcontent-afg-11] {
       margin: 0;
       padding: 0;
       background-color: transparent; }
-      .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] pre.line-added[_ngcontent-trd-11] {
+      .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] pre.line-added[_ngcontent-afg-11] {
         background: #eaffea; }
-      .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] pre.line-removed[_ngcontent-trd-11] {
+      .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] pre.line-removed[_ngcontent-afg-11] {
         background: #ff9ea2; }
-    .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] .line-content[_ngcontent-trd-11] {
+    .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] .line-content[_ngcontent-afg-11] {
       padding-left: 36px;
       overflow: hidden; }
-      .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] .line-content[_ngcontent-trd-11] .hljs-comment[_ngcontent-trd-11] {
+      .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] .line-content[_ngcontent-afg-11] .hljs-comment[_ngcontent-afg-11] {
         color: #777; }
-    .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] .line-numbers[_ngcontent-trd-11] {
+    .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] .line-numbers[_ngcontent-afg-11] {
       text-align: right;
       -moz-user-select: none;
       -khtml-user-select: none;
@@ -145,259 +134,363 @@
       -o-user-select: none;
       position: absolute;
       width: 25px; }
-      .diffbox[_ngcontent-trd-11] .code-container[_ngcontent-trd-11] .line-numbers[_ngcontent-trd-11] .line-number[_ngcontent-trd-11] {
+      .diffbox[_ngcontent-afg-11] .code-container[_ngcontent-afg-11] .line-numbers[_ngcontent-afg-11] .line-number[_ngcontent-afg-11] {
         color: #aaa;
         font-style: italic; }</style></head>
 <body>
-<app _nghost-trd-1=""><md-toolbar _ngcontent-trd-1="" class="main-toolbar"><div class="md-toolbar-layout"> <md-toolbar-row> 
-    <a _ngcontent-trd-1="" href="/"><img _ngcontent-trd-1="" class="logo" src="/assets/images/logo.png"></a>
-    <button _ngcontent-trd-1="" md-button="" md-ripple=""><span class="md-button-wrapper">Tutorials</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
-    <span _ngcontent-trd-1="" class="fill-remaining-space"></span>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
-    <button _ngcontent-trd-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
+<app _nghost-afg-1=""><md-toolbar _ngcontent-afg-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-afg-1="" href="/"><img _ngcontent-afg-1="" class="logo" src="/assets/images/logo.png"></a>
+    <button _ngcontent-afg-1="" md-button="" md-ripple=""><span class="md-button-wrapper">Tutorials</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
+    <span _ngcontent-afg-1="" class="fill-remaining-space"></span>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
+    <button _ngcontent-afg-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
  </md-toolbar-row>  </div></md-toolbar>
-<router-outlet _ngcontent-trd-1=""></router-outlet><tutorial _nghost-trd-5=""><div _ngcontent-trd-5="" class="tutorials-container">
-    <nav _ngcontent-trd-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
-        <steps-list _ngcontent-trd-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
+<router-outlet _ngcontent-afg-1=""></router-outlet><tutorial _nghost-afg-5=""><div _ngcontent-afg-5="" class="tutorials-container">
+    <nav _ngcontent-afg-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <steps-list _ngcontent-afg-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
     <!--template bindings={}--><li class="step-item active-step" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/angular2/socially/bootstrap">Bootstrap</a>
+        <a class="step-link" href="/tutorials/angular2/socially/bootstrap">1. Bootstrap</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/angular2/socially/static-template">Static Templates</a>
+        <a class="step-link" href="/tutorials/angular2/socially/static-template">2. Static Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/angular2/socially/dynamic-template">Dynamic Templates</a>
+        <a class="step-link" href="/tutorials/angular2/socially/dynamic-template">3. Dynamic Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/angular2/socially/3-way-data-binding">3-way Data Binding</a>
+        <a class="step-link" href="/tutorials/angular2/socially/3-way-data-binding">4. 3-way Data Binding</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/angular2/socially/adding-removing-objects-and-angular-event-handling">Data Management</a>
+        <a class="step-link" href="/tutorials/angular2/socially/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/next-steps">25. Next Steps</a>
     </li>
 </ul>
 </steps-list>
     </nav>
-    <div _ngcontent-trd-5="" class="top-navigation">
-        <a _ngcontent-trd-5="" md-raised-button="" tutorialNavigation="previous" disabled="">Previous</a>
-        <a _ngcontent-trd-5="" codeDiffButton="" md-raised-button="">Code Diff</a>
-        <a _ngcontent-trd-5="" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/static-template">Next</a>
+    <div _ngcontent-afg-5="" class="top-navigation">
+        <span _ngcontent-afg-5="" class="tutorial-title" stepName="">Bootstrap</span>
+        <div _ngcontent-afg-5="" class="right-buttons">
+            <a _ngcontent-afg-5="" md-raised-button="" tutorialNavigation="previous" disabled="">Previous</a>
+            <a _ngcontent-afg-5="" codeDiffButton="" md-raised-button="">Code Diff</a>
+            <a _ngcontent-afg-5="" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/static-template">Next</a>
+        </div>
     </div>
-    <router-outlet _ngcontent-trd-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>Let's start building our Angular 2.0 Meteor Socially app.</p>
+    <div _ngcontent-afg-5="" class="tutorial-content">
+        <router-outlet _ngcontent-afg-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>Let's start building our Angular 2.0 Meteor Socially app.</p>
+
 <p>In this step, we will:</p>
-<ul>
-<li>Setup Meteor and create a working app</li>
-<li>Become familiar with the app's structure</li>
-<li>Connect an Angular 2 front end</li>
-<li>Run the application in the browser</li>
-</ul>
-<h1 id="meteor-setup">Meteor Setup</h1>
+
+<ul><li>Setup Meteor and create a working app</li><li>Become familiar with the app's structure</li><li>Connect an Angular 2 front end</li><li>Run the application in the browser</li></ul>
+
+<h1>Meteor Setup</h1>
+
 <p>First step — let's install Meteor!</p>
+
 <p>Open your command line and paste this command:</p>
-<pre><code>$ curl https://install.meteor.com/ | sh
-</code></pre><blockquote>
-<p>If you are on a Windows machine, go <a href="https://www.meteor.com/install">here</a> to install Meteor.</p>
-</blockquote>
+
+<pre><code ngNonBindable="">$ curl https://install.meteor.com/ | sh</code></pre>
+
+<blockquote><p>If you are on a Windows machine, go <a href="https://www.meteor.com/install">here</a> to install Meteor.</p></blockquote>
+
 <p>Now let's create our app — write this in the command line:</p>
-<pre><code>$ meteor create socially
-</code></pre><p>Now let's see what we've got. Go into the new folder:</p>
-<pre><code>$ cd socially
-</code></pre><p>Run the app like so:</p>
-<pre><code>$ meteor
+
+<pre><code ngNonBindable="">$ meteor create socially</code></pre>
+
+<p>Now let's see what we've got. Go into the new folder:</p>
+
+<pre><code ngNonBindable="">$ cd socially</code></pre>
+
+<p>Run the app like so:</p>
+
+<pre><code ngNonBindable="">$ meteor
 
 =&gt; Started proxy
 =&gt; Started MongoDB.
 =&gt; Started your app.
-&gt;=&gt; App running at: http://localhost:3000/
-</code></pre><p>Now go to <a href="http://localhost:3000/">http://localhost:3000/</a>
+&gt;=&gt; App running at: http://localhost:3000/</code></pre>
+
+<p>Now go to <a href="http://localhost:3000/">http://localhost:3000/</a>
 and look at the amazing app that's running on your computer!</p>
+
 <p>We now have a fully functional app which includes both a server and a client!</p>
-<p>The default Meteor app starts life with three files in the <code>client</code> directory: one <code>js</code>, one <code>html</code> and one <code>css</code> file.</p>
+
+<p>The default Meteor app starts life with three files in the <code ngNonBindable="">client</code> directory: one <code ngNonBindable="">js</code>, one <code ngNonBindable="">html</code> and one <code ngNonBindable="">css</code> file.</p>
+
 <p>We are going to add our own files for this tutorial. So let's start by deleting these files:</p>
-<pre><code>- /client/main.css    (delete)
+
+<pre><code ngNonBindable="">- /client/main.css    (delete)
 - /client/main.html   (delete)
 - /client/main.js     (delete)
-- /server/main.js     (delete)
-</code></pre><p>Now we can start building our app.</p>
-<p>Create a new <code>index.html</code> file in the client folder, and place this code inside. Then run the app again.</p>
-<diffbox step="0.1" tutorial="angular2-meteor-socially" _nghost-trd-11=""><div _ngcontent-trd-11="" class="diffbox">
-    <div _ngcontent-trd-11="" class="title-panel">
-        <span _ngcontent-trd-11="" class="step-number">0.1</span> <span _ngcontent-trd-11="" class="commit-summary">Add client/index.html</span>
-        <a _ngcontent-trd-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/335056eca16783962451e42d5933b37ebcd4618e">client/index.html</a>
+- /server/main.js     (delete)</code></pre>
+
+<p>Now we can start building our app.</p>
+
+<p>Create a new <code ngNonBindable="">index.html</code> file in the client folder, and place this code inside. Then run the app again.</p>
+
+<p><diffbox step="0.1" tutorial="angular2-meteor-socially" _nghost-afg-11=""><div _ngcontent-afg-11="" class="diffbox">
+    <div _ngcontent-afg-11="" class="title-panel">
+        <span _ngcontent-afg-11="" class="step-number">0.1</span> <span _ngcontent-afg-11="" class="commit-summary">Add client/index.html</span>
+        <a _ngcontent-afg-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/335056eca16783962451e42d5933b37ebcd4618e">client/index.html</a>
     </div>
-    <div _ngcontent-trd-11="" class="code-container">
-        <div _ngcontent-trd-11="" class="scroll-container">
-            <div _ngcontent-trd-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-number">1</pre><pre _ngcontent-trd-11="" class="line-number">2</pre><pre _ngcontent-trd-11="" class="line-number">3</pre>
+    <div _ngcontent-afg-11="" class="code-container">
+        <div _ngcontent-afg-11="" class="scroll-container">
+            <div _ngcontent-afg-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-number">1</pre><pre _ngcontent-afg-11="" class="line-number">2</pre><pre _ngcontent-afg-11="" class="line-number">3</pre>
             </div>
-            <div _ngcontent-trd-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Nothing here<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
+            <div _ngcontent-afg-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Nothing here<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
             </div>
         </div>
     </div>
-</div></diffbox>
+</div></diffbox></p>
 
 <p>And Meteor build tool refreshes automatically and our app is updated in the browser.</p>
-<p>Note that there is no <code>&amp;lt;html&amp;gt;</code> tag and no <code>&amp;lt;head&amp;gt;</code> tags in our code.</p>
+
+<p>Note that there is no <code ngNonBindable="">&amp;lt;html&amp;gt;</code> tag and no <code ngNonBindable="">&amp;lt;head&amp;gt;</code> tags in our code.</p>
+
 <p>This is because of how Meteor structures and serves files to the client.</p>
+
 <p>Meteor scans all the HTML files in your application and concatenates them together to make it simpler for us.</p>
-<p>Concatenation means merging the content of all <code>HTML</code>, <code>HEAD</code> and <code>BODY</code> tags found inside these HTML files together.</p>
-<p>So in our case, Meteor found our <code>index.html</code> file, recognized it was meant for the client only (because it's inside the <code>client</code> folder), found the <code>BODY</code> tag inside and added it's content to the <code>BODY</code> tag of the main generated file.</p>
-<blockquote>
-<p>(<code>right-click</code> -&gt; <code>inspect element</code> on the page to see the generated file Meteor served to the client)</p>
-</blockquote>
-<h1 id="adding-angular-2-and-its-dependencies">Adding Angular 2 and its dependencies</h1>
+
+<p>Concatenation means merging the content of all <code ngNonBindable="">HTML</code>, <code ngNonBindable="">HEAD</code> and <code ngNonBindable="">BODY</code> tags found inside these HTML files together.</p>
+
+<p>So in our case, Meteor found our <code ngNonBindable="">index.html</code> file, recognized it was meant for the client only (because it's inside the <code ngNonBindable="">client</code> folder), found the <code ngNonBindable="">BODY</code> tag inside and added it's content to the <code ngNonBindable="">BODY</code> tag of the main generated file.</p>
+
+<blockquote><p>(<code ngNonBindable="">right-click</code> -&gt; <code ngNonBindable="">inspect element</code> on the page to see the generated file Meteor served to the client)</p></blockquote>
+
+<h1>Adding Angular 2 and its dependencies</h1>
+
 <p>It's time to add Angular 2 to our stack!</p>
+
 <p>In the command line, launch those commands:</p>
-<pre><code>$ meteor remove blaze-html-templates
+
+<pre><code ngNonBindable="">$ meteor remove blaze-html-templates
 $ meteor add angular2-compilers barbatus:angular2-runtime
 
-$ meteor npm install --save meteor-node-stubs reflect-metadata angular2-meteor angular2-meteor-polyfills@^0.1.1 rxjs@5.0.0-beta.6 zone.js@^0.6.6 @angular/core@^2.0.0-rc.4 @angular/common@^2.0.0-rc.4 @angular/compiler@^2.0.0-rc.4 @angular/platform-browser@^2.0.0-rc.4 @angular/platform-browser-dynamic
-</code></pre><blockquote>
-<p>You might see a lot of warning messages if you are using NPM v2, it is okay and if you are interested to know more about these warning, you can <a href="http://blog.npmjs.org/post/110924823920/npm-weekly-5">read here</a>.</p>
-</blockquote>
-<p><strong>Why <code>angular2-compilers</code>?</strong></p>
+$ meteor npm install --save meteor-node-stubs reflect-metadata angular2-meteor angular2-meteor-polyfills@^0.1.1 rxjs@5.0.0-beta.6 zone.js@^0.6.6 @angular/core@^2.0.0-rc.4 @angular/common@^2.0.0-rc.4 @angular/compiler@^2.0.0-rc.4 @angular/platform-browser@^2.0.0-rc.4 @angular/platform-browser-dynamic</code></pre>
+
+<blockquote><p>You might see a lot of warning messages if you are using NPM v2, it is okay and if you are interested to know more about these warning, you can <a href="http://blog.npmjs.org/post/110924823920/npm-weekly-5">read here</a>.</p></blockquote>
+
+<p><strong>Why <code ngNonBindable="">angular2-compilers</code>?</strong></p>
+
 <p>In order to use:</p>
-<ul>
-<li><code>TypeScript</code></li>
-<li>the replacement for <code>blaze-html-templates</code> package</li>
-<li>to support SCSS, SASS and LESS</li>
-</ul>
-<p><strong>Why <code>barbatus:angular2-runtime</code>?</strong></p>
-<p>To avoid importing <code>reflect-metatada</code> and <code>zone.js</code> (more about it <a href="https://github.com/Urigo/angular2-meteor#install-package">here</a>).</p>
-<h2 id="typescript">Typescript</h2>
+
+<ul><li><code ngNonBindable="">TypeScript</code></li><li>the replacement for <code ngNonBindable="">blaze-html-templates</code> package</li><li>to support SCSS, SASS and LESS</li></ul>
+
+<p><strong>Why <code ngNonBindable="">barbatus:angular2-runtime</code>?</strong></p>
+
+<p>To avoid importing <code ngNonBindable="">reflect-metatada</code> and <code ngNonBindable="">zone.js</code> (more about it <a href="https://github.com/Urigo/angular2-meteor#install-package">here</a>).</p>
+
+<h2>Typescript</h2>
+
 <p>An Angular 2 Meteor app can be written in regular JavaScript (ES5), the new JavaScript (ES2015 aka ES6) or TypeScript on both the server and the client.</p>
+
 <p>TypeScript is the recommended choice by the Angular team so in this tutorial, we'll be using TypeScript.</p>
+
 <p>Don't worry if you're not familiar with TypeScript. Valid ES6 or ES5 JavaScript is a valid TypeScript and we will explain new concepts when we would need them in the tutorial.</p>
-<blockquote>
-<p>If you'd like to deep dive into TypeScript, we recommend the <a href="http://www.typescriptlang.org/Tutorial">official tutorial</a>.</p>
-</blockquote>
-<p>To start we need to add a TypeScript configuration file named <code>tsconfig.json</code> into our project:</p>
-<diffbox step="0.3" tutorial="angular2-meteor-socially" _nghost-trd-11=""><div _ngcontent-trd-11="" class="diffbox">
-    <div _ngcontent-trd-11="" class="title-panel">
-        <span _ngcontent-trd-11="" class="step-number">0.3</span> <span _ngcontent-trd-11="" class="commit-summary">Add TypeScript configuration file</span>
-        <a _ngcontent-trd-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/1070b2df8b3574df01f0b48f329e85c48fdef26a">tsconfig.json</a>
+
+<blockquote><p>If you'd like to deep dive into TypeScript, we recommend the <a href="http://www.typescriptlang.org/Tutorial">official tutorial</a>.</p></blockquote>
+
+<p>To start we need to add a TypeScript configuration file named <code ngNonBindable="">tsconfig.json</code> into our project:</p>
+
+<p><diffbox step="0.3" tutorial="angular2-meteor-socially" _nghost-afg-11=""><div _ngcontent-afg-11="" class="diffbox">
+    <div _ngcontent-afg-11="" class="title-panel">
+        <span _ngcontent-afg-11="" class="step-number">0.3</span> <span _ngcontent-afg-11="" class="commit-summary">Add TypeScript configuration file</span>
+        <a _ngcontent-afg-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/1070b2df8b3574df01f0b48f329e85c48fdef26a">tsconfig.json</a>
     </div>
-    <div _ngcontent-trd-11="" class="code-container">
-        <div _ngcontent-trd-11="" class="scroll-container">
-            <div _ngcontent-trd-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-number">1</pre><pre _ngcontent-trd-11="" class="line-number">2</pre><pre _ngcontent-trd-11="" class="line-number">3</pre><pre _ngcontent-trd-11="" class="line-number">4</pre><pre _ngcontent-trd-11="" class="line-number">5</pre><pre _ngcontent-trd-11="" class="line-number">6</pre><pre _ngcontent-trd-11="" class="line-number">7</pre><pre _ngcontent-trd-11="" class="line-number">8</pre><pre _ngcontent-trd-11="" class="line-number">9</pre><pre _ngcontent-trd-11="" class="line-number">10</pre><pre _ngcontent-trd-11="" class="line-number">11</pre><pre _ngcontent-trd-11="" class="line-number">12</pre><pre _ngcontent-trd-11="" class="line-number">13</pre><pre _ngcontent-trd-11="" class="line-number">14</pre><pre _ngcontent-trd-11="" class="line-number">15</pre><pre _ngcontent-trd-11="" class="line-number">16</pre><pre _ngcontent-trd-11="" class="line-number">17</pre><pre _ngcontent-trd-11="" class="line-number">18</pre><pre _ngcontent-trd-11="" class="line-number">19</pre><pre _ngcontent-trd-11="" class="line-number">20</pre><pre _ngcontent-trd-11="" class="line-number">21</pre>
+    <div _ngcontent-afg-11="" class="code-container">
+        <div _ngcontent-afg-11="" class="scroll-container">
+            <div _ngcontent-afg-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-number">1</pre><pre _ngcontent-afg-11="" class="line-number">2</pre><pre _ngcontent-afg-11="" class="line-number">3</pre><pre _ngcontent-afg-11="" class="line-number">4</pre><pre _ngcontent-afg-11="" class="line-number">5</pre><pre _ngcontent-afg-11="" class="line-number">6</pre><pre _ngcontent-afg-11="" class="line-number">7</pre><pre _ngcontent-afg-11="" class="line-number">8</pre><pre _ngcontent-afg-11="" class="line-number">9</pre><pre _ngcontent-afg-11="" class="line-number">10</pre><pre _ngcontent-afg-11="" class="line-number">11</pre><pre _ngcontent-afg-11="" class="line-number">12</pre><pre _ngcontent-afg-11="" class="line-number">13</pre><pre _ngcontent-afg-11="" class="line-number">14</pre><pre _ngcontent-afg-11="" class="line-number">15</pre><pre _ngcontent-afg-11="" class="line-number">16</pre><pre _ngcontent-afg-11="" class="line-number">17</pre><pre _ngcontent-afg-11="" class="line-number">18</pre><pre _ngcontent-afg-11="" class="line-number">19</pre><pre _ngcontent-afg-11="" class="line-number">20</pre><pre _ngcontent-afg-11="" class="line-number">21</pre>
             </div>
-            <div _ngcontent-trd-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-added" className="line-added">{</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  <span class="hljs-string">"compilerOptions"</span>: {</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"module"</span>: <span class="hljs-string">"commonjs"</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"target"</span>: <span class="hljs-string">"es5"</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"isolatedModules"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"moduleResolution"</span>: <span class="hljs-string">"node"</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"removeComments"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"noImplicitAny"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"sourceMap"</span>: <span class="hljs-literal">true</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  },</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  <span class="hljs-string">"filesGlob"</span>: [</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"client/**/*.ts"</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"server/**/*.ts"</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"typings/**/*.d.ts"</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  ],</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  <span class="hljs-string">"exclude"</span>: [</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">    <span class="hljs-string">"node_modules"</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  ]</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">}</pre>
+            <div _ngcontent-afg-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-added" className="line-added">{</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  <span class="hljs-string">"compilerOptions"</span>: {</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"module"</span>: <span class="hljs-string">"commonjs"</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"target"</span>: <span class="hljs-string">"es5"</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"isolatedModules"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"moduleResolution"</span>: <span class="hljs-string">"node"</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"emitDecoratorMetadata"</span>: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"removeComments"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"noImplicitAny"</span>: <span class="hljs-literal">false</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"sourceMap"</span>: <span class="hljs-literal">true</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  },</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  <span class="hljs-string">"filesGlob"</span>: [</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"client/**/*.ts"</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"server/**/*.ts"</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"typings/**/*.d.ts"</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  ],</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  <span class="hljs-string">"exclude"</span>: [</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">    <span class="hljs-string">"node_modules"</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  ]</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">}</pre>
             </div>
         </div>
     </div>
-</div></diffbox>
+</div></diffbox></p>
 
 <p>Those are the basic configurations to run an Angular 2.0 Meteor app.</p>
+
 <p>To learn more about Typescript compiler options, <a href="http://www.typescriptlang.org/docs/handbook/compiler-options.html">click here</a>.</p>
-<h3 id="typescript-typings">TypeScript Typings</h3>
+
+<h3>TypeScript Typings</h3>
+
 <p>We need to let Typescript know about all the types in the libraries we depend upon.</p>
+
 <p>In order to do that — thus adding full type-checking support at this stage — we'll use a special tool for typings installation
-and management called <code>typings</code>. You can find more information about it <a href="https://github.com/typings/typings">here</a>.</p>
+and management called <code ngNonBindable="">typings</code>. You can find more information about it <a href="https://github.com/typings/typings">here</a>.</p>
+
 <p>In our case, we'll need to execute commands as follows to install all dependencies:</p>
-<pre><code>    $ sudo npm install typings -g
+
+<pre><code ngNonBindable="">    $ sudo npm install typings -g
     $ typings init
     $ typings install es6-promise --save
     $ typings install dt~es6-shim --global --save
-    $ typings install registry:env/meteor --global --save
-</code></pre><p>If you look into the typings folder after the execution, you'll find there a definition file called <code>index.d.ts</code>.</p>
-<p>This is a top level definition file that links all other definition files installed by <code>typings</code>.</p>
-<blockquote>
-<p>Note that in some cases, your IDE can mark your code as "error" or "warning" because of missing Typings - this will not prevent you from running your app, but it is highly recommended to resolve those errors.</p>
-</blockquote>
+    $ typings install registry:env/meteor --global --save</code></pre>
+
+<p>If you look into the typings folder after the execution, you'll find there a definition file called <code ngNonBindable="">index.d.ts</code>.</p>
+
+<p>This is a top level definition file that links all other definition files installed by <code ngNonBindable="">typings</code>.</p>
+
+<blockquote><p>Note that in some cases, your IDE can mark your code as "error" or "warning" because of missing Typings - this will not prevent you from running your app, but it is highly recommended to resolve those errors.</p></blockquote>
+
 <p>That's it! Now we can use Angular 2's power in our Meteor app!</p>
-<h1 id="root-component">Root Component</h1>
+
+<h1>Root Component</h1>
+
 <p>Angular 2 code is structured as a tree of components.</p>
+
 <p>Each component is a controller with an attached view.</p>
+
 <p>Since it's a tree, there should be a root component and branch components
 that stem out of it. So let's create our root component.</p>
-<p>Create a new <code>app.ts</code> file inside of the <code>client</code> folder.</p>
-<diffbox step="0.6" tutorial="angular2-meteor-socially" _nghost-trd-11=""><div _ngcontent-trd-11="" class="diffbox">
-    <div _ngcontent-trd-11="" class="title-panel">
-        <span _ngcontent-trd-11="" class="step-number">0.6</span> <span _ngcontent-trd-11="" class="commit-summary">Create the root component</span>
-        <a _ngcontent-trd-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/bcab86d86dc10cef0c5a08aa49c2a1b7e669bb4f">client/app.ts</a>
-    </div>
-    <div _ngcontent-trd-11="" class="code-container">
-        <div _ngcontent-trd-11="" class="scroll-container">
-            <div _ngcontent-trd-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-number">1</pre><pre _ngcontent-trd-11="" class="line-number">2</pre><pre _ngcontent-trd-11="" class="line-number">3</pre><pre _ngcontent-trd-11="" class="line-number">4</pre><pre _ngcontent-trd-11="" class="line-number">5</pre><pre _ngcontent-trd-11="" class="line-number">6</pre><pre _ngcontent-trd-11="" class="line-number">7</pre><pre _ngcontent-trd-11="" class="line-number">8</pre><pre _ngcontent-trd-11="" class="line-number">9</pre><pre _ngcontent-trd-11="" class="line-number">10</pre><pre _ngcontent-trd-11="" class="line-number">11</pre><pre _ngcontent-trd-11="" class="line-number">12</pre><pre _ngcontent-trd-11="" class="line-number">13</pre>
-            </div>
-            <div _ngcontent-trd-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { bootstrap } from <span class="hljs-string">'@angular/platform-browser-dynamic'</span>;</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./app.html'</span>;</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">@Component({</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  selector: <span class="hljs-string">'app'</span>,</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  template</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">})</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"><span class="hljs-keyword">class</span> Socially { }</pre><pre _ngcontent-trd-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">bootstrap(Socially);</pre>
-            </div>
-        </div>
-    </div>
-</div></diffbox>
 
-<p>First we're importing the dependencies we needed from <code>@angular/core</code> and <code>@angular/platform-browser-dynamic</code>. This is not a folder and files in your directory, but a reference to CommonJS modules aliased as <code>@angular/core</code> and <code>@angular/platform-browser-dynamic</code>, which in fact located under your <code>node_modules</code> directory.</p>
-<p>Notice, the Component's selector matches the <code>&amp;lt;app&amp;gt;</code> tag we will provide in <code>index.html</code> below, and the View template creates the view.</p>
-<p>The class, Socially, inherits from <code>@Component</code> which is part of Angular 2.</p>
-<p>Finally, we <code>bootstrap</code> our component, thus, marking it as the root component.</p>
-<blockquote>
-<p>You can see another example of Meteor's power and simplicity - no need to include this file anywhere. Meteor takes care of it by going through all the files in the project and include them automatically.</p>
-</blockquote>
-<p>Our component has the template defined with the <code>template</code> property, let's create the template:</p>
-<diffbox step="0.7" tutorial="angular2-meteor-socially" _nghost-trd-11=""><div _ngcontent-trd-11="" class="diffbox">
-    <div _ngcontent-trd-11="" class="title-panel">
-        <span _ngcontent-trd-11="" class="step-number">0.7</span> <span _ngcontent-trd-11="" class="commit-summary">Add the main component HTML file</span>
-        <a _ngcontent-trd-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/791a429827802c0cc1b7dd9ccb13b872d803b5a5">client/app.html</a>
+<p>Create a new <code ngNonBindable="">app.ts</code> file inside of the <code ngNonBindable="">client</code> folder.</p>
+
+<p><diffbox step="0.6" tutorial="angular2-meteor-socially" _nghost-afg-11=""><div _ngcontent-afg-11="" class="diffbox">
+    <div _ngcontent-afg-11="" class="title-panel">
+        <span _ngcontent-afg-11="" class="step-number">0.6</span> <span _ngcontent-afg-11="" class="commit-summary">Create the root component</span>
+        <a _ngcontent-afg-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/bcab86d86dc10cef0c5a08aa49c2a1b7e669bb4f">client/app.ts</a>
     </div>
-    <div _ngcontent-trd-11="" class="code-container">
-        <div _ngcontent-trd-11="" class="scroll-container">
-            <div _ngcontent-trd-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-number">1</pre>
+    <div _ngcontent-afg-11="" class="code-container">
+        <div _ngcontent-afg-11="" class="scroll-container">
+            <div _ngcontent-afg-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-number">1</pre><pre _ngcontent-afg-11="" class="line-number">2</pre><pre _ngcontent-afg-11="" class="line-number">3</pre><pre _ngcontent-afg-11="" class="line-number">4</pre><pre _ngcontent-afg-11="" class="line-number">5</pre><pre _ngcontent-afg-11="" class="line-number">6</pre><pre _ngcontent-afg-11="" class="line-number">7</pre><pre _ngcontent-afg-11="" class="line-number">8</pre><pre _ngcontent-afg-11="" class="line-number">9</pre><pre _ngcontent-afg-11="" class="line-number">10</pre><pre _ngcontent-afg-11="" class="line-number">11</pre><pre _ngcontent-afg-11="" class="line-number">12</pre><pre _ngcontent-afg-11="" class="line-number">13</pre>
             </div>
-            <div _ngcontent-trd-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-added" className="line-added">Hello World!</pre>
+            <div _ngcontent-afg-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { bootstrap } from <span class="hljs-string">'@angular/platform-browser-dynamic'</span>;</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./app.html'</span>;</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">@Component({</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  selector: <span class="hljs-string">'app'</span>,</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  template</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">})</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"><span class="hljs-keyword">class</span> Socially { }</pre><pre _ngcontent-afg-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">bootstrap(Socially);</pre>
             </div>
         </div>
     </div>
-</div></diffbox>
+</div></diffbox></p>
+
+<p>First we're importing the dependencies we needed from <code ngNonBindable="">@angular/core</code> and <code ngNonBindable="">@angular/platform-browser-dynamic</code>. This is not a folder and files in your directory, but a reference to CommonJS modules aliased as <code ngNonBindable="">@angular/core</code> and <code ngNonBindable="">@angular/platform-browser-dynamic</code>, which in fact located under your <code ngNonBindable="">node_modules</code> directory.</p>
+
+<p>Notice, the Component's selector matches the <code ngNonBindable="">&amp;lt;app&amp;gt;</code> tag we will provide in <code ngNonBindable="">index.html</code> below, and the View template creates the view.</p>
+
+<p>The class, Socially, inherits from <code ngNonBindable="">@Component</code> which is part of Angular 2.</p>
+
+<p>Finally, we <code ngNonBindable="">bootstrap</code> our component, thus, marking it as the root component.</p>
+
+<blockquote><p>You can see another example of Meteor's power and simplicity - no need to include this file anywhere. Meteor takes care of it by going through all the files in the project and include them automatically.</p></blockquote>
+
+<p>Our component has the template defined with the <code ngNonBindable="">template</code> property, let's create the template:</p>
+
+<p><diffbox step="0.7" tutorial="angular2-meteor-socially" _nghost-afg-11=""><div _ngcontent-afg-11="" class="diffbox">
+    <div _ngcontent-afg-11="" class="title-panel">
+        <span _ngcontent-afg-11="" class="step-number">0.7</span> <span _ngcontent-afg-11="" class="commit-summary">Add the main component HTML file</span>
+        <a _ngcontent-afg-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/791a429827802c0cc1b7dd9ccb13b872d803b5a5">client/app.html</a>
+    </div>
+    <div _ngcontent-afg-11="" class="code-container">
+        <div _ngcontent-afg-11="" class="scroll-container">
+            <div _ngcontent-afg-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-afg-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-added" className="line-added">Hello World!</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
 
 <p>The only thing left before we can run our app is to import the root module and
-add the <code>&amp;lt;app&amp;gt;</code> tag to <code>index.html</code>.</p>
-<diffbox hideRemoved="true" step="0.8" tutorial="angular2-meteor-socially" _nghost-trd-11=""><div _ngcontent-trd-11="" class="diffbox">
-    <div _ngcontent-trd-11="" class="title-panel">
-        <span _ngcontent-trd-11="" class="step-number">0.8</span> <span _ngcontent-trd-11="" class="commit-summary">Use the main component in the index.html file</span>
-        <a _ngcontent-trd-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/39f54375fbb81b2af93ec56cff1d6e70db4798a2">client/index.html</a>
+add the <code ngNonBindable="">&amp;lt;app&amp;gt;</code> tag to <code ngNonBindable="">index.html</code>.</p>
+
+<p><diffbox hideRemoved="true" step="0.8" tutorial="angular2-meteor-socially" _nghost-afg-11=""><div _ngcontent-afg-11="" class="diffbox">
+    <div _ngcontent-afg-11="" class="title-panel">
+        <span _ngcontent-afg-11="" class="step-number">0.8</span> <span _ngcontent-afg-11="" class="commit-summary">Use the main component in the index.html file</span>
+        <a _ngcontent-afg-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/39f54375fbb81b2af93ec56cff1d6e70db4798a2">client/index.html</a>
     </div>
-    <div _ngcontent-trd-11="" class="code-container">
-        <div _ngcontent-trd-11="" class="scroll-container">
-            <div _ngcontent-trd-11="" class="line-numbers">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-number">1</pre><pre _ngcontent-trd-11="" class="line-number">2</pre><pre _ngcontent-trd-11="" class="line-number">3</pre>
+    <div _ngcontent-afg-11="" class="code-container">
+        <div _ngcontent-afg-11="" class="scroll-container">
+            <div _ngcontent-afg-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-number">1</pre><pre _ngcontent-afg-11="" class="line-number">2</pre><pre _ngcontent-afg-11="" class="line-number">3</pre>
             </div>
-            <div _ngcontent-trd-11="" class="line-content">
-                <!--template bindings={}--><pre _ngcontent-trd-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-trd-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">app</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app</span>&gt;</span></pre><pre _ngcontent-trd-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
+            <div _ngcontent-afg-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-afg-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre><pre _ngcontent-afg-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">app</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app</span>&gt;</span></pre><pre _ngcontent-afg-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
             </div>
         </div>
     </div>
-</div></diffbox>
+</div></diffbox></p>
 
 <p>Importing the root module every time looks like a repetitive task.
-Here comes some good news — the Angular 2 Meteor package recognizes the file named <code>app.ts</code>.
+Here comes some good news — the Angular 2 Meteor package recognizes the file named <code ngNonBindable="">app.ts</code>.
 If you have one in the app root folder, the package will import it for you without even having to ask.</p>
+
 <p>Let's run the app:</p>
-<pre><code>$ meteor
-</code></pre><blockquote>
-<p>If the template doesn't change, it may be because your browser is caching the original template.
-Learn <a href="https://developer.chrome.com/devtools/docs/settings">how to disable caching during development</a> in Chrome.</p>
-</blockquote>
+
+<pre><code ngNonBindable="">$ meteor</code></pre>
+
+<blockquote><p>If the template doesn't change, it may be because your browser is caching the original template.
+Learn <a href="https://developer.chrome.com/devtools/docs/settings">how to disable caching during development</a> in Chrome.</p></blockquote>
+
 <p>And we have our first Angular 2.0 Meteor app working!</p>
+
 <p>Let's go through some of the technologies we used till now:</p>
-<h1 id="npm">npm</h1>
+
+<h1>npm</h1>
+
 <p>Npm stands for Node Packages Manager, which manages your dependencies and external packages.</p>
-<p>Meteor supports NPM packages (starting from 1.3), and when we created our project - a file named <code>package.json</code> was created - this file contains the project's npm dependencies and some other metadata.</p>
-<p>To install the current project dependencies, type in the command line <code>npm install</code>.</p>
-<p>We also used Meteor packages (<code>meteor add ...</code>).  Meteor packages have some abilities that npm packages don't have yet so we will use some packages from there as well.</p>
-<h2 id="es6-modules-and-commonjs">ES6 Modules and CommonJS</h2>
+
+<p>Meteor supports NPM packages (starting from 1.3), and when we created our project - a file named <code ngNonBindable="">package.json</code> was created - this file contains the project's npm dependencies and some other metadata.</p>
+
+<p>To install the current project dependencies, type in the command line <code ngNonBindable="">npm install</code>.</p>
+
+<p>We also used Meteor packages (<code ngNonBindable="">meteor add ...</code>).  Meteor packages have some abilities that npm packages don't have yet so we will use some packages from there as well.</p>
+
+<h2>ES6 Modules and CommonJS</h2>
+
 <p>Meteor supports <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/statements/import">ES6 modules</a> out of the box.</p>
-<p>This feature provides the ability to use <code>import</code> / <code>export</code> statements and gives you a full control for modules loading and dependencies.</p>
+
+<p>This feature provides the ability to use <code ngNonBindable="">import</code> / <code ngNonBindable="">export</code> statements and gives you a full control for modules loading and dependencies.</p>
+
 <p>You can read more about how modules work and how it's based on CommonJS <a href="http://docs.meteor.com/#/full/modules">on the Meteor docs</a>.</p>
-<h1 id="summary">Summary</h1>
-<p>Let's continue to <a href="/tutorials/angular2/static-template">step 1</a> and add some content to our application.</p>
-</tutorial-page-content>
+
+<h1>Summary</h1>
+
+<p>Let's continue to <a href="/tutorials/angular2/static-template">step 1</a> and add some content to our application.</p></tutorial-page-content>
+    </div>
 </div></tutorial></app>
 
 

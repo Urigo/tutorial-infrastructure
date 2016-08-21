@@ -1,0 +1,53 @@
+@import "colors";
+@import "../../../node_modules/highlight.js/styles/default";
+@import "../../../node_modules/highlight.js/styles/github";
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap;
+}
+
+code {
+  white-space: pre-wrap;
+}
+
+.step-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: $lightBgColor;
+}
+
+.step-link {
+  text-decoration: none;
+  color: $lightTextColor;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1;
+}
+
+.active-step {
+  a {
+    font-weight: bold;
+  }
+}
+
+.tutorial-steps-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.md-primary {
+  background: $darkerBgColor !important;
+}

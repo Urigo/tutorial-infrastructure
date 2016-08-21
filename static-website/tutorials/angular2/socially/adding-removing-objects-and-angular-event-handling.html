@@ -1,53 +1,562 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            padding-top: 64px;
-        }
-
-        .step-item {
-            margin: 0;
-            padding: 0;
-            border-bottom: 1px solid #CFD8DC;
-            color: #546E7A;
-        }
-
-        .step-link {
-            text-decoration: none;
-            color: #536E7A;
-            display: block;
-            font-size: 14px;
-            padding: 16px 16px;
-            margin: 0;
-            background-color: #ECEFF1;
-        }
-
-        .active-step > a{
-            font-weight: bold;
-        }
-
-        .tutorial-steps-list {
-            list-style: none;
-            padding-left: 0;
-        }
-    </style>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic'
-          rel='stylesheet' type='text/css'>
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
     <title>Angular2-Meteor</title>
     <meta charset="UTF-8">
     <meta name="description" content="Angular 2 Universal">
     <meta name="keywords" content="Angular 2,Universal">
     <meta name="author" content="PatrickJS">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link ref="stylesheet" href="css/main.css">
     <base href="/">
-</head>
+<style>.logo[_ngcontent-soj-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-soj-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3); }
+
+.fill-remaining-space[_ngcontent-soj-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-soj-5] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-soj-5] ul[_ngcontent-soj-5] {
+    margin-top: 8px; }
+
+.right-buttons[_ngcontent-soj-5] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-soj-5] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-soj-5] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-soj-5] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-soj-5] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-soj-5] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-soj-5] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-soj-5] {
+  float: left; }
+
+.l-right[_ngcontent-soj-5] {
+  float: right; }
+
+.l-relative[_ngcontent-soj-5], .docs-content[_ngcontent-soj-5] {
+  position: relative; }
+
+.l-absolute[_ngcontent-soj-5] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-soj-5] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-soj-5] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-soj-5] {
+  padding-top: 64px; }</style><style>.diffbox[_ngcontent-soj-11] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-soj-11] .title-panel[_ngcontent-soj-11] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-soj-11] .title-panel[_ngcontent-soj-11] .github-commit-link[_ngcontent-soj-11] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] .scroll-container[_ngcontent-soj-11] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] pre[_ngcontent-soj-11] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] pre.line-added[_ngcontent-soj-11] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] pre.line-removed[_ngcontent-soj-11] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] .line-content[_ngcontent-soj-11] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] .line-content[_ngcontent-soj-11] .hljs-comment[_ngcontent-soj-11] {
+        color: #777; }
+    .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] .line-numbers[_ngcontent-soj-11] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-soj-11] .code-container[_ngcontent-soj-11] .line-numbers[_ngcontent-soj-11] .line-number[_ngcontent-soj-11] {
+        color: #aaa;
+        font-style: italic; }</style></head>
 <body>
-<app>
-    Loading...
-</app>
-</body>
-</html>
+<app _nghost-soj-1=""><md-toolbar _ngcontent-soj-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-soj-1="" href="/"><img _ngcontent-soj-1="" class="logo" src="/assets/images/logo.png"></a>
+    <button _ngcontent-soj-1="" md-button="" md-ripple=""><span class="md-button-wrapper">Tutorials</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Docs</span> </button>
+    <span _ngcontent-soj-1="" class="fill-remaining-space"></span>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Github</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
+    <button _ngcontent-soj-1="" md-button=""><span class="md-button-wrapper">About us</span> </button>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-soj-1=""></router-outlet><tutorial _nghost-soj-5=""><div _ngcontent-soj-5="" class="tutorials-container">
+    <nav _ngcontent-soj-5="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <steps-list _ngcontent-soj-5=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/angular2/socially/next-steps">25. Next Steps</a>
+    </li>
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-soj-5="" class="top-navigation">
+        <span _ngcontent-soj-5="" class="tutorial-title" stepName="">Data Management</span>
+        <div _ngcontent-soj-5="" class="right-buttons">
+            <a _ngcontent-soj-5="" md-raised-button="" tutorialNavigation="previous" href="/tutorials/angular2/socially/3-way-data-binding">Previous</a>
+            <a _ngcontent-soj-5="" codeDiffButton="" md-raised-button="">Code Diff</a>
+            <a _ngcontent-soj-5="" md-raised-button="" tutorialNavigation="next" href="/tutorials/angular2/socially/routing-and-multiple-views">Next</a>
+        </div>
+    </div>
+    <div _ngcontent-soj-5="" class="tutorial-content">
+        <router-outlet _ngcontent-soj-5=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>Now that we have full data binding from server to client, let's interact with the data and see the updates in action.</p>
+
+<p>In this chapter we are going to:</p>
+
+<ul><li>create a new component to add or remove a party</li><li>learn about model-driven forms and create one</li><li>learn how to hook up form events to component methods</li><li>implement adding &amp; removing party event handlers</li></ul>
+
+<p>First, let's create a simple form with a button that will add a new party.</p>
+
+<h1>Component Architecture</h1>
+
+<p>In Angular 2, we build a tree of components with the root <code ngNonBindable="">Socially</code> component and
+child components stemming out of it down to the leaves.</p>
+
+<p>Let's make a new component called <code ngNonBindable="">PartiesForm</code>, and put it inside it's own directory (<code ngNonBindable="">client/imports/parties-form</code>).</p>
+
+<blockquote><p>Notice that we are placing the file inside the <code ngNonBindable="">imports</code> folder.<br>That is another Meteor special folder name that tells Meteor to load the modules inside it just when some other module is importing it.  </p></blockquote>
+
+<p><diffbox step="4.1" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.1</span> <span _ngcontent-soj-11="" class="commit-summary">Create PartiesForm component</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/f588e93d1ef1607e3f34d1f31dfc54090f107c2e">client/imports/parties-form/parties-form.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre><pre _ngcontent-soj-11="" class="line-number">10</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./parties-form.html'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">@Component({</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  selector: <span class="hljs-string">'parties-form'</span>,</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  template</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">})</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartiesForm { }</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Notice that we are exporting the class <code ngNonBindable="">PartiesForm</code> using ES6 module syntax. 
+As a result, you'll be able to import <code ngNonBindable="">PartiesForm</code> in any other component as follows:</p>
+
+<pre><code ngNonBindable="">import { PartiesForm } from 'client/imports/parties-form/parties-form';</code></pre>
+
+<p>By exporting and importing different modules, you create a modular structure of your app in ES6,
+which is similar to the modules in other script languages like Python.
+This is what makes programming in ES6 really awesome since application structure comes out rigid and clear.</p>
+
+<p>Let's add a template for the new component.</p>
+
+<p>Add a file with the following form:</p>
+
+<p><diffbox step="4.2" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.2</span> <span _ngcontent-soj-11="" class="commit-summary">Add parties-form.html template</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/f1bf44d4aa1052f6938b830918dd56644575ee21">client/imports/parties-form/parties-form.html</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Location<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We can load the new <code ngNonBindable="">PartiesForm</code> component on the page by placing the <code ngNonBindable="">&lt;parties-form&gt;</code> tag in the root template <code ngNonBindable="">app.html</code>:</p>
+
+<p><diffbox step="4.3" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.3</span> <span _ngcontent-soj-11="" class="commit-summary">Load the PartiesForm component</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/4a496f169a3e0a83cbc9f1f5499983a985309f15">client/app.html</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">parties-form</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">parties-form</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let party of parties"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">      {{party.name}}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>There is one more required step in Angular 2 to load a component. The <code ngNonBindable="">Socially</code> component is not aware of child components unless you explicitly let it know what to look for. Add the <code ngNonBindable="">PartiesForm</code> class as a directive of the <code ngNonBindable="">Socially</code>, like this:</p>
+
+<p><diffbox step="4.4" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.4</span> <span _ngcontent-soj-11="" class="commit-summary">Import the PartiesForm component and link it with the Socially component</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/029d92a71ecf10bc734e10878b51421778ec9cd1">client/app.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre><pre _ngcontent-soj-11="" class="line-number">10</pre><pre _ngcontent-soj-11="" class="line-number">11</pre><pre _ngcontent-soj-11="" class="line-number">12</pre><pre _ngcontent-soj-11="" class="line-number">13</pre><pre _ngcontent-soj-11="" class="line-number">14</pre><pre _ngcontent-soj-11="" class="line-number">15</pre><pre _ngcontent-soj-11="" class="line-number">16</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { bootstrap } from <span class="hljs-string">'angular2-meteor-auto-bootstrap'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Parties }   from <span class="hljs-string">'../collections/parties'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Mongo }     from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { PartiesForm } from <span class="hljs-string">'./imports/parties-form/parties-form'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./app.html'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">@Component({</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  selector: <span class="hljs-string">'app'</span>,</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  template,</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  directives: [PartiesForm]</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">class</span> Socially {</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  parties: Mongo.Cursor&lt;<span class="hljs-built_in">Object</span>&gt;;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we have our parties-form directive showing on our app.</p>
+
+<h1>Angular 2 Forms</h1>
+
+<p>Now let's get back to the form and make it functional.</p>
+
+<h2>Model-Driven Forms</h2>
+
+<p>First, let's construct our form model. There is a special class for this called <a href="https://angular.io/docs/ts/latest/api/common/FormBuilder-class.html"><code ngNonBindable="">FormBuilder</code></a>.
+First, we should import necessary dependencies, then build the model and its future fields with help of the <code ngNonBindable="">FormBuilder</code> instance:</p>
+
+<p><diffbox step="4.5" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.5</span> <span _ngcontent-soj-11="" class="commit-summary">Build a form model</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/9a88291dbb07419aecc51d90f9fb0495861d8edd">client/imports/parties-form/parties-form.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number"> </pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre><pre _ngcontent-soj-11="" class="line-number">10</pre><pre _ngcontent-soj-11="" class="line-number">11</pre><pre _ngcontent-soj-11="" class="line-number">12</pre><pre _ngcontent-soj-11="" class="line-number">13</pre><pre _ngcontent-soj-11="" class="line-number">14</pre><pre _ngcontent-soj-11="" class="line-number">15</pre><pre _ngcontent-soj-11="" class="line-number">16</pre><pre _ngcontent-soj-11="" class="line-number">17</pre><pre _ngcontent-soj-11="" class="line-number">18</pre><pre _ngcontent-soj-11="" class="line-number">19</pre><pre _ngcontent-soj-11="" class="line-number">20</pre><pre _ngcontent-soj-11="" class="line-number">21</pre><pre _ngcontent-soj-11="" class="line-number">22</pre><pre _ngcontent-soj-11="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { FormBuilder, ControlGroup, Validators } from <span class="hljs-string">'@angular/common'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./parties-form.html'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  selector: <span class="hljs-string">'parties-form'</span>,</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  template</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">})</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PartiesForm {</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  partiesForm: ControlGroup;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    <span class="hljs-keyword">let</span> fb = <span class="hljs-keyword">new</span> FormBuilder();</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.partiesForm = fb.group({</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      name: [<span class="hljs-string">''</span>],</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      description: [<span class="hljs-string">''</span>],</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      location: [<span class="hljs-string">''</span>]</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    });</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  }</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Each element of the form model is actually going to be an instance of <a href="https://angular.io/docs/ts/latest/api/common/Control-class.html"><code ngNonBindable="">Control</code></a> type.
+It's a special type, which binds to a form input element and can provide data validation
+in the model on demand.</p>
+
+<p>Form model itself is of <a href="https://angular.io/docs/js/latest/api/common/ControlGroup-class.html"><code ngNonBindable="">ControlGroup</code></a> type. As its name says, it groups provided controls together.</p>
+
+<p>Alternatively, we could write:</p>
+
+<pre><code ngNonBindable="">this.partiesForm = fb.build({
+  name: new Control('')
+});</code></pre>
+
+<p>or even create each control separately:</p>
+
+<pre><code ngNonBindable="">this.partiesForm.controls.name = new Control('');</code></pre>
+
+<p>The first value provided is the initial value for the form control. For example:</p>
+
+<pre><code ngNonBindable="">this.partiesForm = fb.build({
+  name: ['Bob']
+});</code></pre>
+
+<p>will initialize name to <em>Bob</em> value.</p>
+
+<p>We can use <code ngNonBindable="">partiesForm.value</code> to access current state of the model:</p>
+
+<pre><code ngNonBindable="">console.log(this.partiesForm.value);
+&gt; { name: '', description: '', location: ''}</code></pre>
+
+<p>We could also access the control values individually.</p>
+
+<pre><code ngNonBindable="">console.log(this.partiesForm.controls.name.value);
+&gt; ''</code></pre>
+
+<p>Now, since <code ngNonBindable="">name</code> and <code ngNonBindable="">location</code> are required fields in our model, let's set up validation.</p>
+
+<p>In Angular2, it's less then easy, just add <a href="https://angular.io/docs/ts/latest/api/common/Validators-class.html"><code ngNonBindable="">Validators.required</code></a> as a second parameter to a required control:</p>
+
+<p><diffbox step="4.6" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.6</span> <span _ngcontent-soj-11="" class="commit-summary">Add form validation</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/6d4de7f482f22954bc40bac526260bc97be9743e">client/imports/parties-form/parties-form.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">15</pre><pre _ngcontent-soj-11="" class="line-number">16</pre><pre _ngcontent-soj-11="" class="line-number">17</pre><pre _ngcontent-soj-11="" class="line-number">18</pre><pre _ngcontent-soj-11="" class="line-number">19</pre><pre _ngcontent-soj-11="" class="line-number">20</pre><pre _ngcontent-soj-11="" class="line-number">21</pre><pre _ngcontent-soj-11="" class="line-number">22</pre><pre _ngcontent-soj-11="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context">    <span class="hljs-keyword">let</span> fb = <span class="hljs-keyword">new</span> FormBuilder();</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.partiesForm = fb.group({</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      name: [<span class="hljs-string">''</span>, Validators.required],</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">      description: [<span class="hljs-string">''</span>],</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      location: [<span class="hljs-string">''</span>, Validators.required]</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    });</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  }</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We can check <code ngNonBindable="">partiesForm.valid</code> property to determine if the form is valid:  </p>
+
+<pre><code ngNonBindable="">console.log(this.partiesForm.valid)
+&gt; false</code></pre>
+
+<p>Now let's bind the form model to the form and its input elements. Here we use special
+form directives: <a href="https://angular.io/docs/ts/latest/api/common/NgFormModel-directive.html"><code ngNonBindable="">ngFormModel</code></a> and <a href="https://angular.io/docs/ts/latest/api/common/NgControl-class.html"><code ngNonBindable="">ngControl</code></a>, that do all the magic by binding properties, that we just defined, to the DOM elements. As was mentioned in the earlier steps, these form directives are part of the <code ngNonBindable="">@angular/common</code> package and thus available right away in each template — no need to import them into the component itself.</p>
+
+<p><diffbox step="4.7" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.7</span> <span _ngcontent-soj-11="" class="commit-summary">Link the form and its model together</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/2f4f41e15338ccdad1d8f0dbf0e6a6135a8c27f8">client/imports/parties-form/parties-form.html</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">ngFormModel</span>]=<span class="hljs-string">"partiesForm"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">ngControl</span>=<span class="hljs-string">"name"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">ngControl</span>=<span class="hljs-string">"description"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Location<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">ngControl</span>=<span class="hljs-string">"location"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now each time the user types inside these inputs, the value of the <code ngNonBindable="">partiesForm</code> and its controls will be automatically updated.
+Conversely, if <code ngNonBindable="">partiesForm</code> is changed outside of the HTML, the input values will be updated accordingly.</p>
+
+<h2>Event Handlers</h2>
+
+<h3>(submit)</h3>
+
+<p>We just set up the form and synchronized it with the form model.</p>
+
+<p>Let's start adding new parties to the <code ngNonBindable="">Parties</code> collection.
+Before we start, we create a new submit button and a form submit event handler.</p>
+
+<p>It's worth mentioning one more great feature that appeared in Angular 2.
+It's possible now to define and use local variables in a template.</p>
+
+<p>For example, to add a party we'll need to take the
+current state of the form and pass it to an event handler.
+Now we can take the form and print it inside the template:</p>
+
+<pre><code ngNonBindable="">&lt;form [ngFormModel]="partiesForm" #f="ngForm"&gt;
+    ...
+    {{|f.value}}
+&lt;/form&gt;</code></pre>
+
+<p>you'll see something like:</p>
+
+<pre><code ngNonBindable="">{name: '', description: '', location: ''}</code></pre>
+
+<p>which is exactly what we need — the form model object.</p>
+
+<p>Now let's bind a submit event to the add button.
+This event will trigger if the button is clicked, or if the user presses enter on the final field.</p>
+
+<p><diffbox step="4.8" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.8</span> <span _ngcontent-soj-11="" class="commit-summary">Add submit handler inside the template</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/36b92e4f29d8db6b4b1bfcd187f13f41a720c38f">client/imports/parties-form/parties-form.html</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">ngFormModel</span>]=<span class="hljs-string">"partiesForm"</span> #<span class="hljs-attr">f</span>=<span class="hljs-string">"ngForm"</span> (<span class="hljs-attr">submit</span>)=<span class="hljs-string">"addParty(f.value)"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">ngControl</span>=<span class="hljs-string">"name"</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>In Angular 2, events are indicated by the round bracket () syntax. Here we are telling Angular to call a method <code ngNonBindable="">addParty</code> on submit and pass in the value of the form, <code ngNonBindable="">f</code>. Let's add the addParty method to our PartiesForm class.</p>
+
+<p><diffbox step="4.9" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.9</span> <span _ngcontent-soj-11="" class="commit-summary">Add addParty method into the component</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/87b35c9c44ef8e8e70afb78343504438e0b2470b">client/imports/parties-form/parties-form.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">1</pre><pre _ngcontent-soj-11="" class="line-number">2</pre><pre _ngcontent-soj-11="" class="line-number">3</pre><pre _ngcontent-soj-11="" class="line-number">4</pre><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number"> </pre><pre _ngcontent-soj-11="" class="line-number">21</pre><pre _ngcontent-soj-11="" class="line-number">22</pre><pre _ngcontent-soj-11="" class="line-number">23</pre><pre _ngcontent-soj-11="" class="line-number">24</pre><pre _ngcontent-soj-11="" class="line-number">25</pre><pre _ngcontent-soj-11="" class="line-number">26</pre><pre _ngcontent-soj-11="" class="line-number">27</pre><pre _ngcontent-soj-11="" class="line-number">28</pre><pre _ngcontent-soj-11="" class="line-number">29</pre><pre _ngcontent-soj-11="" class="line-number">30</pre><pre _ngcontent-soj-11="" class="line-number">31</pre><pre _ngcontent-soj-11="" class="line-number">32</pre><pre _ngcontent-soj-11="" class="line-number">33</pre><pre _ngcontent-soj-11="" class="line-number">34</pre><pre _ngcontent-soj-11="" class="line-number">35</pre><pre _ngcontent-soj-11="" class="line-number">36</pre><pre _ngcontent-soj-11="" class="line-number">37</pre><pre _ngcontent-soj-11="" class="line-number">38</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'reflect-metadata'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { FormBuilder, ControlGroup, Validators, Control } from <span class="hljs-string">'@angular/common'</span>;</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Parties } from <span class="hljs-string">'../../../collections/parties.ts'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template from <span class="hljs-string">'./parties-form.html'</span>;</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">      location: [<span class="hljs-string">''</span>, Validators.required]</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    });</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  }</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  addParty(party) {</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.partiesForm.valid) {</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      Parties.insert({</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">        name: party.name,</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">        description: party.description,</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">        location: party.location</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      });</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      (&lt;Control&gt;<span class="hljs-keyword">this</span>.partiesForm.controls[<span class="hljs-string">'name'</span>]).updateValue(<span class="hljs-string">''</span>);</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      (&lt;Control&gt;<span class="hljs-keyword">this</span>.partiesForm.controls[<span class="hljs-string">'description'</span>]).updateValue(<span class="hljs-string">''</span>);</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      (&lt;Control&gt;<span class="hljs-keyword">this</span>.partiesForm.controls[<span class="hljs-string">'location'</span>]).updateValue(<span class="hljs-string">''</span>);</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    }</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  }</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<blockquote><p>Note: TypeScript doesn't know that controls properties are of Control type.
+That's why we are casting them to the Control type.</p></blockquote>
+
+<p>Open a different browser, fill out the form, submit and see how the party is added on both clients.</p>
+
+<h3>(click)</h3>
+
+<p>Now, let's add the ability to delete parties.</p>
+
+<p>Let's add an X button to each party in our party list:</p>
+
+<p><diffbox step="4.10" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.10</span> <span _ngcontent-soj-11="" class="commit-summary">Add a remove party button and click event handler</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/b8cfaf885884b40c72c1b03e454b411e55401ad5">client/app.html</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">5</pre><pre _ngcontent-soj-11="" class="line-number">6</pre><pre _ngcontent-soj-11="" class="line-number">7</pre><pre _ngcontent-soj-11="" class="line-number">8</pre><pre _ngcontent-soj-11="" class="line-number">9</pre><pre _ngcontent-soj-11="" class="line-number">10</pre><pre _ngcontent-soj-11="" class="line-number">11</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context">      {{party.name}}</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{party.description}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{party.location}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"removeParty(party)"</span>&gt;</span>X<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Here again, we are binding an event to the class context and passing in the party as a parameter.</p>
+
+<p>Let's go into the class and add that method.</p>
+
+<p>Add the method inside the Socially class in <code ngNonBindable="">app.ts</code>:</p>
+
+<p><diffbox step="4.11" tutorial="angular2-meteor-socially" _nghost-soj-11=""><div _ngcontent-soj-11="" class="diffbox">
+    <div _ngcontent-soj-11="" class="title-panel">
+        <span _ngcontent-soj-11="" class="step-number">4.11</span> <span _ngcontent-soj-11="" class="commit-summary">Add removeParty method inside the component</span>
+        <a _ngcontent-soj-11="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular2.0-socially/commit/cb50dd4e4b8924ed3fa3294627f5db9a1281aa0e">client/app.ts</a>
+    </div>
+    <div _ngcontent-soj-11="" class="code-container">
+        <div _ngcontent-soj-11="" class="scroll-container">
+            <div _ngcontent-soj-11="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-number">18</pre><pre _ngcontent-soj-11="" class="line-number">19</pre><pre _ngcontent-soj-11="" class="line-number">20</pre><pre _ngcontent-soj-11="" class="line-number">21</pre><pre _ngcontent-soj-11="" class="line-number">22</pre><pre _ngcontent-soj-11="" class="line-number">23</pre><pre _ngcontent-soj-11="" class="line-number">24</pre><pre _ngcontent-soj-11="" class="line-number">25</pre><pre _ngcontent-soj-11="" class="line-number">26</pre><pre _ngcontent-soj-11="" class="line-number">27</pre>
+            </div>
+            <div _ngcontent-soj-11="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-soj-11="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span> () {</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.parties = Parties.find();</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">  }</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added"> </pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  removeParty(party) {</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">    Parties.remove(party._id);</pre><pre _ngcontent-soj-11="" class="line-added" className="line-added">  }</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">}</pre><pre _ngcontent-soj-11="" class="line-context" className="line-context"> </pre><pre _ngcontent-soj-11="" class="line-context" className="line-context">bootstrap(Socially);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>The Mongo Collection Parties has a method called "remove". We search for the relevant party by its identifier, <code ngNonBindable="">_id</code>, and delete it.</p>
+
+<p>Now try to delete a few parties. Since Meteor syncs data between clients, you can also watch them being removed from other browser clients.</p>
+
+<h1>Summary</h1>
+
+<p>In this chapter we've seen:</p>
+
+<ul><li>how easy it is to create a form and access its data using Angular 2's power</li><li>how easy it is to save that data to the storage using Meteor's power</li></ul></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>
