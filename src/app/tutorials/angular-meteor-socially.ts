@@ -118,8 +118,8 @@ export const ANGULAR1_METEOR_SOCIALLY : TutorialDefinition = {
       template: "/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_21.md"
     },
     {
-      url: "/ionic2",
-      name: "Ionic2",
+      url: "/ionic",
+      name: "Ionic",
       template: "/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_22.md"
     },
     {
