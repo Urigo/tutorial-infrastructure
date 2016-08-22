@@ -18,8 +18,6 @@ import {ANGULAR2_METEOR_SOCIALLY} from "./tutorials/angular2-meteor-socially";
 })
 @Injectable()
 export class AppComponent {
-  private dropdownOpen: boolean = false;
-
   constructor(stylesHost: SharedStylesHost) {
     stylesHost.addStyles([mainCss]);
   }
@@ -36,7 +34,7 @@ export class AppComponent {
         name: "WhatsApp clone with Angular & Meteor"
       },
       {
-        link: "/",
+        link: "/tutorials/migration/angular2/introduction",
         bold: true,
         name: "Blaze to Angular 2 Migration tutorial"
       }
