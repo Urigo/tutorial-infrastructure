@@ -1,6 +1,11 @@
 <md-toolbar class="main-toolbar md-primary">
     <a href="/"><img src="/assets/images/logo.png" class="logo"></a>
-    <button md-button>Tutorials</button>
+    <div class="tutorials-dropdown">
+        <button md-button>Tutorials</button>
+        <div class="dropdown-content">
+            <steps-list [tutorial]="getDropdownTutorial()" prefix="/tutorials" [extraLinks]="getExtraLinks()"></steps-list>
+        </div>
+    </div>
     <button md-button>Angular 2</button>
     <button md-button>Docs</button>
     <span class="fill-remaining-space"></span>

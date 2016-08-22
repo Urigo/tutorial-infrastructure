@@ -18,3 +18,22 @@
 .fill-remaining-space {
   flex: 1 1 auto;
 }
+
+.tutorials-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 7px;
+  }
+}
+
+.tutorials-dropdown:hover .dropdown-content {
+  display: block;
+}
