@@ -1,3 +1,9 @@
+@import "../../../assets/style/colors";
+
+.clear {
+  clear: both;
+}
+
 .hero {
   padding: 3rem 0;
   background-image: url("/assets/images/angular-bg.png");
@@ -8,12 +14,6 @@
     color: #f6f6f6;
     font-size: 1.7rem;
   }
-
-  .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 
     .buttons {
       margin-bottom: 20px;
@@ -28,5 +28,128 @@
       background-size: 132%;
       background-position: -48px;
     }
+}
+
+.main-unit {
+  text-align: center;
+  margin: 0 auto;
+
+  .video-wrapper iframe {
+    width: 860px;
+    height: 480px;
+    border: 2px solid #333333;
+    background-color: #333333;
+    border-radius: 3px;
+  }
+
+  .tutorial-cta {
+    margin: 3rem auto 2rem;
+    max-width: 400px;
+  }
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+.showcase {
+  .row {
+    padding: 0 3rem;
+  }
+
+  .submit-app-cta {
+    width: 100%;
+    float: left;
+  }
+
+  .img-container {
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+  }
+
+  .site {
+    margin-bottom: 30px;
+    width: 30%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .site-title {
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition: all .5s;
+  }
+
+  a:not(.btn) {
+    color: $lightTextColor;
+
+    &:hover {
+
+      img {
+        opacity: .5;
+        transform: scale(1.15);
+      }
+
+      .site-title {
+        background: white;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    transition: all .5s;
+  }
+}
+
+.small-hero {
+  background-color: white;
+  color: $darkerBgColor;
+  padding: 2rem;
+  border-radius: 5px;
+  transition: 1s background-color, 1s color;
+  height: 440px;
+
+  &:hover {
+    background-color: $darkBgColor;
+    color: $lightBgColor;
+  }
+
+  img {
+    margin: 1rem;
+    height: 148px;
+  }
+
+  p {
+    max-width: 240px;
+    margin: 1rem auto;
+  }
+}
+
+.intro {
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  background-color: $lightBgColor;
+  margin: 3rem auto;
+
+  h1 {
+    margin-bottom: 4rem;
+  }
+}
+
+.slides {
+  .slide-item {
+    float: left;
+    width: 50%;
   }
 }
