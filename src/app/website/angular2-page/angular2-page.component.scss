@@ -1,0 +1,34 @@
+@import "../../../assets/style/colors";
+
+$angular2-background: #1976d2;
+
+a {
+  text-decoration: none;
+}
+
+.angular-2 {
+
+  .main-unit {
+    background-color: $angular2-background;
+    color: white;
+  }
+
+  h1, img {
+    margin-bottom: 1rem;
+  }
+
+  &>p {
+    max-width: 480px;
+    margin: 2rem auto;
+  }
+
+  .header {
+    text-align: center;
+    padding-bottom: 100px;
+
+    p {
+      font-size: 1.2rem;
+      margin: 0 auto 1rem;
+    }
+  }
+}
