@@ -15,3 +15,9 @@
   <h1 *ngIf="!isAngular1">Angular-2Meteor & Ionic 2</h1>
   <markdown-file [template]="'/assets/templates/whatsapp-intro/angular1.md'"></markdown-file>
 </div>
+<div class="tutorial-links">
+  <a href="/tutorials/whatsapp2/ionic/setup" *ngIf="!isAngular1"><button md-button class="md-primary">Get Started with Ionic 2 CLI</button></a>
+  <a href="/tutorials/whatsapp/ionic/bootstrapping" *ngIf="isAngular1"><button md-button class="md-primary">Get Started with Ionic CLI</button></a>
+  <a href="/tutorials/whatsapp/meteor/bootstrapping" *ngIf="isAngular1"><button md-button class="md-primary">Get Started with Meteor CLI</button></a>
+</div>
+<br /><br />
