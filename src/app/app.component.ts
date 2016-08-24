@@ -29,7 +29,7 @@ export class AppComponent {
   getExtraLinks() {
     return [
       {
-        link: "/",
+        link: "/tutorials/whatsapp",
         bold: true,
         name: "WhatsApp clone with Angular & Meteor"
       },

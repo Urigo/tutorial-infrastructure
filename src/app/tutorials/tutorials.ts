@@ -7,15 +7,36 @@ import {BLAZE_TO_ANGULAR2_MIGRATION} from "./blaze-angular2-migration";
 import {Angular2PageComponent} from "../website/angular2-page/angular2-page.component";
 import {ManifestoPageComponent} from "../website/manifesto-page/manifesto-page.component";
 import {AboutPageComponent} from "../website/about-page/about-page.component";
+import {Angular1WhatsappIntro} from "../website/angular1-whatsapp-intro/angular1-whatsapp-intro.component";
+import {Angular2WhatsappIntro} from "../website/angular2-whatsapp-intro/angular2-whatsapp-intro.component";
+import {ANGULAR1_WHATSAPP_IONIC_CLI} from "./angular1-whatsapp-ionic-cli";
+import {ANGULAR1_WHATSAPP_METEOR_CLI} from "./angular1-whatsapp-meteor-cli";
 
-export const ALL_TUTORIALS = [
+export const SOCIALLY_TUTORIALS = [
   ANGULAR2_METEOR_SOCIALLY,
-  ANGULAR1_METEOR_SOCIALLY,
+  ANGULAR1_METEOR_SOCIALLY
+];
+
+export const MIGRATION_TUTORIALS = [
   BLAZE_TO_ANGULAR2_MIGRATION
 ];
 
+export const ANGULAR1_WHATSAPP_TUTORIALS = [
+  ANGULAR1_WHATSAPP_IONIC_CLI,
+  ANGULAR1_WHATSAPP_METEOR_CLI
+];
+
 export const APP_ROUTES = [
-  {path: "tutorials", component: TutorialsContainer, children: createTutorialsRoutes(ALL_TUTORIALS)},
+  {
+    path: "tutorials",
+    children: [
+      {path: "whatsapp", component: TutorialsContainer, children: createTutorialsRoutes(ANGULAR1_WHATSAPP_TUTORIALS)},
+      {path: "whatsapp", component: Angular1WhatsappIntro},
+      {path: "whatsapp2", component: Angular2WhatsappIntro},
+      {path: "socially", component: TutorialsContainer, children: createTutorialsRoutes(SOCIALLY_TUTORIALS)},
+      {path: "migration", component: TutorialsContainer, children: createTutorialsRoutes(MIGRATION_TUTORIALS)}
+    ]
+  },
   {path: "angular2", component: Angular2PageComponent},
   {path: "manifesto", component: ManifestoPageComponent},
   {path: "about", component: AboutPageComponent},

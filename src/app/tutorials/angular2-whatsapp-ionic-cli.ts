@@ -1,11 +1,11 @@
 import {TutorialDefinition} from "../core/tutorial-definition";
 
-export const BLAZE_TO_ANGULAR2_MIGRATION: TutorialDefinition = {
+export const ANGULAR2_WHATSAPP_IONIC_CLI: TutorialDefinition = {
   id: "migration-angular2",
   name: "Blaze to Angular 2 Migration",
   gitHub: "dotansimha/angular2-blaze-migration-tutorial",
   patchFile: "/assets/patches/migration.angular2.multi.patch",
-  baseRoute: "angular2",
+  baseRoute: "migration/angular2",
   steps: [
     {
       url: "/introduction",

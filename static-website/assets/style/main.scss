@@ -2,6 +2,10 @@
 @import "../../../node_modules/highlight.js/styles/default";
 @import "../../../node_modules/highlight.js/styles/github";
 
+a {
+  color: black;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -19,34 +23,66 @@ code {
   white-space: pre-wrap;
 }
 
-.step-item {
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid #CFD8DC;
-  color: $lightBgColor;
-}
+.side-nav {
+  .step-item {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #CFD8DC;
+    color: $lightBgColor;
+  }
 
-.step-link {
-  text-decoration: none;
-  color: $lightTextColor;
-  display: block;
-  font-size: 14px;
-  padding: 16px 16px;
-  margin: 0;
-  background-color: #ECEFF1;
-}
+  .step-link {
+    text-decoration: none;
+    color: $lightTextColor;
+    display: block;
+    font-size: 14px;
+    padding: 16px 16px;
+    margin: 0;
+    background-color: #ECEFF1;
+  }
 
-.active-step {
-  a {
-    font-weight: bold;
+  .active-step {
+    a {
+      font-weight: bold;
+    }
+  }
+
+  .tutorial-steps-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
   }
 }
 
-.tutorial-steps-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 8px;
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0;
+
+  .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0;
+
+    .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column;
+
+      a {
+        text-decoration: none;
+        font-size: small;
+        color: black;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    }
+  }
 }
+
 
 .md-primary {
   background: $darkerBgColor !important;

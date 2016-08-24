@@ -93,7 +93,12 @@ export class DiffBoxComponent implements OnInit {
             fileType = "typescript";
           }
 
-          highlightedContent = hljs.highlight(fileType, line.content, true).value;
+          try {
+            highlightedContent = hljs.highlight(fileType, line.content, true).value;
+          }
+          catch (e) {
+            highlightedContent = line.content;
+          }
         }
 
         line.highlightedContent = highlightedContent || " ";
