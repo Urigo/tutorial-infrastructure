@@ -2,12 +2,13 @@ import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
 import {ApiRouteDataDefinition} from "./apis-routes";
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
+import {ActivatedApi} from "./current-api";
 let jsdoc2md = require("jsdoc-to-markdown");
 var marked = require('marked');
 
 @Injectable()
 export class ApiLoadResolve implements Resolve<any> {
-  constructor(private http: Http) {
+  constructor(private http: Http, private activated: ActivatedApi) {
 
   }
 
@@ -17,9 +18,6 @@ export class ApiLoadResolve implements Resolve<any> {
     let revision = routeData.apiVersion.revision;
     let filePath = routeData.apiFile.filePath;
     let ghUrl = "https://raw.githubusercontent.com/" + repo + "/" + revision + "/" + filePath;
-
-
-    console.log(ghUrl);
 
     return this.http
       .get(ghUrl)

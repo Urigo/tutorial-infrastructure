@@ -6,6 +6,10 @@ export const ANGULAR2_METEOR_API_REFERENCE : ApiDefinition = {
     {
       apiTitle: "MeteorComponent",
       filePath: "dist/meteor_component.js"
+    },
+    {
+      apiTitle: "MeteorObservable",
+      filePath: "dist/minimongo-observable/meteor-observable.js"
     }
   ],
   versions: [

@@ -1,5 +1,6 @@
 import {Component, OnInit, Injectable, DynamicComponentLoader, ViewContainerRef} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedApi} from "./current-api";
 
 function generateDynamicComponent(template = "Oops, API template is not available") {
   @Component({
@@ -21,7 +22,8 @@ export class ApiPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private dynamicComponentLoader: DynamicComponentLoader,
               private viewContainerRef: ViewContainerRef,
-              private router: Router) {
+              private router: Router,
+              private activated: ActivatedApi) {
   }
 
   private fixLinks(content, urlPrefix) {
@@ -30,6 +32,8 @@ export class ApiPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: any) => {
+      this.activated.updateCurrentApi(data);
+
       this.dynamicComponentLoader.loadNextToLocation(
         generateDynamicComponent(this.fixLinks(data.resolveData.jsDoc, this.router.url)),
         this.viewContainerRef);

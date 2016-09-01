@@ -4,6 +4,7 @@ import {StepsTemplatesCache} from "./steps-templates-cache";
 import {ActivatedTutorial} from "./current-tutorial";
 import {StepsUtils} from "./step-utils";
 import {ApiLoadResolve} from "./api-load-resolve";
+import {ActivatedApi} from "./current-api";
 
 export const TUTORIALS_PROVIDERS = [
   PatchLoadResolve,
@@ -11,5 +12,6 @@ export const TUTORIALS_PROVIDERS = [
   StepsTemplatesCache,
   ActivatedTutorial,
   StepsUtils,
-  ApiLoadResolve
+  ApiLoadResolve,
+  ActivatedApi
 ];
