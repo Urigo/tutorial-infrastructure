@@ -156,3 +156,52 @@ tutorial-page-content {
     border-radius: 0 0 10px 10px;
   }
 }
+
+api-ref-container {
+  p, ul li {
+    code {
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+
+  a {
+    color: $darkerBgColor;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  h3 {
+    background: $shellBgColor;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 30px;
+  }
+
+  table {
+    width: 100%;
+    background: $shellBgColor;
+    border-radius: 5px;
+    border-spacing: 0;
+
+    thead {
+      background: $lightBgColor;
+      color: $shellBgColor;
+      border-radius: 5px;
+
+      tr {
+        background: $lightBgColor;
+        border-radius: 5px;
+
+        th {
+          padding: 6px;
+        }
+      }
+    }
+
+    tbody {
+      td {
+        padding: 5px;
+      }
+    }
+  }
+}
