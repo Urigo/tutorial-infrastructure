@@ -3,8 +3,11 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
   selector: "api-container",
-  template: "<router-outlet></router-outlet>",
-  directives: [ROUTER_DIRECTIVES]
+  templateUrl: "./api-container.component.html",
+  directives: [ROUTER_DIRECTIVES],
+  styleUrls: [
+    "./api-container.component.scss"
+  ]
 })
 export class ApiPageContainerComponent {
   constructor() {

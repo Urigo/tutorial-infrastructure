@@ -2,7 +2,8 @@ import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
 import {ApiRouteDataDefinition} from "./apis-routes";
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-let doctrine = require("doctrine");
+let jsdoc2md = require("jsdoc-to-markdown");
+var marked = require('marked');
 
 @Injectable()
 export class ApiLoadResolve implements Resolve<any> {
@@ -17,10 +18,14 @@ export class ApiLoadResolve implements Resolve<any> {
     let filePath = routeData.apiFile.filePath;
     let ghUrl = "https://raw.githubusercontent.com/" + repo + "/" + revision + "/" + filePath;
 
+
+    console.log(ghUrl);
+
     return this.http
       .get(ghUrl)
       .map(res => res.text())
-      .map(sourceCode => doctrine.parse(sourceCode, {unwrap: true}))
+      .map(sourceCode => jsdoc2md.renderSync({source: sourceCode, cache: false}))
+      .map(text => marked(text))
       .map(parsedDocs => {
         return {
           jsDoc: parsedDocs,

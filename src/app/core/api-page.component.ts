@@ -1,20 +1,38 @@
-import {Component, OnInit, Injectable} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit, Injectable, DynamicComponentLoader, ViewContainerRef} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+
+function generateDynamicComponent(template = "Oops, API template is not available") {
+  @Component({
+    selector: "api-ref-container",
+    template
+  })
+  class DynamicComponent {
+  }
+
+  return DynamicComponent;
+}
 
 @Component({
   selector: "api-page",
-  template: `<div class="api-container"><pre>{{jsonData}}</pre></div>`
+  template: `<div class="api-container" #dynamic></div>`
 })
 @Injectable()
 export class ApiPageComponent implements OnInit {
-  private jsonData = "";
+  constructor(private route: ActivatedRoute,
+              private dynamicComponentLoader: DynamicComponentLoader,
+              private viewContainerRef: ViewContainerRef,
+              private router: Router) {
+  }
 
-  constructor(private route: ActivatedRoute) {
+  private fixLinks(content, urlPrefix) {
+    return content.replace(/href="(#.*?)"/g, `href="${urlPrefix}$1"`);
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: any) => {
-      this.jsonData = JSON.stringify(data.resolveData.jsDoc,null,'\t');
+      this.dynamicComponentLoader.loadNextToLocation(
+        generateDynamicComponent(this.fixLinks(data.resolveData.jsDoc, this.router.url)),
+        this.viewContainerRef);
     });
   }
 }
