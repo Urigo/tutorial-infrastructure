@@ -1,5 +1,5 @@
 <ul *ngIf="apiData" class="apis-list">
-    <li class="api-list-item" *ngFor="let apiItem of apiData.apiDefinition.files;" routerLinkActive="active-step" [routerLinkActiveOptions]="{exact: true}">
-        <a class="api-item-link" [routerLink]="createLink(apiItem)">{{apiItem.apiTitle}}</a>
+    <li class="api-list-item" *ngFor="let apiName of getFiles();" routerLinkActive="active-step" [routerLinkActiveOptions]="{exact: true}">
+        <a class="api-item-link" [routerLink]="createLink(apiName)">{{ apiName }}</a>
     </li>
 </ul>
