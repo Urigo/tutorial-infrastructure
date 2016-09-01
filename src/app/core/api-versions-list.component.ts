@@ -5,12 +5,12 @@ import {ApiRouteDataDefinition} from "./apis-routes";
 import {LocationStrategy} from "@angular/common";
 
 @Component({
-  selector: "api-list-items",
-  templateUrl: "./api-list-items.component.html",
+  selector: "api-versions-list",
+  templateUrl: "./api-versions-list.component.html",
   directives: [ROUTER_DIRECTIVES]
 })
 @Injectable()
-export class ApiListItems implements OnInit {
+export class ApiVersionsList implements OnInit {
   private apiData: ApiRouteDataDefinition;
 
   constructor(private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
@@ -21,8 +21,8 @@ export class ApiListItems implements OnInit {
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
 
-  createLink(item) {
-    return this.createAbsoluteLink(this.apiData.apiVersion.name + "/" + item.apiTitle);
+  createLink(version) {
+    return this.createAbsoluteLink(version.name + "/" + this.apiData.apiFile.apiTitle);
   }
 
   ngOnInit() {
