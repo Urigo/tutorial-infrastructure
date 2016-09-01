@@ -30,8 +30,8 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}))
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
 import { ngApp } from './main.node';
-import {APP_ROUTES} from "./app/tutorials/tutorials";
 import {generateStaticWebsite} from "./app/core/generate-static";
+import {APP_ROUTES} from "./app/app-routes";
 // Routes with html5pushstate
 // ensure routes match client-side-app
 app.get('/', ngApp);

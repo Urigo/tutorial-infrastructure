@@ -16,8 +16,8 @@ import { APP_BASE_HREF } from '@angular/common';
 
 // Application
 import {AppComponent} from './app/app.component';
-import {APP_ROUTES} from "./app/tutorials/tutorials";
 import {TUTORIALS_PROVIDERS} from "./app/core/tutorials-providers";
+import {APP_ROUTES} from "./app/app-routes";
 
 export function ngApp(req, res) {
   let baseUrl = '/';
