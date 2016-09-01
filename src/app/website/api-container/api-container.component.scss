@@ -5,6 +5,7 @@
   overflow: auto;
   z-index: 100;
   border-right: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
 
   ul {
     margin-top: 8px;
@@ -60,4 +61,24 @@
 
 .l-offset-nav {
   padding-top: 64px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

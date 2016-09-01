@@ -28,14 +28,14 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 }
 
 .side-nav {
-  .step-item {
+  .step-item, .api-list-item {
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #CFD8DC;
     color: $lightBgColor;
   }
 
-  .step-link {
+  .step-link, .api-item-link, .apis-versions-list li {
     text-decoration: none;
     color: $lightTextColor;
     display: block;
@@ -51,10 +51,22 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
     }
   }
 
-  .tutorial-steps-list {
+  .tutorial-steps-list, .apis-list, .apis-versions-list {
     list-style: none;
     padding-left: 0;
     margin-top: 8px;
+  }
+}
+
+.apis-versions-list {
+  margin: 0 !important;
+
+  li {
+    padding: 8px !important;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -86,7 +98,6 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
     }
   }
 }
-
 
 .md-primary {
   background: $darkerBgColor !important;

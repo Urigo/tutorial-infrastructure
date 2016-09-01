@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {ApiListItems} from "../../core/api-list-items.component";
 import {ApiVersionsList} from "../../core/api-versions-list.component";
+import {ActivatedApi} from "../../core/current-api";
 
 @Component({
   selector: "api-container",
@@ -12,7 +13,11 @@ import {ApiVersionsList} from "../../core/api-versions-list.component";
   ]
 })
 export class ApiPageContainerComponent {
-  constructor() {
+  currentApiVersion: string = "";
 
+  constructor(private activated: ActivatedApi) {
+    this.activated.api.subscribe(api => {
+      this.currentApiVersion = api.apiVersion.name;
+    })
   }
 }
