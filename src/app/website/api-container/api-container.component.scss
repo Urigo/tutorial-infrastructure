@@ -67,7 +67,13 @@
   position: relative;
   display: inline-block;
   margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
+  width: 100%;
+
+  button {
+    width: 90%;
+  }
 
   .dropdown-content {
     display: none;
