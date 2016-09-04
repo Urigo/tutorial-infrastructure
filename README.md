@@ -30,9 +30,9 @@ At the moment, while developing, try access:
 - [x] Migrate angular2-meteor api docs
 - [x] Add API versions support
 - [x] Add API list component
-- [ ] Migrate angular1-meteor api docs
+- [x] Migrate angular1-meteor api docs
+- [ ] Implement Code diff button
 - [ ] Implement "Improve this..."
 - [ ] Implement Video
-- [ ] Implement Code diff button
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.   
 - [ ] Prepare for publish as NPM package
