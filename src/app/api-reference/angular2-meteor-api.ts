@@ -19,7 +19,7 @@ export const ANGULAR2_METEOR_API_REFERENCE : ApiDefinition = {
   versions: [
     {
       name: "latest",
-      revision: "5fd5265f14cc01d2535f9b4d4bf950adb125af06"
+      revision: "275660a48084becbb60a0da6c5f25505af6e454e"
     },
     {
       name: "0.6.0",
