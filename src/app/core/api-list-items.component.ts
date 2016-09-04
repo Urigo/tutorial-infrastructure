@@ -4,7 +4,7 @@ import {ActivatedApi} from "./current-api";
 import {ApiRouteDataDefinition} from "./apis-routes";
 import {LocationStrategy} from "@angular/common";
 import * as _ from "lodash";
-import {ApiFile} from "./api-definition";
+import {ApiFile, ApiVersion, StaticFileDefinition, ApiStaticDefinitionObject, ApiDefinition} from "./api-definition";
 
 @Component({
   selector: "api-list-items",
@@ -23,16 +23,32 @@ export class ApiListItems implements OnInit {
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
 
-  createLink(apiName) {
-    return this.createAbsoluteLink(this.apiData.apiVersion.name + "/" + apiName);
+  createLink(api) {
+    if (this.apiData.isStaticApi) {
+      return this.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + "/" + api.urlName);
+    }
+    else {
+      return this.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + "/" + api.apiTitle);
+    }
   }
 
   getFiles() {
-    return this.apiData.apiDefinition.files
-      .filter((file: ApiFile) => {
-        return (this.apiData.apiVersion.exclude || []).indexOf(file.apiTitle) === -1;
-      })
-      .map((file: ApiFile) => file.apiTitle);
+    if (this.apiData.isStaticApi) {
+      let staticData = <ApiStaticDefinitionObject>this.apiData.apiVersion;
+
+      return staticData.files.map((item) => {
+        return {
+          apiTitle: item.name,
+          urlName: item.urlName
+        };
+      });
+    }
+    else {
+      return (<ApiDefinition>this.apiData.apiDefinition).files
+        .filter((file: ApiFile) => {
+          return ((<ApiVersion>this.apiData.apiVersion).exclude || []).indexOf(file.apiTitle) === -1;
+        });
+    }
   }
 
   ngOnInit() {

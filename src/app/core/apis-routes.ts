@@ -1,38 +1,80 @@
-import {ApiDefinition, ApiVersion, ApiFile} from "./api-definition";
+import {
+  ApiDefinition, ApiVersion, ApiFile, ApiStaticDefinition, ApiStaticDefinitionObject,
+  StaticFileDefinition
+} from "./api-definition";
 import {Route} from "@angular/router";
 import {ApiLoadResolve} from "./api-load-resolve";
 import {ApiPageComponent} from "./api-page.component";
 
 export interface ApiRouteDataDefinition {
-  apiDefinition: ApiDefinition;
-  apiVersion: ApiVersion;
-  apiFile: ApiFile
+  isStaticApi: boolean;
+  apiDefinition: ApiDefinition | ApiStaticDefinition;
+  apiVersion: ApiVersion | ApiStaticDefinitionObject;
+  apiFile: ApiFile | StaticFileDefinition
 }
 
-export function createApiRoutes(apiDefinition: ApiDefinition) {
+export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
   let routes = [];
 
-  apiDefinition.versions.forEach((apiVersion : ApiVersion) => {
-    let apiVersionName = apiVersion.name;
+  if (def['versions'] && def['files']) {
+    let apiDefinition = <ApiDefinition>def;
 
-    apiDefinition.files.forEach((apiFile: ApiFile) => {
-      let fileName = apiFile.apiTitle;
-      let apiUrl = apiVersionName + "/" + fileName;
+    apiDefinition.versions.forEach((apiVersion : ApiVersion) => {
+      let apiVersionName = apiVersion.name;
 
-      routes.push(<Route>{
-        path: apiUrl,
-        component: ApiPageComponent,
-        resolve: {
-          resolveData: ApiLoadResolve
-        },
-        data: {
-          apiDefinition: apiDefinition,
-          apiVersion: apiVersion,
-          apiFile: apiFile
-        }
+      apiDefinition.files.forEach((apiFile: ApiFile) => {
+        let fileName = apiFile.apiTitle;
+        let apiUrl = apiVersionName + "/" + fileName;
+
+        routes.push(<Route>{
+          path: apiUrl,
+          component: ApiPageComponent,
+          resolve: {
+            resolveData: ApiLoadResolve
+          },
+          data: {
+            isStaticApi: false,
+            apiDefinition: apiDefinition,
+            apiVersion: apiVersion,
+            apiFile: apiFile
+          }
+        })
       })
+    });
+  }
+  else if (def['apis']) {
+    let apiDefinition = <ApiStaticDefinition>def;
+
+    apiDefinition.apis.forEach((apiItem: ApiStaticDefinitionObject) => {
+      let apiVersion = apiItem.version;
+
+      if (apiItem.ref && apiItem.ref != "") {
+        let refApiItem = apiDefinition.apis.find((item) => {
+          return item.version === apiItem.ref;
+        });
+
+        apiItem.files = refApiItem.files;
+      }
+
+      apiItem.files.forEach((apiFile: StaticFileDefinition) => {
+        let apiUrl = apiVersion + "/" + apiFile.urlName;
+
+        routes.push(<Route>{
+          path: apiUrl,
+          component: ApiPageComponent,
+          resolve: {
+            resolveData: ApiLoadResolve
+          },
+          data: {
+            isStaticApi: true,
+            apiDefinition: apiDefinition,
+            apiVersion: apiItem,
+            apiFile: apiFile
+          }
+        })
+      });
     })
-  });
+  }
 
   return routes;
 }

@@ -16,3 +16,20 @@ export interface ApiDefinition {
   files: Array<ApiFile>;
   versions: Array<ApiVersion>;
 }
+
+export interface StaticFileDefinition {
+  name: string;
+  urlName: string;
+  markdownFilePath: string;
+}
+
+export interface ApiStaticDefinitionObject {
+  version: string;
+  files?: Array<StaticFileDefinition>
+  ref?: string;
+}
+
+export interface ApiStaticDefinition {
+  apiRepository: string;
+  apis: Array<ApiStaticDefinitionObject>
+}

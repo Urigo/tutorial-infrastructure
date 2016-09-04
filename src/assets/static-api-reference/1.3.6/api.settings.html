@@ -1,0 +1,20 @@
+<template name="api.1.3.6.settings">
+    <div>
+        {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.settings.html"}}
+
+        <div>
+          {{#markdown}}
+# $angularMeteorSettings
+{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/angular-meteor.js#L23"}}
+
+This object contains general settings of the `angular-meteor` module
+
+### API
+
+    myModule.config(['$angularMeteorSettings', function($angularMeteorSettings) {
+      $angularMeteorSettings.suppressWarnings = true; // Disables write of warnings to console
+    }]);
+          {{/markdown}}
+        </div>
+    </div>
+</template>

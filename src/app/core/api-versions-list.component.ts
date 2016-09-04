@@ -3,6 +3,8 @@ import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 import {ActivatedApi} from "./current-api";
 import {ApiRouteDataDefinition} from "./apis-routes";
 import {LocationStrategy} from "@angular/common";
+import {ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition} from "./api-definition";
+import * as _ from "lodash";
 
 @Component({
   selector: "api-versions-list",
@@ -22,7 +24,29 @@ export class ApiVersionsList implements OnInit {
   }
 
   createLink(version) {
-    return this.createAbsoluteLink(version.name + "/" + this.apiData.apiFile.apiTitle);
+    let urlSuffix = "";
+
+    if (this.apiData.isStaticApi) {
+      urlSuffix = (<StaticFileDefinition>this.apiData.apiFile).urlName;
+    }
+    else {
+      urlSuffix = (<ApiFile>this.apiData.apiFile).apiTitle;
+    }
+
+    return this.createAbsoluteLink(version.name + "/" + urlSuffix);
+  }
+
+  getVersionsList() {
+    if (this.apiData.isStaticApi) {
+      return _.map((<ApiStaticDefinition>this.apiData.apiDefinition).apis, (item) => {
+        return {
+          name: item.version
+        }
+      });
+    }
+    else {
+      return (<ApiDefinition>this.apiData.apiDefinition).versions;
+    }
   }
 
   ngOnInit() {
