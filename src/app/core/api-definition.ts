@@ -1,6 +1,8 @@
 export interface ApiFile {
   apiTitle: string;
   filePath: string;
+  apiRepository?: string;
+  revision?: string;
 }
 
 export interface ApiVersion {

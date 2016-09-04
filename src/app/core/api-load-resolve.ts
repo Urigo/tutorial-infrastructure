@@ -14,8 +14,8 @@ export class ApiLoadResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): any {
     let routeData: ApiRouteDataDefinition = <ApiRouteDataDefinition>route.data;
-    let repo = routeData.apiDefinition.apiRepository;
-    let revision = routeData.apiVersion.revision;
+    let repo = routeData.apiFile.apiRepository || routeData.apiDefinition.apiRepository;
+    let revision = routeData.apiFile.revision || routeData.apiVersion.revision;
     let filePath = routeData.apiFile.filePath;
     let ghUrl = "https://raw.githubusercontent.com/" + repo + "/" + revision + "/" + filePath;
 
