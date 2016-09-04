@@ -1,13 +1,6 @@
-<template name="api.1.3.6.call">
-    <div>
-        {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.call.html"}}
-        <div>
-          {{#markdown}}
-# call
+# apply
 
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/core.js#L63"}}
-
-This method wraps [`Meteor.call`](http://docs.meteor.com/#/full/meteor_call) method to run it's callback in a digestion
+This method wraps [`Meteor.apply`](http://docs.meteor.com/#/full/meteor_apply) method to run it's callback in a digestion
 cycle so angular will detect the changes and update the views accordingly.
 
 ### Arguments
@@ -29,8 +22,8 @@ cycle so angular will detect the changes and update the views accordingly.
         <td>Yes</td>
     </tr>
     <tr>
-        <td>arguments</td>
-        <td><a href="" class="label type-hint type-hint-array">Any</a></td>
+        <td>params</td>
+        <td><a href="" class="label type-hint type-hint-array">Array</a></td>
         <td><p>Optional arguments to send to method</p></td>
         <td>No</td>
     </tr>
@@ -48,7 +41,7 @@ cycle so angular will detect the changes and update the views accordingly.
     myModule.controller('MyCtrl', ['$scope', '$reactive', function($scope, $reactive) {
       $reactive(this).attach($scope);
 
-      this.call('add', 1, 2, (err, result) => {
+      this.apply('add', [1, 2], (err, result) => {
         this.result = result;
       });
     }]);
@@ -56,7 +49,3 @@ cycle so angular will detect the changes and update the views accordingly.
 > The example above will invoke the meteor method `add` with 1 and 2 as parameters. When the result arrives
 arrives from the server, the callback method will run and then `angular-meteor` will run a digestive cycle
 on the scope.
-          {{/markdown}}
-        </div>
-    </div>
-</template>

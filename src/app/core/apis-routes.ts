@@ -5,6 +5,7 @@ import {
 import {Route} from "@angular/router";
 import {ApiLoadResolve} from "./api-load-resolve";
 import {ApiPageComponent} from "./api-page.component";
+import * as _ from "lodash";
 
 export interface ApiRouteDataDefinition {
   isStaticApi: boolean;
@@ -61,7 +62,15 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
           return item.version === apiItem.alongWith;
         });
 
-        apiItem.files = apiItem.files.concat(alongApiItem.files);
+        let withoutDups = _.filter(alongApiItem.files, (item: StaticFileDefinition) => {
+          let found = apiItem.files.find((existsItem) => {
+            return existsItem.name === item.name;
+          });
+
+          return !found;
+        });
+
+        apiItem.files = apiItem.files.concat(withoutDups);
       }
 
       let redirectionUrl = "/";

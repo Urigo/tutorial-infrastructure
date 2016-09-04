@@ -1,9 +1,3 @@
-<template name="api.1.3.11.templates">
-    <div>
-        {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.11/api.templates.html"}}
-
-        <div>
-          {{#markdown}}
 # angular-templates
 
 Meteor package that compiles angular templates into the template cache.
@@ -28,7 +22,6 @@ angular.module('app', [
 ```
 
 ## $angularTemplatesSettings
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-templates/templates-handler.js#L46"}}
 
 This object contains general settings of the `angular-templates` module
 
@@ -56,7 +49,4 @@ Displaying a warning if template is missing.
       // Turn off displaying warnings inside console
       $angularTemplatesSettings.warning = false;
     }]);
-          {{/markdown}}
-        </div>
-    </div>
-</template>
+    

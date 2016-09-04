@@ -1,13 +1,4 @@
-<template name="api.1.3.11.subscribe">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.11/api.subscribe.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # subscribe
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/core.js#L32"}}
 
 This method provides the support for `Meteor.subscribe`.
 
@@ -124,9 +115,3 @@ The method returns exactly the same parameters as [Meteor.subscribe](http://docs
         subscriptionHandle); // Will include subscriptionId, ready() and stop()
 
     }]);
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

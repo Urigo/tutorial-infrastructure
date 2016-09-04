@@ -1,13 +1,4 @@
-<template name="api.1.3.6.get-collection-reactively">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.get-collection-reactively.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # getCollectionReactively
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/reactive.js#L51"}}
 
 This method is used to get a context collection variable and watch it reactively, so changes in this collection
 causes the dependents (autorun, helper functions and subscriptions) to run again.
@@ -85,9 +76,3 @@ This method returns the current value of the reactive collection variable.
 
       this.myUser.messages.push('message3'); // This will cause the helper to run again and update the view
     }]);
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

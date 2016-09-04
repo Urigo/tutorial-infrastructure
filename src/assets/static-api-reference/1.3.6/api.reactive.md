@@ -1,13 +1,4 @@
-<template name="api.1.3.6.reactive">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.reactive.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # $reactive
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/view-model.js#L56"}}
 
 A service that takes care of the reactivity of your Meteor data, and updates your AngularJS code.
 
@@ -181,9 +172,3 @@ And now we can improve the code of the previous example to this:
         });
       }
     }
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

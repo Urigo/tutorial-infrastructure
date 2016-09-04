@@ -1,13 +1,4 @@
-<template name="api.1.3.6.autorun">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.autorun.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # autorun
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/core.js#L18"}}
 
 This method is a wrapper of [Tracker.autorun](http://docs.meteor.com/#/full/tracker_autorun) and shares exactly the same API.
 
@@ -56,9 +47,4 @@ automatically when when it's context ($scope) is destroyed.
 
       this.myVar = 50; // This will cause the autorun function method to run again
     }]);
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>
+    

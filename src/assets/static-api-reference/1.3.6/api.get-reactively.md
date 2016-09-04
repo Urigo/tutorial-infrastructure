@@ -1,13 +1,4 @@
-<template name="api.1.3.6.get-reactively">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.get-reactively.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # getReactively
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/reactive.js#L43"}}
 
 Use this method to get a context variable and watch it reactively, so each change of this variable causes the dependents (autorun, helper functions and subscriptions) to run again.
 
@@ -84,9 +75,3 @@ This method returns the current value of the reactive variable.
 
       this.myUser.id = 29; // This will cause the helper to run again and update the view
     }]);
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

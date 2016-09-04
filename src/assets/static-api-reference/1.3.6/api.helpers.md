@@ -1,13 +1,4 @@
-<template name="api.1.3.6.helpers">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.6/api.helpers.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # helpers
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/reactive.js#L26"}}
 
 Use this method to define `Meteor` collections that will be reactive throughout the entire reactive context life.
 
@@ -78,8 +69,3 @@ This method returns the reactive context in order to provide the ability to chai
     }]);
 
 > In the following example, each change in `relevantId` variable, will trigger the helpers method again, and the objects returned in the cursor will be different.
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>
