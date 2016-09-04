@@ -1,11 +1,13 @@
 import {Component, OnInit, Injectable, DynamicComponentLoader, ViewContainerRef} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActivatedApi} from "./current-api";
+import {ApiExampleCodeHighlightDirective} from "./api-example-code-highligh.directive";
 
 function generateDynamicComponent(template = "Oops, API template is not available") {
   @Component({
     selector: "api-ref-container",
-    template
+    template,
+    directives: [ApiExampleCodeHighlightDirective]
   })
   class DynamicComponent {
   }

@@ -10,17 +10,21 @@ export const ANGULAR2_METEOR_API_REFERENCE : ApiDefinition = {
     {
       apiTitle: "MeteorObservable",
       filePath: "dist/minimongo-observable/meteor-observable.js"
+    },
+    {
+      apiTitle: "MongoObservable.Collection",
+      filePath: "dist/minimongo-observable/observable-collection.js"
     }
   ],
   versions: [
     {
       name: "latest",
-      revision: "11af5f48f00e16b0c9367743d20922753b799f41"
+      revision: "5fd5265f14cc01d2535f9b4d4bf950adb125af06"
     },
     {
       name: "0.6.0",
       revision: "0a59100961c6a7e01fee69f6f335cd901d735568",
-      exclude: ["MeteorObservable"]
+      exclude: ["MeteorObservable", "MongoObservable.Collection"]
     }
   ]
 };
