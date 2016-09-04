@@ -81,9 +81,16 @@
     background-color: #f9f9f9;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
+    column-width: 210px !important;
+    column-count: 1 !important;
   }
 }
 
+tutorials-versions {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;

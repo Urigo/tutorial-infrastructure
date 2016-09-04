@@ -28,6 +28,8 @@ At the moment, while developing, try access:
 - [x] Implement legacy API ref infra
 - [x] Migrate all tutorials
 - [x] Migrate angular2-meteor api docs
+- [x] Add API versions support
+- [x] Add API list component
 - [ ] Migrate angular1-meteor api docs
 - [ ] Implement "Improve this..."
 - [ ] Implement Video
