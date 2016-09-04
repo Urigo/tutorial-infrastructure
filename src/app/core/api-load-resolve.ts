@@ -19,8 +19,6 @@ export class ApiLoadResolve implements Resolve<any> {
 
     if (routeData.isStaticApi) {
       let apiFile = <StaticFileDefinition>routeData.apiFile;
-      let apiDefinition = <ApiStaticDefinitionObject>routeData.apiDefinition;
-      let apiVersion = <string>routeData.apiVersion;
 
       return this.http
         .get(apiFile.markdownFilePath)

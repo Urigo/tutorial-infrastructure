@@ -1,10 +1,3 @@
-<template name="api.1.3.0.reactive">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.0/api.reactive.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # $reactive
 
 A service that takes care of the reactivity of your Meteor data, and updates your AngularJS code.
@@ -16,6 +9,8 @@ This service wraps context (can be used with `this` or `$scope`) - so you can us
 * Use it with `this` when working with AngularJS 1.x.x with components code-style.
 
 * Use it with `this` when working with AngularJS 2 (or angular2now) with components.
+
+-----
 
 ## Arguments
 
@@ -32,9 +27,9 @@ This service wraps context (can be used with `this` or `$scope`) - so you can us
   <tr>
     <td><strong>context</strong></td>
     <td>
-      Context (Scope or controller's "this" context)
+      <a href="" class="label type-hint type-hint-object">Object</a>
     </td>
-    <td>Context to set as reactive - this context will be used to hold the helpers lcoals.</td>
+    <td>Context to set as reactive - this context will be used to hold the helpers locals and handle subscriptions, this method accepts controller's `this` context, or `$scope`.</td>
     <td>Yes</td>
   </tr>
   </tbody>
@@ -42,8 +37,9 @@ This service wraps context (can be used with `this` or `$scope`) - so you can us
 
 ## Return Value
 
-This service returns an instance of [ReactiveContext](/api/1.3.0/reactive-context) in order
-to provide the ability to create subscriptions and helpers.
+This service return an instance of [ReactiveContext](/api/1.3.0/reactive-context) in order to provide ability to create subscriptions and helpers.
+
+------
 
 ## Examples
 
@@ -55,18 +51,16 @@ Using AngularJS 1.x.x and old-fashion `ng-controller`, we need to define the con
     var myModule = angular.module('myApp', ['angular-meteor']);
 
     myModule.controller('MyCtrl', ['$scope', function($scope) {
-        $scope.age = 10;
+      $scope.age = 10;
 
-        $scope.subscribe('users', () => [
-            $scope.getReactivley('age')
-        ]);
+      $scope.subscribe('users', () => [
+        $scope.getReactively('age')
+      ]);
 
-        $scope.helpers({
-            users: () => Users.find({})
-        });
+      $scope.helpers({
+        users: () => Users.find({})
+      });
     }]);
-
-> Note that if your use Angular 1.x.x and use `ng-controller` with templates, you won't be able to use the new 1.3 API!
 
 And our view will look like that:
 
@@ -87,17 +81,17 @@ Using AngularJS 1.x.x and `controllerAs`, we need to define the controller and u
     var myModule = angular.module('myApp', ['angular-meteor']);
 
     myModule.controller('MyCtrl', ['$scope', '$reactive', function($scope, $reactive) {
-        let reactiveContext = $reactive(this).attach($scope);
+      $reactive(this).attach($scope);
 
-        this.age = 10;
+      this.age = 10;
 
-        reactiveContext.subscribe('users', () => [
-            this.age
-        ]);
+      this.subscribe('users', () => [
+        this.age
+      ]);
 
-        reactiveContext.helpers({
-            users: () => Users.find({});
-        });
+      this.helpers({
+        users: () => Users.find({});
+      });
     }]);
 
 And now the HTML will look like that:
@@ -114,7 +108,7 @@ And now the HTML will look like that:
 
 ### Usage example with angular2now and @Component
 
-We can even make the code look better and use [https://github.com/pbastowski/angular2-now](link), so we define the controller as class, and add annotations to defined our component:
+We can even make the code look better and use [Angular2Now](https://github.com/pbastowski/angular2-now), so we define the controller as class, and add annotations to defined our component:
 
     let {Component, Inject, View} = angular2now;
 
@@ -124,18 +118,18 @@ We can even make the code look better and use [https://github.com/pbastowski/ang
     @View({templateUrl: 'users-list.html'})
     @Inject(['$scope', '$reactive'])
     class usersList {
-        constructor($scope, $reactive) {
-            let reactiveContext = $reactive(this).attach($scope);
-            this.age = 10;
+      constructor($scope, $reactive) {
+        $reactive(this).attach($scope);
+        this.age = 10;
 
-            reactiveContext.subscribe('users', () => [
-                this.age
-            ]);
+        this.subscribe('users', () => [
+          this.age
+        ]);
 
-            reactiveContext.helpers({
-                users: () => Users.find({})
-            });
-        }
+        this.helpers({
+          users: () => Users.find({});
+        });
+      }
     }
 
 And our view (inside the `users-list.html` file) will look like that:
@@ -165,22 +159,16 @@ And now we can improve the code of the previous example to this:
     @Component({selector: 'users-list'})
     @View({templateUrl: 'users-list.html'})
     class usersList extends ReactiveComponent {
-        constructor() {
-            super(arguments);
-            this.age = 10;
+      constructor() {
+        super(arguments);
+        this.age = 10;
 
-            this.subscribe('users', () => [
-                this.age
-            ]);
+        this.subscribe('users', () => [
+          this.age
+        ]);
 
-            this.helpers({
-                users: () => Users.find({});
-            });
-        }
+        this.helpers({
+          users: () => Users.find({});
+        });
+      }
     }
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

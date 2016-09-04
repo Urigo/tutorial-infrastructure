@@ -1,13 +1,4 @@
-<template name="api.1.3.1.subscribe">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.1/api.subscribe.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # subscribe
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/angular-meteor-reactive-context.js#L199"}}
 
 The `subscribe` method is part of the `ReactiveContext`, and available on every `context` and `$scope`.
 
@@ -119,9 +110,3 @@ The method returns exactly the same parameters as [Meteor.subscribe](http://docs
         subscriptionHandle); // Will include subscriptionId, ready() and stop()
 
     }]);
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

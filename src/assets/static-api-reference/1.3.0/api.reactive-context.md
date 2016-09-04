@@ -1,10 +1,3 @@
-<template name="api.1.3.0.reactive-context">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.0/api.reactive-context.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # ReactiveContext
 
 ReactiveContext is a class that manages the reactivity of a context, and manages the subscriptions and helpers.
@@ -277,9 +270,3 @@ And this is our simple publication in the server side:
         return Users.find({ name: userName});
       });
     }
-
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

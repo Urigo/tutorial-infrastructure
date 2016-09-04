@@ -27,6 +27,7 @@ export interface ApiStaticDefinitionObject {
   version: string;
   files?: Array<StaticFileDefinition>
   ref?: string;
+  alongWith?: string;
 }
 
 export interface ApiStaticDefinition {

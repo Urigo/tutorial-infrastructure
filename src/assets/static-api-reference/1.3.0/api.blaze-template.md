@@ -1,10 +1,3 @@
-<template name="api.1.3.0.blaze-template">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.0/api.blaze-template.html"}}
-
-    <do-nothing>
-        {{#markdown}}
-
 # blaze-template directive
 
 Included with the `urigo:angular-blaze-template` [package](https://github.com/Urigo/angular-blaze-template)
@@ -140,8 +133,3 @@ To pass parameters to a `blaze-template` directive:
 
 <blaze-template name="quickFormWithParameters"></blaze-template>
 ```
-        {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

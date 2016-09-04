@@ -4,12 +4,76 @@ export const ANGULAR1_METEOR_API_REFERENCE : ApiStaticDefinition = {
   apiRepository: "Urigo/angular2-meteor",
   apis: [
     {
-      version: "1.2.0",
-      ref: "1.2.2"
+      version: "1.3.2",
+      files: [
+        {
+          name: "$auth",
+          urlName: "auth",
+          markdownFilePath: "/assets/static-api-reference/1.3.2/api.auth.md"
+        }
+      ],
+      alongWith: "1.3.1"
     },
     {
-      version: "1.2.1",
-      ref: "1.2.2"
+      version: "1.3.1",
+      files: [
+        {
+          name: "helpers",
+          urlName: "helpers",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.helpers.md"
+        },
+        {
+          name: "subscribe",
+          urlName: "subscribe",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.subscribe.md"
+        },
+        {
+          name: "autorun",
+          urlName: "autorun",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.autorun.md"
+        },
+        {
+          name: "getReactively",
+          urlName: "get-reactively",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.get-reactively.md"
+        },
+        {
+          name: "ReactiveContext",
+          urlName: "reactive-context",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.reactive-context.md"
+        },
+        {
+          name: "$reactive",
+          urlName: "reactive",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.reactive.md"
+        },
+        {
+          name: "blaze-template directive",
+          urlName: "blaze-template",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.blaze-template.md"
+        },
+        {
+          name: "File Extensions",
+          urlName: "ngFileExtension",
+          markdownFilePath: "/assets/static-api-reference/1.3.1/api.ngFileExtension.md"
+        }
+      ]
+    },
+    {
+      version: "1.3.0",
+      files: [
+        {
+          name: "$reactive",
+          urlName: "reactive",
+          markdownFilePath: "/assets/static-api-reference/1.3.0/api.reactive.md"
+        },
+        {
+          name: "ReactiveContext",
+          urlName: "reactive-context",
+          markdownFilePath: "/assets/static-api-reference/1.3.0/api.reactive-context.md"
+        }
+      ],
+      alongWith: "1.2.2"
     },
     {
       version: "1.2.2",
@@ -85,6 +149,14 @@ export const ANGULAR1_METEOR_API_REFERENCE : ApiStaticDefinition = {
           markdownFilePath: "/assets/static-api-reference/1.2.2/api.ngFileExtension.md"
         }
       ]
+    },
+    {
+      version: "1.2.1",
+      ref: "1.2.2"
+    },
+    {
+      version: "1.2.0",
+      ref: "1.2.2"
     }
   ]
 };

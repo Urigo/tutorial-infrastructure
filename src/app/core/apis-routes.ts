@@ -56,8 +56,22 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
         apiItem.files = refApiItem.files;
       }
 
-      apiItem.files.forEach((apiFile: StaticFileDefinition) => {
+      if (apiItem.alongWith && apiItem.alongWith != "") {
+        let alongApiItem = apiDefinition.apis.find((item) => {
+          return item.version === apiItem.alongWith;
+        });
+
+        apiItem.files = apiItem.files.concat(alongApiItem.files);
+      }
+
+      let redirectionUrl = "/";
+
+      apiItem.files.forEach((apiFile: StaticFileDefinition, index) => {
         let apiUrl = apiVersion + "/" + apiFile.urlName;
+
+        if (index === 0) {
+          redirectionUrl = apiUrl;
+        }
 
         routes.push(<Route>{
           path: apiUrl,
@@ -72,6 +86,11 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
             apiFile: apiFile
           }
         })
+      });
+
+      routes.push(<Route>{
+        path: apiVersion,
+        redirectTo: redirectionUrl
       });
     })
   }

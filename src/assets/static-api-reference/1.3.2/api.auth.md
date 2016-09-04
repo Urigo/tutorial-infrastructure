@@ -1,13 +1,4 @@
-<template name="api.1.3.2.auth">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.2/api.auth.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # $auth
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-auth/modules/auth.js"}}
 
 `$auth` service is a part of `angular-meteor-auth` package, and it located inside `angular-meteor.auth` AngularJS module.
 
@@ -139,8 +130,3 @@ It's value is `true` if a login method (such as `Meteor.loginWithPassword`, `Met
     <div ng-show="$auth.currentUser">I am visible only for logged in users!</div>
     <div ng-hide="$auth.currentUser">I am visible only for guests!</div>
 
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

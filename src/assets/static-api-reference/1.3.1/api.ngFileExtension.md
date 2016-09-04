@@ -1,15 +1,6 @@
-<template name="api.1.3.0.ngFileExtension">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.0/api.ngFileExtension.html"}}
-
-    <div>
-      {{#markdown}}
-
 # .ng.js and .ng.html files
 
-----
-
-> Since version 1.2.0 and above, the default behaviour with is using Angular compilation for regular `html` and `js` files.
+> Since version 1.2.0 and above, the default behaviour which is using Angular compilation for regular `html` and `js` files.
 
 > You just need to `meteor remove blaze-html-templates ecmascript`
 
@@ -38,8 +29,4 @@ There is a very popular Angular tool called [ng-annotate](https://github.com/olo
 ## AngularJS templates: .ng.html
 
 Both [Blaze](https://www.meteor.com/blaze) (Meteor's templating system) and AngularJS use the same braces or 'double curley brackets' syntax for expressions. That causes issues when you're working with AngularJS in Meteor: Blaze will compile and override your AngularJS expression. To disable that behaviour, you can use the `.ng.html` file extension.
-      {{/markdown}}
-    </div>
 
-  </div>
-</template>

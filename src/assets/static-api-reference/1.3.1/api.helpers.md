@@ -1,13 +1,4 @@
-<template name="api.1.3.1.helpers">
-  <div>
-    {{> improveBtn href="https://github.com/Urigo/angular-meteor-docs/edit/master/client/content/api-reference/angular1-meteor/1.3.1/api.helpers.html"}}
-
-    <do-nothing>
-      {{#markdown}}
-
 # helpers
-
-{{> srcRef root="angular-meteor/blob/master/packages" src="angular-meteor-data/modules/angular-meteor-reactive-context.js#L98"}}
 
 The `helpers` method is part of the [ReactiveContext](/api/1.3.1/reactive-context), and available on every `context` and `$scope`.
 
@@ -77,8 +68,3 @@ This method returns `this`, which the the reactive context, in order to provide 
     }]);
 
 > In the following example, each change in `relevantId` variable, will trigger the helpers method again, and the objects returned in the cursor will be different.
-      {{/markdown}}
-    </do-nothing>
-
-  </div>
-</template>

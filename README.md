@@ -24,5 +24,13 @@ At the moment, while developing, try access:
 - [x] Implement Angular Universal compiler (in order to create static HTML files, [use this](https://github.com/angular/universal-starter/blob/master/webpack.config.js))
 - [x] Try to understand how to build the server only without client load (Universal) = [ISSUE](https://github.com/angular/universal/issues/509) 
 - [x] Add automatic HTML files creation for the defined routes of the tutorial.
+- [x] Implement API ref infra with JSDoc
+- [x] Implement legacy API ref infra
+- [x] Migrate all tutorials
+- [x] Migrate angular2-meteor api docs
+- [ ] Migrate angular1-meteor api docs
+- [ ] Implement "Improve this..."
+- [ ] Implement Video
+- [ ] Implement Code diff button
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.   
 - [ ] Prepare for publish as NPM package
