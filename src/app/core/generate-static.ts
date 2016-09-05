@@ -35,8 +35,8 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
   }
 
   rimraf.sync(outputLocation);
-  copydir.sync(assetsDirectory, path.join(outputLocation, path.basename(assetsDirectory)), function(stat, filepath, filename) {
-    if(stat === 'file' && (path.extname(filepath) === '.md' || path.extname(filepath) === '.patch')) {
+  copydir.sync(assetsDirectory, path.join(outputLocation, path.basename(assetsDirectory)), function (stat, filepath, filename) {
+    if (stat === 'file' && (path.extname(filepath) === '.md' || path.extname(filepath) === '.patch')) {
       return false;
     }
 
@@ -45,7 +45,6 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
 
   let fullBaseUrl = "http://" + baseHost + ":" + port;
   let urlsToLoad = ["/"];
-  let promises = [];
 
   let handleRoutesArray = (arr, base = "/") => {
     arr.forEach((route: any) => {
@@ -61,12 +60,41 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
 
   handleRoutesArray(routesArray);
 
-  urlsToLoad.forEach((url) => {
-    console.log("Generating static file for: " + url);
-    promises.push(generateStaticForUrl(fullBaseUrl, url));
+  let r;
+  let donePromise = new Promise((resolve) => {
+    r = resolve;
   });
 
-  return Promise
+  function runNext(arr, i = 0) {
+    if (arr[i]) {
+      generateStaticForUrl(fullBaseUrl, arr[i]).then((result: any) => {
+        let filePath = result.url;
+
+        if (filePath === "/") {
+          filePath = "index";
+        }
+
+        filePath = filePath + ".html";
+        let fullFilePath = path.join(outputLocation, filePath);
+        mkdirp.sync(path.dirname(fullFilePath));
+        fs.writeFileSync(fullFilePath, result.html);
+        console.log("Done writing to file:" + fullFilePath);
+
+        runNext(arr, i+1);
+      });
+    }
+    else {
+      r();
+    }
+
+    return donePromise;
+  }
+
+  runNext(urlsToLoad).then(() => {
+    console.log("Done generating " + urlsToLoad.length + " static HTML pages!");
+  });
+
+  /*return Promise
     .all(promises)
     .then((allResults) => {
       _.forEach(allResults, (result) => {
@@ -85,5 +113,5 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
     })
     .catch((e) => {
       console.log(e);
-    });
+    });*/
 }

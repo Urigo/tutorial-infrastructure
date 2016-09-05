@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-pil-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-pil-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-pil-1] a[_ngcontent-pil-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-pil-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-pil-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-pil-1] .dropdown-content[_ngcontent-pil-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-pil-1]:hover .dropdown-content[_ngcontent-pil-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-pil-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative; }
+  .side-nav[_ngcontent-pil-6] ul[_ngcontent-pil-6] {
+    margin-top: 8px; }
+
+.api-content[_ngcontent-pil-6] {
+  padding: 20px; }
+
+.api-container[_ngcontent-pil-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-pil-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-pil-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-pil-6] {
+  float: left; }
+
+.l-right[_ngcontent-pil-6] {
+  float: right; }
+
+.l-relative[_ngcontent-pil-6], .docs-content[_ngcontent-pil-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-pil-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-pil-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-pil-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-pil-6] {
+  padding-top: 64px; }
+
+.dropdown[_ngcontent-pil-6] {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 100%; }
+  .dropdown[_ngcontent-pil-6] button[_ngcontent-pil-6] {
+    width: 90%; }
+  .dropdown[_ngcontent-pil-6] .dropdown-content[_ngcontent-pil-6] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    -moz-column-width: 210px !important;
+         column-width: 210px !important;
+    -moz-column-count: 1 !important;
+         column-count: 1 !important; }
+
+tutorials-versions[_ngcontent-pil-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.dropdown[_ngcontent-pil-6]:hover .dropdown-content[_ngcontent-pil-6] {
+  display: block; }</style><style>.tutorial-version[_ngcontent-pil-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-pil-7] {
+            color: #b3e5fc !important;
+        }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-pil-1=""><md-toolbar _ngcontent-pil-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-pil-1="" href="/"><img _ngcontent-pil-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-pil-1="" class="tutorials-dropdown">
+        <button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-pil-1="" class="dropdown-content">
+            <steps-list _ngcontent-pil-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-pil-1="" href="/angular2/"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-pil-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-pil-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-pil-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-pil-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-pil-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-pil-1="" href="/manifesto"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-pil-1="" href="/about"><button _ngcontent-pil-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-pil-1=""></router-outlet><api-container _nghost-pil-6=""><div _ngcontent-pil-6="" class="api-container">
+  <nav _ngcontent-pil-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+    <tutorials-versions _ngcontent-pil-6="" _nghost-pil-7=""><!--template bindings={}--><a _ngcontent-pil-7="" md-raised-button="" class="tutorial-version md-primary active" className="tutorial-version md-primary active" href="/api/angular-meteor/1.3.11/">Angular 1</a><a _ngcontent-pil-7="" md-raised-button="" class="tutorial-version md-primary " className="tutorial-version md-primary " href="/api/angular2-meteor/latest/MeteorComponent">Angular 2</a></tutorials-versions>
+    <div _ngcontent-pil-6="" class="dropdown">
+      <button _ngcontent-pil-6="" class="md-primary" md-button="">API Version: 1.3.2</button>
+      <div _ngcontent-pil-6="" class="dropdown-content">
+        <api-versions-list _ngcontent-pil-6=""><!--template bindings={}--><ul class="apis-versions-list">
+    <!--template bindings={}--><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.3.11/auth">1.3.11</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.3.6/auth">1.3.6</a>
+    </li><li class="api-version-list-item active-step" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.3.2/auth">1.3.2</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.3.1/auth">1.3.1</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.3.0/auth">1.3.0</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.2.2/auth">1.2.2</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.2.1/auth">1.2.1</a>
+    </li><li class="api-version-list-item" routerLinkActive="active-step">
+        <a class="version-link" href="/api/angular-meteor/1.2.0/auth">1.2.0</a>
+    </li>
+</ul></api-versions-list>
+      </div>
+    </div>
+    <api-list-items _ngcontent-pil-6=""><!--template bindings={}--><ul class="apis-list">
+    <!--template bindings={}--><li class="api-list-item active-step" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/auth">$auth</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/helpers">helpers</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/subscribe">subscribe</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/autorun">autorun</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/get-reactively">getReactively</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/reactive-context">ReactiveContext</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/reactive">$reactive</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/blaze-template">blaze-template directive</a>
+    </li><li class="api-list-item" routerLinkActive="active-step">
+        <a class="api-item-link" href="/api/angular-meteor/1.3.2/ngFileExtension">File Extensions</a>
+    </li>
+</ul></api-list-items>
+  </nav>
+  <div _ngcontent-pil-6="" class="api-content">
+    <router-outlet _ngcontent-pil-6=""></router-outlet><api-page><div class="api-container"></div></api-page><api-ref-container><h1 id="-auth">$auth</h1>
+<p><code>$auth</code> service is a part of <code>angular-meteor-auth</code> package, and it located inside <code>angular-meteor.auth</code> AngularJS module.</p>
+<p>This service provides the functionality for authentication for your app.</p>
+<p><code>$auth</code> wraps Meteor's API for ease of use with AngularJS applications, and also provides the ability to access Meteor's Accounts package from the UI.</p>
+<p>In order to use this service, you will need to add the package to your project and add it's module as a dependency to your AngularJS app:</p>
+<pre><code>meteor add angular-meteor-auth
+
+angular.module('myApp', [
+   'angular-meteor',
+   'angular-meteor.auth'
+]);
+</code></pre><h2 id="api-reference">API Reference</h2>
+<h3 id="waitforuser-">waitForUser()</h3>
+<p><code>waitForUser</code> is a method of <code>$auth</code> which waits for any user to log in.</p>
+<p>It is a wrapper for <code>Meteor.loggingIn</code> method, but it's return value is a promise which can be only resolved, when any user is done with the login process.</p>
+<p>It is useful when you want to run part of your code only after the user logs in.</p>
+<h4 id="usage-example">Usage example</h4>
+<pre><code>angular.module('myApp').directive('myComponent', function() {
+  return {
+    link: function($auth) {
+      $auth.waitForUser().then(() =&gt; {
+        // Login is done!
+      });
+    }
+  };
+});
+</code></pre><h3 id="requireuser-">requireUser()</h3>
+<p><code>requireUser</code> provides a useful functionality for performing a one-time login check, with a promise.</p>
+<p>It's very useful for <code>angular-ui-router</code>'s <a href="https://github.com/angular-ui/ui-router/wiki#resolve">resolve</a> functionality.</p>
+<p>It's return value is a promise, which resolves when the login process is done, and the <code>Meteor.user()</code> is valid and not <code>null</code>.</p>
+<h4 id="usage-example-with-angular-ui-router-">Usage example with angular-ui-router:</h4>
+<pre><code>$stateProvider
+    .state({
+        template: '&lt;my-component&gt;&lt;/my-component&gt;',
+        resolve: {
+          user: ($auth) =&gt; {
+            return $auth.requireUser();
+          }
+        }
+    });
+</code></pre><h3 id="requirevaliduser-validationmethod-">requireValidUser(validationMethod)</h3>
+<p><code>requireValidUser</code> uses <code>requireUser</code> method, but adding another custom check that provided by the user.</p>
+<p>It's return value is a promise, which resolves if the user is logged in and the custom validation method returns <code>true</code>.</p>
+<p>If the user validation message returns anything other than <code>true</code>, the promise will rejected and the promise failure argument will be the return value of the validation message.</p>
+<h4 id="usage-example-with-angular-ui-router-">Usage example with angular-ui-router:</h4>
+<p>In this example, we will allow only logged in users, with <code>firstName</code> equals to <code>Uri</code>.</p>
+<pre><code>$stateProvider
+  .state({
+    template: '&lt;my-component&gt;&lt;/my-component&gt;',
+    resolve: {
+      user: ($auth) =&gt; {
+        return $auth.requireValidUser((user) =&gt; {
+          if (user.firstName === 'Uri') {
+            return true;
+          }
+          else {
+            return 'You are not Uri!';
+          }
+        }
+      }
+    }
+  });
+</code></pre><p><code>$auth</code> service also provides two useful properties that are useful in views:</p>
+<h3 id="currentuser">currentUser</h3>
+<p><code>$auth.currentUser</code> is a property of the <code>$auth</code> service, which contain the current logged in user in every time.</p>
+<p>It automatically changes when the user logs in or logs out, and it can be used from the view or the AngularJS controller/components.</p>
+<p>It's very useful for hiding / showing parts of the view depending on the login status.</p>
+<h4 id="usage-example-inside-a-view">Usage example inside a view</h4>
+<pre><code>&lt;div ng-show="$auth.currentUser"&gt;I am visible only for logged in users!&lt;/div&gt;
+&lt;div ng-hide="$auth.currentUser"&gt;I am visible only for guests!&lt;/div&gt;
+</code></pre><h4 id="usage-example-inside-a-component">Usage example inside a component</h4>
+<pre><code>angular.module('myApp').directive('myComponent', function() {
+  return {
+    link: function($auth) {
+      $auth.waitForUser().then(() =&gt; {
+        let currentUser = $auth.currentUser;
+      });
+    }
+  };
+});
+</code></pre><h3 id="loggingin">loggingIn</h3>
+<p><code>$auth.loggingIn</code> is a property of the <code>$auth</code> service, which contain the current login status.</p>
+<p>It's a wrapper for <a href="http://docs.meteor.com/#/full/meteor_loggingin">Meteor.loggingIn</a> method.</p>
+<p>It's value is <code>true</code> if a login method (such as <code>Meteor.loginWithPassword</code>, <code>Meteor.loginWithFacebook</code>, or <code>Accounts.createUser</code>) is currently in progress.</p>
+<blockquote>
+<p>You can use this property in your view in order to display a spinner or a "Logging you in..." message!</p>
+</blockquote>
+<h4 id="usage-example-inside-a-view">Usage example inside a view</h4>
+<pre><code>&lt;div ng-show="$auth.loggingIn"&gt;Logging in...&lt;/div&gt;
+&lt;div ng-show="$auth.currentUser"&gt;I am visible only for logged in users!&lt;/div&gt;
+&lt;div ng-hide="$auth.currentUser"&gt;I am visible only for guests!&lt;/div&gt;
+</code></pre></api-ref-container>
+  </div>
+</div></api-container></app>
+
+
+</body></html>

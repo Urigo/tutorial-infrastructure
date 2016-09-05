@@ -1,0 +1,1092 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-wwb-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-wwb-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-wwb-1] a[_ngcontent-wwb-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-wwb-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-wwb-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-wwb-1] .dropdown-content[_ngcontent-wwb-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-wwb-1]:hover .dropdown-content[_ngcontent-wwb-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-wwb-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-wwb-6] ul[_ngcontent-wwb-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-wwb-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-wwb-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-wwb-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-wwb-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-wwb-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-wwb-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-wwb-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-wwb-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-wwb-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-wwb-6] {
+  float: left; }
+
+.l-right[_ngcontent-wwb-6] {
+  float: right; }
+
+.l-relative[_ngcontent-wwb-6], .docs-content[_ngcontent-wwb-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-wwb-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-wwb-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-wwb-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-wwb-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-wwb-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-wwb-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-wwb-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-wwb-12] .title-panel[_ngcontent-wwb-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-wwb-12] .title-panel[_ngcontent-wwb-12] .github-commit-link[_ngcontent-wwb-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] .scroll-container[_ngcontent-wwb-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] pre[_ngcontent-wwb-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] pre.line-added[_ngcontent-wwb-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] pre.line-removed[_ngcontent-wwb-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] .line-content[_ngcontent-wwb-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] .line-content[_ngcontent-wwb-12] .hljs-comment[_ngcontent-wwb-12] {
+        color: #777; }
+    .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] .line-numbers[_ngcontent-wwb-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-wwb-12] .code-container[_ngcontent-wwb-12] .line-numbers[_ngcontent-wwb-12] .line-number[_ngcontent-wwb-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-wwb-1=""><md-toolbar _ngcontent-wwb-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-wwb-1="" href="/"><img _ngcontent-wwb-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-wwb-1="" class="tutorials-dropdown">
+        <button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-wwb-1="" class="dropdown-content">
+            <steps-list _ngcontent-wwb-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-wwb-1="" href="/angular2/"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-wwb-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-wwb-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-wwb-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-wwb-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-wwb-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-wwb-1="" href="/manifesto"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-wwb-1="" href="/about"><button _ngcontent-wwb-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-wwb-1=""></router-outlet><tutorial _nghost-wwb-6=""><div _ngcontent-wwb-6="" class="tutorials-container">
+    <nav _ngcontent-wwb-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-wwb-6="" _nghost-wwb-7=""><!--template bindings={}--></tutorials-versions>
+        <steps-list _ngcontent-wwb-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/bootstrapping">1. Bootstrapping</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/layout">2. Layout, coding style &amp; structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/realtime-meteor-server">3. Realtime Meteor server</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/meteor-server-methods">4. Chat view and send messages</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/authentication">5. Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/modify-chats">6. Create and remove chats</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/privacy">7. Privacy</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/user-profile-picture">8. User profile picture</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/image-upload">9. Send image messages</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/meteor/summary">10. Summary</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-wwb-6="" class="top-navigation">
+        <span _ngcontent-wwb-6="" class="tutorial-title" stepName="">Authentication</span>
+        <div _ngcontent-wwb-6="" class="right-buttons">
+            <a _ngcontent-wwb-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/whatsapp/meteor/meteor-server-methods">Previous</a>
+            <a _ngcontent-wwb-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/DAB0mB/angular-meteor-whatsapp/compare/step_03...step_04">Code Diff</a>
+            <a _ngcontent-wwb-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/whatsapp/meteor/modify-chats">Next</a>
+            <a _ngcontent-wwb-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/whatsapp/meteor/authentication.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-wwb-6="" class="tutorial-content">
+        <router-outlet _ngcontent-wwb-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>On this step we will authenticate and identify users in our app.</p>
+
+<p>Before we go ahead and start extending our app, we will add few packages which will make our lives a bit less complex when it comes to authentication and users management.</p>
+
+<p>First we will add a <code ngNonBindable="">Meteor</code> package called <code ngNonBindable="">accounts-phone</code> which gives us the ability to verify a user using an SMS code:</p>
+
+<pre><code ngNonBindable="">$ meteor add okland:accounts-phone</code></pre>
+
+<p>And second, we will add <code ngNonBindable="">angular-meteor-auth</code> which provides us with authentication related functions:</p>
+
+<pre><code ngNonBindable="">$ meteor npm install angular-meteor-auth</code></pre>
+
+<p>Of course, don't forget to load the relevant modules:</p>
+
+<p><diffbox step="4.3" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.3</span> <span _ngcontent-wwb-12="" class="commit-summary">Load angular-meteor-auth module</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/3855aab11b76959ffa2f7d9af379d6e6817d7dd2">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-comment">// Libs</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-animate'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-meteor-auth'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-moment'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-sanitize'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-ui-router'</span>;</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-comment">// App</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">Angular.module(App, [</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  <span class="hljs-string">'angular-meteor'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-string">'angular-meteor.auth'</span>,</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  <span class="hljs-string">'angularMoment'</span>,</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  <span class="hljs-string">'ionic'</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">]);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>In order to make the SMS verification work we will need to create a file located in <code ngNonBindable="">server/sms.js</code> with the following contents:</p>
+
+<p><diffbox step="4.4" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.4</span> <span _ngcontent-wwb-12="" class="commit-summary">Add SMS configuration</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/7441b6ce026f6c006a54755c977b8553ad98e110">server/sms.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Accounts } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/accounts-base'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">if</span> (Meteor.settings &amp;&amp; Meteor.settings.ACCOUNTS_PHONE) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  Accounts._options.adminPhoneNumbers = Meteor.settings.ACCOUNTS_PHONE.ADMIN_NUMBERS;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  Accounts._options.phoneVerificationMasterCode = Meteor.settings.ACCOUNTS_PHONE.MASTER_CODE;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>If you would like to test the verification with a real phone number, <code ngNonBindable="">accouts-phone</code> provides an easy access for <a href="https://www.twilio.com/">twilio's API</a>, for more information see <a href="https://github.com/okland/accounts-phone">accounts-phone's repo</a>.</p>
+
+<p>For debugging purposes if you'd like to add admin phone numbers and mater verification codes which will always pass the verification stage, you may add a <code ngNonBindable="">settings.json</code> file at the root folder with the following fields:</p>
+
+<pre><code ngNonBindable="">{
+  "ACCOUNTS_PHONE": {
+    "ADMIN_NUMBERS": ["123456789", "987654321"],
+    "MASTER_CODE": "1234"
+  }
+}</code></pre>
+
+<p>Now let's create the same flow of <code ngNonBindable="">Whatsapp</code> for authentication: first we need to ask for the user's phone number, verify it with an SMS message and then ask the user to pick his name.</p>
+
+<p>So these flows are created by 3 views: login, confirmation and profile.</p>
+
+<p>Let's add these states, each with HTML template and controller:</p>
+
+<p><diffbox step="4.5" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.5</span> <span _ngcontent-wwb-12="" class="commit-summary">Create auth route states</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/6c6dd39b9627bd9057e9bf3054fef61234c0eb88">client/scripts/routes.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre><pre _ngcontent-wwb-12="" class="line-number">33</pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre><pre _ngcontent-wwb-12="" class="line-number">41</pre><pre _ngcontent-wwb-12="" class="line-number">42</pre><pre _ngcontent-wwb-12="" class="line-number">43</pre><pre _ngcontent-wwb-12="" class="line-number">44</pre><pre _ngcontent-wwb-12="" class="line-number">45</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context">            controller: <span class="hljs-string">'ChatCtrl as chat'</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">          }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      })</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      .state(<span class="hljs-string">'login'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        url: <span class="hljs-string">'/login'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        templateUrl: <span class="hljs-string">'client/templates/login.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        controller: <span class="hljs-string">'LoginCtrl as logger'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      })</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      .state(<span class="hljs-string">'confirmation'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        url: <span class="hljs-string">'/confirmation/:phone'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        templateUrl: <span class="hljs-string">'client/templates/confirmation.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        controller: <span class="hljs-string">'ConfirmationCtrl as confirmation'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      })</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      .state(<span class="hljs-string">'profile'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        url: <span class="hljs-string">'/profile'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        templateUrl: <span class="hljs-string">'client/templates/profile.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        controller: <span class="hljs-string">'ProfileCtrl as profile'</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$urlRouterProvider.otherwise(<span class="hljs-string">'tab/chats'</span>);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We will now add the view of login state which includes an input and a save button and later we will add a modal dialog to verify the user's phone:</p>
+
+<p><diffbox step="4.6" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.6</span> <span _ngcontent-wwb-12="" class="commit-summary">Add login view</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/6c82fd9938956845e34013fe57b34d482d41ab5a">client/templates/login.html</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-view</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Your phone number"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-nav-buttons</span> <span class="hljs-attr">side</span>=<span class="hljs-string">"right"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"logger.login()"</span> <span class="hljs-attr">ng-disabled</span>=<span class="hljs-string">"!logger.phone || logger.phone.length === 0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-positive"</span>&gt;</span>Done<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-nav-buttons</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"login"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center instructions"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      Please confirm your country code and enter your phone number</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item item-input"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ng-model</span>=<span class="hljs-string">"logger.phone"</span> <span class="hljs-attr">on-return</span>=<span class="hljs-string">"logger.login()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Your phone number"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And for the controller the logic is simple, we ask the user to check again his phone number, and then we will use <code ngNonBindable="">Accounts</code> API in order to ask for SMS verification:</p>
+
+<p><diffbox step="4.7" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.7</span> <span _ngcontent-wwb-12="" class="commit-summary">Add login controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/52c04289311cd0a9ebc7c2474074b9f5a5ba331c">client/scripts/controllers/login.controller.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre><pre _ngcontent-wwb-12="" class="line-number">33</pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre><pre _ngcontent-wwb-12="" class="line-number">41</pre><pre _ngcontent-wwb-12="" class="line-number">42</pre><pre _ngcontent-wwb-12="" class="line-number">43</pre><pre _ngcontent-wwb-12="" class="line-number">44</pre><pre _ngcontent-wwb-12="" class="line-number">45</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { _ } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/underscore'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Accounts } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/accounts-base'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  login() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (_.isEmpty(<span class="hljs-keyword">this</span>.phone)) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> confirmPopup = <span class="hljs-keyword">this</span>.$ionicPopup.confirm({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      title: <span class="hljs-string">'Number confirmation'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'&lt;div&gt;'</span> + <span class="hljs-keyword">this</span>.phone + <span class="hljs-string">'&lt;/div&gt;&lt;div&gt;Is your phone number above correct?&lt;/div&gt;'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      cssClass: <span class="hljs-string">'text-center'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okText: <span class="hljs-string">'Yes'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okType: <span class="hljs-string">'button-positive button-clear'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      cancelText: <span class="hljs-string">'edit'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      cancelType: <span class="hljs-string">'button-dark button-clear'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    confirmPopup.then((res) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (!res) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$ionicLoading.show({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        template: <span class="hljs-string">'Sending verification code...'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      Accounts.requestPhoneVerification(<span class="hljs-keyword">this</span>.phone, (err) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.$ionicLoading.hide();</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.handleError(err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.$state.go(<span class="hljs-string">'confirmation'</span>, { phone: <span class="hljs-keyword">this</span>.phone });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  handleError(err) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$log.error(<span class="hljs-string">'Login error '</span>, err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$ionicPopup.alert({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      title: err.reason || <span class="hljs-string">'Login failed'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'Please try again'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okType: <span class="hljs-string">'button-positive button-clear'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">LoginCtrl.$inject = [<span class="hljs-string">'$state'</span>, <span class="hljs-string">'$ionicLoading'</span>, <span class="hljs-string">'$ionicPopup'</span>, <span class="hljs-string">'$log'</span>];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.8" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.8</span> <span _ngcontent-wwb-12="" class="commit-summary">Load login controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/3a48b5713c4bbba640e9c5522d9d726d448b12e7">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre><pre _ngcontent-wwb-12="" class="line-number">33</pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-comment">// Modules</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatsCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/chats.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/chat.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> LoginCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/login.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'../directives/input.directive'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'../filters/calendar.filter'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> RoutesConfig <span class="hljs-keyword">from</span> <span class="hljs-string">'../routes'</span>;</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">new</span> Loader(App)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ChatsCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ChatCtrl)</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  .load(LoginCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(InputDirective)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(RoutesConfig);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Note that we didn't provide all the settings for <code ngNonBindable="">account-phone</code>, so it will run in debug mode. It means that a real SMS won't be sent now, but if you'd like to receive the verification code just open your terminal and view <code ngNonBindable="">Meteor</code>'s logs.</p>
+
+<p>Our next step would be preventing unauthorized users from viewing contents which they have no permission to. In order to do that we will add a pre-requirement to the relevant routes which will require the user to log-in first. <code ngNonBindable="">angular-meteor-auth</code> provides us with a service which is called <code ngNonBindable="">$auth</code>, and it has a method called <code ngNonBindable="">$awaitUser()</code> which returns a promise that will be resolved only once the user has logged in. For more information about <code ngNonBindable="">angular-meteor-auth</code> see <a href="http://www.angular-meteor.com/api/1.3.6/auth">reference</a>.</p>
+
+<p><diffbox step="4.9" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.9</span> <span _ngcontent-wwb-12="" class="commit-summary">Add resolve to auth routes</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/6b2e9f039db583f3e93c823bf3091aac5ef3ec89">client/scripts/routes.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">48</pre><pre _ngcontent-wwb-12="" class="line-number">49</pre><pre _ngcontent-wwb-12="" class="line-number">50</pre><pre _ngcontent-wwb-12="" class="line-number">51</pre><pre _ngcontent-wwb-12="" class="line-number">52</pre><pre _ngcontent-wwb-12="" class="line-number">53</pre><pre _ngcontent-wwb-12="" class="line-number">54</pre><pre _ngcontent-wwb-12="" class="line-number">55</pre><pre _ngcontent-wwb-12="" class="line-number">56</pre><pre _ngcontent-wwb-12="" class="line-number">57</pre><pre _ngcontent-wwb-12="" class="line-number">58</pre><pre _ngcontent-wwb-12="" class="line-number">59</pre><pre _ngcontent-wwb-12="" class="line-number">60</pre><pre _ngcontent-wwb-12="" class="line-number">61</pre><pre _ngcontent-wwb-12="" class="line-number">62</pre><pre _ngcontent-wwb-12="" class="line-number">63</pre><pre _ngcontent-wwb-12="" class="line-number">64</pre><pre _ngcontent-wwb-12="" class="line-number">65</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Config } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoutesConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Config</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.isAuthorized = [<span class="hljs-string">'$auth'</span>, <span class="hljs-keyword">this</span>.isAuthorized.bind(<span class="hljs-keyword">this</span>)];</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  configure() {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$stateProvider</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      .state(<span class="hljs-string">'tab'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        url: <span class="hljs-string">'/tab'</span>,</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        abstract: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        templateUrl: <span class="hljs-string">'client/templates/tabs.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        resolve: {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">          user: <span class="hljs-keyword">this</span>.isAuthorized</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      })</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      .state(<span class="hljs-string">'tab.chats'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        url: <span class="hljs-string">'/chats'</span>,</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      .state(<span class="hljs-string">'profile'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        url: <span class="hljs-string">'/profile'</span>,</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        templateUrl: <span class="hljs-string">'client/templates/profile.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        controller: <span class="hljs-string">'ProfileCtrl as profile'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        resolve: {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">          user: <span class="hljs-keyword">this</span>.isAuthorized</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$urlRouterProvider.otherwise(<span class="hljs-string">'tab/chats'</span>);</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  isAuthorized($auth) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> $auth.awaitUser();</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">}</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">RoutesConfig.$inject = [<span class="hljs-string">'$stateProvider'</span>, <span class="hljs-string">'$urlRouterProvider'</span>];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And now we want to handle a case that this promise does not resolve (In case that the user is not logged in), so let's create a new run block to our <code ngNonBindable="">routes.js</code> file:</p>
+
+<p><diffbox step="4.10" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.10</span> <span _ngcontent-wwb-12="" class="commit-summary">Add routes runner</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/590428b79fcaedcac2851fccc83c953eda7a76b4">client/scripts/routes.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">63</pre><pre _ngcontent-wwb-12="" class="line-number">64</pre><pre _ngcontent-wwb-12="" class="line-number">65</pre><pre _ngcontent-wwb-12="" class="line-number">66</pre><pre _ngcontent-wwb-12="" class="line-number">67</pre><pre _ngcontent-wwb-12="" class="line-number">68</pre><pre _ngcontent-wwb-12="" class="line-number">69</pre><pre _ngcontent-wwb-12="" class="line-number">70</pre><pre _ngcontent-wwb-12="" class="line-number">71</pre><pre _ngcontent-wwb-12="" class="line-number">72</pre><pre _ngcontent-wwb-12="" class="line-number">73</pre><pre _ngcontent-wwb-12="" class="line-number">74</pre><pre _ngcontent-wwb-12="" class="line-number">75</pre><pre _ngcontent-wwb-12="" class="line-number">76</pre><pre _ngcontent-wwb-12="" class="line-number">77</pre><pre _ngcontent-wwb-12="" class="line-number">78</pre><pre _ngcontent-wwb-12="" class="line-number">79</pre><pre _ngcontent-wwb-12="" class="line-number">80</pre><pre _ngcontent-wwb-12="" class="line-number">81</pre><pre _ngcontent-wwb-12="" class="line-number">82</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { _ } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/underscore'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Config, Runner } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoutesConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Config</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">}</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">RoutesConfig.$inject = [<span class="hljs-string">'$stateProvider'</span>, <span class="hljs-string">'$urlRouterProvider'</span>];</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoutesRunner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Runner</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  run() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$rootScope.$on(<span class="hljs-string">'$stateChangeError'</span>, (...args) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> err = _.last(args);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (err === <span class="hljs-string">'AUTH_REQUIRED'</span>) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.$state.go(<span class="hljs-string">'login'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">RoutesRunner.$inject = [<span class="hljs-string">'$rootScope'</span>, <span class="hljs-string">'$state'</span>];</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> [RoutesConfig, RoutesRunner];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.11" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.11</span> <span _ngcontent-wwb-12="" class="commit-summary">Create routes runner</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/436253f11c15e8eb218b3164c64196dee49e34b0">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> LoginCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/login.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'../directives/input.directive'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'../filters/calendar.filter'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Routes <span class="hljs-keyword">from</span> <span class="hljs-string">'../routes'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">const</span> App = <span class="hljs-string">'Whatsapp'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(LoginCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(InputDirective)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  .load(Routes);</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-comment">// Startup</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">if</span> (Meteor.isCordova) {</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And now let's add some <code ngNonBindable="">css</code>:</p>
+
+<p><diffbox step="4.12" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.12</span> <span _ngcontent-wwb-12="" class="commit-summary">Add login stylesheet</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/7082f8fa1abd8e75ac14d03d86a2a251d490cd39">client/styles/login.scss</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.login</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.instructions</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> <span class="hljs-number">0</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">15px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And this is how it looks like:</p>
+
+<p><img alt="angular1-wa-meteor-cli" src="/assets/tutorials/angular1-whatsapp-meteor-cli/13.png"></p>
+
+<p>The next step is to add the confirmation view, starting with the HTML:</p>
+
+<p><diffbox step="4.13" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.13</span> <span _ngcontent-wwb-12="" class="commit-summary">Add confirmation view</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/1509126fee8862c76a20f29fb38d62b35254df94">client/templates/confirmation.html</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-view</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"{{ confirmation.phone }}"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-nav-buttons</span> <span class="hljs-attr">side</span>=<span class="hljs-string">"right"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"confirmation.confirm()"</span> <span class="hljs-attr">ng-disabled</span>=<span class="hljs-string">"!confirmation.code || confirmation.code.length === 0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-positive"</span>&gt;</span>Done<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-nav-buttons</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center padding"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      We have sent you an SMS with a code to the number above</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center padding"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      To complete your phone number verification WhatsApp, please enter the 4-digit activation code.</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list padding-top"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item item-input"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ng-model</span>=<span class="hljs-string">"confirmation.code"</span> <span class="hljs-attr">on-return</span>=<span class="hljs-string">"confirmation.confirm()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Code"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And the controller:</p>
+
+<p><diffbox step="4.14" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.14</span> <span _ngcontent-wwb-12="" class="commit-summary">Create confirmation controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/aa9e2ae696eacd09c425ab34baf95ad9e3ec1447">client/scripts/controllers/confirmation.controller.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { _ } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/underscore'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Accounts } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/accounts-base'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConfirmationCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.phone = <span class="hljs-keyword">this</span>.$state.params.phone;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  confirm() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (_.isEmpty(<span class="hljs-keyword">this</span>.code)) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    Accounts.verifyPhone(<span class="hljs-keyword">this</span>.phone, <span class="hljs-keyword">this</span>.code, (err) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.handleError(err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$state.go(<span class="hljs-string">'profile'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  handleError(err) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$log.error(<span class="hljs-string">'Confirmation error '</span>, err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$ionicPopup.alert({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      title: err.reason || <span class="hljs-string">'Confirmation failed'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'Please try again'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okType: <span class="hljs-string">'button-positive button-clear'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">ConfirmationCtrl.$inject = [<span class="hljs-string">'$state'</span>, <span class="hljs-string">'$ionicPopup'</span>, <span class="hljs-string">'$log'</span>];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.15" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.15</span> <span _ngcontent-wwb-12="" class="commit-summary">Load confirmation controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/8f2726713e6c3db8b895a927a2b0ff5683c4df72">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">32</pre><pre _ngcontent-wwb-12="" class="line-number">33</pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-comment">// Modules</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatsCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/chats.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/chat.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> ConfirmationCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/confirmation.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> LoginCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/login.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'../directives/input.directive'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'../filters/calendar.filter'</span>;</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">new</span> Loader(App)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ChatsCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ChatCtrl)</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  .load(ConfirmationCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(LoginCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(InputDirective)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We will use <code ngNonBindable="">Accounts</code> API again to verify the user and in case of successful authentication we will transition to the <code ngNonBindable="">profile</code> state, which we will add in the next step.</p>
+
+<p>Let's implement the profile view, which provides the ability to enter the user's nickname and profile picture:</p>
+
+<p><diffbox step="4.16" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.16</span> <span _ngcontent-wwb-12="" class="commit-summary">Add profile view</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/dd33f38dbec8ce80735da162ac0d410a4489a629">client/templates/profile.html</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-view</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Profile"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-nav-buttons</span> <span class="hljs-attr">side</span>=<span class="hljs-string">"right"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"profile.updateName()"</span> <span class="hljs-attr">ng-disabled</span>=<span class="hljs-string">"!profile.name || profile.name.length === 0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-positive"</span>&gt;</span>Done<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-nav-buttons</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"profile"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"profile-picture positive"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"upload-placehoder"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        Add photo</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"instructions"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      Enter your name and add an optional profile picture</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list profile-name"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item item-input"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ng-model</span>=<span class="hljs-string">"profile.name"</span> <span class="hljs-attr">on-return</span>=<span class="hljs-string">"profile.updateName()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Your name"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And the controller:</p>
+
+<p><diffbox step="4.17" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.17</span> <span _ngcontent-wwb-12="" class="commit-summary">Create profile controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/cd8f0aa2828c46f4828979f08f55c3db9196f17e">client/scripts/controllers/profile.controller.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { _ } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/underscore'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProfileCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> profile = <span class="hljs-keyword">this</span>.currentUser &amp;&amp; <span class="hljs-keyword">this</span>.currentUser.profile;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.name = profile ? profile.name : <span class="hljs-string">''</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  updateName() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (_.isEmpty(<span class="hljs-keyword">this</span>.name)) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.callMethod(<span class="hljs-string">'updateName'</span>, <span class="hljs-keyword">this</span>.name, (err) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.handleError(err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$state.go(<span class="hljs-string">'tab.chats'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  handleError(err) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$log.error(<span class="hljs-string">'Profile save error '</span>, err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$ionicPopup.alert({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      title: err.reason || <span class="hljs-string">'Save failed'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'Please try again'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okType: <span class="hljs-string">'button-positive button-clear'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">ProfileCtrl.$inject = [<span class="hljs-string">'$state'</span>, <span class="hljs-string">'$ionicPopup'</span>, <span class="hljs-string">'$log'</span>];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.18" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.18</span> <span _ngcontent-wwb-12="" class="commit-summary">Load profile controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/ecff11667e4673ba7bcb5a41b1e8cc60c60b4b77">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre><pre _ngcontent-wwb-12="" class="line-number">41</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/chat.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ConfirmationCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/confirmation.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> LoginCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/login.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> ProfileCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/profile.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'../directives/input.directive'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'../filters/calendar.filter'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> Routes <span class="hljs-keyword">from</span> <span class="hljs-string">'../routes'</span>;</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ChatCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ConfirmationCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(LoginCtrl)</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  .load(ProfileCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(InputDirective)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(Routes);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And some <code ngNonBindable="">css</code>:</p>
+
+<p><diffbox step="4.19" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.19</span> <span _ngcontent-wwb-12="" class="commit-summary">Add profile stylesheet</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/0e41b6501ff7905d6876dbfe1cd20169ed72cd1d">client/styles/profile.scss</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre><pre _ngcontent-wwb-12="" class="line-number">33</pre><pre _ngcontent-wwb-12="" class="line-number">34</pre><pre _ngcontent-wwb-12="" class="line-number">35</pre><pre _ngcontent-wwb-12="" class="line-number">36</pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.profile</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">20px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.profile-picture</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">left</span>: <span class="hljs-number">20px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">text-align</span>: center;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">img</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">display</span>: block;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">max-width</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">max-height</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-selector-class">.upload-placehoder</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#808080</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">line-height</span>: <span class="hljs-number">18px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.instructions</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">20px</span> <span class="hljs-number">90px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.profile-name</span> {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see, the controller uses the server method <code ngNonBindable="">updateName()</code> which we need to implement in the <code ngNonBindable="">lib/methods.js</code>:</p>
+
+<p><diffbox step="4.20" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.20</span> <span _ngcontent-wwb-12="" class="commit-summary">Add update name method</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/ffb2c775b0b70a0ac2270f9c6ae6ab1bf12d6aa0">lib/methods.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number">28</pre><pre _ngcontent-wwb-12="" class="line-number">29</pre><pre _ngcontent-wwb-12="" class="line-number">30</pre><pre _ngcontent-wwb-12="" class="line-number">31</pre><pre _ngcontent-wwb-12="" class="line-number">32</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    Chats.update(message.chatId, { $set: { lastMessage: message } });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">return</span> messageId;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  updateName(name) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.userId) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'not-logged-in'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-string">'Must be logged in to update his name.'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    check(name, <span class="hljs-built_in">String</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (name.length === <span class="hljs-number">0</span>) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">throw</span> Meteor.Error(<span class="hljs-string">'name-required'</span>, <span class="hljs-string">'Must provide a user name'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> Meteor.users.update(<span class="hljs-keyword">this</span>.userId, { $set: { <span class="hljs-string">'profile.name'</span>: name } });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><code ngNonBindable="">Meteor</code> sets the user identity in case of a logged in user into the <code ngNonBindable="">this.userId</code> variable, so we can check if this variable exists in order to verify that the user is logged in.</p>
+
+<p>Now let's add this validation to the <code ngNonBindable="">newMessage()</code> method we created earlier, and also add the identity of the user to each message he sends.</p>
+
+<p><diffbox step="4.21" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.21</span> <span _ngcontent-wwb-12="" class="commit-summary">Bind user to any new message</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/e92b6356a00c0f5a14c7ba77d33f6575be1cfa38">lib/methods.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">Meteor.methods({</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  newMessage(message) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.userId) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'not-logged-in'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-string">'Must be logged in to send message.'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    check(message, {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      text: <span class="hljs-built_in">String</span>,</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      chatId: <span class="hljs-built_in">String</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    message.timestamp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    message.userId = <span class="hljs-keyword">this</span>.userId;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">const</span> messageId = Messages.insert(message);</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    Chats.update(message.chatId, { $set: { lastMessage: message } });</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Great, now the last missing feature is logout. Let's add a state for the settings view:</p>
+
+<p><diffbox step="4.22" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.22</span> <span _ngcontent-wwb-12="" class="commit-summary">Add settings route state</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/eed1dcaf1ab12638a2eb72f129c046cb851ec499">client/scripts/routes.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">53</pre><pre _ngcontent-wwb-12="" class="line-number">54</pre><pre _ngcontent-wwb-12="" class="line-number">55</pre><pre _ngcontent-wwb-12="" class="line-number">56</pre><pre _ngcontent-wwb-12="" class="line-number">57</pre><pre _ngcontent-wwb-12="" class="line-number">58</pre><pre _ngcontent-wwb-12="" class="line-number">59</pre><pre _ngcontent-wwb-12="" class="line-number">60</pre><pre _ngcontent-wwb-12="" class="line-number">61</pre><pre _ngcontent-wwb-12="" class="line-number">62</pre><pre _ngcontent-wwb-12="" class="line-number">63</pre><pre _ngcontent-wwb-12="" class="line-number">64</pre><pre _ngcontent-wwb-12="" class="line-number">65</pre><pre _ngcontent-wwb-12="" class="line-number">66</pre><pre _ngcontent-wwb-12="" class="line-number">67</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        resolve: {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">          user: <span class="hljs-keyword">this</span>.isAuthorized</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      })</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      .state(<span class="hljs-string">'tab.settings'</span>, {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        url: <span class="hljs-string">'/settings'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        views: {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">          <span class="hljs-string">'tab-settings'</span>: {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">            templateUrl: <span class="hljs-string">'client/templates/settings.html'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">            controller: <span class="hljs-string">'SettingsCtrl as settings'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">          }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      });</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$urlRouterProvider.otherwise(<span class="hljs-string">'tab/chats'</span>);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And create the view which contains the logout button:</p>
+
+<p><diffbox step="4.23" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.23</span> <span _ngcontent-wwb-12="" class="commit-summary">Add settings view</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/0d71526cd992288fb06fd8679fadf8e7aa74149c">client/templates/settings.html</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-view</span> <span class="hljs-attr">view-title</span>=<span class="hljs-string">"Settings"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"padding text-center"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"settings.logout()"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-assertive"</span>&gt;</span>Logout<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now let's implement this method inside the <code ngNonBindable="">SettingsCtrl</code>:</p>
+
+<p><diffbox step="4.24" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.24</span> <span _ngcontent-wwb-12="" class="commit-summary">Add settings controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/0814899a4caf0c181e17e30ae720d145b860c979">client/scripts/controllers/settings.controller.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">1</pre><pre _ngcontent-wwb-12="" class="line-number">2</pre><pre _ngcontent-wwb-12="" class="line-number">3</pre><pre _ngcontent-wwb-12="" class="line-number">4</pre><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre><pre _ngcontent-wwb-12="" class="line-number">12</pre><pre _ngcontent-wwb-12="" class="line-number">13</pre><pre _ngcontent-wwb-12="" class="line-number">14</pre><pre _ngcontent-wwb-12="" class="line-number">15</pre><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SettingsCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  logout() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    Meteor.logout((err) =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.handleError(err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$state.go(<span class="hljs-string">'login'</span>);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    })</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  handleError (err) {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$log.error(<span class="hljs-string">'Settings modification error'</span>, err);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$ionicPopup.alert({</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      title: err.reason || <span class="hljs-string">'Settings modification failed'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'Please try again'</span>,</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      okType: <span class="hljs-string">'button-positive button-clear'</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">SettingsCtrl.$inject = [<span class="hljs-string">'$state'</span>, <span class="hljs-string">'$ionicPopup'</span>, <span class="hljs-string">'$log'</span>];</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.25" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.25</span> <span _ngcontent-wwb-12="" class="commit-summary">Load settings controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/e39ecb0738203f66012dbf3d2858c09d97ae4f22">client/scripts/lib/app.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">16</pre><pre _ngcontent-wwb-12="" class="line-number">17</pre><pre _ngcontent-wwb-12="" class="line-number">18</pre><pre _ngcontent-wwb-12="" class="line-number">19</pre><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">37</pre><pre _ngcontent-wwb-12="" class="line-number">38</pre><pre _ngcontent-wwb-12="" class="line-number">39</pre><pre _ngcontent-wwb-12="" class="line-number">40</pre><pre _ngcontent-wwb-12="" class="line-number">41</pre><pre _ngcontent-wwb-12="" class="line-number">42</pre><pre _ngcontent-wwb-12="" class="line-number">43</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ConfirmationCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/confirmation.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> LoginCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/login.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ProfileCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/profile.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> SettingsCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/settings.controller'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'../directives/input.directive'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'../filters/calendar.filter'</span>;</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> Routes <span class="hljs-keyword">from</span> <span class="hljs-string">'../routes'</span>;</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ConfirmationCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(LoginCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(ProfileCtrl)</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  .load(SettingsCtrl)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(InputDirective)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  .load(Routes);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And this is our settings view:</p>
+
+<p><img alt="angular1-wa-meteor-cli" src="/assets/tutorials/angular1-whatsapp-meteor-cli/14.png"></p>
+
+<p>We also need to modify the way we identify our users inside the messages list, so let's do it:</p>
+
+<p><diffbox step="4.26" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.26</span> <span _ngcontent-wwb-12="" class="commit-summary">Classify message ownership</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/c8bad5c401b17326ef65287034a32cb74ffdb677">client/templates/chat.html</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">5</pre><pre _ngcontent-wwb-12="" class="line-number">6</pre><pre _ngcontent-wwb-12="" class="line-number">7</pre><pre _ngcontent-wwb-12="" class="line-number">8</pre><pre _ngcontent-wwb-12="" class="line-number">9</pre><pre _ngcontent-wwb-12="" class="line-number">10</pre><pre _ngcontent-wwb-12="" class="line-number">11</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat"</span> <span class="hljs-attr">delegate-handle</span>=<span class="hljs-string">"chatScroll"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-list"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"message in chat.messages"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-wrapper"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">ng-class</span>=<span class="hljs-string">"message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'"</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-text"</span>&gt;</span>{{ message.text }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-timestamp"</span>&gt;</span>{{ message.timestamp | amDateFormat: 'HH:MM' }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And the last missing feature is about adding auto-scroll to the messages list in order to keep the view scrolled down when new messages arrive:</p>
+
+<p><diffbox step="4.27" tutorial="whatsapp-meteor-tutorial" _nghost-wwb-12=""><div _ngcontent-wwb-12="" class="diffbox">
+    <div _ngcontent-wwb-12="" class="title-panel">
+        <span _ngcontent-wwb-12="" class="step-number">4.27</span> <span _ngcontent-wwb-12="" class="commit-summary">Add auto-scroll to chat controller</span>
+        <a _ngcontent-wwb-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/angular-meteor-whatsapp/commit/b3915ebfb55be66815f8baadcd9ddc74d2d2658d">client/scripts/controllers/chat.controller.js</a>
+    </div>
+    <div _ngcontent-wwb-12="" class="code-container">
+        <div _ngcontent-wwb-12="" class="scroll-container">
+            <div _ngcontent-wwb-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-number">20</pre><pre _ngcontent-wwb-12="" class="line-number">21</pre><pre _ngcontent-wwb-12="" class="line-number">22</pre><pre _ngcontent-wwb-12="" class="line-number">23</pre><pre _ngcontent-wwb-12="" class="line-number">24</pre><pre _ngcontent-wwb-12="" class="line-number">25</pre><pre _ngcontent-wwb-12="" class="line-number">26</pre><pre _ngcontent-wwb-12="" class="line-number">27</pre><pre _ngcontent-wwb-12="" class="line-number"> </pre><pre _ngcontent-wwb-12="" class="line-number">58</pre><pre _ngcontent-wwb-12="" class="line-number">59</pre><pre _ngcontent-wwb-12="" class="line-number">60</pre><pre _ngcontent-wwb-12="" class="line-number">61</pre><pre _ngcontent-wwb-12="" class="line-number">62</pre><pre _ngcontent-wwb-12="" class="line-number">63</pre><pre _ngcontent-wwb-12="" class="line-number">64</pre><pre _ngcontent-wwb-12="" class="line-number">65</pre><pre _ngcontent-wwb-12="" class="line-number">66</pre><pre _ngcontent-wwb-12="" class="line-number">67</pre><pre _ngcontent-wwb-12="" class="line-number">68</pre><pre _ngcontent-wwb-12="" class="line-number">69</pre><pre _ngcontent-wwb-12="" class="line-number">70</pre><pre _ngcontent-wwb-12="" class="line-number">71</pre><pre _ngcontent-wwb-12="" class="line-number">72</pre><pre _ngcontent-wwb-12="" class="line-number">73</pre><pre _ngcontent-wwb-12="" class="line-number">74</pre>
+            </div>
+            <div _ngcontent-wwb-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-wwb-12="" class="line-context" className="line-context">        <span class="hljs-keyword">return</span> Chats.findOne(<span class="hljs-keyword">this</span>.chatId);</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.autoScroll();</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  sendMessage() {</pre><pre _ngcontent-wwb-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  autoScroll() {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">let</span> recentMessagesNum = <span class="hljs-keyword">this</span>.messages.length;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.autorun(() =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> currMessagesNum = <span class="hljs-keyword">this</span>.getCollectionReactively(<span class="hljs-string">'messages'</span>).length;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> animate = recentMessagesNum != currMessagesNum;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      recentMessagesNum = currMessagesNum;</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.scrollBottom(animate);</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-wwb-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">  scrollBottom(animate) {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$timeout(() =&gt; {</pre><pre _ngcontent-wwb-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.$ionicScrollDelegate.$getByHandle(<span class="hljs-string">'chatScroll'</span>).scrollBottom(animate);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-sym-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-sym-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-sym-1] a[_ngcontent-sym-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-sym-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-sym-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-sym-1] .dropdown-content[_ngcontent-sym-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-sym-1]:hover .dropdown-content[_ngcontent-sym-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-sym-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-sym-6] ul[_ngcontent-sym-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-sym-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-sym-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-sym-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-sym-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-sym-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-sym-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-sym-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-sym-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-sym-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-sym-6] {
+  float: left; }
+
+.l-right[_ngcontent-sym-6] {
+  float: right; }
+
+.l-relative[_ngcontent-sym-6], .docs-content[_ngcontent-sym-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-sym-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-sym-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-sym-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-sym-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-sym-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-sym-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-sym-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-sym-12] .title-panel[_ngcontent-sym-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-sym-12] .title-panel[_ngcontent-sym-12] .github-commit-link[_ngcontent-sym-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] .scroll-container[_ngcontent-sym-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] pre[_ngcontent-sym-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] pre.line-added[_ngcontent-sym-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] pre.line-removed[_ngcontent-sym-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] .line-content[_ngcontent-sym-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] .line-content[_ngcontent-sym-12] .hljs-comment[_ngcontent-sym-12] {
+        color: #777; }
+    .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] .line-numbers[_ngcontent-sym-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-sym-12] .code-container[_ngcontent-sym-12] .line-numbers[_ngcontent-sym-12] .line-number[_ngcontent-sym-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-sym-1=""><md-toolbar _ngcontent-sym-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-sym-1="" href="/"><img _ngcontent-sym-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-sym-1="" class="tutorials-dropdown">
+        <button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-sym-1="" class="dropdown-content">
+            <steps-list _ngcontent-sym-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-sym-1="" href="/angular2/"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-sym-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-sym-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-sym-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-sym-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-sym-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-sym-1="" href="/manifesto"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-sym-1="" href="/about"><button _ngcontent-sym-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-sym-1=""></router-outlet><tutorial _nghost-sym-6=""><div _ngcontent-sym-6="" class="tutorials-container">
+    <nav _ngcontent-sym-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-sym-6="" _nghost-sym-7=""><!--template bindings={}--></tutorials-versions>
+        <steps-list _ngcontent-sym-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/setup">1. Initial setup</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/chats-page">2. Chats page</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/meteor-server-side">3. Realtime Meteor Server</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/messages-page">4. Messages Page</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/authentication">5. Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/chats-mutations">6. Chats Creation &amp; Removal</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/privacy">7. Privacy &amp; Security</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp2/ionic/summary">8. Summary</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-sym-6="" class="top-navigation">
+        <span _ngcontent-sym-6="" class="tutorial-title" stepName="">Messages Page</span>
+        <div _ngcontent-sym-6="" class="right-buttons">
+            <a _ngcontent-sym-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/whatsapp2/ionic/meteor-server-side">Previous</a>
+            <a _ngcontent-sym-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/DAB0mB/ionic2-meteor-messenger/compare/step_02...step_03">Code Diff</a>
+            <a _ngcontent-sym-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/whatsapp2/ionic/authentication">Next</a>
+            <a _ngcontent-sym-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/whatsapp2/ionic/messages-page.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-sym-6="" class="tutorial-content">
+        <router-outlet _ngcontent-sym-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this step we will add the messages view and the ability to send messages.</p>
+
+<p>Before we implement anything related to the messages pages, we first have to make sure that once we click on a chat item in the chats page, we will be promoted into its corresponding messages view.</p>
+
+<p>Let's first implement the <code ngNonBindable="">showMessages()</code> method in the chats component</p>
+
+<p><diffbox step="4.1" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.1</span> <span _ngcontent-sym-12="" class="commit-summary">Implement 'showMessages()' method in chats component</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/39af878ee790164880355dc32e4a9aa1a92d0e3d">app/pages/chats/chats.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">27</pre><pre _ngcontent-sym-12="" class="line-number">28</pre><pre _ngcontent-sym-12="" class="line-number">29</pre><pre _ngcontent-sym-12="" class="line-number">30</pre><pre _ngcontent-sym-12="" class="line-number">31</pre><pre _ngcontent-sym-12="" class="line-number">32</pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {NavController} from <span class="hljs-string">'ionic-angular'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {MeteorComponent} from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {CalendarPipe} from <span class="hljs-string">'angular2-moment'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Mongo} from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Chat, Message} from <span class="hljs-string">'api/models'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Chats, Messages} from <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {MessagesPage} from <span class="hljs-string">'../messages/messages'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">@Component({</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ChatsPage extends MeteorComponent {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  chats: Mongo.Cursor&lt;Chat&gt;;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>(private navCtrl: NavController) {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>();</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.autorun(() =&gt; {</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    Chats.remove(chat._id);</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  showMessages(chat): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.navCtrl.push(MessagesPage, {chat});</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">private</span> findChats(): Mongo.Cursor&lt;Chat&gt;{</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">const</span> chats = Chats.find({}, {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">      transform: <span class="hljs-keyword">this</span>.transformChat.bind(<span class="hljs-keyword">this</span>)</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And let's register the click event in the view:</p>
+
+<p><diffbox step="4.2" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.2</span> <span _ngcontent-sym-12="" class="commit-summary">Bind 'showMessages()' event to chats view template</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/04111fd3b25c17a18cf5c8054ff0202a0be39d1f">app/pages/chats/chats.html</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chats-page-content"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-list</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chats"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-item-sliding</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let chat of chats"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ion-item</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"showMessages(chat)"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat-picture"</span> [<span class="hljs-attr">src</span>]=<span class="hljs-string">"chat.picture"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat-info"</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Notice how we used we used a controller called <code ngNonBindable="">NavController</code>. The NavController is <code ngNonBindable="">Ionic</code>'s new method to navigate in our app, we can also use a traditional router, but since in a mobile app we have no access to the url bar, this might come more in handy. You can read more about the NavController <a href="ionicframework.com/docs/v2/api/components/nav/NavController/">here</a>.</p>
+
+<p>Let's go ahead and implement the messages component.</p>
+
+<p>We need to have some data about the messages, and iterate through it. We will define a cursor on the component, but instead of fetching the entire data in the collection, we only gonna find the messages correlated with the current chat using a simple query. Also we need to determine whenever a message is our's or the reciever's. As for now we gonna do it based on the message's pairity. If it's even, it's gonna be our's, else, it's gonna be the receiver's. The basic component should look like so:</p>
+
+<p><diffbox step="4.3" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.3</span> <span _ngcontent-sym-12="" class="commit-summary">Add basic messages component</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/8fb8517fef06349102f3b60a757cf9be2070c50d">app/pages/messages/messages.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre><pre _ngcontent-sym-12="" class="line-number">25</pre><pre _ngcontent-sym-12="" class="line-number">26</pre><pre _ngcontent-sym-12="" class="line-number">27</pre><pre _ngcontent-sym-12="" class="line-number">28</pre><pre _ngcontent-sym-12="" class="line-number">29</pre><pre _ngcontent-sym-12="" class="line-number">30</pre><pre _ngcontent-sym-12="" class="line-number">31</pre><pre _ngcontent-sym-12="" class="line-number">32</pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre><pre _ngcontent-sym-12="" class="line-number">37</pre><pre _ngcontent-sym-12="" class="line-number">38</pre><pre _ngcontent-sym-12="" class="line-number">39</pre><pre _ngcontent-sym-12="" class="line-number">40</pre><pre _ngcontent-sym-12="" class="line-number">41</pre><pre _ngcontent-sym-12="" class="line-number">42</pre><pre _ngcontent-sym-12="" class="line-number">43</pre><pre _ngcontent-sym-12="" class="line-number">44</pre><pre _ngcontent-sym-12="" class="line-number">45</pre><pre _ngcontent-sym-12="" class="line-number">46</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {NavParams} from <span class="hljs-string">'ionic-angular'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {MeteorComponent} from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Mongo} from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Chat, Message} from <span class="hljs-string">'api/models'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Messages} from <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">@Component({</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  templateUrl: <span class="hljs-string">'build/pages/messages/messages.html'</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">})</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessagesPage extends MeteorComponent {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  title: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  picture: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  messages: Mongo.Cursor&lt;Message&gt;;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> isEven = <span class="hljs-literal">false</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> activeChat: Chat;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>(navParams: NavParams) {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">super</span>();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.activeChat = &lt;Chat&gt;navParams.get(<span class="hljs-string">'chat'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.title = <span class="hljs-keyword">this</span>.activeChat.title;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.picture = <span class="hljs-keyword">this</span>.activeChat.picture;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.autorun(() =&gt; {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.messages = <span class="hljs-keyword">this</span>.findMessages();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> findMessages(): Mongo.Cursor&lt;Message&gt; {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> Messages.find({</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      chatId: <span class="hljs-keyword">this</span>.activeChat._id</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }, {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      sort: {createdAt: <span class="hljs-number">1</span>},</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      transform: <span class="hljs-keyword">this</span>.transformMessage.bind(<span class="hljs-keyword">this</span>)</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> transformMessage(message): Message {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    message.ownership = <span class="hljs-keyword">this</span>.isEven ? <span class="hljs-string">'mine'</span> : <span class="hljs-string">'other'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.isEven = !<span class="hljs-keyword">this</span>.isEven;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> message;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We also need to update the message model to contain an <code ngNonBindable="">ownership</code> field:</p>
+
+<p><diffbox step="4.4" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.4</span> <span _ngcontent-sym-12="" class="commit-summary">Add 'ownership' property to message model</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/6fd6bffa240c36778e7128619dc56425bfb93318">typings/models.d.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">interface</span> Message {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    _id?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    chatId?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    ownership?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    content?: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    createdAt?: <span class="hljs-built_in">Date</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see, inorder to get the chat's id we used the <code ngNonBindable="">NavParams</code> service. This is a simple service which gives you access to a key-value storage containing all the parameters we've passed using the NavController. For more information about the NavParams service, see the following <a href="ionicframework.com/docs/v2/api/components/nav/NavParams">link</a>.</p>
+
+<p>Let's implement the basic messages view template and define a stylesheet:</p>
+
+<p><diffbox step="4.5" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.5</span> <span _ngcontent-sym-12="" class="commit-summary">Add basic messages view template</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/e73a387ecacd940d32e5824cebc0e19a87782211">app/pages/messages/messages.html</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre><pre _ngcontent-sym-12="" class="line-number">25</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-header</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-navbar</span> <span class="hljs-attr">whatsapp</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"messages-page-navbar"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-buttons</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat-picture"</span> [<span class="hljs-attr">src</span>]=<span class="hljs-string">"picture"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">ion-buttons</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-title</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat-title"</span>&gt;</span>{{title}}<span class="hljs-tag">&lt;/<span class="hljs-name">ion-title</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-buttons</span> <span class="hljs-attr">end</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"attach-button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ion-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"attach"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ion-icon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"settings-button"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ion-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"more"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ion-icon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">ion-buttons</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-navbar</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-header</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">padding</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"messages-page-content"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-scroll</span> <span class="hljs-attr">scrollY</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"messages"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let message of messages"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-wrapper"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">class</span>]=<span class="hljs-string">"'message message-' + message.ownership"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-content"</span>&gt;</span>{{message.content}}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-timestamp"</span>&gt;</span>{{message.createdAt}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-scroll</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.6" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.6</span> <span _ngcontent-sym-12="" class="commit-summary">Add basic messages stylesheet</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/9ba2f927fbb80864104aa3f0baeacd8a2fb2a505">app/pages/messages/messages.scss</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre><pre _ngcontent-sym-12="" class="line-number">25</pre><pre _ngcontent-sym-12="" class="line-number">26</pre><pre _ngcontent-sym-12="" class="line-number">27</pre><pre _ngcontent-sym-12="" class="line-number">28</pre><pre _ngcontent-sym-12="" class="line-number">29</pre><pre _ngcontent-sym-12="" class="line-number">30</pre><pre _ngcontent-sym-12="" class="line-number">31</pre><pre _ngcontent-sym-12="" class="line-number">32</pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre><pre _ngcontent-sym-12="" class="line-number">37</pre><pre _ngcontent-sym-12="" class="line-number">38</pre><pre _ngcontent-sym-12="" class="line-number">39</pre><pre _ngcontent-sym-12="" class="line-number">40</pre><pre _ngcontent-sym-12="" class="line-number">41</pre><pre _ngcontent-sym-12="" class="line-number">42</pre><pre _ngcontent-sym-12="" class="line-number">43</pre><pre _ngcontent-sym-12="" class="line-number">44</pre><pre _ngcontent-sym-12="" class="line-number">45</pre><pre _ngcontent-sym-12="" class="line-number">46</pre><pre _ngcontent-sym-12="" class="line-number">47</pre><pre _ngcontent-sym-12="" class="line-number">48</pre><pre _ngcontent-sym-12="" class="line-number">49</pre><pre _ngcontent-sym-12="" class="line-number">50</pre><pre _ngcontent-sym-12="" class="line-number">51</pre><pre _ngcontent-sym-12="" class="line-number">52</pre><pre _ngcontent-sym-12="" class="line-number">53</pre><pre _ngcontent-sym-12="" class="line-number">54</pre><pre _ngcontent-sym-12="" class="line-number">55</pre><pre _ngcontent-sym-12="" class="line-number">56</pre><pre _ngcontent-sym-12="" class="line-number">57</pre><pre _ngcontent-sym-12="" class="line-number">58</pre><pre _ngcontent-sym-12="" class="line-number">59</pre><pre _ngcontent-sym-12="" class="line-number">60</pre><pre _ngcontent-sym-12="" class="line-number">61</pre><pre _ngcontent-sym-12="" class="line-number">62</pre><pre _ngcontent-sym-12="" class="line-number">63</pre><pre _ngcontent-sym-12="" class="line-number">64</pre><pre _ngcontent-sym-12="" class="line-number">65</pre><pre _ngcontent-sym-12="" class="line-number">66</pre><pre _ngcontent-sym-12="" class="line-number">67</pre><pre _ngcontent-sym-12="" class="line-number">68</pre><pre _ngcontent-sym-12="" class="line-number">69</pre><pre _ngcontent-sym-12="" class="line-number">70</pre><pre _ngcontent-sym-12="" class="line-number">71</pre><pre _ngcontent-sym-12="" class="line-number">72</pre><pre _ngcontent-sym-12="" class="line-number">73</pre><pre _ngcontent-sym-12="" class="line-number">74</pre><pre _ngcontent-sym-12="" class="line-number">75</pre><pre _ngcontent-sym-12="" class="line-number">76</pre><pre _ngcontent-sym-12="" class="line-number">77</pre><pre _ngcontent-sym-12="" class="line-number">78</pre><pre _ngcontent-sym-12="" class="line-number">79</pre><pre _ngcontent-sym-12="" class="line-number">80</pre><pre _ngcontent-sym-12="" class="line-number">81</pre><pre _ngcontent-sym-12="" class="line-number">82</pre><pre _ngcontent-sym-12="" class="line-number">83</pre><pre _ngcontent-sym-12="" class="line-number">84</pre><pre _ngcontent-sym-12="" class="line-number">85</pre><pre _ngcontent-sym-12="" class="line-number">86</pre><pre _ngcontent-sym-12="" class="line-number">87</pre><pre _ngcontent-sym-12="" class="line-number">88</pre><pre _ngcontent-sym-12="" class="line-number">89</pre><pre _ngcontent-sym-12="" class="line-number">90</pre><pre _ngcontent-sym-12="" class="line-number">91</pre><pre _ngcontent-sym-12="" class="line-number">92</pre><pre _ngcontent-sym-12="" class="line-number">93</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.messages-page-navbar</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.chat-picture</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">float</span>: left;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.chat-title</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">float</span>: left;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.messages-page-content</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  &gt; scroll-<span class="hljs-attribute">content</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.messages</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-image</span>: url(/assets/chat-background.jpg);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#E0DAD6</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-repeat</span>: no-repeat;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-size</span>: cover;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message-wrapper</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">9px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    &amp;::after {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">display</span>: table;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">clear</span>: both;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">display</span>: inline-block;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">position</span>: relative;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">236px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">7px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">2px</span> rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">15</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    &amp;<span class="hljs-selector-class">.message-mine</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">float</span>: right;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#DCF8C6</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      &amp;::before {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">right</span>: -<span class="hljs-number">11px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">background-image</span>: url(/assets/message-mine.png)</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    &amp;<span class="hljs-selector-class">.message-other</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">float</span>: left;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FFF</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      &amp;::before {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">left</span>: -<span class="hljs-number">11px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">background-image</span>: url(/assets/message-other.png)</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    &amp;<span class="hljs-selector-class">.message-other</span>::before, &amp;<span class="hljs-selector-class">.message-mine</span>::before {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">bottom</span>: <span class="hljs-number">3px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">width</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">height</span>: <span class="hljs-number">19px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">background-position</span>: <span class="hljs-number">50%</span> <span class="hljs-number">50%</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">background-repeat</span>: no-repeat;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">background-size</span>: contain;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-selector-class">.message-content</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">7px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">word-wrap</span>: break-word;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      &amp;::after {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">content</span>: <span class="hljs-string">" \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-attribute">display</span>: inline;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-selector-class">.message-timestamp</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">bottom</span>: <span class="hljs-number">2px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">right</span>: <span class="hljs-number">7px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.7" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.7</span> <span _ngcontent-sym-12="" class="commit-summary">Import messages stylesheet</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/febe078e9af78479a342c7dc6d237ba1f697133c">app/theme/app.core.scss</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-comment">// By default each design mode includes these shared imports.</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-comment">// App Shared Sass variables belong in app.variables.scss.</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">@<span class="hljs-keyword">import</span> <span class="hljs-string">"../pages/chats/chats"</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">@<span class="hljs-keyword">import</span> <span class="hljs-string">"../pages/messages/messages"</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>This style requires us to add some assets, first we will create a copy called <code ngNonBindable="">assets</code> and then we will copy them like so:</p>
+
+<pre><code ngNonBindable="">$ mkdir www/assets
+$ cd www/assets
+$ wget https://github.com/DAB0mB/ionic2-meteor-messenger/blob/master/www/assets/chat-background.jpg
+$ wget https://github.com/DAB0mB/ionic2-meteor-messenger/blob/master/www/assets/message-mine.jpg
+$ wget https://github.com/DAB0mB/ionic2-meteor-messenger/blob/master/www/assets/message-other.jpg</code></pre>
+
+<p>Now we need to take care of the message's timestamp and format it, then again we gonna use <code ngNonBindable="">angular2-moment</code> only this time we gonna use a different format using the <code ngNonBindable="">DateFormat</code> pipe:</p>
+
+<p><diffbox step="4.9" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.9</span> <span _ngcontent-sym-12="" class="commit-summary">Import and provide calendar pipe</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/4501b1a932f539bda01a7505ac0920ee51ee6a56">app/pages/messages/messages.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {NavParams} from <span class="hljs-string">'ionic-angular'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {MeteorComponent} from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {DateFormatPipe} from <span class="hljs-string">'angular2-moment'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Mongo} from <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Chat, Message} from <span class="hljs-string">'api/models'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Messages} from <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">@Component({</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  templateUrl: <span class="hljs-string">'build/pages/messages/messages.html'</span>,</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  pipes: [DateFormatPipe]</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">})</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessagesPage extends MeteorComponent {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  title: <span class="hljs-built_in">string</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.10" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.10</span> <span _ngcontent-sym-12="" class="commit-summary">Apply date format pipe to messages view template</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/4e7a3c856796dd22b1f3e89cdfc0a02f78293e62">app/pages/messages/messages.html</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let message of messages"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-wrapper"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">class</span>]=<span class="hljs-string">"'message message-' + message.ownership"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-content"</span>&gt;</span>{{message.content}}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-timestamp"</span>&gt;</span>{{message.createdAt | amDateFormat: 'HH:MM'}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-scroll</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<blockquote><p><em>Note</em>: The current pipe can be provided with the layout we're intrested in, therefore we provided it with the <code ngNonBindable="">HH:MM</code> parameter ('H' stands for 'hour' and 'M' stands for 'minute'). More information about date formats can be found in <a href="momentjs.com"><code ngNonBindable="">Moment</code>'s official website</a>.</p></blockquote>
+
+<p>Our messages are set, but there is one really important feature missing and that's sending messages. Let's implement our message editor.</p>
+
+<p>We will start with the view itself. We will add an input for editing our messages, a <code ngNonBindable="">send</code> button, and a <code ngNonBindable="">record</code> button whos logic won't be implemented in this tutorial since we only wanna focus on the text messaging system. To fulfill this layout we gonna use a tool-bar (<code ngNonBindable="">ion-toolbar</code>) inside a footer (<code ngNonBindable="">ion-footer</code>) and place it underneath the content of the view:</p>
+
+<p><diffbox step="4.11" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.11</span> <span _ngcontent-sym-12="" class="commit-summary">Add message editor to messages view template</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/82a289147f6b058dd498a38c1bdf824d8cf4b1f4">app/pages/messages/messages.html</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre><pre _ngcontent-sym-12="" class="line-number">25</pre><pre _ngcontent-sym-12="" class="line-number">26</pre><pre _ngcontent-sym-12="" class="line-number">27</pre><pre _ngcontent-sym-12="" class="line-number">28</pre><pre _ngcontent-sym-12="" class="line-number">29</pre><pre _ngcontent-sym-12="" class="line-number">30</pre><pre _ngcontent-sym-12="" class="line-number">31</pre><pre _ngcontent-sym-12="" class="line-number">32</pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre><pre _ngcontent-sym-12="" class="line-number">37</pre><pre _ngcontent-sym-12="" class="line-number">38</pre><pre _ngcontent-sym-12="" class="line-number">39</pre><pre _ngcontent-sym-12="" class="line-number">40</pre><pre _ngcontent-sym-12="" class="line-number">41</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-scroll</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-footer</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-toolbar</span> <span class="hljs-attr">whatsapp</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"messages-page-footer"</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"bottom"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-input</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"message"</span> (<span class="hljs-attr">keypress</span>)=<span class="hljs-string">"onInputKeypress($event)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-editor"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Type a message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ion-input</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-buttons</span> <span class="hljs-attr">end</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-editor-button"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"sendMessage()"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">ion-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"send"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ion-icon</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"!message"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-editor-button"</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">ion-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mic"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ion-icon</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">ion-buttons</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-toolbar</span>&gt;</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-footer</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Our stylesheet requires few adjustments as well:</p>
+
+<p><diffbox step="4.12" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.12</span> <span _ngcontent-sym-12="" class="commit-summary">Add message-editor style to messages stylesheet</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/6d5af9b33fd22e659b10daad0d7b48b21470ba3b">app/pages/messages/messages.scss</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">90</pre><pre _ngcontent-sym-12="" class="line-number">91</pre><pre _ngcontent-sym-12="" class="line-number">92</pre><pre _ngcontent-sym-12="" class="line-number">93</pre><pre _ngcontent-sym-12="" class="line-number">94</pre><pre _ngcontent-sym-12="" class="line-number">95</pre><pre _ngcontent-sym-12="" class="line-number">96</pre><pre _ngcontent-sym-12="" class="line-number">97</pre><pre _ngcontent-sym-12="" class="line-number">98</pre><pre _ngcontent-sym-12="" class="line-number">99</pre><pre _ngcontent-sym-12="" class="line-number">100</pre><pre _ngcontent-sym-12="" class="line-number">101</pre><pre _ngcontent-sym-12="" class="line-number">102</pre><pre _ngcontent-sym-12="" class="line-number">103</pre><pre _ngcontent-sym-12="" class="line-number">104</pre><pre _ngcontent-sym-12="" class="line-number">105</pre><pre _ngcontent-sym-12="" class="line-number">106</pre><pre _ngcontent-sym-12="" class="line-number">107</pre><pre _ngcontent-sym-12="" class="line-number">108</pre><pre _ngcontent-sym-12="" class="line-number">109</pre><pre _ngcontent-sym-12="" class="line-number">110</pre><pre _ngcontent-sym-12="" class="line-number">111</pre><pre _ngcontent-sym-12="" class="line-number">112</pre><pre _ngcontent-sym-12="" class="line-number">113</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context">      <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.messages-page-footer</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message-editor</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">2px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">5px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background</span>: white;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message-editor-button</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background</span>: color(<span class="hljs-variable">$colors</span>, whatsapp);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">box-shadow</span>: none;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">17px</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin</span>: auto;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Before we go ahead and implement the logic in the component, we need to implement a method which will add messages to our messages collection and run on both client's local cache and server. Therefore we gonna create a <code ngNonBindable="">methods.ts</code> file in our server and implement the <code ngNonBindable="">addMessage()</code> method:</p>
+
+<p><diffbox step="4.13" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.13</span> <span _ngcontent-sym-12="" class="commit-summary">Add 'addMessage()' method to api</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/ff904a450223cc7c9e7027228b355e2951989049">api/server/methods.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Meteor} from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Chats, Messages} from <span class="hljs-string">'./collections'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">Meteor.methods({</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  addMessage(chatId: <span class="hljs-built_in">string</span>, content: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> chatExists = !!Chats.find(chatId).count();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (!chatExists) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'chat-not-exists'</span>,</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-string">'Chat doesn\'t exist'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    Messages.insert({</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      chatId: chatId,</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      content: content,</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      createdAt: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And now since we want it to run on the client as well we need to import it so it can be a part of our bundle:</p>
+
+<p><diffbox step="4.14" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.14</span> <span _ngcontent-sym-12="" class="commit-summary">Import api methods in app's main component</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/0294fba9084bb219056de8acb492314155ed790b">app/app.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'meteor-client-side'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'api/methods'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Component} from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Platform, ionicBootstrap} from <span class="hljs-string">'ionic-angular'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We would also like to validate some data sent to methods we define. For this we gonna use a utility package provided to us by Meteor and it's called <code ngNonBindable="">check</code>. Let's add it to the server:</p>
+
+<pre><code ngNonBindable="">$ meteor add check</code></pre>
+
+<p>And we gonna use it in our method we just defined:</p>
+
+<p><diffbox step="4.16" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.16</span> <span _ngcontent-sym-12="" class="commit-summary">Add validations to 'addMessage()' method in api</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/a91e6af019212cbf2d31da0ded8ed1c4496b1d15">api/server/methods.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number">5</pre><pre _ngcontent-sym-12="" class="line-number">6</pre><pre _ngcontent-sym-12="" class="line-number">7</pre><pre _ngcontent-sym-12="" class="line-number">8</pre><pre _ngcontent-sym-12="" class="line-number">9</pre><pre _ngcontent-sym-12="" class="line-number">10</pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Meteor} from <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {check, Match} from <span class="hljs-string">'meteor/check'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {Chats, Messages} from <span class="hljs-string">'./collections'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> nonEmptyString = Match.Where((str) =&gt; {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  check(str, <span class="hljs-built_in">String</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">return</span> str.length &gt; <span class="hljs-number">0</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">});</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">Meteor.methods({</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  addMessage(chatId: <span class="hljs-built_in">string</span>, content: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    check(chatId, nonEmptyString);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    check(content, nonEmptyString);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">const</span> chatExists = !!Chats.find(chatId).count();</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">if</span> (!chatExists) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">'chat-not-exists'</span>,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>This package is already included with the <code ngNonBindable="">meteor-client-side</code> package therefore there's no need in installing it again.</p>
+
+<p>Now that our method handler is finally ready, we can go ahead and update our messages component:</p>
+
+<p><diffbox step="4.17" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.17</span> <span _ngcontent-sym-12="" class="commit-summary">Add 'sendMessage()' handler to messages component</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/3da28f90a03b08d4f3fd7b03db295033dacd3b3f">app/pages/messages/messages.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">32</pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre><pre _ngcontent-sym-12="" class="line-number">37</pre><pre _ngcontent-sym-12="" class="line-number">38</pre><pre _ngcontent-sym-12="" class="line-number">39</pre><pre _ngcontent-sym-12="" class="line-number">40</pre><pre _ngcontent-sym-12="" class="line-number">41</pre><pre _ngcontent-sym-12="" class="line-number">42</pre><pre _ngcontent-sym-12="" class="line-number">43</pre><pre _ngcontent-sym-12="" class="line-number">44</pre><pre _ngcontent-sym-12="" class="line-number">45</pre><pre _ngcontent-sym-12="" class="line-number">46</pre><pre _ngcontent-sym-12="" class="line-number">47</pre><pre _ngcontent-sym-12="" class="line-number">48</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-context" className="line-context">  pipes: [DateFormatPipe]</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">})</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessagesPage extends MeteorComponent {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  message = <span class="hljs-string">''</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  title: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  picture: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  messages: Mongo.Cursor&lt;Message&gt;;</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  onInputKeypress({keyCode}: KeyboardEvent): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (keyCode == <span class="hljs-number">13</span>) {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.sendMessage();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  sendMessage(): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.call(<span class="hljs-string">'addMessage'</span>, <span class="hljs-keyword">this</span>.activeChat._id, <span class="hljs-keyword">this</span>.message);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.message = <span class="hljs-string">''</span>;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">private</span> findMessages(): Mongo.Cursor&lt;Message&gt; {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">return</span> Messages.find({</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">      chatId: <span class="hljs-keyword">this</span>.activeChat._id</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>In addition, we would like the view to auto-scroll down whenever a new message is added. For this we gonna use the <a href="developer.mozilla.org/en/docs/Web/API/MutationObserver">MutationObserver</a>, which lets us detect changes in the DOM whenever a new message item was appended:</p>
+
+<p><diffbox step="4.18" tutorial="whatsapp2-ionic-tutorial" _nghost-sym-12=""><div _ngcontent-sym-12="" class="diffbox">
+    <div _ngcontent-sym-12="" class="title-panel">
+        <span _ngcontent-sym-12="" class="step-number">4.18</span> <span _ngcontent-sym-12="" class="commit-summary">Add an auto scroller to messages component</span>
+        <a _ngcontent-sym-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic2-meteor-messenger/commit/15e74c5a7e7acc1e05cfba3eb270f7b1c8459d18">app/pages/messages/messages.ts</a>
+    </div>
+    <div _ngcontent-sym-12="" class="code-container">
+        <div _ngcontent-sym-12="" class="scroll-container">
+            <div _ngcontent-sym-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-number">1</pre><pre _ngcontent-sym-12="" class="line-number">2</pre><pre _ngcontent-sym-12="" class="line-number">3</pre><pre _ngcontent-sym-12="" class="line-number">4</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">11</pre><pre _ngcontent-sym-12="" class="line-number">12</pre><pre _ngcontent-sym-12="" class="line-number">13</pre><pre _ngcontent-sym-12="" class="line-number">14</pre><pre _ngcontent-sym-12="" class="line-number">15</pre><pre _ngcontent-sym-12="" class="line-number">16</pre><pre _ngcontent-sym-12="" class="line-number">17</pre><pre _ngcontent-sym-12="" class="line-number">18</pre><pre _ngcontent-sym-12="" class="line-number">19</pre><pre _ngcontent-sym-12="" class="line-number">20</pre><pre _ngcontent-sym-12="" class="line-number">21</pre><pre _ngcontent-sym-12="" class="line-number">22</pre><pre _ngcontent-sym-12="" class="line-number">23</pre><pre _ngcontent-sym-12="" class="line-number">24</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">33</pre><pre _ngcontent-sym-12="" class="line-number">34</pre><pre _ngcontent-sym-12="" class="line-number">35</pre><pre _ngcontent-sym-12="" class="line-number">36</pre><pre _ngcontent-sym-12="" class="line-number">37</pre><pre _ngcontent-sym-12="" class="line-number">38</pre><pre _ngcontent-sym-12="" class="line-number">39</pre><pre _ngcontent-sym-12="" class="line-number">40</pre><pre _ngcontent-sym-12="" class="line-number">41</pre><pre _ngcontent-sym-12="" class="line-number">42</pre><pre _ngcontent-sym-12="" class="line-number">43</pre><pre _ngcontent-sym-12="" class="line-number">44</pre><pre _ngcontent-sym-12="" class="line-number">45</pre><pre _ngcontent-sym-12="" class="line-number">46</pre><pre _ngcontent-sym-12="" class="line-number"> </pre><pre _ngcontent-sym-12="" class="line-number">66</pre><pre _ngcontent-sym-12="" class="line-number">67</pre><pre _ngcontent-sym-12="" class="line-number">68</pre><pre _ngcontent-sym-12="" class="line-number">69</pre><pre _ngcontent-sym-12="" class="line-number">70</pre><pre _ngcontent-sym-12="" class="line-number">71</pre><pre _ngcontent-sym-12="" class="line-number">72</pre><pre _ngcontent-sym-12="" class="line-number">73</pre><pre _ngcontent-sym-12="" class="line-number">74</pre><pre _ngcontent-sym-12="" class="line-number">75</pre><pre _ngcontent-sym-12="" class="line-number">76</pre><pre _ngcontent-sym-12="" class="line-number">77</pre><pre _ngcontent-sym-12="" class="line-number">78</pre><pre _ngcontent-sym-12="" class="line-number">79</pre><pre _ngcontent-sym-12="" class="line-number">80</pre><pre _ngcontent-sym-12="" class="line-number">81</pre><pre _ngcontent-sym-12="" class="line-number">82</pre><pre _ngcontent-sym-12="" class="line-number">83</pre><pre _ngcontent-sym-12="" class="line-number">84</pre><pre _ngcontent-sym-12="" class="line-number">85</pre><pre _ngcontent-sym-12="" class="line-number">86</pre><pre _ngcontent-sym-12="" class="line-number">87</pre><pre _ngcontent-sym-12="" class="line-number">88</pre><pre _ngcontent-sym-12="" class="line-number">89</pre><pre _ngcontent-sym-12="" class="line-number">90</pre><pre _ngcontent-sym-12="" class="line-number">91</pre><pre _ngcontent-sym-12="" class="line-number">92</pre><pre _ngcontent-sym-12="" class="line-number">93</pre><pre _ngcontent-sym-12="" class="line-number">94</pre><pre _ngcontent-sym-12="" class="line-number">95</pre><pre _ngcontent-sym-12="" class="line-number">96</pre><pre _ngcontent-sym-12="" class="line-number">97</pre><pre _ngcontent-sym-12="" class="line-number">98</pre><pre _ngcontent-sym-12="" class="line-number">99</pre><pre _ngcontent-sym-12="" class="line-number">100</pre><pre _ngcontent-sym-12="" class="line-number">101</pre><pre _ngcontent-sym-12="" class="line-number">102</pre><pre _ngcontent-sym-12="" class="line-number">103</pre><pre _ngcontent-sym-12="" class="line-number">104</pre><pre _ngcontent-sym-12="" class="line-number">105</pre>
+            </div>
+            <div _ngcontent-sym-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> {Component, OnInit, OnDestroy} from <span class="hljs-string">'@angular/core'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {NavParams} from <span class="hljs-string">'ionic-angular'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {MeteorComponent} from <span class="hljs-string">'angular2-meteor'</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> {DateFormatPipe} from <span class="hljs-string">'angular2-moment'</span>;</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  templateUrl: <span class="hljs-string">'build/pages/messages/messages.html'</span>,</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  pipes: [DateFormatPipe]</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">})</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessagesPage extends MeteorComponent <span class="hljs-keyword">implements</span> OnInit, OnDestroy {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  message = <span class="hljs-string">''</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  title: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  picture: <span class="hljs-built_in">string</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  messages: Mongo.Cursor&lt;Message&gt;;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">private</span> isEven = <span class="hljs-literal">false</span>;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">private</span> activeChat: Chat;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> autoScroller: MutationObserver;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>(navParams: NavParams) {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>();</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    }, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  ngOnInit(): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.autoScroller = <span class="hljs-keyword">this</span>.autoScroll();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  ngOnDestroy(): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.autoScroller.disconnect();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  onInputKeypress({keyCode}: KeyboardEvent): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">if</span> (keyCode == <span class="hljs-number">13</span>) {</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.sendMessage();</pre><pre _ngcontent-sym-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.isEven = !<span class="hljs-keyword">this</span>.isEven;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">    <span class="hljs-keyword">return</span> message;</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> autoScroll(): MutationObserver {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> autoScroller = <span class="hljs-keyword">new</span> MutationObserver(<span class="hljs-keyword">this</span>.scrollDown.bind(<span class="hljs-keyword">this</span>));</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    autoScroller.observe(<span class="hljs-keyword">this</span>.messagesList, {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      childList: <span class="hljs-literal">true</span>,</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">      subtree: <span class="hljs-literal">true</span></pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> autoScroller;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> scrollDown(): <span class="hljs-built_in">void</span> {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.scroller.scrollTop = <span class="hljs-keyword">this</span>.scroller.scrollHeight;</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.messageEditor.focus();</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span> messagesPageContent(): Element {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.messages-page-content'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span> messagesPageFooter(): Element {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.messages-page-footer'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span> messagesList(): Element {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.messagesPageContent.querySelector(<span class="hljs-string">'.messages'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span> messageEditor(): HTMLInputElement {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> &lt;HTMLInputElement&gt;<span class="hljs-keyword">this</span>.messagesPageFooter.querySelector(<span class="hljs-string">'.message-editor'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  <span class="hljs-keyword">private</span> <span class="hljs-keyword">get</span> scroller(): Element {</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.messagesList.querySelector(<span class="hljs-string">'scroll-content'</span>);</pre><pre _ngcontent-sym-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sym-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>This is how the messages view should like:</p>
+
+<p>Android:</p>
+
+<p><img alt="angular2-wa-ionic-cli" src="/assets/tutorials/angular2-whatsapp-ionic-cli/screenshot-3-md.png"></p>
+
+<p>iOS:</p>
+
+<p><img alt="angular2-wa-ionic-cli" src="/assets/tutorials/angular2-whatsapp-ionic-cli/screenshot-3-ios.png"></p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>

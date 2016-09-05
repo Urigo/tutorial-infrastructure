@@ -10,10 +10,12 @@ import {ANGULAR2_METEOR_SOCIALLY} from "../../tutorials/angular2-meteor-socially
 import {ANGULAR1_METEOR_SOCIALLY} from "../../tutorials/angular-meteor-socially";
 import {StepsUtils} from "../../core/step-utils";
 import {LocationStrategy} from "@angular/common";
+import {CodeDiffLink} from "../../core/tutorial-code-diff.directive";
+import {ImproveThisDocLink} from "../../core/improve-this-doc.directive";
 
 @Component({
   selector: "tutorial",
-  directives: [ROUTER_DIRECTIVES, StepListComponent, TutorialsVersionsSelection, TutorialNavigation, StepNameDirective],
+  directives: [ROUTER_DIRECTIVES, StepListComponent, TutorialsVersionsSelection, ImproveThisDocLink, CodeDiffLink, TutorialNavigation, StepNameDirective],
   templateUrl: "./tutorials-container.component.html",
   styleUrls: [
     "./tutorials-container.component.scss"
@@ -32,6 +34,10 @@ export class TutorialsContainer {
   private createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], {relativeTo: this.parentRoute});
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+  }
+
+  getStaticRepo() {
+    return "https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website";
   }
 
   getOptions() {

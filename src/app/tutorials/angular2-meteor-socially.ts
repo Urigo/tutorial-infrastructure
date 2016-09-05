@@ -10,7 +10,8 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
     {
       url: "/bootstrap",
       name: "Bootstrap",
-      template: "/assets/templates/angular2-meteor-socially/step_00.md"
+      template: "/assets/templates/angular2-meteor-socially/step_00.md",
+      hideCodeDiff: true
     },
     {
       url: "/static-template",
@@ -130,7 +131,8 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
     {
       url: "/next-steps",
       name: "Next Steps",
-      template: "/assets/templates/angular2-meteor-socially/step_24.md"
+      template: "/assets/templates/angular2-meteor-socially/step_24.md",
+      hideCodeDiff: true
     }
   ]
 };

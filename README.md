@@ -2,16 +2,20 @@
 
 To run:
 
+    $ npm install -g typings webpack rimraf nodemon
     $ npm install
     $ typings install
-    $ npm run start
+    
+And in two different Terminal tabs:
+    
+    $ npm run start 
+    $ npm run watch
     
 Open you browser [http://localhost:3000](http://localhost:3000) !
     
 At the moment, while developing, try access:
 
     /tutorials/angular2/socially/bootstrap
-    
     
 ## TODO
 
@@ -31,8 +35,13 @@ At the moment, while developing, try access:
 - [x] Add API versions support
 - [x] Add API list component
 - [x] Migrate angular1-meteor api docs
-- [ ] Implement Code diff button
+- [x] Implement Code diff button
 - [ ] Implement "Improve this..."
+- [ ] Update to latest Angular Universal
+- [ ] Find a solution for the images
 - [ ] Implement Video
+- [ ] Page title (<title>)
+- [ ] SEO support (keyword tags in <head>) + Site map
+- [ ] Beautiful Design
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.   
 - [ ] Prepare for publish as NPM package

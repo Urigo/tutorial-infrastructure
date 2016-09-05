@@ -1,0 +1,1081 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-csn-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-csn-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-csn-1] a[_ngcontent-csn-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-csn-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-csn-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-csn-1] .dropdown-content[_ngcontent-csn-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-csn-1]:hover .dropdown-content[_ngcontent-csn-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-csn-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-csn-6] ul[_ngcontent-csn-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-csn-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-csn-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-csn-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-csn-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-csn-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-csn-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-csn-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-csn-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-csn-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-csn-6] {
+  float: left; }
+
+.l-right[_ngcontent-csn-6] {
+  float: right; }
+
+.l-relative[_ngcontent-csn-6], .docs-content[_ngcontent-csn-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-csn-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-csn-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-csn-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-csn-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-csn-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-csn-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-csn-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-csn-12] .title-panel[_ngcontent-csn-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-csn-12] .title-panel[_ngcontent-csn-12] .github-commit-link[_ngcontent-csn-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] .scroll-container[_ngcontent-csn-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] pre[_ngcontent-csn-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] pre.line-added[_ngcontent-csn-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] pre.line-removed[_ngcontent-csn-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] .line-content[_ngcontent-csn-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] .line-content[_ngcontent-csn-12] .hljs-comment[_ngcontent-csn-12] {
+        color: #777; }
+    .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] .line-numbers[_ngcontent-csn-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-csn-12] .code-container[_ngcontent-csn-12] .line-numbers[_ngcontent-csn-12] .line-number[_ngcontent-csn-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-csn-1=""><md-toolbar _ngcontent-csn-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-csn-1="" href="/"><img _ngcontent-csn-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-csn-1="" class="tutorials-dropdown">
+        <button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-csn-1="" class="dropdown-content">
+            <steps-list _ngcontent-csn-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-csn-1="" href="/angular2/"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-csn-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-csn-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-csn-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-csn-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-csn-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-csn-1="" href="/manifesto"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-csn-1="" href="/about"><button _ngcontent-csn-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-csn-1=""></router-outlet><tutorial _nghost-csn-6=""><div _ngcontent-csn-6="" class="tutorials-container">
+    <nav _ngcontent-csn-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-csn-6="" _nghost-csn-7=""><!--template bindings={}--></tutorials-versions>
+        <steps-list _ngcontent-csn-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/bootstrapping">1. Bootstrapping</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/bundling">2. Bundling</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/layout">3. Layout, coding style &amp; structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/realtime-meteor-server">4. Realtime Meteor server</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/meteor-server-methods">5. Chat view and send messages</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/authentication">6. Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/modify-chats">7. Create and remove chats</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/privacy">8. Privacy</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/summary">9. Summary</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-csn-6="" class="top-navigation">
+        <span _ngcontent-csn-6="" class="tutorial-title" stepName="">Chat view and send messages</span>
+        <div _ngcontent-csn-6="" class="right-buttons">
+            <a _ngcontent-csn-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/whatsapp/ionic/realtime-meteor-server">Previous</a>
+            <a _ngcontent-csn-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/DAB0mB/ionic-meteor-whatsapp/compare/step_03...step_04">Code Diff</a>
+            <a _ngcontent-csn-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/whatsapp/ionic/authentication">Next</a>
+            <a _ngcontent-csn-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/whatsapp/ionic/meteor-server-methods.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-csn-6="" class="tutorial-content">
+        <router-outlet _ngcontent-csn-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this step we will add the chat view and the ability to send messages.</p>
+
+<p>We still don’t have an identity for each user, we will add it later, but we can still send messages to existing chats.</p>
+
+<p>So just like any other page, let’s begin by adding a very basic view with the chat's details:</p>
+
+<p><diffbox step="4.1" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.1</span> <span _ngcontent-csn-12="" class="commit-summary">Add chat view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/0edfa483f8db903353d011c1c34122ba4b817d50">www/templates/chat.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">ion-view</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"{{ chat.data.name }}"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-nav-buttons</span> <span class="hljs-attr">side</span>=<span class="hljs-string">"right"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header-picture"</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{ chat.data.picture }}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-nav-buttons</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we need to implement the logic in the controller, so let’s create it:</p>
+
+<p><diffbox step="4.2" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.2</span> <span _ngcontent-csn-12="" class="commit-summary">Add chat controller</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/4a9ce5e02cd82d7a8dd3225a603e51340764360b">src/controllers/chat.controller.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Chats } <span class="hljs-keyword">from</span> <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChatCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-keyword">static</span> $inject = [<span class="hljs-string">'$stateParams'</span>]</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.chatId = <span class="hljs-keyword">this</span>.$stateParams.chatId;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      data() {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        <span class="hljs-keyword">return</span> Chats.findOne(<span class="hljs-keyword">this</span>.chatId);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.3" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.3</span> <span _ngcontent-csn-12="" class="commit-summary">Load chat controller</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/044722282fb0606cf48d893c9366e360d79164f4">src/app.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> StatusBar <span class="hljs-keyword">from</span> <span class="hljs-string">'cordova/status-bar'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> Loader <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-loader'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> ChatCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'./controllers/chat.controller'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatsCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'./controllers/chats.controller'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'./filters/calendar.filter'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> RoutesConfig <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes'</span>;</pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">]);</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">new</span> Loader(App)</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  .load(ChatCtrl)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(ChatsCtrl)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(RoutesConfig);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We used the <code ngNonBindable="">$statePrams</code> provider to get the id of the chat, and then we used the <code ngNonBindable="">Chats</code> collection to find the data related to the it. The function <code ngNonBindable="">findOne()</code> takes a query as a parameter and returns a single document. Just like collections in <code ngNonBindable="">MongoDB</code>.</p>
+
+<p>Now that we have the view and the controller let's connect them by adding the appropriate route state:</p>
+
+<p><diffbox step="4.4" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.4</span> <span _ngcontent-csn-12="" class="commit-summary">Add chat route state</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/64754a020cf19d8bd296d9e992ac866927430f67">src/routes.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">            controller: <span class="hljs-string">'ChatsCtrl as chats'</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">          }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      })</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      .state(<span class="hljs-string">'tab.chat'</span>, {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        url: <span class="hljs-string">'/chats/:chatId'</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        views: {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          <span class="hljs-string">'tab-chats'</span>: {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">            templateUrl: <span class="hljs-string">'templates/chat.html'</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">            controller: <span class="hljs-string">'ChatCtrl as chat'</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      });</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.$urlRouterProvider.otherwise(<span class="hljs-string">'tab/chats'</span>);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And all is left to do is to link these two:</p>
+
+<p><diffbox step="4.5" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.5</span> <span _ngcontent-csn-12="" class="commit-summary">Add chat reference to chats view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/0c6542c5c3e2ef8e47bea9ff0f2b1478bf1f7440">www/templates/chats.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">ion-list</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">ion-item</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"chat in chats.data | orderBy:'-lastMessage.timestamp'"</span></span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">                class="item-chat item-remove-animate item-avatar item-icon-right"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">                type="item-text-wrap"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">                href="#/tab/chats/{{ chat._id }}"&gt;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{ chat.picture }}"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>{{ chat.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ chat.lastMessage.text }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now each time we will click on a chat item from the menu, we should be navigating to it.</p>
+
+<p>Let’s create a new <code ngNonBindable="">scss</code> file to our <code ngNonBindable="">Chat</code> and fix the image style so it won't look silly:</p>
+
+<p><diffbox step="4.6" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.6</span> <span _ngcontent-csn-12="" class="commit-summary">Add chat stylesheet</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/9b8bae72cfe71b519a97dcdafb79d3c0a746f021">scss/chat.scss</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.header-picture</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">33px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">max-height</span>: <span class="hljs-number">33px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.7" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.7</span> <span _ngcontent-csn-12="" class="commit-summary">Import chat stylesheet</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/44ebbf706fa3df7bd9aeb509bf9f398e57e79fe5">scss/ionic.app.scss</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-comment">// Include all of Ionic</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">@<span class="hljs-keyword">import</span> <span class="hljs-string">"www/lib/ionic/scss/ionic"</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">@<span class="hljs-keyword">import</span> <span class="hljs-string">"chat"</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">@<span class="hljs-keyword">import</span> <span class="hljs-string">"chats"</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Our next step is about getting the chat messages on the controller, we will add another helper, but instead of using the whole collection we will fetch only the relevant messages for the current chat:</p>
+
+<p><diffbox step="4.8" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.8</span> <span _ngcontent-csn-12="" class="commit-summary">Add messages helper to chat controller</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/6c7b408b91af80f618661e3389c937168dd1541e">src/controllers/chat.controller.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Chats, Messages } <span class="hljs-keyword">from</span> <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChatCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.chatId = <span class="hljs-keyword">this</span>.$stateParams.chatId;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      messages() {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        <span class="hljs-keyword">return</span> Messages.find({ chatId: <span class="hljs-keyword">this</span>.chatId });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      },</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      data() {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-keyword">return</span> Chats.findOne(<span class="hljs-keyword">this</span>.chatId);</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      }</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And now to add it to the view, we use <code ngNonBindable="">ng-repeat</code> to iterate the messages:</p>
+
+<p><diffbox step="4.9" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.9</span> <span _ngcontent-csn-12="" class="commit-summary">Add messages to chat view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/e7d7821d5ffd3a9b3e225bb44ea32fc6fd07f75a">www/templates/chat.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-nav-buttons</span> <span class="hljs-attr">side</span>=<span class="hljs-string">"right"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header-picture"</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{ chat.data.picture }}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-nav-buttons</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chat"</span> <span class="hljs-attr">delegate-handle</span>=<span class="hljs-string">"chatScroll"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-list"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"message in chat.messages"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-wrapper"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">ng-class-even</span>=<span class="hljs-string">"'message-mine'"</span> <span class="hljs-attr">ng-class-odd</span>=<span class="hljs-string">"'message-other'"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-text"</span>&gt;</span>{{ message.text }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-timestamp"</span>&gt;</span>{{ message.timestamp }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now that it is well functioning, let's polish our <code ngNonBindable="">Chats</code>'s looking by adding some style to our newly created messages:</p>
+
+<p><diffbox step="4.10" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.10</span> <span _ngcontent-csn-12="" class="commit-summary">Add message style to chat stylesheet</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/0e2893c5240bd087ee8602043f742bc2d0db3fe2">scss/chat.scss</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre><pre _ngcontent-csn-12="" class="line-number">33</pre><pre _ngcontent-csn-12="" class="line-number">34</pre><pre _ngcontent-csn-12="" class="line-number">35</pre><pre _ngcontent-csn-12="" class="line-number">36</pre><pre _ngcontent-csn-12="" class="line-number">37</pre><pre _ngcontent-csn-12="" class="line-number">38</pre><pre _ngcontent-csn-12="" class="line-number">39</pre><pre _ngcontent-csn-12="" class="line-number">40</pre><pre _ngcontent-csn-12="" class="line-number">41</pre><pre _ngcontent-csn-12="" class="line-number">42</pre><pre _ngcontent-csn-12="" class="line-number">43</pre><pre _ngcontent-csn-12="" class="line-number">44</pre><pre _ngcontent-csn-12="" class="line-number">45</pre><pre _ngcontent-csn-12="" class="line-number">46</pre><pre _ngcontent-csn-12="" class="line-number">47</pre><pre _ngcontent-csn-12="" class="line-number">48</pre><pre _ngcontent-csn-12="" class="line-number">49</pre><pre _ngcontent-csn-12="" class="line-number">50</pre><pre _ngcontent-csn-12="" class="line-number">51</pre><pre _ngcontent-csn-12="" class="line-number">52</pre><pre _ngcontent-csn-12="" class="line-number">53</pre><pre _ngcontent-csn-12="" class="line-number">54</pre><pre _ngcontent-csn-12="" class="line-number">55</pre><pre _ngcontent-csn-12="" class="line-number">56</pre><pre _ngcontent-csn-12="" class="line-number">57</pre><pre _ngcontent-csn-12="" class="line-number">58</pre><pre _ngcontent-csn-12="" class="line-number">59</pre><pre _ngcontent-csn-12="" class="line-number">60</pre><pre _ngcontent-csn-12="" class="line-number">61</pre><pre _ngcontent-csn-12="" class="line-number">62</pre><pre _ngcontent-csn-12="" class="line-number">63</pre><pre _ngcontent-csn-12="" class="line-number">64</pre><pre _ngcontent-csn-12="" class="line-number">65</pre><pre _ngcontent-csn-12="" class="line-number">66</pre><pre _ngcontent-csn-12="" class="line-number">67</pre><pre _ngcontent-csn-12="" class="line-number">68</pre><pre _ngcontent-csn-12="" class="line-number">69</pre><pre _ngcontent-csn-12="" class="line-number">70</pre><pre _ngcontent-csn-12="" class="line-number">71</pre><pre _ngcontent-csn-12="" class="line-number">72</pre><pre _ngcontent-csn-12="" class="line-number">73</pre><pre _ngcontent-csn-12="" class="line-number">74</pre><pre _ngcontent-csn-12="" class="line-number">75</pre><pre _ngcontent-csn-12="" class="line-number">76</pre><pre _ngcontent-csn-12="" class="line-number">77</pre><pre _ngcontent-csn-12="" class="line-number">78</pre><pre _ngcontent-csn-12="" class="line-number">79</pre><pre _ngcontent-csn-12="" class="line-number">80</pre><pre _ngcontent-csn-12="" class="line-number">81</pre><pre _ngcontent-csn-12="" class="line-number">82</pre><pre _ngcontent-csn-12="" class="line-number">83</pre><pre _ngcontent-csn-12="" class="line-number">84</pre><pre _ngcontent-csn-12="" class="line-number">85</pre><pre _ngcontent-csn-12="" class="line-number">86</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.chat</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">background-image</span>: url(/img/chat-background.jpg);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#E0DAD6</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">background-repeat</span>: no-repeat;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.message-list</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">5%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.message-wrapper</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">9px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;::after {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">display</span>: table;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">clear</span>: both;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.message</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">display</span>: inline-block;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">position</span>: relative;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">236px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">7px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">2px</span> rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">15</span>);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-mine</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">float</span>: right;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#DCF8C6</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-other</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">float</span>: left;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FFF</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-other</span>::before, &amp;<span class="hljs-selector-class">.message-mine</span>::before, {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">3px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">width</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">height</span>: <span class="hljs-number">19px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-position</span>: <span class="hljs-number">50%</span> <span class="hljs-number">50%</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-repeat</span>: no-repeat;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-size</span>: contain;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-other</span>::before {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">left</span>: -<span class="hljs-number">11px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-image</span>: url(/img/message-other.png)</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-mine</span>::before {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">right</span>: -<span class="hljs-number">11px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-image</span>: url(/img/message-mine.png)</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message-text</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">7px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">word-wrap</span>: break-word;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    &amp;::after {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-attribute">content</span>: <span class="hljs-string">" \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-attribute">display</span>: inline;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.message-timestamp</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">2px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">right</span>: <span class="hljs-number">7px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Also, this stylesheet uses some assets located in the <code ngNonBindable="">www/img</code> dir, so inorder for the stylesheet to work properly you'll need to copy the files located <a href="https://github.com/DAB0mB/ionic-meteor-whatsapp/tree/master/www/img">here</a>.</p>
+
+<p>After doing so, our app should look like this:</p>
+
+<p><img alt="angular1-wa-ionic-cli" src="/assets/tutorials/angular1-whatsapp-ionic-cli/4.png"></p>
+
+<p>Now we just need to take care of the message timestamp and format it.</p>
+
+<p>We will use <code ngNonBindable="">Moment</code> like before, but now let's add another package called <a href="https://github.com/urish/angular-moment">angular-moment</a> that provides us the UI filters.</p>
+
+<p>So adding the package is just like any other package we added so far. First, we will install it:</p>
+
+<pre><code ngNonBindable="">$ bower install angular-moment --save</code></pre>
+
+<p><diffbox step="4.12" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.12</span> <span _ngcontent-csn-12="" class="commit-summary">Install angular-moment bower package</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/2bb5dab0803bf08592ebbfa309d9a9debe22daa8">bower.json</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">  },</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-string">"dependencies"</span>: {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-string">"meteor-client-side"</span>: <span class="hljs-string">"^1.3.1"</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">"angular-meteor"</span>: <span class="hljs-string">"^1.3.10"</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">"angular-moment"</span>: <span class="hljs-string">"^0.10.3"</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And then we will load it:</p>
+
+<p><diffbox step="4.13" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.13</span> <span _ngcontent-csn-12="" class="commit-summary">Import angular-moment bower package in index js</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/5ab68a3beb9bfc9f4c5a72ea92d6021bb28509b9">src/index.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/ionic/js/ionic-angular'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/meteor-client-side/dist/meteor-client-side.bundle'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-meteor/dist/angular-meteor.bundle'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-moment/angular-moment'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-comment">// app</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'./app'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.14" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.14</span> <span _ngcontent-csn-12="" class="commit-summary">Add angular-moment module to app dependencies</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/035e4dca4f6afe2f12ab5ec6de94d5246d41eda3">src/app.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">Angular.module(App, [</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-string">'angular-meteor'</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-string">'angularMoment'</span>,</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-string">'ionic'</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">]);</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<blockquote><p><em>NOTE</em>: Because it’s an <code ngNonBindable="">Angular</code> extension, we loaded its dependency in our module definition.</p></blockquote>
+
+<p>Now that we have <code ngNonBindable="">angular-moment</code> ready to use, we will use a filter provided by it in our view:</p>
+
+<p><diffbox step="4.15" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.15</span> <span _ngcontent-csn-12="" class="commit-summary">Add date format filter to chat view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/1caf296594325b4581a591a484b848f67f397ce2">www/templates/chat.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"message in chat.messages"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-wrapper"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">ng-class-even</span>=<span class="hljs-string">"'message-mine'"</span> <span class="hljs-attr">ng-class-odd</span>=<span class="hljs-string">"'message-other'"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-text"</span>&gt;</span>{{ message.text }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"message-timestamp"</span>&gt;</span>{{ message.timestamp | amDateFormat: 'HH:MM' }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Our messages are set, but there is one really important feature missing and that's sending messages. Let's implement our message editor.</p>
+
+<p>We will start with the view itself. We will add an input for editing our messages, a <code ngNonBindable="">send</code> button and some icons for sending images and sound recordings, whom logic won't be implemented in this tutorial since we only wanna focus on the messaging system.</p>
+
+<p>The <code ngNonBindable="">ionic-footer-bar</code> directive provides a perfect solution for placing stuff under our content, let's use it:</p>
+
+<p><diffbox step="4.16" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.16</span> <span _ngcontent-csn-12="" class="commit-summary">Add message editor to chat view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/3679e49ec61e68fa6d4edac3c0e4272bffe5ac98">www/templates/chat.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre><pre _ngcontent-csn-12="" class="line-number">33</pre><pre _ngcontent-csn-12="" class="line-number">34</pre><pre _ngcontent-csn-12="" class="line-number">35</pre><pre _ngcontent-csn-12="" class="line-number">36</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-content</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">ion-footer-bar</span> <span class="hljs-attr">keyboard-attach</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bar-stable footer-chat item-input-inset"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-icon button-positive icon ion-ios-upload-outline"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item-input-wrapper"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ng-model</span>=<span class="hljs-string">"chat.message"</span></span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             dir="auto"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             type="text"/&gt;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">ng-if</span>=<span class="hljs-string">"chat.message.length &gt; 0"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"chat.sendMessage()"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-positive"</span>&gt;</span>Send<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">ng-if</span>=<span class="hljs-string">"!chat.message || chat.message.length === 0"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-icon button-positive icon ion-ios-camera-outline"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"buttons-seperator icon ion-android-more-vertical"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button button-clear button-icon button-positive icon ion-ios-mic-outline"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">ion-footer-bar</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">ion-view</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>To improve the user experience in our app, we want some extra events to our input because we want to move it up when the keyboard comes from the bottom of the screen and we want to know if <code ngNonBindable="">return</code> (aka <code ngNonBindable="">Enter</code>) was pressed.</p>
+
+<p>We will implement a new directive that extends the regular <code ngNonBindable="">input</code> tag and add those events to the directive:</p>
+
+<p><diffbox step="4.17" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.17</span> <span _ngcontent-csn-12="" class="commit-summary">Add input directive</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/5e0f7b5bfb35507421fbc8485ab3cc9d3eb56f92">src/directives/input.directive.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number">17</pre><pre _ngcontent-csn-12="" class="line-number">18</pre><pre _ngcontent-csn-12="" class="line-number">19</pre><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre><pre _ngcontent-csn-12="" class="line-number">33</pre><pre _ngcontent-csn-12="" class="line-number">34</pre><pre _ngcontent-csn-12="" class="line-number">35</pre><pre _ngcontent-csn-12="" class="line-number">36</pre><pre _ngcontent-csn-12="" class="line-number">37</pre><pre _ngcontent-csn-12="" class="line-number">38</pre><pre _ngcontent-csn-12="" class="line-number">39</pre><pre _ngcontent-csn-12="" class="line-number">40</pre><pre _ngcontent-csn-12="" class="line-number">41</pre><pre _ngcontent-csn-12="" class="line-number">42</pre><pre _ngcontent-csn-12="" class="line-number">43</pre><pre _ngcontent-csn-12="" class="line-number">44</pre><pre _ngcontent-csn-12="" class="line-number">45</pre><pre _ngcontent-csn-12="" class="line-number">46</pre><pre _ngcontent-csn-12="" class="line-number">47</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Directive } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InputDirective</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Directive</span> </span>{</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-keyword">static</span> $inject = [<span class="hljs-string">'$timeout'</span>]</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-keyword">static</span> $name = <span class="hljs-string">'input'</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  restrict = <span class="hljs-string">'E'</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  scope = {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">'returnClose'</span>: <span class="hljs-string">'='</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">'onReturn'</span>: <span class="hljs-string">'&amp;'</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">'onFocus'</span>: <span class="hljs-string">'&amp;'</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-string">'onBlur'</span>: <span class="hljs-string">'&amp;'</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  link(scope, element) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    element.bind(<span class="hljs-string">'focus'</span>, (e) =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (!scope.onFocus) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$timeout(() =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        scope.onFocus();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    element.bind(<span class="hljs-string">'blur'</span>, (e) =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (!scope.onBlur) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$timeout(() =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        scope.onBlur();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    element.bind(<span class="hljs-string">'keydown'</span>, (e) =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (e.which != <span class="hljs-number">13</span>) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (scope.returnClose) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        element[<span class="hljs-number">0</span>].blur();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (scope.onReturn) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.$timeout(() =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">          scope.onReturn();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">        });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="4.18" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.18</span> <span _ngcontent-csn-12="" class="commit-summary">Load input directive</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/b03d4522cbc47d36291780bd87730e51145fca00">src/app.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'./controllers/chat.controller'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ChatsCtrl <span class="hljs-keyword">from</span> <span class="hljs-string">'./controllers/chats.controller'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> InputDirective <span class="hljs-keyword">from</span> <span class="hljs-string">'./directives/input.directive'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> CalendarFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'./filters/calendar.filter'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> RoutesConfig <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">new</span> Loader(App)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(ChatCtrl)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(ChatsCtrl)</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  .load(InputDirective)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(CalendarFilter)</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  .load(RoutesConfig);</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And now we can use those events in our view:</p>
+
+<p><diffbox step="4.19" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.19</span> <span _ngcontent-csn-12="" class="commit-summary">Use input directive events in chat view</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/6f6afdb70631054183aaafe0e530eda913f6247b">www/templates/chat.html</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">20</pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item-input-wrapper"</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ng-model</span>=<span class="hljs-string">"chat.message"</span></span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">             dir="auto"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             type="text"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             on-return="chat.sendMessage(); chat.closeKeyboard()"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             on-focus="chat.inputUp()"</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">             on-blur="chat.inputDown()"/&gt;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">ng-if</span>=<span class="hljs-string">"chat.message.length &gt; 0"</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And implement the controller methods which handle those events:</p>
+
+<p><diffbox step="4.20" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.20</span> <span _ngcontent-csn-12="" class="commit-summary">Implement input events in chat controller</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/130853f67b20200ae715f17ad7a37693e514013f">src/controllers/chat.controller.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">21</pre><pre _ngcontent-csn-12="" class="line-number">22</pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre><pre _ngcontent-csn-12="" class="line-number">33</pre><pre _ngcontent-csn-12="" class="line-number">34</pre><pre _ngcontent-csn-12="" class="line-number">35</pre><pre _ngcontent-csn-12="" class="line-number">36</pre><pre _ngcontent-csn-12="" class="line-number">37</pre><pre _ngcontent-csn-12="" class="line-number">38</pre><pre _ngcontent-csn-12="" class="line-number">39</pre><pre _ngcontent-csn-12="" class="line-number">40</pre><pre _ngcontent-csn-12="" class="line-number">41</pre><pre _ngcontent-csn-12="" class="line-number">42</pre><pre _ngcontent-csn-12="" class="line-number">43</pre><pre _ngcontent-csn-12="" class="line-number">44</pre><pre _ngcontent-csn-12="" class="line-number">45</pre><pre _ngcontent-csn-12="" class="line-number">46</pre><pre _ngcontent-csn-12="" class="line-number">47</pre><pre _ngcontent-csn-12="" class="line-number">48</pre><pre _ngcontent-csn-12="" class="line-number">49</pre><pre _ngcontent-csn-12="" class="line-number">50</pre><pre _ngcontent-csn-12="" class="line-number">51</pre><pre _ngcontent-csn-12="" class="line-number">52</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Ionic <span class="hljs-keyword">from</span> <span class="hljs-string">'ionic'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Keyboard <span class="hljs-keyword">from</span> <span class="hljs-string">'cordova/keyboard'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Chats, Messages } <span class="hljs-keyword">from</span> <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChatCtrl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-keyword">static</span> $inject = [<span class="hljs-string">'$stateParams'</span>, <span class="hljs-string">'$timeout'</span>, <span class="hljs-string">'$ionicScrollDelegate'</span>]</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">super</span>(...arguments);</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.chatId = <span class="hljs-keyword">this</span>.$stateParams.chatId;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.isIOS = Ionic.Platform.isWebView() &amp;&amp; Ionic.Platform.isIOS();</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      messages() {</pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    });</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  inputUp () {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isIOS) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.keyboardHeight = <span class="hljs-number">216</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.scrollBottom(<span class="hljs-literal">true</span>);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  inputDown () {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isIOS) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.keyboardHeight = <span class="hljs-number">0</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$ionicScrollDelegate.$getByHandle(<span class="hljs-string">'chatScroll'</span>).resize();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  closeKeyboard() {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (Keyboard) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      Keyboard.close();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  scrollBottom(animate) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.$timeout(() =&gt; {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.$ionicScrollDelegate.$getByHandle(<span class="hljs-string">'chatScroll'</span>).scrollBottom(animate);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    }, <span class="hljs-number">300</span>);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We will also add some <code ngNonBindable="">css</code> to this view:</p>
+
+<p><diffbox step="4.21" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.21</span> <span _ngcontent-csn-12="" class="commit-summary">Add footer style to chat stylesheet</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/fba14290df8366a516121d0b24ae215bab08a7fb">scss/chat.scss</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">45</pre><pre _ngcontent-csn-12="" class="line-number">46</pre><pre _ngcontent-csn-12="" class="line-number">47</pre><pre _ngcontent-csn-12="" class="line-number">48</pre><pre _ngcontent-csn-12="" class="line-number">49</pre><pre _ngcontent-csn-12="" class="line-number">50</pre><pre _ngcontent-csn-12="" class="line-number">51</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">83</pre><pre _ngcontent-csn-12="" class="line-number">84</pre><pre _ngcontent-csn-12="" class="line-number">85</pre><pre _ngcontent-csn-12="" class="line-number">86</pre><pre _ngcontent-csn-12="" class="line-number">87</pre><pre _ngcontent-csn-12="" class="line-number">88</pre><pre _ngcontent-csn-12="" class="line-number">89</pre><pre _ngcontent-csn-12="" class="line-number">90</pre><pre _ngcontent-csn-12="" class="line-number">91</pre><pre _ngcontent-csn-12="" class="line-number">92</pre><pre _ngcontent-csn-12="" class="line-number">93</pre><pre _ngcontent-csn-12="" class="line-number">94</pre><pre _ngcontent-csn-12="" class="line-number">95</pre><pre _ngcontent-csn-12="" class="line-number">96</pre><pre _ngcontent-csn-12="" class="line-number">97</pre><pre _ngcontent-csn-12="" class="line-number">98</pre><pre _ngcontent-csn-12="" class="line-number">99</pre><pre _ngcontent-csn-12="" class="line-number">100</pre><pre _ngcontent-csn-12="" class="line-number">101</pre><pre _ngcontent-csn-12="" class="line-number">102</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FFF</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  &amp;<span class="hljs-selector-class">.message-other</span>::before, &amp;<span class="hljs-selector-class">.message-mine</span>::before {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">position</span>: absolute;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">3px</span>;</pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-selector-class">.footer-chat</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.item-input-wrapper</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FFF</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.button-icon</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.buttons-seperator</span> {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">color</span>: gray;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">32px</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>So now when the user focuses on the input, it should pop up.</p>
+
+<p>This is what we got so far:</p>
+
+<p><img alt="angular1-wa-ionic-cli" src="/assets/tutorials/angular1-whatsapp-ionic-cli/5.png"></p>
+
+<p>So now it’s time to implement the <code ngNonBindable="">sendMessage()</code> in our controller, which is responsible for the logic of sending a message.</p>
+
+<p>We will use <code ngNonBindable="">Scope.callMethod()</code> in order to call that method on the server side:</p>
+
+<p><diffbox step="4.22" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.22</span> <span _ngcontent-csn-12="" class="commit-summary">Implement send message method in chat controller</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/d22538a5e8b560a3c1b9e87868cb80bfc81b902d">src/controllers/chat.controller.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number"> </pre><pre _ngcontent-csn-12="" class="line-number">23</pre><pre _ngcontent-csn-12="" class="line-number">24</pre><pre _ngcontent-csn-12="" class="line-number">25</pre><pre _ngcontent-csn-12="" class="line-number">26</pre><pre _ngcontent-csn-12="" class="line-number">27</pre><pre _ngcontent-csn-12="" class="line-number">28</pre><pre _ngcontent-csn-12="" class="line-number">29</pre><pre _ngcontent-csn-12="" class="line-number">30</pre><pre _ngcontent-csn-12="" class="line-number">31</pre><pre _ngcontent-csn-12="" class="line-number">32</pre><pre _ngcontent-csn-12="" class="line-number">33</pre><pre _ngcontent-csn-12="" class="line-number">34</pre><pre _ngcontent-csn-12="" class="line-number">35</pre><pre _ngcontent-csn-12="" class="line-number">36</pre><pre _ngcontent-csn-12="" class="line-number">37</pre><pre _ngcontent-csn-12="" class="line-number">38</pre><pre _ngcontent-csn-12="" class="line-number">39</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> Ionic <span class="hljs-keyword">from</span> <span class="hljs-string">'ionic'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> Keyboard <span class="hljs-keyword">from</span> <span class="hljs-string">'cordova/keyboard'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { _ } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/underscore'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Chats, Messages } <span class="hljs-keyword">from</span> <span class="hljs-string">'api/collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Controller } <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ecmascript/module-helpers'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    });</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  sendMessage() {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (_.isEmpty(<span class="hljs-keyword">this</span>.message)) <span class="hljs-keyword">return</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.callMethod(<span class="hljs-string">'newMessage'</span>, {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      text: <span class="hljs-keyword">this</span>.message,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      chatId: <span class="hljs-keyword">this</span>.chatId</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>.message;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  inputUp () {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isIOS) {</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.keyboardHeight = <span class="hljs-number">216</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now let’s create our <code ngNonBindable="">api</code> method in a file called <code ngNonBindable="">methods.js</code>:</p>
+
+<p><diffbox step="4.23" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.23</span> <span _ngcontent-csn-12="" class="commit-summary">Add new message method to api</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/31adc79c2d39d54517aab20e35c45a618f084f18">api/server/methods.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Chats, Messages } <span class="hljs-keyword">from</span> <span class="hljs-string">'./collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">Meteor.methods({</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  newMessage(message) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    message.timestamp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> messageId = Messages.insert(message);</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    Chats.update(message.chatId, { $set: { lastMessage: message } });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> messageId;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And we also need to load them in our client, since they are called twice, once in our client (As a validation and smoother experience without refreshing) and once in our server (For security and data handling):</p>
+
+<p><diffbox step="4.24" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.24</span> <span _ngcontent-csn-12="" class="commit-summary">Import api methods in index js</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/7037fc3ef01db09b93f0d07e9c5fcfe65afaa644">src/index.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre><pre _ngcontent-csn-12="" class="line-number">15</pre><pre _ngcontent-csn-12="" class="line-number">16</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/meteor-client-side/dist/meteor-client-side.bundle'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-meteor/dist/angular-meteor.bundle'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-moment/angular-moment'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-comment">// api</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'api/methods'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-comment">// app</span></pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'./app'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We would also like to validate some data sent to methods we define. <code ngNonBindable="">Meteor</code> provides us with a useful package named <code ngNonBindable="">check</code> that validates data types and scheme.</p>
+
+<p>We will add it to our server using the following commands:</p>
+
+<pre><code ngNonBindable="">$ cd api
+$ meteor add check</code></pre>
+
+<blockquote><p><em>NOTE</em>: <code ngNonBindable="">meteor-client-side</code> is already provided with the <code ngNonBindable="">check</code> package so no need to require it again.</p></blockquote>
+
+<p>Now let’s use it in the <code ngNonBindable="">newMessage()</code> method:</p>
+
+<p><diffbox step="4.26" tutorial="ionic-tutorial" _nghost-csn-12=""><div _ngcontent-csn-12="" class="diffbox">
+    <div _ngcontent-csn-12="" class="title-panel">
+        <span _ngcontent-csn-12="" class="step-number">4.26</span> <span _ngcontent-csn-12="" class="commit-summary">Add validation to new message method</span>
+        <a _ngcontent-csn-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/2c2a42eb2380dfdf6eb23f9db50d95b53c42c5c2">api/server/methods.js</a>
+    </div>
+    <div _ngcontent-csn-12="" class="code-container">
+        <div _ngcontent-csn-12="" class="scroll-container">
+            <div _ngcontent-csn-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-number">1</pre><pre _ngcontent-csn-12="" class="line-number">2</pre><pre _ngcontent-csn-12="" class="line-number">3</pre><pre _ngcontent-csn-12="" class="line-number">4</pre><pre _ngcontent-csn-12="" class="line-number">5</pre><pre _ngcontent-csn-12="" class="line-number">6</pre><pre _ngcontent-csn-12="" class="line-number">7</pre><pre _ngcontent-csn-12="" class="line-number">8</pre><pre _ngcontent-csn-12="" class="line-number">9</pre><pre _ngcontent-csn-12="" class="line-number">10</pre><pre _ngcontent-csn-12="" class="line-number">11</pre><pre _ngcontent-csn-12="" class="line-number">12</pre><pre _ngcontent-csn-12="" class="line-number">13</pre><pre _ngcontent-csn-12="" class="line-number">14</pre>
+            </div>
+            <div _ngcontent-csn-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { check } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/check'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Chats, Messages } <span class="hljs-keyword">from</span> <span class="hljs-string">'./collections'</span>;</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">Meteor.methods({</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">  newMessage(message) {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    check(message, {</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      text: <span class="hljs-built_in">String</span>,</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">      chatId: <span class="hljs-built_in">String</span></pre><pre _ngcontent-csn-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-csn-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    message.timestamp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</pre><pre _ngcontent-csn-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-csn-12="" class="line-context" className="line-context">    <span class="hljs-keyword">const</span> messageId = Messages.insert(message);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now that it's ready you can go ahead and send a message and view it on the screen. It should look like this:</p>
+
+<p><img alt="angular1-wa-ionic-cli" src="/assets/tutorials/angular1-whatsapp-ionic-cli/6.png"></p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>

@@ -7,8 +7,9 @@
         <span class="tutorial-title" stepName></span>
         <div class="right-buttons">
             <a md-raised-button tutorialNavigation="previous" class="md-primary">Previous</a>
-            <a md-raised-button codeDiffButton class="md-primary">Code Diff</a>
+            <a md-raised-button codeDiffLink class="md-primary">Code Diff</a>
             <a md-raised-button tutorialNavigation="next" class="md-primary">Next</a>
+            <a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
         </div>
     </div>
     <div class="tutorial-content">

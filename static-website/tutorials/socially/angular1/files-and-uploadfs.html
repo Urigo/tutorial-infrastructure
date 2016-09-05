@@ -1,0 +1,1390 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-neu-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-neu-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-neu-1] a[_ngcontent-neu-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-neu-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-neu-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-neu-1] .dropdown-content[_ngcontent-neu-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-neu-1]:hover .dropdown-content[_ngcontent-neu-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-neu-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-neu-6] ul[_ngcontent-neu-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-neu-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-neu-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-neu-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-neu-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-neu-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-neu-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-neu-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-neu-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-neu-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-neu-6] {
+  float: left; }
+
+.l-right[_ngcontent-neu-6] {
+  float: right; }
+
+.l-relative[_ngcontent-neu-6], .docs-content[_ngcontent-neu-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-neu-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-neu-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-neu-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-neu-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-neu-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-neu-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-neu-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-neu-12] .title-panel[_ngcontent-neu-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-neu-12] .title-panel[_ngcontent-neu-12] .github-commit-link[_ngcontent-neu-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] .scroll-container[_ngcontent-neu-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] pre[_ngcontent-neu-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] pre.line-added[_ngcontent-neu-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] pre.line-removed[_ngcontent-neu-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] .line-content[_ngcontent-neu-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] .line-content[_ngcontent-neu-12] .hljs-comment[_ngcontent-neu-12] {
+        color: #777; }
+    .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] .line-numbers[_ngcontent-neu-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-neu-12] .code-container[_ngcontent-neu-12] .line-numbers[_ngcontent-neu-12] .line-number[_ngcontent-neu-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-neu-1=""><md-toolbar _ngcontent-neu-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-neu-1="" href="/"><img _ngcontent-neu-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-neu-1="" class="tutorials-dropdown">
+        <button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-neu-1="" class="dropdown-content">
+            <steps-list _ngcontent-neu-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-neu-1="" href="/angular2/"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-neu-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-neu-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-neu-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-neu-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-neu-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-neu-1="" href="/manifesto"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-neu-1="" href="/about"><button _ngcontent-neu-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-neu-1=""></router-outlet><tutorial _nghost-neu-6=""><div _ngcontent-neu-6="" class="tutorials-container">
+    <nav _ngcontent-neu-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-neu-6="" _nghost-neu-7=""><!--template bindings={}--><a _ngcontent-neu-7="" md-raised-button="" class="tutorial-version md-primary active" className="tutorial-version md-primary active" href="/tutorials/socially/angular1/files-and-uploadfs">Angular 1</a><a _ngcontent-neu-7="" md-raised-button="" class="tutorial-version md-primary " className="tutorial-version md-primary " href="/tutorials/socially/angular2/files-and-uploadfs">Angular 2</a></tutorials-versions>
+        <steps-list _ngcontent-neu-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/css-less-and-bootstrap">18. CSS, LESS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/ionic">23. Ionic</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-neu-6="" class="top-navigation">
+        <span _ngcontent-neu-6="" class="tutorial-title" stepName="">Files and UploadFS</span>
+        <div _ngcontent-neu-6="" class="right-buttons">
+            <a _ngcontent-neu-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/socially/angular1/3rd-party-libraries">Previous</a>
+            <a _ngcontent-neu-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/Urigo/meteor-angular-socially/compare/step_19...step_20">Code Diff</a>
+            <a _ngcontent-neu-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/socially/angular1/packages-isolation">Next</a>
+            <a _ngcontent-neu-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/socially/angular1/files-and-uploadfs.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-neu-6="" class="tutorial-content">
+        <router-outlet _ngcontent-neu-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this step we are going to add the ability to upload images into our app, and also sorting and naming them.</p>
+
+<p>Angular-Meteor can use Meteor <a href="https://github.com/jalik/jalik-ufs">UploadFS</a> which is a suite of Meteor packages that together provide a complete file management solution including uploading, downloading, storage, synchronization, manipulation, and copying.</p>
+
+<p>It supports several storage adapters for saving files to the local filesystem, GridFS and additional storage adapters can be created.</p>
+
+<p>The process is very similar for handling any other MongoDB Collection!</p>
+
+<p>So let's add image upload to our app!</p>
+
+<p>We will start by adding UploadFS to our project, by running the following command:</p>
+
+<pre><code ngNonBindable="">$ meteor add jalik:ufs</code></pre>
+
+<p>Now, we will decide the storage adapter we want to use.
+In this example, we will use the GridFS as storage adapters, so we will add the adapter by running this command:</p>
+
+<pre><code ngNonBindable="">$ meteor add jalik:ufs-gridfs</code></pre>
+
+<p>Note: you can find more information about Stores and Storage Adapters on the <a href="https://github.com/jalik/jalik-ufs">UploadFS</a>'s GitHub repository.</p>
+
+<p>So now we have the UploadFS support and the storage adapter installed - we still need to create a UploadFS object to handle our files.
+Note that you will need to define the collection as shared resource because you will need to use the collection in both client and server side.</p>
+
+<h3>Creating the Mongo Collection and UploadFS Store</h3>
+
+<p>Let's start by creating <code ngNonBindable="">imports/api/images/collection.js</code> file, and define a Mongo Collection object called "Images". Since we want to be able to make thumbnails we have to create another Collection called "Thumbs".</p>
+
+<p>Also we will use the stadard Mongo Collection API that allows us to defined auth-rules.</p>
+
+<p><diffbox step="20.3" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.3</span> <span _ngcontent-neu-12="" class="commit-summary">Create Images and Thumbs collections</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/e16087799e443d2853dafc6034f3e3929004dfa6">imports/api/images/collection.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Mongo } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/mongo'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> Images = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="hljs-string">'images'</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> Thumbs = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="hljs-string">'thumbs'</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loggedIn</span>(<span class="hljs-params">userId</span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">return</span> !!userId;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">Thumbs.allow({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  insert: loggedIn,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  update: loggedIn,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  remove: loggedIn</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">Images.allow({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  insert: loggedIn,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  update: loggedIn,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  remove: loggedIn</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We have to create Stores for Images and Thumbs.</p>
+
+<p><diffbox step="20.4" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.4</span> <span _ngcontent-neu-12="" class="commit-summary">Create ThumbsStore and ImagesStore</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/bb75e0fa497b27420dd2e9d2cf971635922789cf">imports/api/images/store.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { UploadFS } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/jalik:ufs'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Images, Thumbs } <span class="hljs-keyword">from</span> <span class="hljs-string">'./collection'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ThumbsStore = <span class="hljs-keyword">new</span> UploadFS.store.GridFS({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  collection: Thumbs,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  name: <span class="hljs-string">'thumbs'</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ImagesStore = <span class="hljs-keyword">new</span> UploadFS.store.GridFS({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  collection: Images,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  name: <span class="hljs-string">'images'</span>,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  filter: <span class="hljs-keyword">new</span> UploadFS.Filter({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    contentTypes: [<span class="hljs-string">'image/*'</span>]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }),</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  copyTo: [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ThumbsStore</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  ]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Let's explain a bit what happened.</p>
+
+<ul><li>We assigned Stores to their Collections, which is required.</li><li>We defined names of these Stores.</li><li>We added filter to ImagesStore so it can receive only images.</li><li>Every file will be copied to ThumbsStore.</li></ul>
+
+<p>Now we can create <code ngNonBindable="">index.js</code> file to export Collections and Stores:</p>
+
+<p><diffbox step="20.5" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.5</span> <span _ngcontent-neu-12="" class="commit-summary">Create main export file of Images and Thumbs</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/edb85f39d024e3af0779c421ac40896141f871a3">imports/api/images/index.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./collection'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>There is a reason why we called one of the Collections the <code ngNonBindable="">Thumbs</code>!</p>
+
+<p>Since we transfer every uploaded file to ThumbsStore, we can now easily add file manipulations.</p>
+
+<p>Let's resize every file to 32x32:</p>
+
+<p><diffbox step="20.6" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.6</span> <span _ngcontent-neu-12="" class="commit-summary">Resize images</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f22e4f313812971b089dd49d8f82a5eb3cc8b314">imports/api/images/store.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ThumbsStore = <span class="hljs-keyword">new</span> UploadFS.store.GridFS({</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  collection: Thumbs,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  name: <span class="hljs-string">'thumbs'</span>,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  transformWrite(<span class="hljs-keyword">from</span>, to, fileId, file) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-comment">// Resize to 32x32</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> gm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gm'</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    gm(<span class="hljs-keyword">from</span>, file.name)</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .resize(<span class="hljs-number">32</span>, <span class="hljs-number">32</span>)</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .gravity(<span class="hljs-string">'Center'</span>)</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .extent(<span class="hljs-number">32</span>, <span class="hljs-number">32</span>)</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .quality(<span class="hljs-number">75</span>)</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .stream()</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      .pipe(to);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">});</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ImagesStore = <span class="hljs-keyword">new</span> UploadFS.store.GridFS({</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We used <a href="https://github.com/aheckmann/gm"><code ngNonBindable="">gm</code></a> module, let's install it:</p>
+
+<pre><code ngNonBindable="">$ meteor npm install gm --save</code></pre>
+
+<blockquote><p>Be aware that this module requires at least one of these libraries: <a href="http://www.graphicsmagick.org/">GraphicsMagick</a>, <a href="http://www.imagemagick.org/">ImageMagick</a>.</p></blockquote>
+
+<h3>Image upload</h3>
+
+<p>Now, let's create the <code ngNonBindable="">PartyUpload</code> component. It will be responsible for cropping and uploading photos.</p>
+
+<p><diffbox step="20.8" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.8</span> <span _ngcontent-neu-12="" class="commit-summary">Create view for PartyUpload</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/0f933f6e80f4b1d65118c6f430901760749bc940">imports/ui/components/partyUpload/partyUpload.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">"column"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Click here to select image<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>OR<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>You can also drop image to here<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.9" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.9</span> <span _ngcontent-neu-12="" class="commit-summary">Create PartyUpload component</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f10d35b08a331fdae64ce634edff1fee63054e48">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyUpload.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyUpload</span> </span>{}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'partyUpload'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  angularMeteor</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  template,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  controllerAs: name,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  controller: PartyUpload</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We want to use it in <code ngNonBindable="">PartyAdd</code>:</p>
+
+<p><diffbox step="20.10" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.10</span> <span _ngcontent-neu-12="" class="commit-summary">Add to PartyAdd</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/100a3db0161f4a949d2f435e4757640ac72e27ff">imports/ui/components/partyAdd/partyAdd.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number">38</pre><pre _ngcontent-neu-12="" class="line-number">39</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyAdd.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Parties } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../api/parties'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyUpload } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyUpload/partyUpload'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyAdd</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>() {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  angularMeteor,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  PartyUpload</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  bindings: {</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.11" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.11</span> <span _ngcontent-neu-12="" class="commit-summary">Implement to the view</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/108cd5df7d93be4729c64bf15369cbd7df358476">imports/ui/components/partyAdd/partyAdd.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">flex</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">md-button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"partyAdd.submit()"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"md-raised"</span>&gt;</span>Add Party!<span class="hljs-tag">&lt;/<span class="hljs-name">md-button</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">party-upload</span> <span class="hljs-attr">files</span>=<span class="hljs-string">"partyAdd.party.images"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">party-upload</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see we used <code ngNonBindable="">files</code> directive. We will create it later. For now, let's only say that this is a two-way data binding.</p>
+
+<p>Note that for file upload you can use basic HTML <code ngNonBindable="">&lt;input type="file"&gt;</code> or any other package - you only need the HTML5 File object to be provided.</p>
+
+<p>For our application, we would like to add ability to drag-and-drop images, so we use AngularJS directive that handles file upload and gives us more abilities such as drag &amp; drop, file validation on the client side. In this example, We will use <a href="https://github.com/danialfarid/ng-file-upload"><code ngNonBindable="">ng-file-upload</code></a>, which have many features for file upload. In order to do this, let's add the package to our project:</p>
+
+<pre><code ngNonBindable="">$ meteor npm install ng-file-upload --save</code></pre>
+
+<p>Now, lets add a dependency in the <code ngNonBindable="">PartyUpload</code>:</p>
+
+<p><diffbox step="20.13" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.13</span> <span _ngcontent-neu-12="" class="commit-summary">Add as a dependency</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/7779ee10a36154cec847a8a7f0f3c5127e02b026">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> ngFileUpload <span class="hljs-keyword">from</span> <span class="hljs-string">'ng-file-upload'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  angularMeteor,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  ngFileUpload</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controllerAs: name,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now, let's add the usage of <code ngNonBindable="">ng-file-upload</code>:</p>
+
+<p><diffbox step="20.14" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.14</span> <span _ngcontent-neu-12="" class="commit-summary">Add ngf-drop to the view</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/534b122b60858f1bee5a3fabb5a3ebcab7826416">imports/ui/components/partyUpload/partyUpload.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">"column"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ngf-drop</span></span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-select</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-change="partyUpload.addImages($files)"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    class="drop-box"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-multiple="false"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-allow-dir="false"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-accept="'image/*'"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ngf-drop-available="true"</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ng-hide="partyUpload.cropImgSrc"&gt;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Click here to select image<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>OR<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>You can also drop image to here<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now let's make it better looking:</p>
+
+<p><diffbox step="20.16" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.16</span> <span _ngcontent-neu-12="" class="commit-summary">Add style</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/bd4548696ab85d3848d0a177c633ada570931563">imports/ui/components/partyUpload/partyUpload.less</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-selector-tag">party-upload</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.drop-box</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">background</span>: <span class="hljs-selector-id">#F8F8F8</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">border</span>: 5<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">dashed</span> <span class="hljs-selector-id">#DDD</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">center</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">padding</span>: 25<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">margin-left</span>: 10<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">margin-bottom</span>: 20<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.drop-box</span><span class="hljs-selector-class">.dragover</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">border</span>: 5<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">dashed</span> <span class="hljs-selector-tag">blue</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.drop-box</span><span class="hljs-selector-class">.dragover-err</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">border</span>: 5<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">dashed</span> <span class="hljs-selector-tag">red</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>then import new .less file in the <code ngNonBindable="">PartyAdd</code></p>
+
+<p><diffbox step="20.17" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.17</span> <span _ngcontent-neu-12="" class="commit-summary">Import in PartyAdd</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/eade150bb080416f7850cfe16fa679e3b15e2829">imports/ui/components/partyAdd/partyAdd.less</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added">@<span class="hljs-keyword">import</span> <span class="hljs-string">"../partyUpload/partyUpload.less"</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>and in the <code ngNonBindable="">PartyAddButton</code>:</p>
+
+<p><diffbox step="20.18" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.18</span> <span _ngcontent-neu-12="" class="commit-summary">Import in PartyAddButton</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/d9981616f85920cb0389c7047d977879932b8390">imports/ui/components/partyAddButton/partyAddButton.less</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-selector-tag">bottom</span>: 15<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">@<span class="hljs-keyword">import</span> <span class="hljs-string">"../partyAdd/partyAdd.less"</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And that's it! now we can upload images by using drag and drop!
+Just note that the Application UI still don't show the new images we upload... we will add this later.
+Now let's add some more cool features, And make the uploaded image visible!</p>
+
+<h3>Image Crop</h3>
+
+<p>One of the most common actions we want to make with pictures is to edit them before saving.
+We will add to our example ability to crop images before uploading them to the server, using <a href="https://github.com/alexk111/ngImgCrop/">ngImgCrop</a> package.
+So lets start by adding the package to our project:</p>
+
+<pre><code ngNonBindable="">$ meteor npm install ng-img-crop --save</code></pre>
+
+<p>And add a dependency in our module:</p>
+
+<p><diffbox step="20.20" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.20</span> <span _ngcontent-neu-12="" class="commit-summary">Add ngImgCrop</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/5363ce2b9b95fa9395ded02bcd08059491624b84">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">39</pre><pre _ngcontent-neu-12="" class="line-number">40</pre><pre _ngcontent-neu-12="" class="line-number">41</pre><pre _ngcontent-neu-12="" class="line-number">42</pre><pre _ngcontent-neu-12="" class="line-number">43</pre><pre _ngcontent-neu-12="" class="line-number">44</pre><pre _ngcontent-neu-12="" class="line-number">45</pre><pre _ngcontent-neu-12="" class="line-number">46</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ngFileUpload <span class="hljs-keyword">from</span> <span class="hljs-string">'ng-file-upload'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'ng-img-crop/compile/minified/ng-img-crop'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'ng-img-crop/compile/minified/ng-img-crop.css'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  ngFileUpload,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-string">'ngImgCrop'</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controllerAs: name,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We want to perform the crop on the client, before uploading it, so let's get the uploaded image, and instead of saving it to the server - we will get the Data Url of it, and use it in the <code ngNonBindable="">ngImgCrop</code>:</p>
+
+<p><diffbox step="20.15" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.15</span> <span _ngcontent-neu-12="" class="commit-summary">Handle file selection</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/e4026c257d603575840f395b166733bde4381674">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyUpload.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyUpload</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>($scope, $reactive) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    $reactive(<span class="hljs-keyword">this</span>).attach($scope);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  addImages(files) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (files.length) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.currentFile = files[<span class="hljs-number">0</span>];</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> FileReader;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      reader.onload = <span class="hljs-keyword">this</span>.$bindToContext((e) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.cropImgSrc = e.target.result;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.myCroppedImage = <span class="hljs-string">''</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      reader.readAsDataURL(files[<span class="hljs-number">0</span>]);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    } <span class="hljs-keyword">else</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.cropImgSrc = <span class="hljs-literal">undefined</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'partyUpload'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We took the file object and used HTML5 <code ngNonBindable="">FileReader</code> API to read the file from the user on the client side, without uploading it to the server.
+Then we saved the DataURL of the image into a variable <code ngNonBindable="">cropImgSrc</code>.
+Next, we will need to use this DataURI with the <code ngNonBindable="">ngImgCrop</code> directive as follow:</p>
+
+<p><diffbox step="20.21" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.21</span> <span _ngcontent-neu-12="" class="commit-summary">Use ngImgCrop</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/6f5e02d89c3c58e0f5c67d25efc78b97fcef06b2">imports/ui/components/partyUpload/partyUpload.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>You can also drop image to here<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ng-show</span>=<span class="hljs-string">"partyUpload.cropImgSrc"</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">"column"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ng-crop"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Edit &amp;amp; crop<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">md-button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"partyUpload.save()"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"md-primary"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        Save Image</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">md-button</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">md-button</span> <span class="hljs-attr">ng-click</span>=<span class="hljs-string">"partyUpload.reset()"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        Cancel</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;/<span class="hljs-name">md-button</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ng-crop-container"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">img-crop</span> <span class="hljs-attr">image</span>=<span class="hljs-string">"partyUpload.cropImgSrc"</span> <span class="hljs-attr">result-image</span>=<span class="hljs-string">"partyUpload.myCroppedImage"</span> <span class="hljs-attr">area-type</span>=<span class="hljs-string">"square"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img-crop</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<blockquote><p>Moreover we add <code ngNonBindable="">ng-hide</code> to the upload control, in order to hide it, after the user picks an image to crop.</p></blockquote>
+
+<p>And add some CSS to make it look better:</p>
+
+<p><diffbox step="20.22" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.22</span> <span _ngcontent-neu-12="" class="commit-summary">Add styles</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/7fc86c05144b1e8c5d82cb6cfec68c59140250bc">imports/ui/components/partyUpload/partyUpload.less</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-selector-class">.drop-box</span><span class="hljs-selector-class">.dragover-err</span> {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-selector-tag">border</span>: 5<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">dashed</span> <span class="hljs-selector-tag">red</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.ng-crop</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">h3</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-selector-tag">margin-top</span>: 0;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.ng-crop-container</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">width</span>: 400<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">height</span>: 225<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we need to handle uploading files.</p>
+
+<p>Since we're using <code ngNonBindable="">DataURL</code> and we need UploadFS expects <code ngNonBindable="">ArrayBuffer</code> let's add few helper methods.</p>
+
+<p>Add <code ngNonBindable="">dataURLToBlob</code> to converts DataURL to <code ngNonBindable="">Blob</code> object:</p>
+
+<p><diffbox step="20.23" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.23</span> <span _ngcontent-neu-12="" class="commit-summary">Add dataURLToBlob helper</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/c8edb09d1f340ace7bccdab49d4b5640d74a9b7d">imports/api/images/helpers.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-comment">/**</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * Converts DataURL to Blob object</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * https:<span class="hljs-comment">//github.com/ebidel/filer.js/blob/master/src/filer.js#L137</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">String</span>} dataURL</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @<span class="hljs-keyword">return</span> {Blob}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *<span class="hljs-regexp">/</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dataURLToBlob</span>(<span class="hljs-params">dataURL</span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> BASE64_MARKER = <span class="hljs-string">';base64,'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (dataURL.indexOf(BASE64_MARKER) === <span class="hljs-number">-1</span>) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> parts = dataURL.split(<span class="hljs-string">','</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> contentType = parts[<span class="hljs-number">0</span>].split(<span class="hljs-string">':'</span>)[<span class="hljs-number">1</span>];</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">const</span> raw = <span class="hljs-built_in">decodeURIComponent</span>(parts[<span class="hljs-number">1</span>]);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Blob([raw], {type: contentType});</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> parts = dataURL.split(BASE64_MARKER);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> contentType = parts[<span class="hljs-number">0</span>].split(<span class="hljs-string">':'</span>)[<span class="hljs-number">1</span>];</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> raw = <span class="hljs-built_in">window</span>.atob(parts[<span class="hljs-number">1</span>]);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> rawLength = raw.length;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> uInt8Array = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(rawLength);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; rawLength; ++i) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      uInt8Array[i] = raw.charCodeAt(i);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Blob([uInt8Array], {type: contentType});</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We have now Blob object so let's convert it to expected <code ngNonBindable="">ArrayBuffer</code> by creating a function called <code ngNonBindable="">blobToArrayBuffer</code>:</p>
+
+<p><diffbox step="20.24" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.24</span> <span _ngcontent-neu-12="" class="commit-summary">Add blobToArrayBuffer helper</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/194bf016d7c594fd79542ae75822181f578d1ebb">imports/api/images/helpers.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number">38</pre><pre _ngcontent-neu-12="" class="line-number">39</pre><pre _ngcontent-neu-12="" class="line-number">40</pre><pre _ngcontent-neu-12="" class="line-number">41</pre><pre _ngcontent-neu-12="" class="line-number">42</pre><pre _ngcontent-neu-12="" class="line-number">43</pre><pre _ngcontent-neu-12="" class="line-number">44</pre><pre _ngcontent-neu-12="" class="line-number">45</pre><pre _ngcontent-neu-12="" class="line-number">46</pre><pre _ngcontent-neu-12="" class="line-number">47</pre><pre _ngcontent-neu-12="" class="line-number">48</pre><pre _ngcontent-neu-12="" class="line-number">49</pre><pre _ngcontent-neu-12="" class="line-number">50</pre><pre _ngcontent-neu-12="" class="line-number">51</pre><pre _ngcontent-neu-12="" class="line-number">52</pre><pre _ngcontent-neu-12="" class="line-number">53</pre><pre _ngcontent-neu-12="" class="line-number">54</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Blob([uInt8Array], {type: contentType});</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-comment">/**</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * Converts Blob object to <span class="hljs-built_in">ArrayBuffer</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {Blob}       blob          Source file</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">Function</span>}   callback      Success callback <span class="hljs-keyword">with</span> converted object <span class="hljs-keyword">as</span> a first argument</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">Function</span>}   errorCallback <span class="hljs-built_in">Error</span> callback <span class="hljs-keyword">with</span> error <span class="hljs-keyword">as</span> a first argument</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *<span class="hljs-regexp">/</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">blobToArrayBuffer</span>(<span class="hljs-params">blob, callback, errorCallback</span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> FileReader();</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  reader.onload = (e) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    callback(e.target.result);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  };</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  reader.onerror = (e) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (errorCallback) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      errorCallback(e);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  };</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  reader.readAsArrayBuffer(blob);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we can take care of uploading by creating a <code ngNonBindable="">upload</code> function:</p>
+
+<p><diffbox step="20.25" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.25</span> <span _ngcontent-neu-12="" class="commit-summary">Create `upload` method</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/feddc7aa35b3eb7f102b0335da497a66d270dab1">imports/api/images/methods.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { UploadFS } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/jalik:ufs'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { ImagesStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { dataURLToBlob, blobToArrayBuffer } <span class="hljs-keyword">from</span> <span class="hljs-string">'./helpers'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-comment">/**</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * Uploads a <span class="hljs-keyword">new</span> file</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">String</span>}   dataUrl [description]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">String</span>}   name    [description]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">Function</span>} resolve [description]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> * @param  {<span class="hljs-built_in">Function</span>} reject  [description]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> *<span class="hljs-regexp">/</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">dataUrl, name, resolve, reject</span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-comment">// convert to Blob</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">const</span> blob = dataURLToBlob(dataUrl);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  blob.name = name;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-comment">// pick from an object only: name, type and size</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">const</span> file = _.pick(blob, <span class="hljs-string">'name'</span>, <span class="hljs-string">'type'</span>, <span class="hljs-string">'size'</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-comment">// convert to ArrayBuffer</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  blobToArrayBuffer(blob, (data) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">const</span> upload = <span class="hljs-keyword">new</span> UploadFS.Uploader({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      data,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      file,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      store: ImagesStore,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      onError: reject,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      onComplete: resolve</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    upload.start();</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }, reject);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<ul><li><code ngNonBindable="">dataUrl</code> is the file we want to upload</li><li><code ngNonBindable="">name</code> is a name of the file</li><li><code ngNonBindable="">resolve</code> is a callback function that will be invoked on success</li><li><code ngNonBindable="">reject</code> is a callback function that will be invoked on error</li><li>We took <code ngNonBindable="">name</code>, <code ngNonBindable="">type</code> and <code ngNonBindable="">size</code> from Blob object to send these information to <code ngNonBindable="">UploadFS.Uploader</code></li></ul>
+
+<p>What's left is just to export this method:</p>
+
+<p><diffbox step="20.26" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.26</span> <span _ngcontent-neu-12="" class="commit-summary">Export methods</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f3b584c8227aa08843a339a96995c4d6857354e0">imports/api/images/index.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./collection'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./methods'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We previously defined two methods: <code ngNonBindable="">save()</code> and <code ngNonBindable="">reset()</code>. Let's implement them using recently created <code ngNonBindable="">upload</code> function:</p>
+
+<p><diffbox step="20.27" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.27</span> <span _ngcontent-neu-12="" class="commit-summary">Implement `save` and `reset` methods</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/8a0bdc08db1775108336dfd6be5ad53bc8b91d9b">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number">38</pre><pre _ngcontent-neu-12="" class="line-number">39</pre><pre _ngcontent-neu-12="" class="line-number">40</pre><pre _ngcontent-neu-12="" class="line-number">41</pre><pre _ngcontent-neu-12="" class="line-number">42</pre><pre _ngcontent-neu-12="" class="line-number">43</pre><pre _ngcontent-neu-12="" class="line-number">44</pre><pre _ngcontent-neu-12="" class="line-number">45</pre><pre _ngcontent-neu-12="" class="line-number">46</pre><pre _ngcontent-neu-12="" class="line-number">47</pre><pre _ngcontent-neu-12="" class="line-number">48</pre><pre _ngcontent-neu-12="" class="line-number">49</pre><pre _ngcontent-neu-12="" class="line-number">50</pre><pre _ngcontent-neu-12="" class="line-number">51</pre><pre _ngcontent-neu-12="" class="line-number">52</pre><pre _ngcontent-neu-12="" class="line-number">53</pre><pre _ngcontent-neu-12="" class="line-number">54</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyUpload.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { upload } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../api/images'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyUpload</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>($scope, $reactive) {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    $reactive(<span class="hljs-keyword">this</span>).attach($scope);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.uploaded = [];</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  addImages(files) {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.cropImgSrc = <span class="hljs-literal">undefined</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  save() {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    upload(<span class="hljs-keyword">this</span>.myCroppedImage, <span class="hljs-keyword">this</span>.currentFile.name, <span class="hljs-keyword">this</span>.$bindToContext((file) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.uploaded.push(file);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.reset();</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }), (e) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Oops, something went wrong'</span>, e);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  reset() {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.cropImgSrc = <span class="hljs-literal">undefined</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.myCroppedImage = <span class="hljs-string">''</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">}</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'partyUpload'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Let's explain the code.</p>
+
+<ul><li>The cropped image is under <code ngNonBindable="">myCroppedImage</code> variable so we used it to as the file to be uploaded.</li><li>We used <code ngNonBindable="">currentFile.name</code> to get name of the file.</li><li>We used <code ngNonBindable="">$bindToContext</code> on the first callback (<code ngNonBindable="">resolve</code>) to keep it inside digest cycle.</li><li>We used <code ngNonBindable="">console.log</code> to notify about an error.</li><li>We created <code ngNonBindable="">reset()</code>` to clear these variables.</li></ul>
+
+<p>Last thing to do is to import Images and Thumb on the server-side:</p>
+
+<p><diffbox step="20.28" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.28</span> <span _ngcontent-neu-12="" class="commit-summary">Import Images on server side</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/8699d86b7ef7961003ea57db548a758ba8ca9d96">server/main.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'../imports/startup/fixtures'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'../imports/api/parties'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'../imports/api/users'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'../imports/api/images'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<h3>Display Uploaded Images</h3>
+
+<p>Let's create a simple gallery to list the images in the new party form:</p>
+
+<p><diffbox step="20.29" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.29</span> <span _ngcontent-neu-12="" class="commit-summary">Display uploaded images</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/8600367c21ee4cc10c27571d2ea9cf334ef8fe8e">imports/ui/components/partyUpload/partyUpload.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">img-crop</span> <span class="hljs-attr">image</span>=<span class="hljs-string">"partyUpload.cropImgSrc"</span> <span class="hljs-attr">result-image</span>=<span class="hljs-string">"partyUpload.myCroppedImage"</span> <span class="hljs-attr">area-type</span>=<span class="hljs-string">"square"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img-crop</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">"row"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"images-container-title"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"party-image-container"</span> <span class="hljs-attr">ng-class</span>=<span class="hljs-string">"{'main-image': $index === 0}"</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"thumb in partyUpload.thumbs"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{ thumb.url }}"</span>/&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.30" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.30</span> <span _ngcontent-neu-12="" class="commit-summary">Add styles</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/242f83fb92edbd91141203db51b12848179d268a">imports/ui/components/partyUpload/partyUpload.less</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number">38</pre><pre _ngcontent-neu-12="" class="line-number">39</pre><pre _ngcontent-neu-12="" class="line-number">40</pre><pre _ngcontent-neu-12="" class="line-number">41</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-selector-tag">width</span>: 400<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-selector-tag">height</span>: 225<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.images-container-title</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">padding-bottom</span>: 30<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.party-image-container</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">position</span>: <span class="hljs-selector-tag">relative</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">margin-right</span>: 10<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">max-height</span>: 200<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">max-width</span>: 200<span class="hljs-selector-tag">px</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">img</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-selector-tag">max-height</span>: 100%;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-selector-tag">max-width</span>: 100%;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-selector-class">.main-image</span> {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-selector-tag">border</span>: 2<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">solid</span> <span class="hljs-selector-id">#ddd</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We have to somehow get thumbnails to show them in this gallery.</p>
+
+<p>Since we keep them in Collections, we have to create proper publications:</p>
+
+<p><diffbox step="20.31" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.31</span> <span _ngcontent-neu-12="" class="commit-summary">Add `thumbs` and `images` publications</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/20f89d5f5d1e63c93051bdfe16d71f0b866b7bb2">imports/api/images/publish.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Thumbs, Images } <span class="hljs-keyword">from</span> <span class="hljs-string">'./collection'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">if</span> (Meteor.isServer) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  Meteor.publish(<span class="hljs-string">'thumbs'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ids</span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> Thumbs.find({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      originalStore: <span class="hljs-string">'images'</span>,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      originalId: {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        $<span class="hljs-keyword">in</span>: ids</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  Meteor.publish(<span class="hljs-string">'images'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> Images.find({});</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.32" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.32</span> <span _ngcontent-neu-12="" class="commit-summary">Import publications</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/4a7e8ebacaa8eaff040355e531f45a304cffc831">imports/api/images/index.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'./publish'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./collection'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">'./methods'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we can implement thumbnails:</p>
+
+<p><diffbox step="20.33" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.33</span> <span _ngcontent-neu-12="" class="commit-summary">Implement thumbnails</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/436eb882bde3d5a3e1a87991fbb6987520015ec1">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">54</pre><pre _ngcontent-neu-12="" class="line-number">55</pre><pre _ngcontent-neu-12="" class="line-number">56</pre><pre _ngcontent-neu-12="" class="line-number">57</pre><pre _ngcontent-neu-12="" class="line-number">58</pre><pre _ngcontent-neu-12="" class="line-number">59</pre><pre _ngcontent-neu-12="" class="line-number">60</pre><pre _ngcontent-neu-12="" class="line-number">61</pre><pre _ngcontent-neu-12="" class="line-number">62</pre><pre _ngcontent-neu-12="" class="line-number">63</pre><pre _ngcontent-neu-12="" class="line-number">64</pre><pre _ngcontent-neu-12="" class="line-number">65</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Meteor } <span class="hljs-keyword">from</span> <span class="hljs-string">'meteor/meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyUpload.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Thumbs, upload } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../api/images'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyUpload</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>($scope, $reactive) {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    $reactive(<span class="hljs-keyword">this</span>).attach($scope);</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.uploaded = [];</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'thumbs'</span>, () =&gt; [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.getReactively(<span class="hljs-string">'files'</span>, <span class="hljs-literal">true</span>) || []</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    ]);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      thumbs() {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">return</span> Thumbs.find({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          originalStore: <span class="hljs-string">'images'</span>,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          originalId: {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">            $<span class="hljs-keyword">in</span>: <span class="hljs-keyword">this</span>.getReactively(<span class="hljs-string">'files'</span>, <span class="hljs-literal">true</span>) || []</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  }</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  addImages(files) {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  save() {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    upload(<span class="hljs-keyword">this</span>.myCroppedImage, <span class="hljs-keyword">this</span>.currentFile.name, <span class="hljs-keyword">this</span>.$bindToContext((file) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.uploaded.push(file);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.files || !<span class="hljs-keyword">this</span>.files.length) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">this</span>.files = [];</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-keyword">this</span>.files.push(file._id);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-keyword">this</span>.reset();</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    }), (e) =&gt; {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Oops, something went wrong'</span>, e);</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>There are few things that need to be explained:</p>
+
+<ul><li>We subscribed to <code ngNonBindable="">thumbs</code> publication with one argument.</li><li>We created the <code ngNonBindable="">thumbs</code> helper that fetches all thumbnails of our saved files.</li><li>Mentioned before <code ngNonBindable="">files</code> variable. It contains identifiers of uploaded files.</li></ul>
+
+<h3>Sort Images</h3>
+
+<p>We can also add an ability to sort and update the images order.
+To get the ability to sort the images, let's use <a href="https://github.com/kamilkp/angular-sortable-view">angular-sortable-view</a>.</p>
+
+<pre><code ngNonBindable="">$ meteor npm install angular-sortable-view --save</code></pre>
+
+<p>Let's add it as a dependency:</p>
+
+<p><diffbox step="20.35" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.35</span> <span _ngcontent-neu-12="" class="commit-summary">Add as a dependency</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/85476bb04d38f7179d5a0e18f7b2ec905e646900">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">79</pre><pre _ngcontent-neu-12="" class="line-number">80</pre><pre _ngcontent-neu-12="" class="line-number">81</pre><pre _ngcontent-neu-12="" class="line-number">82</pre><pre _ngcontent-neu-12="" class="line-number">83</pre><pre _ngcontent-neu-12="" class="line-number">84</pre><pre _ngcontent-neu-12="" class="line-number">85</pre><pre _ngcontent-neu-12="" class="line-number">86</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> ngFileUpload <span class="hljs-keyword">from</span> <span class="hljs-string">'ng-file-upload'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'angular-sortable-view'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'ng-img-crop/compile/minified/ng-img-crop'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> <span class="hljs-string">'ng-img-crop/compile/minified/ng-img-crop.css'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  ngFileUpload,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-string">'ngImgCrop'</span>,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-string">'angular-sortable-view'</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controllerAs: name,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Implement directives of angular-sortable-view:</p>
+
+<p><diffbox step="20.36" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.36</span> <span _ngcontent-neu-12="" class="commit-summary">Use directives on thumbnails</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/7cd2ff8090a61093ebb6529ef8eaf07ae5748e1e">imports/ui/components/partyUpload/partyUpload.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">      <span class="hljs-tag">&lt;<span class="hljs-name">img-crop</span> <span class="hljs-attr">image</span>=<span class="hljs-string">"partyUpload.cropImgSrc"</span> <span class="hljs-attr">result-image</span>=<span class="hljs-string">"partyUpload.myCroppedImage"</span> <span class="hljs-attr">area-type</span>=<span class="hljs-string">"square"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img-crop</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">layout</span>=<span class="hljs-string">"row"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"images-container-title"</span> <span class="hljs-attr">sv-root</span> <span class="hljs-attr">sv-part</span>=<span class="hljs-string">"partyUpload.thumbs"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">sv-element</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"party-image-container"</span> <span class="hljs-attr">ng-class</span>=<span class="hljs-string">"{'main-image': $index === 0}"</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"thumb in partyUpload.thumbs"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">draggable</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{ thumb.url }}"</span>/&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>You can now easily change their order.</p>
+
+<blockquote><p>Remember! First file is the main file which will be shown on parties list. We will implement it later.</p></blockquote>
+
+<p>Since we have sorting, croping and uploading. We can now add binding we prepared previously:</p>
+
+<p><diffbox step="20.37" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.37</span> <span _ngcontent-neu-12="" class="commit-summary">Define two-way data binding `files`</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f9de4b6f466717bced627e630e9d2892f019490a">imports/ui/components/partyUpload/partyUpload.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">83</pre><pre _ngcontent-neu-12="" class="line-number">84</pre><pre _ngcontent-neu-12="" class="line-number">85</pre><pre _ngcontent-neu-12="" class="line-number">86</pre><pre _ngcontent-neu-12="" class="line-number">87</pre><pre _ngcontent-neu-12="" class="line-number">88</pre><pre _ngcontent-neu-12="" class="line-number">89</pre><pre _ngcontent-neu-12="" class="line-number">90</pre><pre _ngcontent-neu-12="" class="line-number">91</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-string">'angular-sortable-view'</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  bindings: {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    files: <span class="hljs-string">'=?'</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controllerAs: name,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controller: PartyUpload</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<h3>Display party image on the list</h3>
+
+<p>As always, we have to create component, let's call it <code ngNonBindable="">PartyImage</code>.</p>
+
+<p><diffbox step="20.38" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.38</span> <span _ngcontent-neu-12="" class="commit-summary">Create view for PartyImage</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/3705f21747af3a1636f821cfc3ffa35f20b47968">imports/ui/components/partyImage/partyImage.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">ng-src</span>=<span class="hljs-string">"{{partyImage.mainImage.url}}"</span>/&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.39" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.39</span> <span _ngcontent-neu-12="" class="commit-summary">Create PartyImage component</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f1536740bc2b7a12797c4dde985e0e858ec6788f">imports/ui/components/partyImage/partyImage.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">1</pre><pre _ngcontent-neu-12="" class="line-number">2</pre><pre _ngcontent-neu-12="" class="line-number">3</pre><pre _ngcontent-neu-12="" class="line-number">4</pre><pre _ngcontent-neu-12="" class="line-number">5</pre><pre _ngcontent-neu-12="" class="line-number">6</pre><pre _ngcontent-neu-12="" class="line-number">7</pre><pre _ngcontent-neu-12="" class="line-number">8</pre><pre _ngcontent-neu-12="" class="line-number">9</pre><pre _ngcontent-neu-12="" class="line-number">10</pre><pre _ngcontent-neu-12="" class="line-number">11</pre><pre _ngcontent-neu-12="" class="line-number">12</pre><pre _ngcontent-neu-12="" class="line-number">13</pre><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number">21</pre><pre _ngcontent-neu-12="" class="line-number">22</pre><pre _ngcontent-neu-12="" class="line-number">23</pre><pre _ngcontent-neu-12="" class="line-number">24</pre><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre><pre _ngcontent-neu-12="" class="line-number">36</pre><pre _ngcontent-neu-12="" class="line-number">37</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyImage.html'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { Images } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../api/images'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyImage</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>($scope, $reactive) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    $reactive(<span class="hljs-keyword">this</span>).attach($scope);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      mainImage() {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">const</span> images = <span class="hljs-keyword">this</span>.getReactively(<span class="hljs-string">'images'</span>, <span class="hljs-literal">true</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        <span class="hljs-keyword">if</span> (images) {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          <span class="hljs-keyword">return</span> Images.findOne({</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">            _id: images[<span class="hljs-number">0</span>]</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">        }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">      }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'partyImage'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  angularMeteor</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  template,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  bindings: {</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    images: <span class="hljs-string">'&lt;'</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  controllerAs: name,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  controller: PartyImage</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see we defined <code ngNonBindable="">images</code> which is a one-way binding that tells to the PartyImage component which images have been uploaded to the party.</p>
+
+<blockquote><p>Objects of <code ngNonBindable="">Images</code> and <code ngNonBindable="">Thumbs</code> collections contains <code ngNonBindable="">.url</code> property with absolute url to the file.</p></blockquote>
+
+<p>Now let's implement it to the <code ngNonBindable="">PartiesList</code> by adding dependency and what is more important, by subscribing <code ngNonBindable="">images</code>. Subscription is needed to fetch defined images.</p>
+
+<p><diffbox step="20.40" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.40</span> <span _ngcontent-neu-12="" class="commit-summary">Implement PartyImage in PartiesList</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/3854f6a882127d981457fef7c309330f1b34f259">imports/ui/components/partiesList/partiesList.html</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">25</pre><pre _ngcontent-neu-12="" class="line-number">26</pre><pre _ngcontent-neu-12="" class="line-number">27</pre><pre _ngcontent-neu-12="" class="line-number">28</pre><pre _ngcontent-neu-12="" class="line-number">29</pre><pre _ngcontent-neu-12="" class="line-number">30</pre><pre _ngcontent-neu-12="" class="line-number">31</pre><pre _ngcontent-neu-12="" class="line-number">32</pre><pre _ngcontent-neu-12="" class="line-number">33</pre><pre _ngcontent-neu-12="" class="line-number">34</pre><pre _ngcontent-neu-12="" class="line-number">35</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context">            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"md-subhead"</span>&gt;</span>{{party.description}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">          <span class="hljs-tag">&lt;/<span class="hljs-name">md-card-title-text</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          <span class="hljs-tag">&lt;<span class="hljs-name">md-card-title-media</span> <span class="hljs-attr">ng-if</span>=<span class="hljs-string">"party.images"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"md-media-lg card-media"</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">              <span class="hljs-tag">&lt;<span class="hljs-name">party-image</span> <span class="hljs-attr">images</span>=<span class="hljs-string">"party.images"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">party-image</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">          <span class="hljs-tag">&lt;/<span class="hljs-name">md-card-title-media</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;/<span class="hljs-name">md-card-title</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">        <span class="hljs-tag">&lt;<span class="hljs-name">md-card-content</span>&gt;</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">          <span class="hljs-tag">&lt;<span class="hljs-name">party-rsvps-list</span> <span class="hljs-attr">rsvps</span>=<span class="hljs-string">"party.rsvps"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">party-rsvps-list</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="20.41" tutorial="angular1-meteor-socially" _nghost-neu-12=""><div _ngcontent-neu-12="" class="diffbox">
+    <div _ngcontent-neu-12="" class="title-panel">
+        <span _ngcontent-neu-12="" class="step-number">20.41</span> <span _ngcontent-neu-12="" class="commit-summary">Add PartyImage to PartiesList and subscribe to `images`</span>
+        <a _ngcontent-neu-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/ae66b462209678c80de361c37c77fb03b1ffa48b">imports/ui/components/partiesList/partiesList.js</a>
+    </div>
+    <div _ngcontent-neu-12="" class="code-container">
+        <div _ngcontent-neu-12="" class="scroll-container">
+            <div _ngcontent-neu-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-number">14</pre><pre _ngcontent-neu-12="" class="line-number">15</pre><pre _ngcontent-neu-12="" class="line-number">16</pre><pre _ngcontent-neu-12="" class="line-number">17</pre><pre _ngcontent-neu-12="" class="line-number">18</pre><pre _ngcontent-neu-12="" class="line-number">19</pre><pre _ngcontent-neu-12="" class="line-number">20</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">37</pre><pre _ngcontent-neu-12="" class="line-number">38</pre><pre _ngcontent-neu-12="" class="line-number">39</pre><pre _ngcontent-neu-12="" class="line-number">40</pre><pre _ngcontent-neu-12="" class="line-number">41</pre><pre _ngcontent-neu-12="" class="line-number">42</pre><pre _ngcontent-neu-12="" class="line-number">43</pre><pre _ngcontent-neu-12="" class="line-number"> </pre><pre _ngcontent-neu-12="" class="line-number">83</pre><pre _ngcontent-neu-12="" class="line-number">84</pre><pre _ngcontent-neu-12="" class="line-number">85</pre><pre _ngcontent-neu-12="" class="line-number">86</pre><pre _ngcontent-neu-12="" class="line-number">87</pre><pre _ngcontent-neu-12="" class="line-number">88</pre><pre _ngcontent-neu-12="" class="line-number">89</pre><pre _ngcontent-neu-12="" class="line-number">90</pre>
+            </div>
+            <div _ngcontent-neu-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyCreator } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyCreator/partyCreator'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyRsvp } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyRsvp/partyRsvp'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyRsvpsList } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyRsvpsList/partyRsvpsList'</span>;</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyImage } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyImage/partyImage'</span>;</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartiesList</span> </span>{</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  <span class="hljs-keyword">constructor</span>($scope, $reactive) {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    ]);</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'users'</span>);</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.subscribe(<span class="hljs-string">'images'</span>);</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">    <span class="hljs-keyword">this</span>.helpers({</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">      parties() {</pre><pre _ngcontent-neu-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  PartyRemove,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  PartyCreator,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  PartyRsvp,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  PartyRsvpsList,</pre><pre _ngcontent-neu-12="" class="line-added" className="line-added">  PartyImage</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-neu-12="" class="line-context" className="line-context">  controllerAs: name,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And that's it!</p>
+
+<h3>Cloud Storage</h3>
+
+<p>By storing files in the cloud you can reduce your costs and get a lot of other benefits.</p>
+
+<p>Since this chapter is all about uploading files and UploadFS doesn't have built-in support for cloud services we should mention another library for that.</p>
+
+<p>We recommend you to use <a href="https://github.com/CulturalMe/meteor-slingshot/">Slingshot</a>. You can install it by running:</p>
+
+<pre><code ngNonBindable="">$ meteor add edgee:slingshot</code></pre>
+
+<p>It's very easy to use with AWS S3, Google Cloud and other cloud storage services.</p>
+
+<p>From slignshot's repository:</p>
+
+<blockquote><p>meteor-slingshot uploads the files directly to the cloud service from the browser without ever exposing your secret access key or any other sensitive data to the client and without requiring public write access to cloud storage to the entire public.</p></blockquote></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>

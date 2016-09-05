@@ -1,0 +1,960 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-und-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-und-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-und-1] a[_ngcontent-und-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-und-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-und-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-und-1] .dropdown-content[_ngcontent-und-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-und-1]:hover .dropdown-content[_ngcontent-und-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-und-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-und-6] ul[_ngcontent-und-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-und-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-und-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-und-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-und-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-und-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-und-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-und-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-und-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-und-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-und-6] {
+  float: left; }
+
+.l-right[_ngcontent-und-6] {
+  float: right; }
+
+.l-relative[_ngcontent-und-6], .docs-content[_ngcontent-und-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-und-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-und-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-und-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-und-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-und-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-und-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-und-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-und-12] .title-panel[_ngcontent-und-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-und-12] .title-panel[_ngcontent-und-12] .github-commit-link[_ngcontent-und-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] .scroll-container[_ngcontent-und-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] pre[_ngcontent-und-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] pre.line-added[_ngcontent-und-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] pre.line-removed[_ngcontent-und-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] .line-content[_ngcontent-und-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] .line-content[_ngcontent-und-12] .hljs-comment[_ngcontent-und-12] {
+        color: #777; }
+    .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] .line-numbers[_ngcontent-und-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-und-12] .code-container[_ngcontent-und-12] .line-numbers[_ngcontent-und-12] .line-number[_ngcontent-und-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-und-1=""><md-toolbar _ngcontent-und-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-und-1="" href="/"><img _ngcontent-und-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-und-1="" class="tutorials-dropdown">
+        <button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-und-1="" class="dropdown-content">
+            <steps-list _ngcontent-und-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-und-1="" href="/angular2/"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-und-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-und-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-und-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-und-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-und-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-und-1="" href="/manifesto"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-und-1="" href="/about"><button _ngcontent-und-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-und-1=""></router-outlet><tutorial _nghost-und-6=""><div _ngcontent-und-6="" class="tutorials-container">
+    <nav _ngcontent-und-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-und-6="" _nghost-und-7=""><!--template bindings={}--><a _ngcontent-und-7="" md-raised-button="" class="tutorial-version md-primary active" className="tutorial-version md-primary active" href="/tutorials/socially/angular1/routing-and-multiple-views">Angular 1</a><a _ngcontent-und-7="" md-raised-button="" class="tutorial-version md-primary " className="tutorial-version md-primary " href="/tutorials/socially/angular2/routing-and-multiple-views">Angular 2</a></tutorials-versions>
+        <steps-list _ngcontent-und-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/css-less-and-bootstrap">18. CSS, LESS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/ionic">23. Ionic</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular1/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-und-6="" class="top-navigation">
+        <span _ngcontent-und-6="" class="tutorial-title" stepName="">Routing &amp; Multiple Views</span>
+        <div _ngcontent-und-6="" class="right-buttons">
+            <a _ngcontent-und-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/socially/angular1/adding-removing-objects-and-angular-event-handling">Previous</a>
+            <a _ngcontent-und-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/Urigo/meteor-angular-socially/compare/step_04...step_05">Code Diff</a>
+            <a _ngcontent-und-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/socially/angular1/bindings">Next</a>
+            <a _ngcontent-und-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/socially/angular1/routing-and-multiple-views.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-und-6="" class="tutorial-content">
+        <router-outlet _ngcontent-und-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this step, you will learn how to create a layout template and how to build an app that has multiple views by adding routing, using an Angular 1 module called <code ngNonBindable="">ui-router</code>.</p>
+
+<p>The goals for this step:</p>
+
+<ul><li>When you navigate to <code ngNonBindable="">index.html</code>, you will be redirected to <code ngNonBindable="">/parties</code> and the party list should appear in the browser.</li><li>When you click on a party link the URL should change to one specific to that party and the stub of a party detail page is displayed.</li></ul>
+
+<h1>Dependencies</h1>
+
+<p>The routing functionality added by this step is provided by the <a href="https://github.com/angular-ui/ui-router">ui-router</a> module, which is distributed separately from the core Angular 1 framework.</p>
+
+<p>Type in the command line:</p>
+
+<pre><code ngNonBindable="">meteor npm install --save angular-ui-router</code></pre>
+
+<p><diffbox step="5.1" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.1</span> <span _ngcontent-und-12="" class="commit-summary">Add ui-router</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/b762895e02f33633aa5b6c57d178946277ffaec9">package.json</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre><pre _ngcontent-und-12="" class="line-number">11</pre><pre _ngcontent-und-12="" class="line-number">12</pre><pre _ngcontent-und-12="" class="line-number">13</pre><pre _ngcontent-und-12="" class="line-number">14</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context">  <span class="hljs-string">"dependencies"</span>: {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">    <span class="hljs-string">"angular"</span>: <span class="hljs-string">"^1.5.3"</span>,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">    <span class="hljs-string">"angular-meteor"</span>: <span class="hljs-string">"^1.3.9"</span>,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    <span class="hljs-string">"angular-ui-router"</span>: <span class="hljs-string">"^0.2.18"</span>,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">    <span class="hljs-string">"meteor-node-stubs"</span>: <span class="hljs-string">"~0.2.0"</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  },</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  <span class="hljs-string">"devDependencies"</span>: {</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Then add the ui-router as a dependency to our Socially app in <code ngNonBindable="">socially.js</code>:</p>
+
+<p><diffbox step="5.2" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.2</span> <span _ngcontent-und-12="" class="commit-summary">Add uiRouter to Socially</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/14f8ae73123dba1a5149c63cfbbba9235cdd3463">imports/ui/components/socially/socially.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number"> </pre><pre _ngcontent-und-12="" class="line-number">12</pre><pre _ngcontent-und-12="" class="line-number">13</pre><pre _ngcontent-und-12="" class="line-number">14</pre><pre _ngcontent-und-12="" class="line-number">15</pre><pre _ngcontent-und-12="" class="line-number">16</pre><pre _ngcontent-und-12="" class="line-number">17</pre><pre _ngcontent-und-12="" class="line-number">18</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> uiRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ui-router'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./socially.html'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartiesList } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partiesList/partiesList'</span>;</pre><pre _ngcontent-und-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  uiRouter,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  PartiesList</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<h1>Multiple Views, Routing and Layout Template</h1>
+
+<p>Our app is slowly growing and becoming more complex.
+Until now, the app provided our users with a single view (the list of all parties), and all of the template code was located in the <code ngNonBindable="">main.html</code> file.</p>
+
+<p>The next step in building the app is to add a view that will show detailed information about each of the parties on our list.</p>
+
+<p>To add the detailed view, we could expand the <code ngNonBindable="">main.html</code> file to contain template code for both views, but that would get messy very quickly.</p>
+
+<p>Instead, we are going to turn the <code ngNonBindable="">index.html</code> template into what we call a "layout template". This is a template that is common for all views in our application.
+Other "partial templates" are then included into this layout template depending on the current "route" — the view that is currently displayed to the user.</p>
+
+<p>Application routes in Angular 1 are declared via the <a href="https://github.com/angular-ui/ui-router/wiki">$stateProvider</a>, which is the provider of the $state service.
+This service makes it easy to wire together controllers, view templates, and the current URL location in the browser.
+Using this feature we can implement deep linking, which lets us utilize the browser's history (back and forward navigation) and bookmarks.</p>
+
+<h1>Template</h1>
+
+<p>The <code ngNonBindable="">$state</code> service is normally used in conjunction with the uiView directive.
+The role of the <code ngNonBindable="">ui-view</code> directive is to include the view template for the current route into the layout template.
+This makes it a perfect fit for our <code ngNonBindable="">main.html</code> file.</p>
+
+<p>Now let's go back to <code ngNonBindable="">index.html</code> to add base tag to our main html file:</p>
+
+<p><diffbox step="5.3" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.3</span> <span _ngcontent-und-12="" class="commit-summary">Add base tag to main template</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/f2921a2c8acbb16672abaefa6696c16ae029acc3">client/index.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">ng-app</span>=<span class="hljs-string">"socially"</span> <span class="hljs-attr">ng-strict-di</span>=<span class="hljs-string">""</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">socially</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">socially</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>We still need to add uiView directive, Socially is the best place for it:</p>
+
+<p><diffbox step="5.4" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.4</span> <span _ngcontent-und-12="" class="commit-summary">Add uiView to Socially view</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/172b7f1e390918e0981b4a3c68dd0e69a200134b">imports/ui/components/socially/socially.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ui-view</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Let's define a default route and use html5 mode to make urls look a lot fancier:</p>
+
+<p><diffbox step="5.6" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.6</span> <span _ngcontent-und-12="" class="commit-summary">Set html5Mode and `parties` as default route</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/b5c0b5d95ddbdb55260968985dfcb8beee476da0">imports/ui/components/socially/socially.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">18</pre><pre _ngcontent-und-12="" class="line-number">19</pre><pre _ngcontent-und-12="" class="line-number">20</pre><pre _ngcontent-und-12="" class="line-number">21</pre><pre _ngcontent-und-12="" class="line-number">22</pre><pre _ngcontent-und-12="" class="line-number">23</pre><pre _ngcontent-und-12="" class="line-number">24</pre><pre _ngcontent-und-12="" class="line-number">25</pre><pre _ngcontent-und-12="" class="line-number">26</pre><pre _ngcontent-und-12="" class="line-number">27</pre><pre _ngcontent-und-12="" class="line-number">28</pre><pre _ngcontent-und-12="" class="line-number">29</pre><pre _ngcontent-und-12="" class="line-number">30</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controllerAs: name,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controller: Socially</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">})</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  .config(config);</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">config</span>(<span class="hljs-params">$locationProvider, $urlRouterProvider</span>) </span>{</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  $locationProvider.html5Mode(<span class="hljs-literal">true</span>);</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  $urlRouterProvider.otherwise(<span class="hljs-string">'/parties'</span>);</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>It would be nice to have a navigation. Create one! Let's call our new component <code ngNonBindable="">Navigation</code>:</p>
+
+<p><diffbox step="5.7" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.7</span> <span _ngcontent-und-12="" class="commit-summary">Create view for Navigation component</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/96309d62ae6d1b78bb52a0d89a980b5296b53320">imports/ui/components/navigation/navigation.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/parties"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="5.8" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.8</span> <span _ngcontent-und-12="" class="commit-summary">Create Navigation component</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/1e28952fda8532bd638eddc7ac21c3e41b54b79b">imports/ui/components/navigation/navigation.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number">7</pre><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre><pre _ngcontent-und-12="" class="line-number">11</pre><pre _ngcontent-und-12="" class="line-number">12</pre><pre _ngcontent-und-12="" class="line-number">13</pre><pre _ngcontent-und-12="" class="line-number">14</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./navigation.html'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'navigation'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  angularMeteor</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  template,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  controllerAs: name</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And implement it in <code ngNonBindable="">Socially</code>:</p>
+
+<p><diffbox step="5.9" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.9</span> <span _ngcontent-und-12="" class="commit-summary">Implement Navigation in the view</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/9a2ca0bf49cdd8199520a27bf2f728540aa6d548">imports/ui/components/socially/socially.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-tag">&lt;<span class="hljs-name">navigation</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">navigation</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ui-view</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="5.10" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.10</span> <span _ngcontent-und-12="" class="commit-summary">Add Navigation to Socially</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/cf46386226f647a15586901eb9f49cc7de1b67ce">imports/ui/components/socially/socially.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number">7</pre><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre><pre _ngcontent-und-12="" class="line-number"> </pre><pre _ngcontent-und-12="" class="line-number">14</pre><pre _ngcontent-und-12="" class="line-number">15</pre><pre _ngcontent-und-12="" class="line-number">16</pre><pre _ngcontent-und-12="" class="line-number">17</pre><pre _ngcontent-und-12="" class="line-number">18</pre><pre _ngcontent-und-12="" class="line-number">19</pre><pre _ngcontent-und-12="" class="line-number">20</pre><pre _ngcontent-und-12="" class="line-number">21</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./socially.html'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartiesList } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partiesList/partiesList'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> Navigation } <span class="hljs-keyword">from</span> <span class="hljs-string">'../navigation/navigation'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Socially</span> </span>{}</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  uiRouter,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  PartiesList,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  Navigation</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controllerAs: name,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Notice we did 3 things:</p>
+
+<ol><li>Replaced all the content inside Socially component with ui-view (this will be responsible for including the right content according to the current URL).</li><li>Defined default route.</li><li>Created navigation.</li><li>We also added a <code ngNonBindable="">base</code> tag in the head (required when using HTML5 location mode - would be explained a bit further).</li></ol>
+
+<blockquote><p>Note that you can remove <code ngNonBindable="">main.html</code> now, because it's no longer in use!</p></blockquote>
+
+<h1>Routes definition</h1>
+
+<p>Now let's configure our routes.
+There are no states at this stage, so let's add <code ngNonBindable="">parties</code> inside <code ngNonBindable="">PartiesList</code> component:</p>
+
+<p><diffbox step="5.5" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.5</span> <span _ngcontent-und-12="" class="commit-summary">Define `parties` route</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/74ce00645a16d7907f29f9d1a31baa1ef854a4f2">imports/ui/components/partiesList/partiesList.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number"> </pre><pre _ngcontent-und-12="" class="line-number">26</pre><pre _ngcontent-und-12="" class="line-number">27</pre><pre _ngcontent-und-12="" class="line-number">28</pre><pre _ngcontent-und-12="" class="line-number">29</pre><pre _ngcontent-und-12="" class="line-number">30</pre><pre _ngcontent-und-12="" class="line-number">31</pre><pre _ngcontent-und-12="" class="line-number">32</pre><pre _ngcontent-und-12="" class="line-number">33</pre><pre _ngcontent-und-12="" class="line-number">34</pre><pre _ngcontent-und-12="" class="line-number">35</pre><pre _ngcontent-und-12="" class="line-number">36</pre><pre _ngcontent-und-12="" class="line-number">37</pre><pre _ngcontent-und-12="" class="line-number">38</pre><pre _ngcontent-und-12="" class="line-number">39</pre><pre _ngcontent-und-12="" class="line-number">40</pre><pre _ngcontent-und-12="" class="line-number">41</pre><pre _ngcontent-und-12="" class="line-number">42</pre><pre _ngcontent-und-12="" class="line-number">43</pre><pre _ngcontent-und-12="" class="line-number">44</pre><pre _ngcontent-und-12="" class="line-number">45</pre><pre _ngcontent-und-12="" class="line-number">46</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> uiRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ui-router'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partiesList.html'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { Parties } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../api/parties'</span>;</pre><pre _ngcontent-und-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  uiRouter,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  PartyAdd,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  PartyRemove</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controllerAs: name,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controller: PartiesList</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">})</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  .config(config);</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">config</span>(<span class="hljs-params">$stateProvider</span>) </span>{</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  $stateProvider</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    .state(<span class="hljs-string">'parties'</span>, {</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">      url: <span class="hljs-string">'/parties'</span>,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">      template: <span class="hljs-string">'&lt;parties-list&gt;&lt;/parties-list&gt;'</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    });</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And we will also add a state for a new page that will display the party details.</p>
+
+<p>Our application routes are defined as follows:</p>
+
+<ul><li><strong>('/parties')</strong>: The parties list view will be shown when the URL hash fragment is /parties. To construct this view, Angular 1 will use the parties-list Component.</li><li><strong>('/parties/:partyId')</strong>: The party details view will be shown when the URL hash fragment matches '/parties/:partyId', where <code ngNonBindable="">:partyId</code> is a variable part of the URL. To construct the party details view, Angular will use the party-details Component.</li><li><strong>$urlRouterProvider.otherwise('/parties')</strong>: Triggers a redirection to /parties when the browser address doesn't match either of our routes.</li><li><strong>$locationProvider.html5Mode(true)</strong>: Sets the URL to look like a regular one. more about it <a href="https://docs.angularjs.org/guide/$location#hashbang-and-html5-modes">here</a>.</li><li>Each template is just a regular usage of our components.</li></ul>
+
+<p>Note the use of the <code ngNonBindable="">:partyId</code> parameter in the second route declaration.
+The $state service uses the route declaration — <code ngNonBindable="">/parties/:partyId</code> — as a template that is matched against the current URL.
+All variables defined with the : notation are passed into the Component through the <code ngNonBindable="">$stateParams</code> object.</p>
+
+<h1>Components</h1>
+
+<p>I mentioned a state with party details. We have to define our <code ngNonBindable="">partyDetails</code> component.</p>
+
+<p>Let's create the view for this Component in a new file:</p>
+
+<p><diffbox step="5.11" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.11</span> <span _ngcontent-und-12="" class="commit-summary">Create view for the PartyDetails</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/8d13f634fb2f1a32fcdb2df3dbad7a939d9b641d">imports/ui/components/partyDetails/partyDetails.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added">The party your selected is: {{ partyDetails.partyId }}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now we can create actual component:</p>
+
+<p><diffbox step="5.12" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.12</span> <span _ngcontent-und-12="" class="commit-summary">Create PartyDetails</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/4132fcec1ccb4c9a62dcbc4eb89f22fc1c79110d">imports/ui/components/partyDetails/partyDetails.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">1</pre><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number">7</pre><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre><pre _ngcontent-und-12="" class="line-number">11</pre><pre _ngcontent-und-12="" class="line-number">12</pre><pre _ngcontent-und-12="" class="line-number">13</pre><pre _ngcontent-und-12="" class="line-number">14</pre><pre _ngcontent-und-12="" class="line-number">15</pre><pre _ngcontent-und-12="" class="line-number">16</pre><pre _ngcontent-und-12="" class="line-number">17</pre><pre _ngcontent-und-12="" class="line-number">18</pre><pre _ngcontent-und-12="" class="line-number">19</pre><pre _ngcontent-und-12="" class="line-number">20</pre><pre _ngcontent-und-12="" class="line-number">21</pre><pre _ngcontent-und-12="" class="line-number">22</pre><pre _ngcontent-und-12="" class="line-number">23</pre><pre _ngcontent-und-12="" class="line-number">24</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> angularMeteor <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-meteor'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> uiRouter <span class="hljs-keyword">from</span> <span class="hljs-string">'angular-ui-router'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./partyDetails.html'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartyDetails</span> </span>{</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-keyword">constructor</span>($stateParams) {</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    <span class="hljs-keyword">this</span>.partyId = $stateParams.partyId;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'partyDetails'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  angularMeteor</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  template,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  controllerAs: name,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  controller: PartyDetails</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>And also define new route which was mentioned before as <code ngNonBindable="">/parties/:partyId</code>:</p>
+
+<p><diffbox step="5.13" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.13</span> <span _ngcontent-und-12="" class="commit-summary">Set partyDetails state</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/d94b3ae51a00fc107fcf2c34b42d3c947b69d2f4">imports/ui/components/partyDetails/partyDetails.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">16</pre><pre _ngcontent-und-12="" class="line-number">17</pre><pre _ngcontent-und-12="" class="line-number">18</pre><pre _ngcontent-und-12="" class="line-number">19</pre><pre _ngcontent-und-12="" class="line-number">20</pre><pre _ngcontent-und-12="" class="line-number">21</pre><pre _ngcontent-und-12="" class="line-number">22</pre><pre _ngcontent-und-12="" class="line-number">23</pre><pre _ngcontent-und-12="" class="line-number">24</pre><pre _ngcontent-und-12="" class="line-number">25</pre><pre _ngcontent-und-12="" class="line-number">26</pre><pre _ngcontent-und-12="" class="line-number">27</pre><pre _ngcontent-und-12="" class="line-number">28</pre><pre _ngcontent-und-12="" class="line-number">29</pre><pre _ngcontent-und-12="" class="line-number">30</pre><pre _ngcontent-und-12="" class="line-number">31</pre><pre _ngcontent-und-12="" class="line-number">32</pre><pre _ngcontent-und-12="" class="line-number">33</pre><pre _ngcontent-und-12="" class="line-number">34</pre><pre _ngcontent-und-12="" class="line-number">35</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-comment">// create a module</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> angular.module(name, [</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  angularMeteor,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  uiRouter</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controllerAs: name,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  controller: PartyDetails</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">})</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  .config(config);</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">config</span>(<span class="hljs-params">$stateProvider</span>) </span>{</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  <span class="hljs-string">'ngInject'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  $stateProvider.state(<span class="hljs-string">'partyDetails'</span>, {</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    url: <span class="hljs-string">'/parties/:partyId'</span>,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    template: <span class="hljs-string">'&lt;party-details&gt;&lt;/party-details&gt;'</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  });</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now let's add a link from each party in the parties list to it's details page:</p>
+
+<p><diffbox step="5.14" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.14</span> <span _ngcontent-und-12="" class="commit-summary">Add PartyDetails to Socially</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/6d48b3e050df06acaeb498ec68d7a31f192d319d">imports/ui/components/socially/socially.js</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number">7</pre><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre><pre _ngcontent-und-12="" class="line-number"> </pre><pre _ngcontent-und-12="" class="line-number">16</pre><pre _ngcontent-und-12="" class="line-number">17</pre><pre _ngcontent-und-12="" class="line-number">18</pre><pre _ngcontent-und-12="" class="line-number">19</pre><pre _ngcontent-und-12="" class="line-number">20</pre><pre _ngcontent-und-12="" class="line-number">21</pre><pre _ngcontent-und-12="" class="line-number">22</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> template <span class="hljs-keyword">from</span> <span class="hljs-string">'./socially.html'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartiesList } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partiesList/partiesList'</span>;</pre><pre _ngcontent-und-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> PartyDetails } <span class="hljs-keyword">from</span> <span class="hljs-string">'../partyDetails/partyDetails'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-keyword">import</span> { name <span class="hljs-keyword">as</span> Navigation } <span class="hljs-keyword">from</span> <span class="hljs-string">'../navigation/navigation'</span>;</pre><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Socially</span> </span>{}</pre><pre _ngcontent-und-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  angularMeteor,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  uiRouter,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  PartiesList,</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">  PartyDetails,</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  Navigation</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">]).component(name, {</pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  template,</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><diffbox step="5.15" tutorial="angular1-meteor-socially" _nghost-und-12=""><div _ngcontent-und-12="" class="diffbox">
+    <div _ngcontent-und-12="" class="title-panel">
+        <span _ngcontent-und-12="" class="step-number">5.15</span> <span _ngcontent-und-12="" class="commit-summary">Add link</span>
+        <a _ngcontent-und-12="" class="github-commit-link" target="_blank" href="http://github.com/Urigo/meteor-angular-socially/commit/74906450c941e05adb8bb681b4bf72c5a3f9e51a">imports/ui/components/partiesList/partiesList.html</a>
+    </div>
+    <div _ngcontent-und-12="" class="code-container">
+        <div _ngcontent-und-12="" class="scroll-container">
+            <div _ngcontent-und-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-number">2</pre><pre _ngcontent-und-12="" class="line-number">3</pre><pre _ngcontent-und-12="" class="line-number">4</pre><pre _ngcontent-und-12="" class="line-number">5</pre><pre _ngcontent-und-12="" class="line-number">6</pre><pre _ngcontent-und-12="" class="line-number">7</pre><pre _ngcontent-und-12="" class="line-number">8</pre><pre _ngcontent-und-12="" class="line-number">9</pre><pre _ngcontent-und-12="" class="line-number">10</pre>
+            </div>
+            <div _ngcontent-und-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-und-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-und-12="" class="line-context" className="line-context"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">ng-repeat</span>=<span class="hljs-string">"party in partiesList.parties"</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">ui-sref</span>=<span class="hljs-string">"partyDetails({ partyId: party._id })"</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-added" className="line-added">      {{party.name}}</pre><pre _ngcontent-und-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{party.description}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">party-remove</span> <span class="hljs-attr">party</span>=<span class="hljs-string">"party"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">party-remove</span>&gt;</span></pre><pre _ngcontent-und-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Now all is in place.  Run the app and you'll notice a few things:</p>
+
+<ul><li>Click on the link in the name of a party - notice that you moved into a different view and that the party's id appears in both the browser's url and in the template.</li><li>Click back - you are back to the main list, this is because of ui-router's integration with the browser's history.</li><li>Try to put arbitrary text in the URL - something like <a href="http://localhost:3000/strange-url">http://localhost:3000/strange-url</a>.  You should to be automatically redirected to the main parties list.</li></ul>
+
+<h1>Summary</h1>
+
+<p>With the routing set up and the parties list view implemented, we're ready to go to the next step and implement the party details view.</p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>

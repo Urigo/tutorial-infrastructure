@@ -1,0 +1,786 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic" rel="stylesheet" type="text/css">
+    <title>Angular2-Meteor</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <style>.logo[_ngcontent-sdo-1] {
+  width: auto;
+  height: 2em; }
+
+.main-toolbar[_ngcontent-sdo-1] {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+  background: #90A4AE; }
+  .main-toolbar[_ngcontent-sdo-1] a[_ngcontent-sdo-1] {
+    color: white;
+    text-decoration: none; }
+
+.fill-remaining-space[_ngcontent-sdo-1] {
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto; }
+
+.tutorials-dropdown[_ngcontent-sdo-1] {
+  position: relative;
+  display: inline-block; }
+  .tutorials-dropdown[_ngcontent-sdo-1] .dropdown-content[_ngcontent-sdo-1] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 7px; }
+
+.tutorials-dropdown[_ngcontent-sdo-1]:hover .dropdown-content[_ngcontent-sdo-1] {
+  display: block; }</style><style>/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0; }
+
+/* Base color: saturation 0; */
+.hljs,
+.hljs-subst {
+  color: #444; }
+
+.hljs-comment {
+  color: #888888; }
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold; }
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000; }
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold; }
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060; }
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #78A960; }
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300; }
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199; }
+
+.hljs-meta-string {
+  color: #4d99bf; }
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8; }
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080; }
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14; }
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926; }
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073; }
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3; }
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.hljs-emphasis {
+  font-style: italic; }
+
+.hljs-strong {
+  font-weight: bold; }
+
+a {
+  color: black; }
+
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 64px;
+  font-family: 'Open Sans', sans-serif; }
+
+pre {
+  background: transparent;
+  border: none;
+  white-space: pre-wrap; }
+
+code {
+  white-space: pre-wrap; }
+
+img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
+  width: 30%; }
+
+.side-nav .step-item, .side-nav .api-list-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #CFD8DC;
+  color: #546E7A; }
+
+.side-nav .step-link, .side-nav .api-item-link, .side-nav .apis-versions-list li {
+  text-decoration: none;
+  color: #536E7A;
+  display: block;
+  font-size: 14px;
+  padding: 16px 16px;
+  margin: 0;
+  background-color: #ECEFF1; }
+
+.side-nav .active-step a {
+  font-weight: bold; }
+
+.side-nav .tutorial-steps-list, .side-nav .apis-list, .side-nav .apis-versions-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px; }
+
+.apis-versions-list {
+  margin: 0 !important; }
+  .apis-versions-list li {
+    padding: 8px !important; }
+    .apis-versions-list li a {
+      text-decoration: none; }
+
+.dropdown-content {
+  column-count: 2;
+  column-width: 220px;
+  column-rule: 1px solid #ECEFF1;
+  column-gap: 0; }
+  .dropdown-content .tutorial-steps-list {
+    margin: 0 !important;
+    list-style: none;
+    padding: 0; }
+    .dropdown-content .tutorial-steps-list .step-item {
+      padding: 5px 0 5px 10px;
+      border-bottom: 1px solid #ECEFF1;
+      break-inside: avoid-column; }
+      .dropdown-content .tutorial-steps-list .step-item a {
+        text-decoration: none;
+        font-size: small;
+        color: black; }
+      .dropdown-content .tutorial-steps-list .step-item .bold {
+        font-weight: bold; }
+
+.md-primary {
+  background: #263238 !important;
+  color: white !important;
+  cursor: pointer !important; }
+  .md-primary[disabled] {
+    color: lightgray !important;
+    cursor: not-allowed !important; }
+
+tutorial-page-content pre code[ngnonbindable] {
+  background: #eee;
+  display: block;
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px; }
+
+tutorial-page-content blockquote {
+  margin: 0;
+  position: relative;
+  background: #eee;
+  border-radius: 5px; }
+  tutorial-page-content blockquote:before {
+    content: '!';
+    font-weight: bold;
+    position: absolute;
+    vertical-align: top;
+    font-size: 2vw;
+    color: white;
+    margin-left: 6px; }
+  tutorial-page-content blockquote p {
+    border-left: 1px solid white;
+    padding: 10px;
+    margin-left: 20px; }
+
+.diffbox {
+  border-radius: 10px; }
+  .diffbox .title-panel {
+    border-radius: 10px 10px 0 0; }
+  .diffbox .code-container {
+    border-radius: 0 0 10px 10px; }
+
+api-ref-container p code, api-ref-container ul li code {
+  font-family: 'Open Sans', sans-serif; }
+
+api-ref-container a {
+  color: #263238;
+  text-decoration: none;
+  font-weight: bold; }
+
+api-ref-container h3 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 30px; }
+
+api-ref-container table {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border-spacing: 0; }
+  api-ref-container table thead {
+    background: #546E7A;
+    color: #eee;
+    border-radius: 5px; }
+    api-ref-container table thead tr {
+      background: #546E7A;
+      border-radius: 5px; }
+      api-ref-container table thead tr th {
+        padding: 6px; }
+  api-ref-container table tbody td {
+    padding: 5px; }
+</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; text-align: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover:hover { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } </style><style>.side-nav[_ngcontent-sdo-6] {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3); }
+  .side-nav[_ngcontent-sdo-6] ul[_ngcontent-sdo-6] {
+    margin-top: 8px; }
+
+tutorials-versions[_ngcontent-sdo-6] {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: block; }
+
+.improv-button[_ngcontent-sdo-6] {
+  margin-left: 50px; }
+
+.right-buttons[_ngcontent-sdo-6] {
+  float: right;
+  margin-right: 250px;
+  margin-top: 10px; }
+
+.tutorial-title[_ngcontent-sdo-6] {
+  margin: 15px;
+  float: left;
+  font-size: larger;
+  font-weight: bold; }
+
+.top-navigation[_ngcontent-sdo-6] {
+  position: fixed;
+  margin-top: -60px;
+  width: 100%;
+  background-color: #ECEFF1;
+  height: 60px;
+  z-index: 50; }
+
+.tutorial-content[_ngcontent-sdo-6] {
+  margin-top: 60px;
+  padding: 20px; }
+
+.tutorials-container[_ngcontent-sdo-6] {
+  padding-left: 230px; }
+
+.l-pinned-top[_ngcontent-sdo-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.l-pinned-left[_ngcontent-sdo-6] {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px; }
+
+.l-left[_ngcontent-sdo-6] {
+  float: left; }
+
+.l-right[_ngcontent-sdo-6] {
+  float: right; }
+
+.l-relative[_ngcontent-sdo-6], .docs-content[_ngcontent-sdo-6] {
+  position: relative; }
+
+.l-absolute[_ngcontent-sdo-6] {
+  position: absolute; }
+
+.l-fixed[_ngcontent-sdo-6] {
+  position: fixed; }
+
+.l-offset-side-nav[_ngcontent-sdo-6] {
+  padding-left: 232px; }
+
+.l-offset-nav[_ngcontent-sdo-6] {
+  padding-top: 64px; }</style><style>.tutorial-version[_ngcontent-sdo-7] {
+            margin-left: 10px;
+        }
+        
+        .active[_ngcontent-sdo-7] {
+            color: #b3e5fc !important;
+        }</style><style>.diffbox[_ngcontent-sdo-12] {
+  border: 1px solid #eee;
+  -webkit-text-size-adjust: 100%;
+  margin: 1.5em 0; }
+  .diffbox[_ngcontent-sdo-12] .title-panel[_ngcontent-sdo-12] {
+    padding: 5px 12px;
+    background: #eee;
+    border-bottom: solid 1px #eee;
+    color: #333;
+    overflow: auto; }
+    .diffbox[_ngcontent-sdo-12] .title-panel[_ngcontent-sdo-12] .github-commit-link[_ngcontent-sdo-12] {
+      float: right;
+      color: black;
+      text-decoration: none;
+      border-bottom: none !important; }
+  .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] {
+    overflow-x: auto;
+    position: relative;
+    padding: 9px 3px 3px 0;
+    background: #f8f8f8; }
+    .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] .scroll-container[_ngcontent-sdo-12] {
+      display: inline-block;
+      min-width: 100%;
+      overflow: hidden; }
+    .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] pre[_ngcontent-sdo-12] {
+      margin: 0;
+      padding: 0;
+      background-color: transparent; }
+      .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] pre.line-added[_ngcontent-sdo-12] {
+        background: #eaffea; }
+      .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] pre.line-removed[_ngcontent-sdo-12] {
+        background: #ff9ea2; }
+    .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] .line-content[_ngcontent-sdo-12] {
+      padding-left: 36px;
+      overflow: hidden; }
+      .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] .line-content[_ngcontent-sdo-12] .hljs-comment[_ngcontent-sdo-12] {
+        color: #777; }
+    .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] .line-numbers[_ngcontent-sdo-12] {
+      text-align: right;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+      position: absolute;
+      width: 25px; }
+      .diffbox[_ngcontent-sdo-12] .code-container[_ngcontent-sdo-12] .line-numbers[_ngcontent-sdo-12] .line-number[_ngcontent-sdo-12] {
+        color: #aaa;
+        font-style: italic; }</style></head><body><universal-styles></universal-styles>
+
+
+<app _nghost-sdo-1=""><md-toolbar _ngcontent-sdo-1="" class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
+    <a _ngcontent-sdo-1="" href="/"><img _ngcontent-sdo-1="" class="logo" src="/assets/images/logo.png"></a>
+    <div _ngcontent-sdo-1="" class="tutorials-dropdown">
+        <button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">Tutorials</span> </button>
+        <div _ngcontent-sdo-1="" class="dropdown-content">
+            <steps-list _ngcontent-sdo-1="" prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+    </li>
+    <!--template bindings={}--><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+    </li><li class="step-item extra-item">
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+    </li>
+</ul>
+</steps-list>
+        </div>
+    </div>
+    <a _ngcontent-sdo-1="" href="/angular2/"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">Angular 2</span> </button></a>
+    <a _ngcontent-sdo-1="" href="/api/angular2-meteor/latest/MeteorComponent"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">API Reference</span> </button></a>
+    <span _ngcontent-sdo-1="" class="fill-remaining-space"></span>
+    <a _ngcontent-sdo-1="" href="https://github.com/Urigo/angular2-meteor" target="_blank"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">GitHub</span> </button></a>
+    <a _ngcontent-sdo-1="" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">Blog</span> </button></a>
+    <a _ngcontent-sdo-1="" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform" target="_blank"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">Contact Us</span> </button></a>
+    <a _ngcontent-sdo-1="" href="/manifesto"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">Manifesto</span> </button></a>
+    <a _ngcontent-sdo-1="" href="/about"><button _ngcontent-sdo-1="" md-button=""><span class="md-button-wrapper">About us</span> </button></a>
+ </md-toolbar-row>  </div></md-toolbar>
+<router-outlet _ngcontent-sdo-1=""></router-outlet><tutorial _nghost-sdo-6=""><div _ngcontent-sdo-6="" class="tutorials-container">
+    <nav _ngcontent-sdo-6="" class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+        <tutorials-versions _ngcontent-sdo-6="" _nghost-sdo-7=""><!--template bindings={}--></tutorials-versions>
+        <steps-list _ngcontent-sdo-6=""><!--template bindings={}--><ul class="tutorial-steps-list">
+    <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/bootstrapping">1. Bootstrapping</a>
+    </li><li class="step-item active-step" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/bundling">2. Bundling</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/layout">3. Layout, coding style &amp; structure</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/realtime-meteor-server">4. Realtime Meteor server</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/meteor-server-methods">5. Chat view and send messages</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/authentication">6. Authentication</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/modify-chats">7. Create and remove chats</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/privacy">8. Privacy</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/tutorials/whatsapp/ionic/summary">9. Summary</a>
+    </li>
+    <!--template bindings={}-->
+</ul>
+</steps-list>
+    </nav>
+    <div _ngcontent-sdo-6="" class="top-navigation">
+        <span _ngcontent-sdo-6="" class="tutorial-title" stepName="">Bundling</span>
+        <div _ngcontent-sdo-6="" class="right-buttons">
+            <a _ngcontent-sdo-6="" class="md-primary" md-raised-button="" tutorialNavigation="previous" href="/tutorials/whatsapp/ionic/bootstrapping">Previous</a>
+            <a _ngcontent-sdo-6="" class="md-primary" codeDiffLink="" md-raised-button="" href="https://github.com/DAB0mB/ionic-meteor-whatsapp/compare/step_00...step_01">Code Diff</a>
+            <a _ngcontent-sdo-6="" class="md-primary" md-raised-button="" tutorialNavigation="next" href="/tutorials/whatsapp/ionic/layout">Next</a>
+            <a _ngcontent-sdo-6="" class="md-primary improv-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/whatsapp/ionic/bundling.html">Improve This Document</a>
+        </div>
+    </div>
+    <div _ngcontent-sdo-6="" class="tutorial-content">
+        <router-outlet _ngcontent-sdo-6=""></router-outlet><tutorial-page><div class="tutorial-container"></div></tutorial-page><tutorial-page-content><p>In this tutorial we will write our app using <code ngNonBindable="">ecmascript6</code> javascript, which is the latest version of javascript updated with the new ecmascript standards (From now on we will refer it as 'es6'). So before we dive into building our app, we need to make an initial setup inorder to achieve that.</p>
+
+<p>Iorder to write some es6 code we will need a pre-processor. <a href="https://babeljs.io/">babel</a> plays a perfect roll for that. But that's not all. One of the most powerful tools in es6 is the module system. It uses relative paths inorder to load different modules we implement. <code ngNonBindable="">babel</code> can't do that alone because it can't load relative modules using sytax only. We will need some sort of a module bundler.</p>
+
+<p>That's where <a href="https://webpack.github.io/">Webpack</a> kicks in. <code ngNonBindable="">Webpack</code> is just a module bundler, but it can also use pre-processors on the way and it can be easily configured by whatever rules we specify, and is a very powerful tool and is being used very commonly.</p>
+
+<p><code ngNonBindable="">Meteor</code> also uses the same techniques to implement es6, and load <code ngNonBindable="">npm</code> modules into client side code, but since we're using <code ngNonBindable="">Ionic</code> cli and not <code ngNonBindable="">Meteor</code>, we will implement our own <code ngNonBindable="">Webpack</code> configuration, using our own rules!</p>
+
+<p>Great, now that we have the idea of what <code ngNonBindable="">Webpack</code> is all about, let's setup our initial config:</p>
+
+<p><diffbox step="1.1" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.1</span> <span _ngcontent-sdo-12="" class="commit-summary">Add webpack config</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/bab6ecfa0d70c99d392b6a416f441b6a27574f3d">webpack.config.js</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">1</pre><pre _ngcontent-sdo-12="" class="line-number">2</pre><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre><pre _ngcontent-sdo-12="" class="line-number">10</pre><pre _ngcontent-sdo-12="" class="line-number">11</pre><pre _ngcontent-sdo-12="" class="line-number">12</pre><pre _ngcontent-sdo-12="" class="line-number">13</pre><pre _ngcontent-sdo-12="" class="line-number">14</pre><pre _ngcontent-sdo-12="" class="line-number">15</pre><pre _ngcontent-sdo-12="" class="line-number">16</pre><pre _ngcontent-sdo-12="" class="line-number">17</pre><pre _ngcontent-sdo-12="" class="line-number">18</pre><pre _ngcontent-sdo-12="" class="line-number">19</pre><pre _ngcontent-sdo-12="" class="line-number">20</pre><pre _ngcontent-sdo-12="" class="line-number">21</pre><pre _ngcontent-sdo-12="" class="line-number">22</pre><pre _ngcontent-sdo-12="" class="line-number">23</pre><pre _ngcontent-sdo-12="" class="line-number">24</pre><pre _ngcontent-sdo-12="" class="line-number">25</pre><pre _ngcontent-sdo-12="" class="line-number">26</pre><pre _ngcontent-sdo-12="" class="line-number">27</pre><pre _ngcontent-sdo-12="" class="line-number">28</pre><pre _ngcontent-sdo-12="" class="line-number">29</pre><pre _ngcontent-sdo-12="" class="line-number">30</pre><pre _ngcontent-sdo-12="" class="line-number">31</pre><pre _ngcontent-sdo-12="" class="line-number">32</pre><pre _ngcontent-sdo-12="" class="line-number">33</pre><pre _ngcontent-sdo-12="" class="line-number">34</pre><pre _ngcontent-sdo-12="" class="line-number">35</pre><pre _ngcontent-sdo-12="" class="line-number">36</pre><pre _ngcontent-sdo-12="" class="line-number">37</pre><pre _ngcontent-sdo-12="" class="line-number">38</pre><pre _ngcontent-sdo-12="" class="line-number">39</pre><pre _ngcontent-sdo-12="" class="line-number">40</pre><pre _ngcontent-sdo-12="" class="line-number">41</pre><pre _ngcontent-sdo-12="" class="line-number">42</pre><pre _ngcontent-sdo-12="" class="line-number">43</pre><pre _ngcontent-sdo-12="" class="line-number">44</pre><pre _ngcontent-sdo-12="" class="line-number">45</pre><pre _ngcontent-sdo-12="" class="line-number">46</pre><pre _ngcontent-sdo-12="" class="line-number">47</pre><pre _ngcontent-sdo-12="" class="line-number">48</pre><pre _ngcontent-sdo-12="" class="line-number">49</pre><pre _ngcontent-sdo-12="" class="line-number">50</pre><pre _ngcontent-sdo-12="" class="line-number">51</pre><pre _ngcontent-sdo-12="" class="line-number">52</pre><pre _ngcontent-sdo-12="" class="line-number">53</pre><pre _ngcontent-sdo-12="" class="line-number">54</pre><pre _ngcontent-sdo-12="" class="line-number">55</pre><pre _ngcontent-sdo-12="" class="line-number">56</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">var</span> camelCase = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash.camelcase'</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">var</span> upperFirst = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash.upperfirst'</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-built_in">module</span>.exports = {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  entry: [</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">'./src/index.js'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  ],</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  output: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    path: __dirname + <span class="hljs-string">'/www/js'</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    filename: <span class="hljs-string">'app.bundle.js'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  externals: [</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      <span class="hljs-string">'angular'</span>: <span class="hljs-string">'angular'</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      <span class="hljs-string">'cordova'</span>: <span class="hljs-string">'cordova'</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      <span class="hljs-string">'ionic'</span>: <span class="hljs-string">'ionic'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    },</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    resolveExternals</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  ],</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  target: <span class="hljs-string">'web'</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  devtool: <span class="hljs-string">'source-map'</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  babel: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    presets: [<span class="hljs-string">'es2015'</span>, <span class="hljs-string">'stage-0'</span>],</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    plugins: [<span class="hljs-string">'add-module-exports'</span>]</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-built_in">module</span>: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    loaders: [{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      test: <span class="hljs-regexp">/\.js$/</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      exclude: <span class="hljs-regexp">/(node_modules|www)/</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      loader: <span class="hljs-string">'babel'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    }]</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  },</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  resolve: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    extensions: [<span class="hljs-string">''</span>, <span class="hljs-string">'.js'</span>],</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    alias: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      lib: __dirname + <span class="hljs-string">'/www/lib'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">};</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolveExternals</span>(<span class="hljs-params">context, request, callback</span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">return</span> cordovaPlugin(request, callback) ||</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">         callback();</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">}</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cordovaPlugin</span>(<span class="hljs-params">request, callback</span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">var</span> match = request.match(<span class="hljs-regexp">/^cordova\/(.+)$/</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">var</span> plugin = match &amp;&amp; match[<span class="hljs-number">1</span>];</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">if</span> (plugin) {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    plugin = camelCase(plugin);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    plugin = upperFirst(plugin);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    callback(<span class="hljs-literal">null</span>, <span class="hljs-string">'this.cordova &amp;&amp; cordova.plugins &amp;&amp; cordova.plugins.'</span> + plugin);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<blockquote><p><em>NOTE</em>: Since we don't want to digress from this tutorial's subject, we won't go into details about <code ngNonBindable="">Webpack</code>'s config. For more information, see <a href="https://webpack.github.io/docs/configuration.html">reference</a>.</p></blockquote>
+
+<p>We would also like to initiate <code ngNonBindable="">Webpack</code> once we build our app. All our tasks are defined in one file called <code ngNonBindable="">gulpfile.js</code>, which uses <a href="http://gulpjs.com/">gulp</a>'s API to perform and chain them.</p>
+
+<p>Let's edit our <code ngNonBindable="">gulpfile.js</code> accordingly:</p>
+
+<p><diffbox step="1.2" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.2</span> <span _ngcontent-sdo-12="" class="commit-summary">Add webpack task to gulpfile</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/8018a47056635253d75798faa074360fd55647af">gulpfile.js</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre><pre _ngcontent-sdo-12="" class="line-number">10</pre><pre _ngcontent-sdo-12="" class="line-number">11</pre><pre _ngcontent-sdo-12="" class="line-number">12</pre><pre _ngcontent-sdo-12="" class="line-number">13</pre><pre _ngcontent-sdo-12="" class="line-number">14</pre><pre _ngcontent-sdo-12="" class="line-number">15</pre><pre _ngcontent-sdo-12="" class="line-number">16</pre><pre _ngcontent-sdo-12="" class="line-number">17</pre><pre _ngcontent-sdo-12="" class="line-number">18</pre><pre _ngcontent-sdo-12="" class="line-number">19</pre><pre _ngcontent-sdo-12="" class="line-number">20</pre><pre _ngcontent-sdo-12="" class="line-number">21</pre><pre _ngcontent-sdo-12="" class="line-number">22</pre><pre _ngcontent-sdo-12="" class="line-number">23</pre><pre _ngcontent-sdo-12="" class="line-number">24</pre><pre _ngcontent-sdo-12="" class="line-number">25</pre><pre _ngcontent-sdo-12="" class="line-number">26</pre><pre _ngcontent-sdo-12="" class="line-number">27</pre><pre _ngcontent-sdo-12="" class="line-number">28</pre><pre _ngcontent-sdo-12="" class="line-number">29</pre><pre _ngcontent-sdo-12="" class="line-number">30</pre><pre _ngcontent-sdo-12="" class="line-number">31</pre><pre _ngcontent-sdo-12="" class="line-number">32</pre><pre _ngcontent-sdo-12="" class="line-number">33</pre><pre _ngcontent-sdo-12="" class="line-number">34</pre><pre _ngcontent-sdo-12="" class="line-number">35</pre><pre _ngcontent-sdo-12="" class="line-number"> </pre><pre _ngcontent-sdo-12="" class="line-number">45</pre><pre _ngcontent-sdo-12="" class="line-number">46</pre><pre _ngcontent-sdo-12="" class="line-number">47</pre><pre _ngcontent-sdo-12="" class="line-number">48</pre><pre _ngcontent-sdo-12="" class="line-number">49</pre><pre _ngcontent-sdo-12="" class="line-number">50</pre><pre _ngcontent-sdo-12="" class="line-number">51</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-context" className="line-context"><span class="hljs-keyword">var</span> minifyCss = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-minify-css'</span>);</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"><span class="hljs-keyword">var</span> rename = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-rename'</span>);</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"><span class="hljs-keyword">var</span> sh = <span class="hljs-built_in">require</span>(<span class="hljs-string">'shelljs'</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack'</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">var</span> webpackConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./webpack.config'</span>);</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"><span class="hljs-keyword">var</span> paths = {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  webpack: [<span class="hljs-string">'./src/**/*.js'</span>, <span class="hljs-string">'!./www/lib/**/*'</span>],</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  sass: [<span class="hljs-string">'./scss/**/*.scss'</span>]</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">};</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'webpack'</span>, <span class="hljs-string">'sass'</span>]);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">gulp.task(<span class="hljs-string">'webpack'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  webpack(webpackConfig, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, stats</span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-keyword">if</span> (err) {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> gutil.PluginError(<span class="hljs-string">'webpack'</span>, err);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    gutil.log(<span class="hljs-string">'[webpack]'</span>, stats.toString({</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">      colors: <span class="hljs-literal">true</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    }));</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    done();</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  });</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">});</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  gulp.src(<span class="hljs-string">'./scss/ionic.app.scss'</span>)</pre><pre _ngcontent-sdo-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">});</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">gulp.task(<span class="hljs-string">'watch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  gulp.watch(paths.webpack, [<span class="hljs-string">'webpack'</span>]);</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  gulp.watch(paths.sass, [<span class="hljs-string">'sass'</span>]);</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">});</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>From now on all our client code will be written in the <code ngNonBindable="">./src</code> folder, and <code ngNonBindable="">Gulp</code> should automatically detect changes in our files and re-build them once our app is running.</p>
+
+<blockquote><p><em>NOTE</em>: Again, we would like to focus on building our app rather than expalining about 3rd party libraties. For more information about tasks in <code ngNonBindable="">Gulp</code> see <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md">reference</a>.</p></blockquote>
+
+<p>And last but not least, let's install the necessary dependencies inorder to make our setup work. Run:</p>
+
+<pre><code ngNonBindable="">$ npm install babel --save
+$ npm install babel-core --save
+$ npm install babel-loader --save
+$ npm install babel-plugin-add-module-exports --save
+$ npm install babel-preset-es2015 --save
+$ npm install babel-preset-stage-0 --save
+$ npm install expose-loader --save
+$ npm install lodash.camelcase --save
+$ npm install lodash.upperfirst --save
+$ npm install script-loader --save
+$ npm install webpack --save</code></pre>
+
+<blockquote><p><em>TIP</em>: You can also write it as a single line using <code ngNonBindable="">npm i &lt;package1&gt; &lt;package2&gt; ... --save</code>.</p></blockquote>
+
+<p>Our <code ngNonBindable="">package.json</code> should look like this:</p>
+
+<p><diffbox step="1.3" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.3</span> <span _ngcontent-sdo-12="" class="commit-summary">Install webpack dependencies</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/0acb3d3dc01b12d77597bcf5bdad9a7b035af84b">package.json</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre><pre _ngcontent-sdo-12="" class="line-number">10</pre><pre _ngcontent-sdo-12="" class="line-number">11</pre><pre _ngcontent-sdo-12="" class="line-number">12</pre><pre _ngcontent-sdo-12="" class="line-number">13</pre><pre _ngcontent-sdo-12="" class="line-number">14</pre><pre _ngcontent-sdo-12="" class="line-number">15</pre><pre _ngcontent-sdo-12="" class="line-number">16</pre><pre _ngcontent-sdo-12="" class="line-number">17</pre><pre _ngcontent-sdo-12="" class="line-number">18</pre><pre _ngcontent-sdo-12="" class="line-number">19</pre><pre _ngcontent-sdo-12="" class="line-number">20</pre><pre _ngcontent-sdo-12="" class="line-number">21</pre><pre _ngcontent-sdo-12="" class="line-number">22</pre><pre _ngcontent-sdo-12="" class="line-number">23</pre><pre _ngcontent-sdo-12="" class="line-number">24</pre><pre _ngcontent-sdo-12="" class="line-number"> </pre><pre _ngcontent-sdo-12="" class="line-number">34</pre><pre _ngcontent-sdo-12="" class="line-number">35</pre><pre _ngcontent-sdo-12="" class="line-number">36</pre><pre _ngcontent-sdo-12="" class="line-number">37</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.1.1"</span>,</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-string">"description"</span>: <span class="hljs-string">"whatsapp: An Ionic project"</span>,</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-string">"dependencies"</span>: {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel"</span>: <span class="hljs-string">"^6.5.2"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel-core"</span>: <span class="hljs-string">"^6.7.6"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel-loader"</span>: <span class="hljs-string">"^6.2.4"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel-plugin-add-module-exports"</span>: <span class="hljs-string">"^0.1.2"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel-preset-es2015"</span>: <span class="hljs-string">"^6.6.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"babel-preset-stage-0"</span>: <span class="hljs-string">"^6.5.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"expose-loader"</span>: <span class="hljs-string">"^0.7.1"</span>,</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-string">"gulp"</span>: <span class="hljs-string">"^3.5.6"</span>,</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-string">"gulp-concat"</span>: <span class="hljs-string">"^2.2.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-string">"gulp-minify-css"</span>: <span class="hljs-string">"^0.3.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"gulp-rename"</span>: <span class="hljs-string">"^1.2.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"gulp-sass"</span>: <span class="hljs-string">"^2.0.4"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"lodash.camelcase"</span>: <span class="hljs-string">"^4.1.1"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"lodash.upperfirst"</span>: <span class="hljs-string">"^4.2.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"script-loader"</span>: <span class="hljs-string">"^0.7.0"</span>,</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-string">"webpack"</span>: <span class="hljs-string">"^1.13.0"</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  },</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-string">"devDependencies"</span>: {</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-string">"bower"</span>: <span class="hljs-string">"^1.3.3"</span>,</pre><pre _ngcontent-sdo-12="" class="" className=""><span class="hljs-comment">...some lines skipped...</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-string">"ionic-plugin-keyboard"</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  ],</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-string">"cordovaPlatforms"</span>: []</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p><code ngNonBindable="">Ionic</code> provides us with a very nice skelton for building our app. But we would like to use a different method which is a little more advanced which will help us write some es6 code properly.</p>
+
+<p>Thus, we shall clean up some files from our project, just run:</p>
+
+<pre><code ngNonBindable="">$ cd ./www
+$ rm -rf ./css
+$ rm -rf ./img
+$ rm -rf ./js
+$ rm -rf ./templates</code></pre>
+
+<p>Next, we will setup our <code ngNonBindable="">index.html</code>:</p>
+
+<p><diffbox step="1.5" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.5</span> <span _ngcontent-sdo-12="" class="commit-summary">Setup index.html for app</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/c15e0d486b680a70f7061e97140f2f4fdecd9cbb">www/index.html</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre><pre _ngcontent-sdo-12="" class="line-number">10</pre><pre _ngcontent-sdo-12="" class="line-number">11</pre><pre _ngcontent-sdo-12="" class="line-number">12</pre><pre _ngcontent-sdo-12="" class="line-number">13</pre><pre _ngcontent-sdo-12="" class="line-number">14</pre><pre _ngcontent-sdo-12="" class="line-number">15</pre><pre _ngcontent-sdo-12="" class="line-number">16</pre><pre _ngcontent-sdo-12="" class="line-number">17</pre><pre _ngcontent-sdo-12="" class="line-number">18</pre><pre _ngcontent-sdo-12="" class="line-number">19</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>whatapp<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-comment">&lt;!-- compiled css output --&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/ionic.app.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-comment">&lt;!-- cordova script (this will be a 404 during development) --&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"cordova.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context"> </pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-comment">&lt;!-- your app's js --&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/app.bundle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    <span class="hljs-comment">&lt;!--</span></pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">      The nav bar that will be updated as we navigate between views.</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">    --&gt;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<ul><li>We named our app <code ngNonBindable="">Whatsapp</code>, since that's what it represents.</li><li>We removed all css files accept for one, since they are all pre-processed and imported using a library called <a href="http://sass-lang.com/">SASS</a> into one file called <code ngNonBindable="">ionic.app.css</code>. All our scss files should be defined in <code ngNonBindable="">scss</code> folder.</li><li>Same goes for javascript files, they will all be bundled into one file called <code ngNonBindable="">app.bundle.js</code> using our <code ngNonBindable="">Webpack</code> config we've just defined.</li><li>We removed the <code ngNonBindable="">ng-app</code> attribute which will then take place in our javascript code.</li></ul>
+
+<p>Now that we have an initial setup, let's define our entry point for our code. Create a file called <code ngNonBindable="">index.js</code> in our <code ngNonBindable="">src</code> folder with the following contents:</p>
+
+<p><diffbox step="1.6" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.6</span> <span _ngcontent-sdo-12="" class="commit-summary">Add index js file</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/255b968fd388b333bf6b606b123a9d1fa62d23fd">src/index.js</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">1</pre><pre _ngcontent-sdo-12="" class="line-number">2</pre><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-comment">// libs</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular/angular'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-animate/angular-animate'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-sanitize/angular-sanitize'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/angular-ui-router/release/angular-ui-router'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/ionic/js/ionic'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'script!lib/ionic/js/ionic-angular'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-comment">// app</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> <span class="hljs-string">'./app'</span>;</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>This is simply a file where all our desired scripts are loaded. Note that libraries are being loaded with the <code ngNonBindable="">script!</code> pre-fix, which is braught to us by the <code ngNonBindable="">script-loader</code> npm package. This pre-fix is called a loader, and we actually have many types of it, but in this case it tells <code ngNonBindable="">Webpack</code> that the files specified afterwards should be loaded as-is, without handling any module requirements or any pre-processors.</p>
+
+<blockquote><p><em>NOTE</em>: We can also specify the script loader as a general rule for all our libraries, but this way it won't be clear that the files we just imported are being imported as scripts. Both approaches are good, but we will stick with the direct and simple approach of specifying the script loader for every library module imported, because it's more declerative.</p></blockquote>
+
+<p>As you can see there is also an <code ngNonBindable="">app.js</code> file being imported at the bottom. This file should be our main app file. Let's write it:</p>
+
+<p><diffbox step="1.7" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.7</span> <span _ngcontent-sdo-12="" class="commit-summary">Add base app file</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/3efe23ee8e47b097fbd6f102163cdbc0c4920bb6">src/app.js</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">1</pre><pre _ngcontent-sdo-12="" class="line-number">2</pre><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre><pre _ngcontent-sdo-12="" class="line-number">10</pre><pre _ngcontent-sdo-12="" class="line-number">11</pre><pre _ngcontent-sdo-12="" class="line-number">12</pre><pre _ngcontent-sdo-12="" class="line-number">13</pre><pre _ngcontent-sdo-12="" class="line-number">14</pre><pre _ngcontent-sdo-12="" class="line-number">15</pre><pre _ngcontent-sdo-12="" class="line-number">16</pre><pre _ngcontent-sdo-12="" class="line-number">17</pre><pre _ngcontent-sdo-12="" class="line-number">18</pre><pre _ngcontent-sdo-12="" class="line-number">19</pre><pre _ngcontent-sdo-12="" class="line-number">20</pre><pre _ngcontent-sdo-12="" class="line-number">21</pre><pre _ngcontent-sdo-12="" class="line-number">22</pre><pre _ngcontent-sdo-12="" class="line-number">23</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Ionic <span class="hljs-keyword">from</span> <span class="hljs-string">'ionic'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> Keyboard <span class="hljs-keyword">from</span> <span class="hljs-string">'cordova/keyboard'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">import</span> StatusBar <span class="hljs-keyword">from</span> <span class="hljs-string">'cordova/status-bar'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"><span class="hljs-keyword">const</span> App = <span class="hljs-string">'whatsapp'</span>;</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">Angular.module(App, [</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-string">'ionic'</span></pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">]);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">Ionic.Platform.ready(() =&gt; {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">if</span> (Keyboard) {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    Keyboard.hideKeyboardAccessoryBar(<span class="hljs-literal">true</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    Keyboard.disableScroll(<span class="hljs-literal">true</span>);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  <span class="hljs-keyword">if</span> (StatusBar) {</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    StatusBar.styleLightContent();</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  }</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added"> </pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  Angular.bootstrap(<span class="hljs-built_in">document</span>, [App]);</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">});</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>As you can see, we define our app's module and we bootstrap it. Bootstraping is when we initialize primary logic in our application, and is done automatically by <code ngNonBindable="">Angular</code>. Ofcourse, there is some additional code related to <code ngNonBindable="">cordova</code> enviroment, like hiding the keyboard on startup.</p>
+
+<p>We'de now like to build our app and watch for file changes as we run our app. To do so, just edit the <code ngNonBindable="">ionic.project</code> file and add <code ngNonBindable="">Gulp</code> files to run on startup.</p>
+
+<p><diffbox step="1.8" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.8</span> <span _ngcontent-sdo-12="" class="commit-summary">Add gulp startup tasks to ionic.project</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/0265b1004b829f9e5a1c381b65a7c8b5b595033b">ionic.project</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">1</pre><pre _ngcontent-sdo-12="" class="line-number">2</pre><pre _ngcontent-sdo-12="" class="line-number">3</pre><pre _ngcontent-sdo-12="" class="line-number">4</pre><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-context" className="line-context">{</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">  "name": "whatsapp",</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  "gulpStartupTasks": [</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    "webpack",</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    "sass",</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">    "watch"</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">  ]</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">}</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p>
+
+<p>Also, since we use pre-processors for both our <code ngNonBindable="">.js</code> and <code ngNonBindable="">.css</code> files, they are not relevant anymore. Let's make sure they won't be included in our next commits by adding them to the <code ngNonBindable="">.gitignore</code> file:</p>
+
+<p><diffbox step="1.9" tutorial="ionic-tutorial" _nghost-sdo-12=""><div _ngcontent-sdo-12="" class="diffbox">
+    <div _ngcontent-sdo-12="" class="title-panel">
+        <span _ngcontent-sdo-12="" class="step-number">1.9</span> <span _ngcontent-sdo-12="" class="commit-summary">Add js and css dirs to .gitignore</span>
+        <a _ngcontent-sdo-12="" class="github-commit-link" target="_blank" href="http://github.com/DAB0mB/ionic-meteor-whatsapp/commit/bab1cae1d5159bbd9e1202a1b3b68f49e20de38f">.gitignore</a>
+    </div>
+    <div _ngcontent-sdo-12="" class="code-container">
+        <div _ngcontent-sdo-12="" class="scroll-container">
+            <div _ngcontent-sdo-12="" class="line-numbers">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-number">5</pre><pre _ngcontent-sdo-12="" class="line-number">6</pre><pre _ngcontent-sdo-12="" class="line-number">7</pre><pre _ngcontent-sdo-12="" class="line-number">8</pre><pre _ngcontent-sdo-12="" class="line-number">9</pre>
+            </div>
+            <div _ngcontent-sdo-12="" class="line-content">
+                <!--template bindings={}--><pre _ngcontent-sdo-12="" class="line-context" className="line-context">platforms/</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">plugins/</pre><pre _ngcontent-sdo-12="" class="line-context" className="line-context">www/lib/</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">www/css/</pre><pre _ngcontent-sdo-12="" class="line-added" className="line-added">www/js/</pre>
+            </div>
+        </div>
+    </div>
+</div></diffbox></p></tutorial-page-content>
+    </div>
+</div></tutorial></app>
+
+
+</body></html>
