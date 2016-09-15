@@ -1,48 +1,33 @@
-// the polyfills must be the first thing imported in node.js
-// import 'angular2-universal/polyfills'; // polyfills are moved to server.ts
+import { TutorialsCoreModule } from './app/core/tutorials-module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { UniversalModule } from 'angular2-universal';
+import { AppComponent } from './app/app.component.ts';
+import { routing, appRoutingProviders } from './app/app-routes.ts';
+import {APP_DECLARAIONS} from './app/app-declarations.ts';
 
-
-// Angular 2 Universal
-import {
-  REQUEST_URL,
-  ORIGIN_URL,
-  NODE_LOCATION_PROVIDERS,
-  NODE_HTTP_PROVIDERS,
-  ExpressEngineConfig
-} from 'angular2-universal';
-
-import { provideRouter } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
-
-// Application
-import {AppComponent} from './app/app.component';
-import {TUTORIALS_PROVIDERS} from "./app/core/tutorials-providers";
-import {APP_ROUTES} from "./app/app-routes";
-
-export function ngApp(req, res) {
-  let baseUrl = '/';
-  let url = req.originalUrl || '/';
-
-  let config: ExpressEngineConfig = {
-    directives: [
-      AppComponent
-    ],
-    platformProviders: [
-      {provide: ORIGIN_URL, useValue: 'http://localhost:3000'},
-      {provide: APP_BASE_HREF, useValue: baseUrl},
+export function main(config) {
+  @NgModule({
+    bootstrap: [AppComponent],
+    declarations: APP_DECLARAIONS,
+    imports: [
+      //CommonModule,
+      UniversalModule.withConfig({
+        document: config.document,
+        originUrl: 'http://localhost:3000',
+        baseUrl: '/',
+        requestUrl: '/',
+        preboot: false
+      }),
+      FormsModule,
+      routing,
+      TutorialsCoreModule
     ],
     providers: [
-      TUTORIALS_PROVIDERS,
-      {provide: REQUEST_URL, useValue: url},
-      NODE_HTTP_PROVIDERS,
-      provideRouter(APP_ROUTES),
-      NODE_LOCATION_PROVIDERS
-    ],
-    async: true,
-    preboot: false // { appRoot: 'app' } // your top level app component selector
-  };
+      appRoutingProviders
+    ]
+  })
+  class MainModule { }
 
-  res.render('index', config, (err, html) => {
-    res.status(200).send(html.replace(`<script src="/index.js"></script>`, ""));
-  });
+  return MainModule;
 }

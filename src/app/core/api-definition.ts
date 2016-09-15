@@ -8,7 +8,7 @@ export interface ApiFile {
 export interface ApiVersion {
   name: string;
   revision: string;
-  exclude?: Array<string>
+  exclude?: Array<string>;
 }
 
 export interface ApiDefinition {
@@ -25,12 +25,12 @@ export interface StaticFileDefinition {
 
 export interface ApiStaticDefinitionObject {
   version: string;
-  files?: Array<StaticFileDefinition>
+  files?: Array<StaticFileDefinition>;
   ref?: string;
   alongWith?: string;
 }
 
 export interface ApiStaticDefinition {
   apiRepository: string;
-  apis: Array<ApiStaticDefinitionObject>
+  apis: Array<ApiStaticDefinitionObject>;
 }

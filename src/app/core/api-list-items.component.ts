@@ -1,15 +1,14 @@
-import {Injectable, Component, OnInit} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
-import {ActivatedApi} from "./current-api";
-import {ApiRouteDataDefinition} from "./apis-routes";
-import {LocationStrategy} from "@angular/common";
-import * as _ from "lodash";
-import {ApiFile, ApiVersion, StaticFileDefinition, ApiStaticDefinitionObject, ApiDefinition} from "./api-definition";
+import { Injectable, Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedApi } from './current-api';
+import { ApiRouteDataDefinition } from './apis-routes';
+import { LocationStrategy } from '@angular/common';
+import * as _ from 'lodash';
+import { ApiFile, ApiVersion, StaticFileDefinition, ApiStaticDefinitionObject, ApiDefinition } from './api-definition';
 
 @Component({
-  selector: "api-list-items",
-  templateUrl: "./api-list-items.component.html",
-  directives: [ROUTER_DIRECTIVES]
+  selector: 'api-list-items',
+  templateUrl: './api-list-items.component.html'
 })
 @Injectable()
 export class ApiListItems implements OnInit {
@@ -19,16 +18,16 @@ export class ApiListItems implements OnInit {
   }
 
   private createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], {relativeTo: this.parentRoute});
+    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
 
   createLink(api) {
     if (this.apiData.isStaticApi) {
-      return this.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + "/" + api.urlName);
+      return this.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName);
     }
     else {
-      return this.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + "/" + api.apiTitle);
+      return this.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle);
     }
   }
 

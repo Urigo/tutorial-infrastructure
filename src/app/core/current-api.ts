@@ -1,8 +1,8 @@
-import {Subject} from "rxjs";
-import {ApiRouteDataDefinition} from "./apis-routes";
+import { Subject } from 'rxjs';
+import { ApiRouteDataDefinition } from './apis-routes';
 
 export class ActivatedApi {
-  public api:Subject<any>;
+  public api: Subject<any>;
 
   constructor() {
     this.api = new Subject<ApiRouteDataDefinition>();

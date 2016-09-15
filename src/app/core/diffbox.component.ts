@@ -1,22 +1,22 @@
-import {Input, Component, Optional, OnInit} from "@angular/core";
-import {TutorialRegistryCache} from "./tutorials-registry-cache";
-import {ParsedPatchDefinition, SingleChange, LineContent} from "./patch-definition";
-import {TutorialBundle, TutorialDefinition} from "./tutorial-definition";
-import * as _ from "lodash";
-import * as hljs from "highlight.js";
+import { Input, Component, Optional, OnInit } from '@angular/core';
+import { TutorialRegistryCache } from './tutorials-registry-cache';
+import { ParsedPatchDefinition, SingleChange, LineContent } from './patch-definition';
+import { TutorialBundle, TutorialDefinition } from './tutorial-definition';
+import * as _ from 'lodash';
+import * as hljs from 'highlight.js';
 
 @Component({
-  selector: "diffbox",
-  templateUrl: "./diffbox.component.html",
+  selector: 'diffbox',
+  templateUrl: './diffbox.component.html',
   styleUrls: [
-    "./diffbox.component.scss"
+    './diffbox.component.scss'
   ]
 })
 export class DiffBoxComponent implements OnInit {
-  @Input("step") step: string;
-  @Optional() @Input("filename") optionalFilename: string;
-  @Optional() @Input("hideRemoved") hideRemoved: boolean;
-  @Input("tutorial") tutorialName: string;
+  @Input('step') step: string;
+  @Optional() @Input('filename') optionalFilename: string;
+  @Optional() @Input('hideRemoved') hideRemoved: boolean;
+  @Input('tutorial') tutorialName: string;
 
   private diffDetails: ParsedPatchDefinition;
   private filename: string;
@@ -43,7 +43,7 @@ export class DiffBoxComponent implements OnInit {
       } else if (availableFiles.length === 0) {
         throw new Error(`Something went wrong, unable to find files in your commit ${this.diffDetails.sha}!`);
       } else {
-        throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(", ")}`);
+        throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(', ')}`);
       }
     } else {
       this.filename = this.optionalFilename;
@@ -68,7 +68,7 @@ export class DiffBoxComponent implements OnInit {
 
     return lineRanges.reduce((prev: Array<any>, curr) => {
       if (prev) {
-        return prev.concat(" ").concat(curr);
+        return prev.concat(' ').concat(curr);
       } else {
         return curr;
       }
@@ -81,16 +81,16 @@ export class DiffBoxComponent implements OnInit {
         let highlightedContent = null;
 
         if (line.content) {
-          const ext = _.last(this.filename.split("."));
+          const ext = _.last(this.filename.split('.'));
           let fileType = ext;
 
-          if (ext === "jsx") {
-            fileType = "js";
-          } else if (ext === "less") {
-            fileType = "css";
+          if (ext === 'jsx') {
+            fileType = 'js';
+          } else if (ext === 'less') {
+            fileType = 'css';
           }
-          else if (fileType === "ts") {
-            fileType = "typescript";
+          else if (fileType === 'ts') {
+            fileType = 'typescript';
           }
 
           try {
@@ -101,8 +101,8 @@ export class DiffBoxComponent implements OnInit {
           }
         }
 
-        line.highlightedContent = highlightedContent || " ";
-        line.cssClass = "line-" + line.type;
+        line.highlightedContent = highlightedContent || ' ';
+        line.cssClass = 'line-' + line.type;
 
         return line;
       });
@@ -111,13 +111,13 @@ export class DiffBoxComponent implements OnInit {
         return allLines;
       }
       else {
-        return allLines.filter(item => item.type !== "removed");
+        return allLines.filter(item => item.type !== 'removed');
       }
     });
 
     return sectionLines.reduce((prev: Array<any>, curr) => {
       if (prev) {
-        return prev.concat({highlightedContent: "<span class='hljs-comment'>...some lines skipped...</span>"}).concat(curr);
+        return prev.concat({ highlightedContent: '<span class="hljs-comment">...some lines skipped...</span>'}).concat(curr);
       } else {
         return curr;
       }

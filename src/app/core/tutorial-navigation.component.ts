@@ -1,17 +1,17 @@
-import {Injectable, Directive, ElementRef, Renderer, Input} from "@angular/core";
-import {ActivatedTutorial} from "./current-tutorial";
-import {TutorialStep, TutorialDefinition} from "./tutorial-definition";
-import {Observable} from "rxjs";
-import {StepsUtils} from "./step-utils";
-import {Router, ActivatedRoute} from "@angular/router";
-import {LocationStrategy} from "@angular/common";
+import {Injectable, Directive, ElementRef, Renderer, Input} from '@angular/core';
+import {ActivatedTutorial} from './current-tutorial';
+import {TutorialStep, TutorialDefinition} from './tutorial-definition';
+import {Observable} from 'rxjs';
+import {StepsUtils} from './step-utils';
+import {Router, ActivatedRoute} from '@angular/router';
+import {LocationStrategy} from '@angular/common';
 
 @Directive({
-  selector: "[tutorialNavigation]"
+  selector: '[tutorialNavigation]'
 })
 @Injectable()
 export class TutorialNavigation {
-  @Input("tutorialNavigation") tutorialNavigation: string;
+  @Input('tutorialNavigation') tutorialNavigation: string;
 
   constructor(private activated: ActivatedTutorial, el: ElementRef, renderer: Renderer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
     Observable.zip(activated.tutorial, activated.step, (tutorial, step) => {
@@ -24,12 +24,12 @@ export class TutorialNavigation {
       let step : TutorialStep = data.step;
 
       let index = tutorial.steps.findIndex((s) => {
-        return s == step;
+        return s === step;
       });
 
-      if (this.tutorialNavigation === "next") {
+      if (this.tutorialNavigation === 'next') {
         if (index === tutorial.steps.length - 1) {
-          StepsUtils.disableElement(el, renderer)
+          StepsUtils.disableElement(el, renderer);
         }
         else {
           let next = tutorial.steps[index + 1];
@@ -42,9 +42,9 @@ export class TutorialNavigation {
           }
         }
       }
-      else if (this.tutorialNavigation === "previous") {
+      else if (this.tutorialNavigation === 'previous') {
         if (index === 0) {
-          StepsUtils.disableElement(el, renderer)
+          StepsUtils.disableElement(el, renderer);
         }
         else {
           let previous = tutorial.steps[index - 1];

@@ -16,28 +16,27 @@ var commonConfig = {
   module: {
     loaders: [
       // TypeScript
-      {test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader']},
-      {test: /\.html$/, loader: 'raw-loader'},
-      {test: /\.css$/, loaders: ['css-loader', 'raw-loader']},
-      {test: /\.json$/, loader: 'raw-loader'},
+      { test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader'] },
+      { test: /\.html$/, loader: 'raw-loader' },
+      { test: /\.css$/, loaders: ['css-loader', 'raw-loader'] },
+      { test: /\.json$/, loader: 'raw-loader' },
       {
         test: /\.scss$/,
         exclude: root('src', 'app'),
         loaders: ["raw-loader", "sass-loader"]
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!postcss!sass'}
+      { test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!postcss!sass' }
     ],
     preLoaders: [
       // needed to lower the filesize of angular due to inline source-maps
-      {test: /\.js$/, loader: 'source-map-loader'}
+      { test: /\.js$/, loader: 'source-map-loader' }
     ],
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(true),
-    new ExtractTextPlugin('css/[name].css', {disable: false})
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new ExtractTextPlugin({ filename: "css/[name].css", disable: false, allChunks: true })
   ]
-
 };
 
 

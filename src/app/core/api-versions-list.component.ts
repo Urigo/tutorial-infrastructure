@@ -1,15 +1,14 @@
-import {Injectable, Component, OnInit} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
-import {ActivatedApi} from "./current-api";
-import {ApiRouteDataDefinition} from "./apis-routes";
-import {LocationStrategy} from "@angular/common";
-import {ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition} from "./api-definition";
-import * as _ from "lodash";
+import { Injectable, Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedApi } from './current-api';
+import { ApiRouteDataDefinition } from './apis-routes';
+import { LocationStrategy } from '@angular/common';
+import { ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition } from './api-definition';
+import * as _ from 'lodash';
 
 @Component({
-  selector: "api-versions-list",
-  templateUrl: "./api-versions-list.component.html",
-  directives: [ROUTER_DIRECTIVES]
+  selector: 'api-versions-list',
+  templateUrl: './api-versions-list.component.html'
 })
 @Injectable()
 export class ApiVersionsList implements OnInit {
@@ -19,12 +18,12 @@ export class ApiVersionsList implements OnInit {
   }
 
   private createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], {relativeTo: this.parentRoute});
+    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
 
   createLink(version) {
-    let urlSuffix = "";
+    let urlSuffix = '';
 
     if (this.apiData.isStaticApi) {
       urlSuffix = (<StaticFileDefinition>this.apiData.apiFile).urlName;
@@ -33,7 +32,7 @@ export class ApiVersionsList implements OnInit {
       urlSuffix = (<ApiFile>this.apiData.apiFile).apiTitle;
     }
 
-    return this.createAbsoluteLink(version.name + "/" + urlSuffix);
+    return this.createAbsoluteLink(version.name + '/' + urlSuffix);
   }
 
   getVersionsList() {
@@ -41,7 +40,7 @@ export class ApiVersionsList implements OnInit {
       return _.map((<ApiStaticDefinition>this.apiData.apiDefinition).apis, (item) => {
         return {
           name: item.version
-        }
+        };
       });
     }
     else {

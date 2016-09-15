@@ -1,9 +1,9 @@
-import {Subject} from "rxjs";
-import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
+import { Subject } from 'rxjs';
+import { TutorialDefinition, TutorialStep } from './tutorial-definition';
 
 export class ActivatedTutorial {
-  public tutorial:Subject<TutorialDefinition>;
-  public step:Subject<TutorialStep>;
+  public tutorial: Subject<TutorialDefinition>;
+  public step: Subject<TutorialStep>;
 
   constructor() {
     this.step = new Subject<TutorialStep>();

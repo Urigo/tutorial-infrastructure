@@ -2,21 +2,18 @@ import {
   Injectable,
   OnInit,
   Component,
-  DynamicComponentLoader,
   ViewContainerRef
-} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
-import {DiffBoxComponent} from "./diffbox.component";
-import {StepsTemplatesCache} from "./steps-templates-cache";
-import {TutorialRouteData} from "./tutorial-routes";
-import {ActivatedTutorial} from "./current-tutorial";
+} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {TutorialDefinition, TutorialStep} from './tutorial-definition';
+import {StepsTemplatesCache} from './steps-templates-cache';
+import {TutorialRouteData} from './tutorial-routes';
+import {ActivatedTutorial} from './current-tutorial';
 
-function generateDynamicComponent(template = "Oops, tutorial template is not available") {
+function generateDynamicComponent(template = 'Oops, tutorial template is not available') {
   @Component({
-    selector: "tutorial-page-content",
-    template,
-    directives: [DiffBoxComponent]
+    selector: 'tutorial-page-content',
+    template
   })
   class DynamicComponent {
   }
@@ -26,8 +23,8 @@ function generateDynamicComponent(template = "Oops, tutorial template is not ava
 
 @Injectable()
 @Component({
-  selector: "tutorial-page",
-  template: `<div class="tutorial-container" #dynamic></div>`
+  selector: 'tutorial-page',
+  template: `<div class='tutorial-container' #dynamic></div>`
 })
 export class TutorialPage implements OnInit {
   private tutorial: TutorialDefinition;
@@ -35,7 +32,6 @@ export class TutorialPage implements OnInit {
 
   constructor(private stepsTemplatesCache: StepsTemplatesCache,
               private route: ActivatedRoute,
-              private dynamicComponentLoader: DynamicComponentLoader,
               private viewContainerRef: ViewContainerRef,
               private currentTutorial: ActivatedTutorial) {
   }
@@ -49,12 +45,12 @@ export class TutorialPage implements OnInit {
       this.currentTutorial.updateCurrentTutorial(this.tutorial);
       this.currentTutorial.updateCurrentStep(this.step);
 
-      this.dynamicComponentLoader.loadNextToLocation(
+      /*this.dynamicComponentLoader.loadNextToLocation(
         generateDynamicComponent(
           this.stepsTemplatesCache.getHtml(
             this.step.name,
             this.tutorial.id)),
-        this.viewContainerRef);
+        this.viewContainerRef);*/
     });
   }
 }

@@ -1,20 +1,19 @@
-import {Injectable, Component, Optional, Input, OnInit} from "@angular/core";
-import {ActivatedTutorial} from "./current-tutorial";
-import {TutorialStep, TutorialDefinition} from "./tutorial-definition";
-import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
-import {StepsUtils} from "./step-utils";
-import {LocationStrategy} from "@angular/common";
+import { Injectable, Component, Optional, Input, OnInit } from '@angular/core';
+import { ActivatedTutorial } from './current-tutorial';
+import { TutorialStep, TutorialDefinition } from './tutorial-definition';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StepsUtils } from './step-utils';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
-  selector: "steps-list",
-  templateUrl: "./steps-list.component.html",
-  directives: [ROUTER_DIRECTIVES]
+  selector: 'steps-list',
+  templateUrl: './steps-list.component.html'
 })
 @Injectable()
 export class StepListComponent implements OnInit {
-  @Optional() @Input("tutorial") tutorialToDisplay: TutorialDefinition;
-  @Optional() @Input("prefix") prefix: string;
-  @Optional() @Input("extraLinks") extraLinks: Array<any>;
+  @Optional() @Input('tutorial') tutorialToDisplay: TutorialDefinition;
+  @Optional() @Input('prefix') prefix: string;
+  @Optional() @Input('extraLinks') extraLinks: Array<any>;
 
   private tutorialDetails: TutorialDefinition;
 
@@ -23,10 +22,10 @@ export class StepListComponent implements OnInit {
   }
 
   private createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], {relativeTo: this.parentRoute});
+    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
 
-    return (this.prefix || "") + abs;
+    return (this.prefix || '') + abs;
   }
 
   getStepLink(step: TutorialStep) {
