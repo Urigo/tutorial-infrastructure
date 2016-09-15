@@ -1,9 +1,8 @@
-import {Component, Injectable} from '@angular/core';
-// import {MD_TOOLBAR_DIRECTIVES} from "@angular2-material/toolbar";
-// import {MD_BUTTON_DIRECTIVES} from "@angular2-material/button";
-//import * as mainCss from "../assets/style/main.scss";
-//import {SharedStylesHost} from "@angular/platform-server/platform_browser_private";
+import {Component, Injectable, Inject} from '@angular/core';
+import * as mainCss from '../assets/style/main.scss';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
+import {__platform_browser_private__} from '@angular/platform-browser';
+let SharedStylesHost = __platform_browser_private__.SharedStylesHost;
 
 @Component({
   selector: 'app',
@@ -14,8 +13,8 @@ import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
 })
 @Injectable()
 export class AppComponent {
-  constructor() {
-    //stylesHost.addStyles([mainCss]);
+  constructor(@Inject(SharedStylesHost) sharedStylesHost: any) {
+    sharedStylesHost.addStyles([mainCss]);
   }
 
   getDropdownTutorial() {
