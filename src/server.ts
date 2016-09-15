@@ -6,7 +6,7 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import { enableProdMode } from '@angular/core';
 import { createEngine } from 'angular2-express-engine';
-import { generateStaticWebsite } from './app/core/generate-static';
+import { generateStaticWebsite, handleRoutesArray } from './app/core/generate-static';
 import { APP_ROUTES } from './app/app-routes';
 import { main } from './main.node';
 
@@ -27,18 +27,7 @@ app.use(express.static(path.join(ROOT, 'dist/client'), { index: false }));
 
 // Routes with html5pushstate
 // ensure routes match client-side-app
-app.get('/', (req, res) => res.render('index', { req, res }));
-
-APP_ROUTES.forEach((route) => {
-  app.get('/' + route.path, (req, res) => res.render('index', { req, res }));
-});
-
-app.get('*', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  var pojo = { status: 404, message: 'No Content' };
-  var json = JSON.stringify(pojo, null, 2);
-  res.status(404).send(json);
-});
+app.get('*', (req, res) => res.render('index', { req, res }));
 
 // Server
 let server = app.listen(process.env.PORT || 3000, () => {

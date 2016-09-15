@@ -1,10 +1,9 @@
-const fs = require("fs");
-const request = require("request");
-const mkdirp = require("mkdirp");
-const path = require("path");
-const _ = require("lodash");
-const rimraf = require("rimraf");
-const copydir = require("copy-dir");
+const fs = require('fs');
+const request = require('request');
+const mkdirp = require('mkdirp');
+const path = require('path');
+const rimraf = require('rimraf');
+const copydir = require('copy-dir');
 
 function ensureDirectoryExistence(filePath) {
   var dirname = path.dirname(filePath);
@@ -14,6 +13,18 @@ function ensureDirectoryExistence(filePath) {
   ensureDirectoryExistence(dirname);
   fs.mkdirSync(dirname);
 }
+
+export let handleRoutesArray = (arr, resultArr, base = '/') => {
+  arr.forEach((route: any) => {
+    if (route.path !== '**') {
+      resultArr.push(base + route.path);
+
+      if (route.children && route.children.length > 0) {
+        handleRoutesArray(route.children, resultArr, base + route.path + '/');
+      }
+    }
+  });
+};
 
 export function generateStaticWebsite(baseHost, port, routesArray, outputLocation, assetsDirectory) {
   function generateStaticForUrl(fullBaseUrl, urlPath): Promise<string> {
@@ -25,13 +36,13 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
           return reject(err);
         }
 
-        console.log("Done loading HTML content for " + url);
+        console.log('Done loading HTML content for ' + url);
         resolve({
           html: res.body,
           url: urlPath
         });
       });
-    })
+    });
   }
 
   rimraf.sync(outputLocation);
@@ -43,22 +54,10 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
     return true;
   });
 
-  let fullBaseUrl = "http://" + baseHost + ":" + port;
-  let urlsToLoad = ["/"];
+  let fullBaseUrl = 'http://' + baseHost + ':' + port;
+  let urlsToLoad = ['/'];
 
-  let handleRoutesArray = (arr, base = "/") => {
-    arr.forEach((route: any) => {
-      if (route.path != "**") {
-        urlsToLoad.push(base + route.path);
-
-        if (route.children && route.children.length > 0) {
-          handleRoutesArray(route.children, base + route.path + "/");
-        }
-      }
-    });
-  };
-
-  handleRoutesArray(routesArray);
+  handleRoutesArray(routesArray, urlsToLoad);
 
   let r;
   let donePromise = new Promise((resolve) => {
@@ -70,20 +69,19 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
       generateStaticForUrl(fullBaseUrl, arr[i]).then((result: any) => {
         let filePath = result.url;
 
-        if (filePath === "/") {
-          filePath = "index";
+        if (filePath === '/') {
+          filePath = 'index';
         }
 
-        filePath = filePath + ".html";
+        filePath = filePath + '.html';
         let fullFilePath = path.join(outputLocation, filePath);
         mkdirp.sync(path.dirname(fullFilePath));
         fs.writeFileSync(fullFilePath, result.html);
-        console.log("Done writing to file:" + fullFilePath);
+        console.log('Done writing to file:' + fullFilePath);
 
-        runNext(arr, i+1);
+        runNext(arr, i + 1);
       });
-    }
-    else {
+    } else {
       r();
     }
 
@@ -91,27 +89,6 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
   }
 
   runNext(urlsToLoad).then(() => {
-    console.log("Done generating " + urlsToLoad.length + " static HTML pages!");
+    console.log('Done generating ' + urlsToLoad.length + ' static HTML pages!');
   });
-
-  /*return Promise
-    .all(promises)
-    .then((allResults) => {
-      _.forEach(allResults, (result) => {
-        let filePath = result.url;
-
-        if (filePath === "/") {
-          filePath = "index";
-        }
-
-        filePath = filePath + ".html";
-        let fullFilePath = path.join(outputLocation, filePath);
-        mkdirp.sync(path.dirname(fullFilePath));
-        fs.writeFileSync(fullFilePath, result.html);
-        console.log("Done writing to file:" + fullFilePath);
-      });
-    })
-    .catch((e) => {
-      console.log(e);
-    });*/
 }
