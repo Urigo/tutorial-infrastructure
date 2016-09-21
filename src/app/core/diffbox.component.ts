@@ -1,9 +1,45 @@
-import { Renderer, Input, Component, NgZone, Optional, OnInit, ViewChild } from '@angular/core';
-import { TutorialRegistryCache } from './tutorials-registry-cache';
+import { ActivatedRoute } from '@angular/router';
+import { Renderer, Input, Component, Optional, OnInit, ViewChild, SimpleChanges } from '@angular/core';
+import { Compiler, NgModule, Directive, ReflectiveInjector, ViewContainerRef } from '@angular/core';
 import { ParsedPatchDefinition, SingleChange, LineContent } from './patch-definition';
-import { TutorialBundle, TutorialDefinition } from './tutorial-definition';
+import { TutorialDefinition } from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
+
+@Directive({
+  selector: '[diffboxCode]'
+})
+export class DiffBoxCode {
+  @Input('diffboxCode') diffboxCode: string;
+
+  constructor(private compiler: Compiler, private vcRef: ViewContainerRef) {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (!this.diffboxCode || this.diffboxCode === '') {
+      return;
+    }
+
+    let content = this.diffboxCode;
+
+    @Component({
+      selector: 'diffbox-container',
+      template: content
+    })
+    class DynamicComponent { }
+
+    @NgModule({
+      imports: [],
+      declarations: [DynamicComponent]
+    })
+    class DynamicModule { }
+
+    let factories = this.compiler.compileModuleAndAllComponentsSync(DynamicModule);
+    const compFactory = factories.componentFactories.find(x => x.componentType === DynamicComponent);
+    const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
+    this.vcRef.createComponent(compFactory, 0, injector, []);
+  }
+}
 
 @Component({
   selector: 'diffbox',
@@ -23,41 +59,51 @@ export class DiffBoxComponent implements OnInit {
   private filename: string;
   private tutorialData: TutorialDefinition;
   private currentFileModification: Array<SingleChange>;
+  private codeContent: string;
 
-  constructor(private registry: TutorialRegistryCache, private renderer: Renderer) {
+  constructor(private compiler: Compiler, private route: ActivatedRoute, private renderer: Renderer) {
 
   }
 
   ngOnInit() {
-    console.log("init");
-    
-    let tutorialBundle: TutorialBundle = this.registry.getObject(this.tutorialName);
-    this.diffDetails = tutorialBundle.steps[this.step];
-    this.tutorialData = tutorialBundle.tutorial;
+    this.route.data.subscribe((data: any) => {
+      let tutorialBundle = data.resolveData.tutorial;
+      this.diffDetails = tutorialBundle.steps[this.step];
+      this.tutorialData = tutorialBundle.tutorial;
 
-    if (!this.diffDetails) {
-      throw new Error(`Unable to find step ${this.step} in you tutorial ${this.tutorialName}!`);
-    }
-
-    if (!this.optionalFilename) {
-      let availableFiles = Object.keys(this.diffDetails.files);
-
-      if (availableFiles.length === 1) {
-        this.filename = availableFiles[0];
-      } else if (availableFiles.length === 0) {
-        throw new Error(`Something went wrong, unable to find files in your commit ${this.diffDetails.sha}!`);
-      } else {
-        throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(', ')}`);
+      if (!this.diffDetails) {
+        throw new Error(`Unable to find step ${this.step} in you tutorial ${this.tutorialName}!`);
       }
-    } else {
-      this.filename = this.optionalFilename;
-    }
 
-    this.currentFileModification = this.diffDetails.files[this.filename];
+      if (!this.optionalFilename) {
+        let availableFiles = Object.keys(this.diffDetails.files);
 
-    if (!this.currentFileModification) {
-      throw new Error(`File ${this.filename} does not exists in commit ${this.diffDetails.sha}`);
-    }
+        if (availableFiles.length === 1) {
+          this.filename = availableFiles[0];
+        } else if (availableFiles.length === 0) {
+          throw new Error(`Something went wrong, unable to find files in your commit ${this.diffDetails.sha}!`);
+        } else {
+          throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(', ')}`);
+        }
+      } else {
+        this.filename = this.optionalFilename;
+      }
+
+      this.currentFileModification = this.diffDetails.files[this.filename];
+
+      if (!this.currentFileModification) {
+        throw new Error(`File ${this.filename} does not exists in commit ${this.diffDetails.sha}`);
+      }
+
+      let lines = this.getLines();
+      let content = '';
+
+      lines.forEach((line) => {
+        content += '<pre class=' + line.cssClass + '>' + line.highlightedContent + '</pre>';
+      });
+
+      this.codeContent = content;
+    });
   }
 
   buildGitHubLink(): string {

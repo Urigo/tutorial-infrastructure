@@ -249,3 +249,28 @@ api-ref-container {
 .l-offset-nav {
   padding-top: 64px;
 }
+
+diffbox-container {
+  padding-left: 36px;
+  overflow: hidden;
+  display: block;
+
+  .hljs-comment {
+    color: #777;
+  }
+
+  pre {
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+
+  &.line-added {
+    background: #eaffea;
+  }
+
+  &.line-removed {
+    background: #ff9ea2;
+  }
+}
+}

@@ -31,30 +31,6 @@
       overflow: hidden;
     }
 
-    pre {
-      margin: 0;
-      padding: 0;
-
-      background-color: transparent;
-
-      &.line-added {
-        background: #eaffea;
-      }
-
-      &.line-removed {
-        background: #ff9ea2;
-      }
-    }
-
-    .line-content {
-      padding-left: 36px;
-      overflow: hidden;
-
-      .hljs-comment {
-        color: #777;
-      }
-    }
-
     .line-numbers {
       text-align: right;
       -moz-user-select: none;
@@ -67,6 +43,7 @@
       .line-number {
         color: #aaa;
         font-style: italic;
+        margin: 0 !important;
       }
     }
   }

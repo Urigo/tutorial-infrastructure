@@ -9,9 +9,7 @@
             <div class="line-numbers">
                 <pre *ngFor="let lineNumber of getLineNumbers()" class="line-number">{{lineNumber}}</pre>
             </div>
-            <div class="line-content">
-                <!--<div *ngFor="let lineContent of getLines()" [innerHTML]="test"></div>-->
-            </div>
+            <div class="line-content" *ngIf="codeContent" [diffboxCode]="codeContent"></div>
         </div>
     </div>
 </div>

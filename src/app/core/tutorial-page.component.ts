@@ -1,4 +1,4 @@
-import { DiffBoxComponent } from './diffbox.component';
+import { DiffBoxComponent, DiffBoxCode } from './diffbox.component';
 import {
   Injectable,
   OnInit,
@@ -16,11 +16,11 @@ import { TutorialRouteData } from './tutorial-routes';
 import { ActivatedTutorial } from './current-tutorial';
 
 @NgModule({
-  declarations: [DiffBoxComponent],
+  declarations: [DiffBoxComponent, DiffBoxCode],
   imports: [CommonModule],
-  exports: [DiffBoxComponent]
+  exports: [DiffBoxComponent, DiffBoxCode]
 })
-class DummyModule {}
+class DummyModule { }
 
 @Injectable()
 @Component({
@@ -58,13 +58,12 @@ export class TutorialPage implements OnInit {
         imports: [DummyModule],
         declarations: [DynamicComponent]
       })
-      class DynamicModule {}
+      class DynamicModule { }
 
-      this.compiler.compileModuleAndAllComponentsAsync(DynamicModule).then(({componentFactories}) => {
-         const compFactory = componentFactories.find(x => x.componentType === DynamicComponent);
-         const injector = ReflectiveInjector.fromResolvedProviders([], this.viewContainerRef.parentInjector);
-         this.viewContainerRef.createComponent(compFactory, 0, injector, []);
-      });
+      let factories = this.compiler.compileModuleAndAllComponentsSync(DynamicModule);
+      const compFactory = factories.componentFactories.find(x => x.componentType === DynamicComponent);
+      const injector = ReflectiveInjector.fromResolvedProviders([], this.viewContainerRef.parentInjector);
+      this.viewContainerRef.createComponent(compFactory, 0, injector, []);
     });
   }
 }

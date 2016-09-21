@@ -141,6 +141,11 @@
       "from": "amdefine@>=0.0.4",
       "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.0.tgz"
     },
+    "angular2-component-outlet": {
+      "version": "2.0.1",
+      "from": "angular2-component-outlet@latest",
+      "resolved": "https://registry.npmjs.org/angular2-component-outlet/-/angular2-component-outlet-2.0.1.tgz"
+    },
     "angular2-express-engine": {
       "version": "2.0.11",
       "from": "angular2-express-engine@2.0.11",
@@ -4975,7 +4980,14 @@
     "typings-core": {
       "version": "0.3.1",
       "from": "typings-core@>=0.3.0 <0.4.0",
-      "resolved": "https://registry.npmjs.org/typings-core/-/typings-core-0.3.1.tgz"
+      "resolved": "https://registry.npmjs.org/typings-core/-/typings-core-0.3.1.tgz",
+      "dependencies": {
+        "typescript": {
+          "version": "1.8.10",
+          "from": "typescript@1.8.10",
+          "resolved": "https://registry.npmjs.org/typescript/-/typescript-1.8.10.tgz"
+        }
+      }
     },
     "uglify-js": {
       "version": "2.3.6",
