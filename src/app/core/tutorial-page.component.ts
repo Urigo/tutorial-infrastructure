@@ -58,9 +58,7 @@ export class TutorialPage implements OnInit {
         imports: [DummyModule],
         declarations: [DynamicComponent]
       })
-      class DynamicModule {
-
-      }
+      class DynamicModule {}
 
       this.compiler.compileModuleAndAllComponentsAsync(DynamicModule).then(({componentFactories}) => {
          const compFactory = componentFactories.find(x => x.componentType === DynamicComponent);
