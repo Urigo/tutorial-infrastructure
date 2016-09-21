@@ -1,25 +1,25 @@
 export interface ChangeLocation {
   lines: number;
-  start: number
+  start: number;
 }
 
 export interface LineContent {
   content: string;
-  type: string
-  highlightedContent?: string
-  cssClass?: string
+  type: string;
+  highlightedContent?: string;
+  cssClass?: string;
 }
 
 export interface SingleChange {
   lineNumbers: {
     added: ChangeLocation
     removed: ChangeLocation
-  }
-  lines: Array<LineContent>
+  };
+  lines: Array<LineContent>;
 }
 
 export interface FileModification {
-  [fileName: string]:SingleChange;
+  [fileName: string]: SingleChange;
 }
 
 export interface PatchDefinition {
@@ -29,9 +29,9 @@ export interface PatchDefinition {
 }
 
 export interface ParsedPatchDefinition {
-    files:Array<SingleChange>;
-    message:string;
-    sha:string;
-    stepNumber:string;
-    summary:string;
+  files: Array<SingleChange>;
+  message: string;
+  sha: string;
+  stepNumber: string;
+  summary: string;
 }

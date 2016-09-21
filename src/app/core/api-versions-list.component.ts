@@ -17,7 +17,7 @@ export class ApiVersionsList implements OnInit {
   constructor(private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
   }
 
-  private createAbsoluteLink(relativeLink: string) {
+  createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
@@ -27,8 +27,7 @@ export class ApiVersionsList implements OnInit {
 
     if (this.apiData.isStaticApi) {
       urlSuffix = (<StaticFileDefinition>this.apiData.apiFile).urlName;
-    }
-    else {
+    } else {
       urlSuffix = (<ApiFile>this.apiData.apiFile).apiTitle;
     }
 
@@ -42,8 +41,7 @@ export class ApiVersionsList implements OnInit {
           name: item.version
         };
       });
-    }
-    else {
+    } else {
       return (<ApiDefinition>this.apiData.apiDefinition).versions;
     }
   }

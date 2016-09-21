@@ -1,4 +1,5 @@
 <div class="diffbox">
+    {{test}}
     <div class="title-panel">
         <span class="step-number">{{step}}</span> <span class="commit-summary">{{diffDetails.summary}}</span>
         <a target="_blank" class="github-commit-link" [href]="buildGitHubLink()">{{filename}}</a>
@@ -9,7 +10,7 @@
                 <pre *ngFor="let lineNumber of getLineNumbers()" class="line-number">{{lineNumber}}</pre>
             </div>
             <div class="line-content">
-                <pre *ngFor="let line of getLines()" [innerHTML]="line.highlightedContent" [className]="line.cssClass || ''"></pre>
+                <!--<div *ngFor="let lineContent of getLines()" [innerHTML]="test"></div>-->
             </div>
         </div>
     </div>

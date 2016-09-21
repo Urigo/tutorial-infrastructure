@@ -1,4 +1,4 @@
-import { Input, Component, Optional, OnInit } from '@angular/core';
+import { Renderer, Input, Component, NgZone, Optional, OnInit, ViewChild } from '@angular/core';
 import { TutorialRegistryCache } from './tutorials-registry-cache';
 import { ParsedPatchDefinition, SingleChange, LineContent } from './patch-definition';
 import { TutorialBundle, TutorialDefinition } from './tutorial-definition';
@@ -17,16 +17,20 @@ export class DiffBoxComponent implements OnInit {
   @Optional() @Input('filename') optionalFilename: string;
   @Optional() @Input('hideRemoved') hideRemoved: boolean;
   @Input('tutorial') tutorialName: string;
+  @ViewChild('htmlContainer') htmlContainer;
 
   private diffDetails: ParsedPatchDefinition;
   private filename: string;
   private tutorialData: TutorialDefinition;
   private currentFileModification: Array<SingleChange>;
 
-  constructor(private registry: TutorialRegistryCache) {
+  constructor(private registry: TutorialRegistryCache, private renderer: Renderer) {
+
   }
 
   ngOnInit() {
+    console.log("init");
+    
     let tutorialBundle: TutorialBundle = this.registry.getObject(this.tutorialName);
     this.diffDetails = tutorialBundle.steps[this.step];
     this.tutorialData = tutorialBundle.tutorial;
@@ -88,15 +92,13 @@ export class DiffBoxComponent implements OnInit {
             fileType = 'js';
           } else if (ext === 'less') {
             fileType = 'css';
-          }
-          else if (fileType === 'ts') {
+          } else if (fileType === 'ts') {
             fileType = 'typescript';
           }
 
           try {
             highlightedContent = hljs.highlight(fileType, line.content, true).value;
-          }
-          catch (e) {
+          } catch (e) {
             highlightedContent = line.content;
           }
         }
@@ -109,15 +111,14 @@ export class DiffBoxComponent implements OnInit {
 
       if (this.hideRemoved === false) {
         return allLines;
-      }
-      else {
+      } else {
         return allLines.filter(item => item.type !== 'removed');
       }
     });
 
     return sectionLines.reduce((prev: Array<any>, curr) => {
       if (prev) {
-        return prev.concat({ highlightedContent: '<span class="hljs-comment">...some lines skipped...</span>'}).concat(curr);
+        return prev.concat({ highlightedContent: '<span class="hljs-comment">...some lines skipped...</span>' }).concat(curr);
       } else {
         return curr;
       }

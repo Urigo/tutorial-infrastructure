@@ -3,8 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ActivatedApi } from './current-api';
 import { ApiRouteDataDefinition } from './apis-routes';
 import { LocationStrategy } from '@angular/common';
-import * as _ from 'lodash';
-import { ApiFile, ApiVersion, StaticFileDefinition, ApiStaticDefinitionObject, ApiDefinition } from './api-definition';
+import { ApiFile, ApiVersion, ApiStaticDefinitionObject, ApiDefinition } from './api-definition';
 
 @Component({
   selector: 'api-list-items',
@@ -17,7 +16,7 @@ export class ApiListItems implements OnInit {
   constructor(private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
   }
 
-  private createAbsoluteLink(relativeLink: string) {
+  createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
   }
@@ -31,7 +30,7 @@ export class ApiListItems implements OnInit {
     }
   }
 
-  getFiles() {
+  getFiles() : any {
     if (this.apiData.isStaticApi) {
       let staticData = <ApiStaticDefinitionObject>this.apiData.apiVersion;
 
@@ -41,8 +40,7 @@ export class ApiListItems implements OnInit {
           urlName: item.urlName
         };
       });
-    }
-    else {
+    } else {
       return (<ApiDefinition>this.apiData.apiDefinition).files
         .filter((file: ApiFile) => {
           return ((<ApiVersion>this.apiData.apiVersion).exclude || []).indexOf(file.apiTitle) === -1;

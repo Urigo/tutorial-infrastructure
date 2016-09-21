@@ -1,12 +1,11 @@
-import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
-import {ApiRouteDataDefinition} from "./apis-routes";
-import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
-import {ActivatedApi} from "./current-api";
-import {StaticFileDefinition, ApiFile, ApiDefinition, ApiVersion, ApiStaticDefinitionObject} from "./api-definition";
-import {Observable} from "rxjs";
-let jsdoc2md = require("jsdoc-to-markdown");
-var marked = require('marked');
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { ApiRouteDataDefinition } from './apis-routes';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { ActivatedApi } from './current-api';
+import { StaticFileDefinition, ApiFile, ApiDefinition, ApiVersion } from './api-definition';
+let jsdoc2md = require('jsdoc-to-markdown');
+let marked = require('marked');
 
 @Injectable()
 export class ApiLoadResolve implements Resolve<any> {
@@ -30,8 +29,7 @@ export class ApiLoadResolve implements Resolve<any> {
             apiName: apiFile.name
           };
         });
-    }
-    else {
+    } else {
       let apiFile = <ApiFile>routeData.apiFile;
       let apiDefinition = <ApiDefinition>routeData.apiDefinition;
       let apiVersion = <ApiVersion>routeData.apiVersion;
@@ -39,12 +37,12 @@ export class ApiLoadResolve implements Resolve<any> {
       let repo = apiFile.apiRepository || apiDefinition.apiRepository;
       let revision = apiFile.revision || apiVersion.revision;
       let filePath = apiFile.filePath;
-      let ghUrl = "https://raw.githubusercontent.com/" + repo + "/" + revision + "/" + filePath;
+      let ghUrl = 'https://raw.githubusercontent.com/' + repo + '/' + revision + '/' + filePath;
 
       return this.http
         .get(ghUrl)
         .map(res => res.text())
-        .map(sourceCode => jsdoc2md.renderSync({source: sourceCode, cache: false}))
+        .map(sourceCode => jsdoc2md.renderSync({ source: sourceCode, cache: false }))
         .map(text => marked(text))
         .map(parsedDocs => {
           return {
@@ -53,7 +51,7 @@ export class ApiLoadResolve implements Resolve<any> {
             repo: repo,
             filePath: filePath,
             apiName: apiFile.apiTitle
-          }
+          };
         });
     }
   }

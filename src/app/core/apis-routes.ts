@@ -1,17 +1,17 @@
 import {
   ApiDefinition, ApiVersion, ApiFile, ApiStaticDefinition, ApiStaticDefinitionObject,
   StaticFileDefinition
-} from "./api-definition";
-import {Route} from "@angular/router";
-import {ApiLoadResolve} from "./api-load-resolve";
-import {ApiPageComponent} from "./api-page.component";
-import * as _ from "lodash";
+} from './api-definition';
+import {Route} from '@angular/router';
+import {ApiLoadResolve} from './api-load-resolve';
+import {ApiPageComponent} from './api-page.component';
+import * as _ from 'lodash';
 
 export interface ApiRouteDataDefinition {
   isStaticApi: boolean;
   apiDefinition: ApiDefinition | ApiStaticDefinition;
   apiVersion: ApiVersion | ApiStaticDefinitionObject;
-  apiFile: ApiFile | StaticFileDefinition
+  apiFile: ApiFile | StaticFileDefinition;
 }
 
 export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
@@ -25,7 +25,7 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
 
       apiDefinition.files.forEach((apiFile: ApiFile) => {
         let fileName = apiFile.apiTitle;
-        let apiUrl = apiVersionName + "/" + fileName;
+        let apiUrl = apiVersionName + '/' + fileName;
 
         routes.push(<Route>{
           path: apiUrl,
@@ -39,17 +39,16 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
             apiVersion: apiVersion,
             apiFile: apiFile
           }
-        })
-      })
+        });
+      });
     });
-  }
-  else if (def['apis']) {
+  } else if (def['apis']) {
     let apiDefinition = <ApiStaticDefinition>def;
 
     apiDefinition.apis.forEach((apiItem: ApiStaticDefinitionObject) => {
       let apiVersion = apiItem.version;
 
-      if (apiItem.ref && apiItem.ref != "") {
+      if (apiItem.ref && apiItem.ref != '') {
         let refApiItem = apiDefinition.apis.find((item) => {
           return item.version === apiItem.ref;
         });
@@ -57,7 +56,7 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
         apiItem.files = refApiItem.files;
       }
 
-      if (apiItem.alongWith && apiItem.alongWith != "") {
+      if (apiItem.alongWith && apiItem.alongWith != '') {
         let alongApiItem = apiDefinition.apis.find((item) => {
           return item.version === apiItem.alongWith;
         });
@@ -73,10 +72,10 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
         apiItem.files = apiItem.files.concat(withoutDups);
       }
 
-      let redirectionUrl = "/";
+      let redirectionUrl = '/';
 
       apiItem.files.forEach((apiFile: StaticFileDefinition, index) => {
-        let apiUrl = apiVersion + "/" + apiFile.urlName;
+        let apiUrl = apiVersion + '/' + apiFile.urlName;
 
         if (index === 0) {
           redirectionUrl = apiUrl;
@@ -94,14 +93,14 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
             apiVersion: apiItem,
             apiFile: apiFile
           }
-        })
+        });
       });
 
       routes.push(<Route>{
         path: apiVersion,
         redirectTo: redirectionUrl
       });
-    })
+    });
   }
 
   return routes;

@@ -5,7 +5,7 @@ export interface TutorialDefinition {
   patchFile: string;
   baseRoute: string;
   firstCommitCompare?: string;
-  steps: Array<TutorialStep>
+  steps: Array<TutorialStep>;
 }
 
 export interface TutorialStep {
@@ -16,6 +16,6 @@ export interface TutorialStep {
 }
 
 export interface TutorialBundle {
-  tutorial: TutorialDefinition,
-  steps: Array<any>
+  tutorial: TutorialDefinition;
+  steps: Array<any>;
 }

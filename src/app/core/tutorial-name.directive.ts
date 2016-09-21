@@ -1,9 +1,9 @@
-import {Injectable, Directive, ElementRef, Renderer} from "@angular/core";
-import {ActivatedTutorial} from "./current-tutorial";
-import {TutorialStep} from "./tutorial-definition";
+import {Injectable, Directive, ElementRef, Renderer} from '@angular/core';
+import {ActivatedTutorial} from './current-tutorial';
+import {TutorialStep} from './tutorial-definition';
 
 @Directive({
-  selector: "[stepName]"
+  selector: '[stepName]'
 })
 @Injectable()
 export class StepNameDirective {

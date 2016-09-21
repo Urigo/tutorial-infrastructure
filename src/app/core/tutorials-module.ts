@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 import { ApiExampleCodeHighlightDirective } from './api-example-code-highligh.directive';
 import { ApiPageComponent } from './api-page.component';
 import { TutorialPage } from './tutorial-page.component';
-import { DiffBoxComponent } from './diffbox.component';
 import { TutorialRegistryCache } from './tutorials-registry-cache';
 import { PatchLoadResolve } from './patch-load-resolver';
 import { StepsTemplatesCache } from './steps-templates-cache';
@@ -18,12 +17,10 @@ import { ApiLoadResolve } from './api-load-resolve';
 import { ActivatedApi } from './current-api';
 import { NgModule } from '@angular/core';
 import { StepListComponent } from './steps-list.component.ts';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 const exportsAndDeclarations = [
     StepListComponent,
-    DiffBoxComponent,
     TutorialPage,
     ApiPageComponent,
     ApiExampleCodeHighlightDirective,

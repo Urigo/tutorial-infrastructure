@@ -1,14 +1,15 @@
-import {Injectable} from "@angular/core";
-import {TutorialRegistryCache} from "./tutorials-registry-cache";
-import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {StepsTemplatesCache} from "./steps-templates-cache";
-import {TutorialRouteData} from "./tutorial-routes";
+import { Injectable } from '@angular/core';
+import { TutorialRegistryCache } from './tutorials-registry-cache';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { StepsTemplatesCache } from './steps-templates-cache';
+import { TutorialRouteData } from './tutorial-routes';
 
 @Injectable()
 export class PatchLoadResolve implements Resolve<any> {
-  constructor(private cache: TutorialRegistryCache,
-              private templatesCache: StepsTemplatesCache) {
+  constructor(
+    private cache: TutorialRegistryCache,
+    private templatesCache: StepsTemplatesCache) {
 
   }
 
@@ -17,13 +18,15 @@ export class PatchLoadResolve implements Resolve<any> {
 
     let tutorialPatchObservable = this.cache.load(
       data.tutorialObject.id,
-      data.tutorialObject).map(res => true);
+      data.tutorialObject);
 
     let stepHtmlObservable = this.templatesCache.load(
       data.stepObject.name,
       data.tutorialObject.id,
       data.stepObject.template);
 
-    return tutorialPatchObservable.concat(stepHtmlObservable).map(() => true);
+    return Observable.zip(tutorialPatchObservable, stepHtmlObservable, (tutorial, step) => {
+      return { tutorial, step };
+    });
   }
 }

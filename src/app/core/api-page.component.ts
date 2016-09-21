@@ -2,17 +2,6 @@ import {Component, OnInit, Injectable, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActivatedApi} from './current-api';
 
-function generateDynamicComponent(template = 'Oops, API template is not available') {
-  @Component({
-    selector: 'api-ref-container',
-    template
-  })
-  class DynamicComponent {
-  }
-
-  return DynamicComponent;
-}
-
 @Component({
   selector: 'api-page',
   template: `<div class='api-container' #dynamic></div>`

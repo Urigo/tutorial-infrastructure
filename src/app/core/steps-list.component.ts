@@ -21,7 +21,7 @@ export class StepListComponent implements OnInit {
     this.extraLinks = this.extraLinks || [];
   }
 
-  private createAbsoluteLink(relativeLink: string) {
+  createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
 
@@ -35,8 +35,7 @@ export class StepListComponent implements OnInit {
   ngOnInit() {
     if (this.tutorialToDisplay) {
       this.tutorialDetails = this.tutorialToDisplay;
-    }
-    else {
+    } else {
       this.activated.tutorial.subscribe((tutorial) => this.tutorialDetails = tutorial);
     }
   }

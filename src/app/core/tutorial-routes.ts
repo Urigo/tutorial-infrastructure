@@ -1,7 +1,7 @@
-import {Route} from "@angular/router";
-import {TutorialDefinition, TutorialStep} from "./tutorial-definition";
-import {TutorialPage} from "./tutorial-page.component";
-import {PatchLoadResolve} from "./patch-load-resolver";
+import { Route } from '@angular/router';
+import { TutorialDefinition, TutorialStep } from './tutorial-definition';
+import { TutorialPage } from './tutorial-page.component';
+import { PatchLoadResolve } from './patch-load-resolver';
 
 export interface TutorialRouteData {
   stepObject: TutorialStep;
@@ -20,7 +20,9 @@ export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>)
       config.push(<Route>{
         path: stepUrl,
         component: TutorialPage,
-        resolve: [PatchLoadResolve],
+        resolve: {
+          resolveData: PatchLoadResolve
+        },
         data: <TutorialRouteData>{
           stepObject: step,
           tutorialObject: tutorial
