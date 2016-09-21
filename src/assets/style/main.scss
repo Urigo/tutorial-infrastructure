@@ -205,3 +205,47 @@ api-ref-container {
     }
   }
 }
+
+
+.l-pinned-top {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.l-pinned-left {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+}
+
+.l-left {
+  float: left;
+}
+
+.l-right {
+  float: right;
+}
+
+.l-relative,
+.docs-content {
+  position: relative;
+}
+
+.l-absolute {
+  position: absolute;
+}
+
+.l-fixed {
+  position: fixed;
+}
+
+.l-offset-side-nav {
+  padding-left: 232px;
+}
+
+.l-offset-nav {
+  padding-top: 64px;
+}

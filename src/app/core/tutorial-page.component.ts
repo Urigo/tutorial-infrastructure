@@ -15,6 +15,13 @@ import { StepsTemplatesCache } from './steps-templates-cache';
 import { TutorialRouteData } from './tutorial-routes';
 import { ActivatedTutorial } from './current-tutorial';
 
+@NgModule({
+  declarations: [DiffBoxComponent],
+  imports: [CommonModule],
+  exports: [DiffBoxComponent]
+})
+class DummyModule {}
+
 @Injectable()
 @Component({
   selector: 'tutorial-page',
@@ -48,10 +55,12 @@ export class TutorialPage implements OnInit {
       class DynamicComponent { }
 
       @NgModule({
-        imports: [CommonModule],
-        declarations: [DynamicComponent, DiffBoxComponent]
+        imports: [DummyModule],
+        declarations: [DynamicComponent]
       })
-      class DynamicModule { }
+      class DynamicModule {
+
+      }
 
       this.compiler.compileModuleAndAllComponentsAsync(DynamicModule).then(({componentFactories}) => {
          const compFactory = componentFactories.find(x => x.componentType === DynamicComponent);

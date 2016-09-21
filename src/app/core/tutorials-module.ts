@@ -1,3 +1,4 @@
+import { DiffBoxComponent } from './diffbox.component';
 import { ApiListItems } from './api-list-items.component';
 import { ApiVersionsList } from './api-versions-list.component';
 import { MarkdownFileViewComponent } from './markdown-file.component';
