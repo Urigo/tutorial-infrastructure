@@ -99,7 +99,7 @@ export class DiffBoxComponent implements OnInit {
       let content = '';
 
       lines.forEach((line) => {
-        content += '<pre class=' + line.cssClass + '>' + line.highlightedContent + '</pre>';
+        content += '<pre ngNonBindable class=' + line.cssClass + '>' + line.highlightedContent + '</pre>';
       });
 
       this.codeContent = content;
