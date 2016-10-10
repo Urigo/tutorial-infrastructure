@@ -110,6 +110,18 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
   }
 }
 
+[md-raised-button] {
+	border: 2px solid #a6120d !important;
+	background: transparent !important;
+	color: #a6120d !important;
+	box-shadow: none !important;
+
+	&[disabled] {
+		border-color: #aaa !important;
+		color: #aaa !important;
+	}
+}
+
 tutorial-page-content {
   pre {
     code[ngnonbindable] {

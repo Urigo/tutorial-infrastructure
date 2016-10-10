@@ -4,15 +4,15 @@
         <steps-list></steps-list>
     </nav>
     <div class="top-navigation">
-        <span class="tutorial-title" stepName></span>
-        <div class="right-buttons">
+        <div class="tutorial-nav">
             <a md-raised-button tutorialNavigation="previous" class="md-primary">Previous</a>
             <a md-raised-button codeDiffLink class="md-primary">Code Diff</a>
             <a md-raised-button tutorialNavigation="next" class="md-primary">Next</a>
-            <a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
-        </div>
+		</div>
+        <a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
     </div>
     <div class="tutorial-content">
+		<h1 class="tutorial-title" stepName></h1>
         <router-outlet></router-outlet>
     </div>
 </div>

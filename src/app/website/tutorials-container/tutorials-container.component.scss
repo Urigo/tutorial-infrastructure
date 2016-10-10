@@ -1,6 +1,19 @@
-.side-nav {
+/*.side-nav {
   background: #ECEFF1;
   width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+  ul {
+    margin-top: 8px;
+  }
+}*/
+
+.side-nav {
+  background: #ECEFF1;
+  display: none;
   bottom: 0;
   overflow: auto;
   z-index: 100;
@@ -17,37 +30,20 @@ tutorials-versions {
   display: block;
 }
 
-.improv-button {
-  margin-left: 50px;
-}
-
-.right-buttons {
-  float: right;
-  margin-right: 250px;
-  margin-top: 10px;
-}
-
-.tutorial-title {
-  margin: 15px;
-  float: left;
-  font-size: larger;
-  font-weight: bold;
-}
-
 .top-navigation {
-  position: fixed;
-  margin-top: -60px;
   width: 100%;
-  background-color: #ECEFF1;
   height: 60px;
   z-index: 50;
 }
 
 .tutorial-content {
-  margin-top: 60px;
+  margin-top: 20px;
   padding: 20px;
 }
 
-.tutorials-container {
-  padding-left: 230px;
+.tutorial-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
 }
