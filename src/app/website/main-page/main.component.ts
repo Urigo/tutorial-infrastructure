@@ -9,7 +9,5 @@ import {Component, Injectable} from '@angular/core';
 })
 @Injectable()
 export class MainComponent {
-  private test: string = '<div>שדגשדגשדגa</div>';
-
   constructor() {}
 }
