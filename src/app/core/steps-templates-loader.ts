@@ -14,7 +14,7 @@ export class StepsTemplatesLoader {
 
   escapeAngularBindings(html: string): string {
     return html.replace(/[{}]/g, (match) => {
-      return "{{ '" + match + "' }}";
+      return "<span>{{ '" + match + "' }}</span>";
     });
   }
 

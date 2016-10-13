@@ -21,7 +21,7 @@ export class DiffBoxCode {
     }
 
     let content = this.diffboxCode.replace(/[{}]/g, (match) => {
-      return "{{ '" + match + "' }}";
+      return "<span>{{ '" + match + "' }}</span>";
     });
 
     @Component({
