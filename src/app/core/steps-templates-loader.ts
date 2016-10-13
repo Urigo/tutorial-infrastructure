@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
-import { Injectable, Inject } from '@angular/core';
-import { ORIGIN_URL } from 'angular2-platform-node';
+import { Injectable } from '@angular/core';
 let markdown = require('markdown').markdown;
 let marked = require('marked');
 
@@ -9,26 +8,21 @@ let marked = require('marked');
 export class StepsTemplatesLoader {
   private cache: Map<string, string>;
 
-  constructor(private http: Http, @Inject(ORIGIN_URL) private originUrl: string) {
+  constructor(private http: Http) {
     this.cache = new Map<string, string>();
   }
 
   escapeAngularBindings(html: string): string {
-    return html.replace(/<code/g, '<code ngNonBindable');
+    return html.replace(/[{}]/g, (match) => {
+      return "{{ '" + match + "' }}";
+    });
   }
 
-  unescapeDiffBox(html: string): string {
-    return html.replace(/(&lt;diffbox.*?&gt;)/g, (res) => {
-      return res.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
-    }).replace(/&lt;\/diffbox&gt;/g, '</diffbox>');
-  }
-
-  public load(step: string, tutorialId: string, fallbackUrl?: string): Observable<any> {
-    let obs = this.http
+  public load(fallbackUrl?: string): Observable<any> {
+    return this.http
       .get(fallbackUrl)
       .map(res => res.text())
-      .map(text => marked(text));
-
-    return obs;
+      .map(text => marked(text))
+      .map(this.escapeAngularBindings);
   }
 }

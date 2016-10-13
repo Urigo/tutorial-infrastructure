@@ -1,8 +1,6 @@
-import {Component, Injectable, Inject} from '@angular/core';
-import * as mainCss from '../assets/style/main.scss';
+import {Component, Injectable, ElementRef, Renderer} from '@angular/core';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
-import {__platform_browser_private__} from '@angular/platform-browser';
-let SharedStylesHost = __platform_browser_private__.SharedStylesHost;
+import * as mainCss from "../assets/style/main.scss";
 
 @Component({
   selector: 'app',
@@ -13,8 +11,11 @@ let SharedStylesHost = __platform_browser_private__.SharedStylesHost;
 })
 @Injectable()
 export class AppComponent {
-  constructor(@Inject(SharedStylesHost) sharedStylesHost: any) {
-    sharedStylesHost.addStyles([mainCss]);
+  constructor(eRef: ElementRef, renderer: Renderer) {
+    let parent = eRef.nativeElement.parent;
+    let styleElement = renderer.createElement(parent, "style");
+    renderer.setElementProperty(styleElement, "type", "text/css");
+    renderer.setText(styleElement, mainCss);
   }
 
   getDropdownTutorial() {

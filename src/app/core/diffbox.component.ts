@@ -1,5 +1,5 @@
 import {ActivatedRoute} from '@angular/router';
-import {Renderer, Input, Component, Optional, OnInit, ViewChild, SimpleChanges} from '@angular/core';
+import {Input, Component, Optional, OnInit, ViewChild} from '@angular/core';
 import {Compiler, NgModule, Directive, ReflectiveInjector, ViewContainerRef} from '@angular/core';
 import {ParsedPatchDefinition, SingleChange, LineContent} from './patch-definition';
 import {TutorialDefinition} from './tutorial-definition';
