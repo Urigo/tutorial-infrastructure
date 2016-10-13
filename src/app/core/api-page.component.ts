@@ -1,16 +1,17 @@
-import {Component, OnInit, Injectable, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit, NgModule, Injectable, ViewContainerRef, ReflectiveInjector, Compiler} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {ActivatedApi} from './current-api';
+import {DummyModule} from "./dynamic-base-module";
 
 @Component({
   selector: 'api-page',
-  template: `<div class='api-container' #dynamic></div>`
+  template: `<div class='api-container'></div>`
 })
 @Injectable()
 export class ApiPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private viewContainerRef: ViewContainerRef,
-              private router: Router,
+              private compiler: Compiler,
               private activated: ActivatedApi) {
   }
 
@@ -22,9 +23,22 @@ export class ApiPageComponent implements OnInit {
     this.route.data.subscribe((data: any) => {
       this.activated.updateCurrentApi(data);
 
-      /*this.dynamicComponentLoader.loadNextToLocation(
-        generateDynamicComponent(this.fixLinks(data.resolveData.jsDoc, this.router.url)),
-        this.viewContainerRef);*/
+      @Component({
+        selector: 'tutorial-container',
+        template: data.resolveData.jsDoc
+      })
+      class DynamicComponent { }
+
+      @NgModule({
+        imports: [DummyModule],
+        declarations: [DynamicComponent]
+      })
+      class DynamicModule { }
+
+      let factories = this.compiler.compileModuleAndAllComponentsSync(DynamicModule);
+      const compFactory = factories.componentFactories.find(x => x.componentType === DynamicComponent);
+      const injector = ReflectiveInjector.fromResolvedProviders([], this.viewContainerRef.parentInjector);
+      this.viewContainerRef.createComponent(compFactory, 0, injector, []);
     });
   }
 }

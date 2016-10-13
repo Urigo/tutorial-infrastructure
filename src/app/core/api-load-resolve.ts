@@ -9,8 +9,12 @@ let marked = require('marked');
 
 @Injectable()
 export class ApiLoadResolve implements Resolve<any> {
-  constructor(private http: Http, private activated: ActivatedApi) {
+  constructor(private http: Http) {}
 
+  escapeAngularBindings(html: string): string {
+    return html.replace(/[{}]/g, (match) => {
+      return "<span>{{ '" + match + "' }}</span>";
+    });
   }
 
   resolve(route: ActivatedRouteSnapshot): any {
@@ -23,6 +27,7 @@ export class ApiLoadResolve implements Resolve<any> {
         .get(apiFile.markdownFilePath)
         .map(res => res.text())
         .map(text => marked(text))
+        .map(this.escapeAngularBindings)
         .map(parsedDocs => {
           return {
             jsDoc: parsedDocs,
@@ -44,6 +49,7 @@ export class ApiLoadResolve implements Resolve<any> {
         .map(res => res.text())
         .map(sourceCode => jsdoc2md.renderSync({ source: sourceCode, cache: false }))
         .map(text => marked(text))
+        .map(this.escapeAngularBindings)
         .map(parsedDocs => {
           return {
             jsDoc: parsedDocs,

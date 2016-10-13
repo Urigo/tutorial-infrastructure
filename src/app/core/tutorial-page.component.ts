@@ -1,4 +1,3 @@
-import { DiffBoxComponent, DiffBoxCode } from './diffbox.component';
 import {
   Injectable,
   OnInit,
@@ -8,18 +7,11 @@ import {
   NgModule,
   ReflectiveInjector
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TutorialDefinition, TutorialStep } from './tutorial-definition';
 import { TutorialRouteData } from './tutorial-routes';
 import { ActivatedTutorial } from './current-tutorial';
-
-@NgModule({
-  declarations: [DiffBoxComponent, DiffBoxCode],
-  imports: [CommonModule],
-  exports: [DiffBoxComponent, DiffBoxCode]
-})
-class DummyModule { }
+import {DummyModule} from "./dynamic-base-module";
 
 @Injectable()
 @Component({
