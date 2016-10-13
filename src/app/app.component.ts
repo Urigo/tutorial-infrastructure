@@ -1,13 +1,13 @@
 import {Component, Injectable, ElementRef, Renderer} from '@angular/core';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
 import * as mainCss from "../assets/style/main.scss";
-import * as componentStyle from './app.component.scss';
-import * as componentTemplate from './app.component.html';
+import * as style from './app.component.scss';
+import * as template from './app.component.html';
 
 @Component({
   selector: 'app',
-  template: componentTemplate,
-  styles: [ componentStyle ]
+  template,
+  styles: [ style ]
 })
 @Injectable()
 export class AppComponent {
