@@ -4,10 +4,11 @@ import { TutorialStep, TutorialDefinition } from './tutorial-definition';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StepsUtils } from './step-utils';
 import { LocationStrategy } from '@angular/common';
+import * as template from './steps-list.component.html';
 
 @Component({
   selector: 'steps-list',
-  templateUrl: './steps-list.component.html'
+  template
 })
 @Injectable()
 export class StepListComponent implements OnInit {

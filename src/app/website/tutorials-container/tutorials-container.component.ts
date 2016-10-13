@@ -1,5 +1,5 @@
 import {Component, Injectable} from "@angular/core";
-import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {StepListComponent} from "../../core/steps-list.component";
 import {TutorialNavigation} from "../../core/tutorial-navigation.component";
 import {StepNameDirective} from "../../core/tutorial-name.directive";
@@ -12,14 +12,14 @@ import {StepsUtils} from "../../core/step-utils";
 import {LocationStrategy} from "@angular/common";
 import {CodeDiffLink} from "../../core/tutorial-code-diff.directive";
 import {ImproveThisDocLink} from "../../core/improve-this-doc.directive";
+import * as style from "./tutorials-container.component.scss";
+import * as template from "./tutorials-container.component.html";
 
 @Component({
   selector: "tutorial",
-  directives: [ROUTER_DIRECTIVES, StepListComponent, TutorialsVersionsSelection, ImproveThisDocLink, CodeDiffLink, TutorialNavigation, StepNameDirective],
-  templateUrl: "./tutorials-container.component.html",
-  styleUrls: [
-    "./tutorials-container.component.scss"
-  ]
+  directives: [StepListComponent, TutorialsVersionsSelection, ImproveThisDocLink, CodeDiffLink, TutorialNavigation, StepNameDirective],
+  template,
+  styles: [style]
 })
 @Injectable()
 export class TutorialsContainer {

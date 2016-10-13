@@ -1,19 +1,11 @@
 import {Component, Input} from "@angular/core";
+import * as style from "./tutorial-versions.scss";
+import * as template from "./tutorial-versions.html";
 
 @Component({
   selector: "tutorials-versions",
-  styles: [
-    `
-        .tutorial-version {
-            margin-left: 10px;
-        }
-        
-        .active {
-            color: #b3e5fc !important;
-        }
-    `
-  ],
-  template: `<a md-raised-button [className]="'tutorial-version md-primary ' + (option.active ? 'active' : '')" *ngFor="let option of options" [href]="option.link">{{option.name}}</a>`
+  styles: [style],
+  template
 })
 export class TutorialsVersionsSelection {
   @Input("options") options : Array<any>;

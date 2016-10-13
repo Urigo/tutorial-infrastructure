@@ -1,12 +1,11 @@
 import {Component} from "@angular/core";
-import {MarkdownFileViewComponent} from "../../core/markdown-file.component";
+import * as style from "./manifesto-page.component.scss";
+import * as template from "./manifesto-page.component.html";
 
 @Component({
   selector: "manifesto-page",
-  templateUrl: "./manifesto-page.component.html",
-  styleUrls: [
-    "./manifesto-page.component.scss"
-  ]
+  template,
+  styleUrls: [style]
 })
 export class ManifestoPageComponent {
   constructor() {}

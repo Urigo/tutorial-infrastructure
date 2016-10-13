@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {MarkdownFileViewComponent} from "../../core/markdown-file.component";
 import {ActivatedRoute} from "@angular/router";
+import * as style from "./angular-whatsapp-intro.component.scss";
+import * as template from "./angular-whatsapp-intro.component.html";
 
 @Component({
   selector: "angular-whatsapp",
-  templateUrl: "./angular-whatsapp-intro.component.html",
+  template,
   directives: [MarkdownFileViewComponent],
-  styleUrls: [
-    "./angular-whatsapp-intro.component.scss"
-  ]
+  styles: [style]
 })
 export class AngularWhatsappIntro implements OnInit {
   private isAngular1 = true;
@@ -18,7 +18,7 @@ export class AngularWhatsappIntro implements OnInit {
   }
 
   ngOnInit() {
-    this.currentRoute.url.subscribe((url: Array<{path:string}>) => {
+    this.currentRoute.url.subscribe((url: Array<{path: string}>) => {
       this.isAngular1 = url[0].path === "whatsapp";
     });
   }
