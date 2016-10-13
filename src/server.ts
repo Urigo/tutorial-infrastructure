@@ -1,5 +1,3 @@
-
-// the polyfills must be the first thing imported in node.js
 import 'angular2-universal-polyfills';
 import * as path from 'path';
 import * as express from 'express';
@@ -27,9 +25,10 @@ app.get('*', (req, res) => {
     req: req,
     res: res,
     ngModule: MainModule,
+    preboot: false,
     baseUrl: '/',
     requestUrl: req.originalUrl,
-    originUrl: 'http://localhost:3000/'
+    originUrl: 'http://localhost:3000'
   });
 });
 
