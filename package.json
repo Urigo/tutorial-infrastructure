@@ -4,7 +4,7 @@
   "description": "Angular-Meteor.com tutorials website",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Urigo/angular-meteor-docs.git"
+    "url": "https://github.com/Urigo/angular-meteor-docs.it"
   },
   "scripts": {
     "postinstall": "typings install",
@@ -20,7 +20,10 @@
   },
   "license": "MIT",
   "contributors": [
-    "Dotan Simha <dotansimha@gmail.com>"
+    "AngularClass <hello@angularclass.com>",
+    "PatrickJS <patrick@angularclass.com>",
+    "Jeff Whelpley <jeff@gethuman.com>",
+    "Jeff Cross <crossj@google.com>"
   ],
   "dependencies": {
     "@angular/common": "2.1.0",

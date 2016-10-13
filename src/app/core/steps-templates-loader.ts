@@ -3,9 +3,10 @@ import { Http } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 import { ORIGIN_URL } from 'angular2-platform-node';
 let markdown = require('markdown').markdown;
+let marked = require('marked');
 
 @Injectable()
-export class StepsTemplatesCache {
+export class StepsTemplatesLoader {
   private cache: Map<string, string>;
 
   constructor(private http: Http, @Inject(ORIGIN_URL) private originUrl: string) {
@@ -26,9 +27,7 @@ export class StepsTemplatesCache {
     let obs = this.http
       .get(fallbackUrl)
       .map(res => res.text())
-      .map(text => markdown.toHTML(text))
-      .map(this.escapeAngularBindings)
-      .map(this.unescapeDiffBox);
+      .map(text => marked(text));
 
     return obs;
   }

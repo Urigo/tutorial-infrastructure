@@ -1,8 +1,8 @@
-import { ActivatedRoute } from '@angular/router';
-import { Renderer, Input, Component, Optional, OnInit, ViewChild, SimpleChanges } from '@angular/core';
-import { Compiler, NgModule, Directive, ReflectiveInjector, ViewContainerRef } from '@angular/core';
-import { ParsedPatchDefinition, SingleChange, LineContent } from './patch-definition';
-import { TutorialDefinition } from './tutorial-definition';
+import {ActivatedRoute} from '@angular/router';
+import {Renderer, Input, Component, Optional, OnInit, ViewChild, SimpleChanges} from '@angular/core';
+import {Compiler, NgModule, Directive, ReflectiveInjector, ViewContainerRef} from '@angular/core';
+import {ParsedPatchDefinition, SingleChange, LineContent} from './patch-definition';
+import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
 
@@ -15,24 +15,28 @@ export class DiffBoxCode {
   constructor(private compiler: Compiler, private vcRef: ViewContainerRef) {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     if (!this.diffboxCode || this.diffboxCode === '') {
       return;
     }
 
-    let content = this.diffboxCode;
+    let content = this.diffboxCode.replace(/[{}]/g, (match) => {
+      return "{{ '" + match + "' }}";
+    });
 
     @Component({
       selector: 'diffbox-container',
       template: content
     })
-    class DynamicComponent { }
+    class DynamicComponent {
+    }
 
     @NgModule({
       imports: [],
       declarations: [DynamicComponent]
     })
-    class DynamicModule { }
+    class DynamicModule {
+    }
 
     let factories = this.compiler.compileModuleAndAllComponentsSync(DynamicModule);
     const compFactory = factories.componentFactories.find(x => x.componentType === DynamicComponent);
@@ -61,8 +65,7 @@ export class DiffBoxComponent implements OnInit {
   private currentFileModification: Array<SingleChange>;
   private codeContent: string;
 
-  constructor(private compiler: Compiler, private route: ActivatedRoute, private renderer: Renderer) {
-
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -99,7 +102,7 @@ export class DiffBoxComponent implements OnInit {
       let content = '';
 
       lines.forEach((line) => {
-        content += '<pre ngNonBindable class=' + line.cssClass + '>' + line.highlightedContent + '</pre>';
+        content += '<pre class="' + line.cssClass + '">' + line.highlightedContent + '</pre>';
       });
 
       this.codeContent = content;
@@ -164,7 +167,7 @@ export class DiffBoxComponent implements OnInit {
 
     return sectionLines.reduce((prev: Array<any>, curr) => {
       if (prev) {
-        return prev.concat({ highlightedContent: '<span class="hljs-comment">...some lines skipped...</span>' }).concat(curr);
+        return prev.concat({highlightedContent: '<span class="hljs-comment">...some lines skipped...</span>'}).concat(curr);
       } else {
         return curr;
       }

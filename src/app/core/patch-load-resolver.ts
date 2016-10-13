@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { TutorialRegistryCache } from './tutorials-registry-cache';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StepsTemplatesCache } from './steps-templates-cache';
+import { StepsTemplatesLoader } from './steps-templates-loader';
 import { TutorialRouteData } from './tutorial-routes';
 
 @Injectable()
 export class PatchLoadResolve implements Resolve<any> {
   constructor(
     private cache: TutorialRegistryCache,
-    private templatesCache: StepsTemplatesCache) {
-
+    private templatesCache: StepsTemplatesLoader) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {

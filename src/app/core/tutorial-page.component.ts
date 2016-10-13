@@ -11,7 +11,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TutorialDefinition, TutorialStep } from './tutorial-definition';
-import { StepsTemplatesCache } from './steps-templates-cache';
 import { TutorialRouteData } from './tutorial-routes';
 import { ActivatedTutorial } from './current-tutorial';
 
@@ -32,7 +31,6 @@ export class TutorialPage implements OnInit {
   private step: TutorialStep;
 
   constructor(
-    private stepsTemplatesCache: StepsTemplatesCache,
     private route: ActivatedRoute,
     private compiler: Compiler,
     private viewContainerRef: ViewContainerRef,
