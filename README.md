@@ -36,12 +36,16 @@ At the moment, while developing, try access:
 - [x] Add API list component
 - [x] Migrate angular1-meteor api docs
 - [x] Implement Code diff button
-- [ ] Implement "Improve this..."
-- [ ] Update to latest Angular Universal
+- [x] Update to latest Angular Universal
+- [x] Implement "Improve this..."
+- [x] Fix SCSS and template load issue
+- [x] Fix main SCSS load
+- [x] Workaround for innerHTML issue of Universal
+- [x] Use NgModule
+- [ ] Beautiful Design
 - [ ] Find a solution for the images
 - [ ] Implement Video
 - [ ] Page title (<title>)
 - [ ] SEO support (keyword tags in <head>) + Site map
-- [ ] Beautiful Design
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.   
 - [ ] Prepare for publish as NPM package
