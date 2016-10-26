@@ -271,17 +271,35 @@ diffbox-container {
   }
 
   pre {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  background-color: transparent;
+    background-color: transparent;
 
-  &.line-added {
-    background: #eaffea;
-  }
+    &.line-added {
+      background: #eaffea;
+    }
 
-  &.line-removed {
-    background: #ff9ea2;
+    &.line-removed {
+      background: #ff9ea2;
+    }
   }
 }
+
+.side-nav {
+  background: #ECEFF1;
+  width: 232px;
+  bottom: 0;
+  overflow: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+  ul {
+    margin-top: 8px;
+  }
+}
+
+.tutorials-container,
+.api-content {
+  padding-left: 280px;
 }
