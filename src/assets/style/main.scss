@@ -30,23 +30,77 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
   .step-item, .api-list-item {
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid #CFD8DC;
     color: $lightBgColor;
+  }
+
+  .step-item {
+	  position: relative;
+
+	  $stepCircleRadius: 5px;
+
+	  &::before {
+		  content: "";
+		  height: $stepCircleRadius * 2;
+		  width: $stepCircleRadius * 2;
+		  background: #f9f9f9;
+		  border-radius: 50%;
+		  border: 2px solid $linkColor;
+		  position: absolute;
+		  top: 50%;
+		  margin-top: -$stepCircleRadius - 1px;
+		  left: 32px;
+		  margin-left: -$stepCircleRadius - 1px;
+		  z-index: 200;
+	  }
+
+	  &.active-step {
+		  &::before {
+			  background: $linkHoverColor;
+			  border-color: $linkHoverColor;
+		  }
+	  }
+
+	  &::after {
+		  content: "";
+		  height: 100%;
+		  width: 1px;
+		  background: $linkColor;
+		  top: 0;
+		  left: 32px;
+		  position: absolute;
+		  z-index: 100;
+	  }
+
+	   &:first-of-type {
+ 		  &::after {
+ 			  height: 50%;
+			  top: 50%;
+ 		  }
+ 	  }
+
+	  &:last-of-type {
+		  &::after {
+			  height: 50%;
+			  bottom: 50%;
+		  }
+	  }
+  }
+
+  .step-link {
+	  color: $linkColor;
   }
 
   .step-link, .api-item-link, .apis-versions-list li {
     text-decoration: none;
-    color: $lightTextColor;
     display: block;
     font-size: 14px;
-    padding: 16px 16px;
+    padding: 16px 16px 16px calc(16px + 48px);
     margin: 0;
-    background-color: #ECEFF1;
   }
 
   .active-step {
     a {
-      font-weight: bold;
+      color: $linkActiveColor;
     }
   }
 
@@ -82,7 +136,7 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 
     .step-item {
       padding: 5px 0 5px 10px;
-      border-bottom: 1px solid #ECEFF1;
+
       break-inside: avoid-column;
 
       a {
@@ -225,12 +279,15 @@ api-ref-container {
   right: 0px;
 }
 
-.l-pinned-left {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
+@media screen and (min-width: 1000px) { // Arbitrary media query for now for small screens
+	.l-pinned-left {
+	  position: fixed;
+	  top: 0px;
+	  left: 0px;
+	  bottom: 0px;
+	}
 }
+
 
 .l-left {
   float: left;
@@ -255,10 +312,6 @@ api-ref-container {
 
 .l-offset-side-nav {
   padding-left: 232px;
-}
-
-.l-offset-nav {
-  padding-top: 64px;
 }
 
 diffbox-container {
@@ -287,19 +340,34 @@ diffbox-container {
 }
 
 .side-nav {
-  background: #ECEFF1;
-  width: 232px;
+  background: #f6f6f6;
+  width: 100%;
   bottom: 0;
-  overflow: auto;
   z-index: 100;
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
 
   ul {
     margin-top: 8px;
   }
 }
 
-.tutorials-container,
+.tutorials-container {
+	color: #555;
+
+	h1 {
+		font-family: 'Poppins', sans-serif;
+		color: #111;
+		line-height: 1.1;
+	}
+
+	p {
+		color: #555;
+	}
+}
+
 .api-content {
-  padding-left: 280px;
+	padding-left: 280px;
+}
+
+.main-toolbar md-toolbar-row {
+	height: auto !important;
 }

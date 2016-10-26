@@ -1,18 +1,20 @@
 <md-toolbar class="main-toolbar md-primary">
-    <a href="/"><img src="/assets/images/logo.png" class="logo"></a>
-    <div class="tutorials-dropdown">
-        <button md-button>Tutorials</button>
-        <div class="dropdown-content">
-            <steps-list [tutorial]="getDropdownTutorial()" prefix="/tutorials/socially" [extraLinks]="getExtraLinks()"></steps-list>
-        </div>
-    </div>
-    <a href="/angular2/"><button md-button>Angular 2</button></a>
-    <a href="/api/angular2-meteor/latest/MeteorComponent"><button md-button>API Reference</button></a>
-    <span class="fill-remaining-space"></span>
-    <a target="_blank" href="https://github.com/Urigo/angular2-meteor"><button md-button>GitHub</button></a>
-    <a target="_blank" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&__hssc=219992390.3.1471938647239&__hsfp=714783454"><button md-button>Blog</button></a>
-    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform"><button md-button>Contact Us</button></a>
-    <a href="/manifesto"><button md-button>Manifesto</button></a>
-    <a href="/about"><button md-button>About us</button></a>
+    <a href="/" class="logo-link"><img src="/assets/images/logo.png" class="logo"></a>
+	<nav class="nav-links">
+		<div class="tutorials-dropdown">
+	        <button md-button>Tutorials</button>
+	        <div class="dropdown-content">
+	            <steps-list [tutorial]="getDropdownTutorial()" prefix="/tutorials/socially" [extraLinks]="getExtraLinks()"></steps-list>
+	        </div>
+	    </div>
+	    <a href="/angular2/"><button md-button>Angular 2</button></a>
+	    <a href="/api/angular2-meteor/latest/MeteorComponent"><button md-button>API Reference</button></a>
+	    <span class="fill-remaining-space"></span>
+	    <a target="_blank" href="https://github.com/Urigo/angular2-meteor"><button md-button>GitHub</button></a>
+	    <a target="_blank" href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&__hssc=219992390.3.1471938647239&__hsfp=714783454"><button md-button>Blog</button></a>
+	    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSed3JZ0EAcSzkX8Y-iEtvNQRfjeyP2ICQvYMs00ewdmKaplwA/viewform"><button md-button>Contact Us</button></a>
+	    <a href="/manifesto"><button md-button>Manifesto</button></a>
+	    <a href="/about"><button md-button>About us</button></a>
+	</nav>
 </md-toolbar>
 <router-outlet></router-outlet>
