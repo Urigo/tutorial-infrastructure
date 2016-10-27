@@ -17,7 +17,6 @@ import * as template from "./tutorials-container.component.html";
 
 @Component({
   selector: "tutorial",
-  directives: [StepListComponent, TutorialsVersionsSelection, ImproveThisDocLink, CodeDiffLink, TutorialNavigation, StepNameDirective],
   template,
   styles: [style]
 })

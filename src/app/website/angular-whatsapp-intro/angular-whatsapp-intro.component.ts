@@ -7,7 +7,6 @@ import * as template from "./angular-whatsapp-intro.component.html";
 @Component({
   selector: "angular-whatsapp",
   template,
-  directives: [MarkdownFileViewComponent],
   styles: [style]
 })
 export class AngularWhatsappIntro implements OnInit {
