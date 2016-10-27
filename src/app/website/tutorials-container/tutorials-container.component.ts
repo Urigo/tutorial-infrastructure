@@ -1,24 +1,16 @@
 import {Component, Injectable} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {StepListComponent} from "../../core/steps-list.component";
-import {TutorialNavigation} from "../../core/tutorial-navigation.component";
-import {StepNameDirective} from "../../core/tutorial-name.directive";
 import {ActivatedTutorial} from "../../core/current-tutorial";
 import {TutorialDefinition, TutorialStep} from "../../core/tutorial-definition";
-import {TutorialsVersionsSelection} from "../tutorials-versions/tutorials-versions";
 import {ANGULAR2_METEOR_SOCIALLY} from "../../tutorials/angular2-meteor-socially";
 import {ANGULAR1_METEOR_SOCIALLY} from "../../tutorials/angular-meteor-socially";
 import {StepsUtils} from "../../core/step-utils";
 import {LocationStrategy} from "@angular/common";
-import {CodeDiffLink} from "../../core/tutorial-code-diff.directive";
-import {ImproveThisDocLink} from "../../core/improve-this-doc.directive";
-import * as style from "./tutorials-container.component.scss";
-import * as template from "./tutorials-container.component.html";
 
 @Component({
   selector: "tutorial",
-  template,
-  styles: [style]
+  templateUrl: "./tutorials-container.component.html",
+  styleUrls: [ "./tutorials-container.component.scss" ]
 })
 @Injectable()
 export class TutorialsContainer {
