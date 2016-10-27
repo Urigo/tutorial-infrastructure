@@ -8,14 +8,10 @@ To run:
     
 And in two different Terminal tabs:
     
-    $ npm run start 
     $ npm run watch
+    $ npm start 
     
 Open you browser [http://localhost:3000](http://localhost:3000) !
-    
-At the moment, while developing, try access:
-
-    /tutorials/angular2/socially/bootstrap
     
 ## TODO
 
@@ -42,10 +38,13 @@ At the moment, while developing, try access:
 - [x] Fix main SCSS load
 - [x] Workaround for innerHTML issue of Universal
 - [x] Use NgModule
+- [x] Update to Webpack 2 and fix all TS errors and HTML imports issue
 - [ ] Beautiful Design
 - [ ] Find a solution for the images
 - [ ] Implement Video
 - [ ] Page title (<title>)
-- [ ] SEO support (keyword tags in <head>) + Site map
+- [ ] SEO support (keyword tags in <head>) + Site map (Waiting for SeoService from Universal)
+
+## When done:
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.   
 - [ ] Prepare for publish as NPM package
