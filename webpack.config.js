@@ -28,7 +28,6 @@ var commonConfig = {
     // ]
   },
   plugins: [
-
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new ExtractTextPlugin({ filename: "css/[name].css", disable: false, allChunks: true })
   ]
