@@ -2,7 +2,7 @@
 
 To run:
 
-    $ npm install -g typings webpack rimraf nodemon
+    $ npm install -g webpack rimraf nodemon node-nightly typescript
     $ npm install
     $ typings install
     
@@ -11,6 +11,11 @@ And in two different Terminal tabs:
     $ npm run watch
     $ npm start 
     
+To debug server side rendering:
+
+    $ npm run watch
+    $ npm run debug:server 
+
 Open you browser [http://localhost:3000](http://localhost:3000) !
     
 ## TODO
