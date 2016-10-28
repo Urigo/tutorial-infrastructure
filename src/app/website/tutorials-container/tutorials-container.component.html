@@ -1,17 +1,21 @@
 <div class="tutorials-container">
     <nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+		<h1>Steps</h1>
         <tutorials-versions [options]="getOptions()"></tutorials-versions>
         <steps-list></steps-list>
     </nav>
-    <div class="top-navigation">
-        <div class="tutorial-nav">
-            <a md-raised-button tutorialNavigation="previous" class="md-primary">Previous</a>
-            <a md-raised-button codeDiffLink class="md-primary">Code Diff</a>
-            <a md-raised-button tutorialNavigation="next" class="md-primary">Next</a>
-		</div>
-        <a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
-    </div>
     <div class="tutorial-content">
+		<div class="top-navigation">
+	        <div class="tutorial-nav">
+	            <a md-raised-button tutorialNavigation="previous" class="md-primary">Previous</a>
+	            <a md-raised-button codeDiffLink class="md-primary">Code Diff</a>
+	            <a md-raised-button tutorialNavigation="next" class="md-primary">Next</a>
+			</div>
+
+			<div class="improve">
+	        	<a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
+			</div>
+		</div>
 		<h1 class="tutorial-title" stepName></h1>
         <router-outlet></router-outlet>
     </div>

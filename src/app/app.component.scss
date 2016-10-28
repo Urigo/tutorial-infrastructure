@@ -23,9 +23,11 @@
   padding: 1rem;
   background: #f6f6f6 !important;
 
+
   a {
-    color: white;
+    color: #555;
     text-decoration: none;
+	font-weight: normal;
   }
 }
 
@@ -36,6 +38,7 @@
 .tutorials-dropdown {
   position: relative;
   display: inline-block;
+  color: #555;
 
   .dropdown-content {
     display: none;
@@ -50,4 +53,17 @@
 
 .tutorials-dropdown:hover .dropdown-content {
   display: block;
+}
+
+@media screen and (min-width: 750px) {
+	
+}
+
+@media screen and (min-width: 1000px) {
+	.nav-links {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
 }

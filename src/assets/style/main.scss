@@ -10,6 +10,9 @@ body {
   margin: 0;
   padding: 64px 0 0;
   font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
 }
 
 pre {
@@ -168,6 +171,8 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 	background: transparent !important;
 	color: #a6120d !important;
 	box-shadow: none !important;
+	padding: 0 10px !important;
+	margin-bottom: 10px !important;
 
 	&[disabled] {
 		border-color: #aaa !important;
@@ -279,15 +284,6 @@ api-ref-container {
   right: 0px;
 }
 
-@media screen and (min-width: 1000px) { // Arbitrary media query for now for small screens
-	.l-pinned-left {
-	  position: fixed;
-	  top: 0px;
-	  left: 0px;
-	  bottom: 0px;
-	}
-}
-
 
 .l-left {
   float: left;
@@ -350,6 +346,52 @@ diffbox-container {
   }
 }
 
+.side-nav h1 {
+	padding: 16px 0 0 32px;
+}
+
+@media screen and (min-width: 750px) {
+	.tutorials-container {
+		display: flex;
+		margin-top: 40px;
+	}
+
+	.side-nav {
+		width: 40%;
+		height: 100%;
+	}
+
+	.tutorial-content {
+		width: 60%;
+	}
+
+	[md-raised-button] {
+		margin-bottom: 0px !important;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.tutorials-container {
+		width: 80%;
+		margin: 80px auto 0;
+	}
+
+	.top-navigation {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.side-nav {
+		width: 25%;
+		border-radius: 2px;
+	}
+
+	.tutorial-content {
+		width: 75%;
+		margin-left: 30px;
+	}
+}
+
 .tutorials-container {
 	color: #555;
 
@@ -370,4 +412,14 @@ diffbox-container {
 
 .main-toolbar md-toolbar-row {
 	height: auto !important;
+}
+
+.nav-links [md-button] {
+	min-width: 0 !important;
+	font-weight: 300 !important;
+	font-family: inherit !important;
+}
+
+.nav-links .md-primary {
+	color: #555 !important;
 }

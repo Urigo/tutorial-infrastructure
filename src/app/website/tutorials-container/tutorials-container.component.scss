@@ -6,8 +6,8 @@ tutorials-versions {
 
 .top-navigation {
   width: 100%;
-  height: 60px;
   z-index: 50;
+  margin-bottom: 20px;
 }
 
 .tutorial-content {
@@ -16,12 +16,37 @@ tutorials-versions {
 }
 
 .tutorial-nav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 20px;
+	display: block;
+	margin-bottom: 20px;
+
+	a {
+		font-size: 13px;
+		margin-right: 10px;
+	}
+}
+
+.improve {
+	display: block;
 }
 
 .tutorial-title {
 	font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (min-width: 1000px) {
+	.tutorial-nav {
+		display: block;
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+	.tutorial-content {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	.top-navigation {
+		margin-top: 20px;
+		margin-bottom: 60px;
+	}
 }
