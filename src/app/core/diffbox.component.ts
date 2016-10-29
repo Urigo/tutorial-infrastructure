@@ -5,8 +5,6 @@ import {ParsedPatchDefinition, SingleChange, LineContent} from './patch-definiti
 import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
-import * as style from './diffbox.component.scss';
-import * as template from './diffbox.component.html';
 
 @Directive({
   selector: '[diffboxCode]'
@@ -49,8 +47,8 @@ export class DiffBoxCode {
 
 @Component({
   selector: 'diffbox',
-  template,
-  styles: [style]
+  templateUrl: './diffbox.component.html',
+  styleUrls: [ './diffbox.component.scss' ]
 })
 export class DiffBoxComponent implements OnInit {
   @Input('step') step: string;

@@ -3,6 +3,7 @@
 .logo {
   width: auto;
   height: 2em;
+  font-weight: normal;
 }
 
 .logo-link {
@@ -22,7 +23,6 @@
   right: 0;
   padding: 1rem;
   background: #f6f6f6 !important;
-
 
   a {
     color: #555;
@@ -56,7 +56,7 @@
 }
 
 @media screen and (min-width: 750px) {
-	
+
 }
 
 @media screen and (min-width: 1000px) {

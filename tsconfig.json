@@ -1,15 +1,33 @@
 {
   "compilerOptions": {
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
     "module": "commonjs",
-    "removeComments": true,
-    "sourceMap": true
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "sourceMap": true,
+    "sourceRoot": "src",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "types": [
+      "body-parser",
+      "compression",
+      "cookie-parser",
+      "express",
+      "express-serve-static-core",
+      "mime",
+      "node",
+      "serve-static",
+      "hammerjs",
+      "highlight.js",
+      "lodash"
+    ]
   },
+  "files": [
+    "types.d.ts"
+  ],
   "exclude": [
-    "typings/main.d.ts",
-    "typings/main",
     "node_modules"
   ],
   "compileOnSave": false,
