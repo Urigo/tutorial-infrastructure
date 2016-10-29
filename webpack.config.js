@@ -4,8 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 var commonConfig = {
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 version']
+    })
+  ],
+  sassLoader: {},
   resolve: {
-    extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+    extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
   },
   module: {
     loaders: [
@@ -20,12 +26,12 @@ var commonConfig = {
         loaders: ["raw-loader", "sass-loader"]
       },
       // all css required in src/app files will be merged in js files
-      { test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!sass' }
+      { test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!postcss!sass' }
     ],
-    // preLoaders: [
-    //   // needed to lower the filesize of angular due to inline source-maps
-    //   { test: /\.js$/, loader: 'source-map-loader' }
-    // ]
+    preLoaders: [
+      // needed to lower the filesize of angular due to inline source-maps
+      { test: /\.js$/, loader: 'source-map-loader' }
+    ],
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(true),
@@ -54,11 +60,14 @@ var serverConfig = {
 // Default config
 var defaultConfig = {
   context: __dirname,
+  resolve: {
+    root: root('/src')
+  },
   output: {
     publicPath: path.resolve(__dirname),
     filename: 'index.js'
   }
-};
+}
 
 var webpackMerge = require('webpack-merge');
 module.exports = [

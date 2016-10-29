@@ -1,9 +1,11 @@
 import {Component, Injectable} from '@angular/core';
+import * as style from './main.component.scss';
+import * as template from './main.component.html';
 
 @Component({
   selector: 'main',
-  templateUrl: './main.component.html',
-  styleUrls: [ './main.component.scss' ]
+  template,
+  styles: [style]
 })
 @Injectable()
 export class MainComponent {

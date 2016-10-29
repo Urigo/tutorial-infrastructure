@@ -4,10 +4,11 @@ import { ActivatedApi } from './current-api';
 import { ApiRouteDataDefinition } from './apis-routes';
 import { LocationStrategy } from '@angular/common';
 import { ApiFile, ApiVersion, ApiStaticDefinitionObject, ApiDefinition } from './api-definition';
+import * as template from './api-list-items.component.html';
 
 @Component({
   selector: 'api-list-items',
-  templateUrl: './api-list-items.component.html'
+  template
 })
 @Injectable()
 export class ApiListItems implements OnInit {

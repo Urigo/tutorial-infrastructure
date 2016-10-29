@@ -17,7 +17,7 @@ import {StepsUtils} from './step-utils';
 import {ApiLoadResolve} from './api-load-resolve';
 import {ActivatedApi} from './current-api';
 import {NgModule} from '@angular/core';
-import {StepListComponent} from './steps-list.component';
+import {StepListComponent} from './steps-list.component.ts';
 import {RouterModule} from '@angular/router';
 
 

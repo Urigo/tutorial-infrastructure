@@ -1,10 +1,14 @@
 import {Component, OnInit} from "@angular/core";
+import {MarkdownFileViewComponent} from "../../core/markdown-file.component";
 import {ActivatedRoute} from "@angular/router";
+import * as style from "./angular-whatsapp-intro.component.scss";
+import * as template from "./angular-whatsapp-intro.component.html";
 
 @Component({
   selector: "angular-whatsapp",
-  templateUrl: "./angular-whatsapp-intro.component.html",
-  styleUrls: [ "./angular-whatsapp-intro.component.scss" ]
+  template,
+  directives: [MarkdownFileViewComponent],
+  styles: [style]
 })
 export class AngularWhatsappIntro implements OnInit {
   private isAngular1 = true;

@@ -5,10 +5,11 @@ import { ApiRouteDataDefinition } from './apis-routes';
 import { LocationStrategy } from '@angular/common';
 import { ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition } from './api-definition';
 import * as _ from 'lodash';
+import * as template from './api-versions-list.component.html';
 
 @Component({
   selector: 'api-versions-list',
-  templateUrl: './api-versions-list.component.html'
+  template
 })
 @Injectable()
 export class ApiVersionsList implements OnInit {
