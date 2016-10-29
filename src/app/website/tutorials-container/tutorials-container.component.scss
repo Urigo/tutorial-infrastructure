@@ -16,7 +16,8 @@ tutorials-versions {
 }
 
 .tutorial-nav {
-	display: block;
+	display: flex;
+	align-items: center;
 	margin-bottom: 20px;
 
 	a {
@@ -35,7 +36,6 @@ tutorials-versions {
 
 @media screen and (min-width: 1000px) {
 	.tutorial-nav {
-		display: block;
 		padding: 0;
 		margin-bottom: 0;
 	}
@@ -48,5 +48,23 @@ tutorials-versions {
 	.top-navigation {
 		margin-top: 20px;
 		margin-bottom: 60px;
+	}
+}
+
+.button-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.material-icons {
+		font-size: 16px;
+		padding-right: 5px;
+	}
+
+	&.right-icon {
+		.material-icons {
+			padding-right: 0;
+			padding-left: 10px;
+		}
 	}
 }

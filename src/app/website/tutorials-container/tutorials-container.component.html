@@ -7,13 +7,21 @@
     <div class="tutorial-content">
 		<div class="top-navigation">
 	        <div class="tutorial-nav">
-	            <a md-raised-button tutorialNavigation="previous" class="md-primary">Previous</a>
-	            <a md-raised-button codeDiffLink class="md-primary">Code Diff</a>
-	            <a md-raised-button tutorialNavigation="next" class="md-primary">Next</a>
+	            <a md-raised-button tutorialNavigation="previous" class="md-primary">
+					<span class="button-wrapper"><i class="material-icons">navigate_before</i>Previous</span>
+				</a>
+	            <a md-raised-button codeDiffLink class="md-primary">
+					<span class="button-wrapper"><i class="material-icons">search</i>Code Diff</span>
+				</a>
+	            <a md-raised-button tutorialNavigation="next" class="md-primary">
+					<span class="button-wrapper right-icon">Next<i class="material-icons">navigate_next</i></span>
+				</a>
 			</div>
 
 			<div class="improve">
-	        	<a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">Improve This Document</a>
+	        	<a md-raised-button [improveThisDocLink]="getStaticRepo()" class="md-primary improv-button">
+					<span class="button-wrapper"><i class="material-icons">mode_edit</i>Improve This Document</span>
+				</a>
 			</div>
 		</div>
 		<h1 class="tutorial-title" stepName></h1>
