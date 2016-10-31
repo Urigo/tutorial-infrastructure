@@ -21,13 +21,13 @@ import { MdIconModule } from '@angular2-material/icon';
   bootstrap: [AppComponent],
   declarations: APP_DECLARAIONS,
   imports: [
-    UniversalModule,
     MdButtonModule,
     MdToolbarModule,
     MdIconModule,
     FormsModule,
     routing,
-    TutorialsCoreModule
+    TutorialsCoreModule,
+    UniversalModule
   ],
   providers: []
 })
