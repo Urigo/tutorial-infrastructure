@@ -47,8 +47,7 @@ export class DiffBoxCode {
 
 @Component({
   selector: 'diffbox',
-  templateUrl: './diffbox.component.html',
-  styleUrls: [ './diffbox.component.scss' ]
+  templateUrl: './diffbox.component.html'
 })
 export class DiffBoxComponent implements OnInit {
   @Input('step') step: string;

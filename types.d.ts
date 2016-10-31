@@ -22,3 +22,7 @@ declare module '*.sass' {
   var e;
   export = e;
 }
+
+declare module "highlight.js" {
+  export = hljs;
+}

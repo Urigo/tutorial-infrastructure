@@ -2,8 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: "manifesto-page",
-  templateUrl: "./manifesto-page.component.html",
-  styleUrls: [ "./manifesto-page.component.scss" ]
+  templateUrl: "./manifesto-page.component.html"
 })
 export class ManifestoPageComponent {
   constructor() {}

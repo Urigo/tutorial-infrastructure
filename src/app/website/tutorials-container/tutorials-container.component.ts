@@ -9,8 +9,7 @@ import {LocationStrategy} from "@angular/common";
 
 @Component({
   selector: "tutorial",
-  templateUrl: "./tutorials-container.component.html",
-  styleUrls: [ "./tutorials-container.component.scss" ]
+  templateUrl: "./tutorials-container.component.html"
 })
 @Injectable()
 export class TutorialsContainer {

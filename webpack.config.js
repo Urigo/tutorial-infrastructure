@@ -10,7 +10,7 @@ var commonConfig = {
   module: {
     loaders: [
       // TypeScript
-      { test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader'] },
+      { test: /\.ts$/, loaders: ['angular2-template-loader', 'awesome-typescript-loader'] },
       { test: /\.html$/, loader: 'raw-loader' },
       { test: /\.css$/, loaders: ['css-loader', 'raw-loader'] },
       { test: /\.json$/, loader: 'raw-loader' },
@@ -21,7 +21,7 @@ var commonConfig = {
       },
       // all css required in src/app files will be merged in js files
       { test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!sass' }
-    ],
+    ]
     // preLoaders: [
     //   // needed to lower the filesize of angular due to inline source-maps
     //   { test: /\.js$/, loader: 'source-map-loader' }

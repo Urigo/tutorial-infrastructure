@@ -3,8 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: "angular-whatsapp",
-  templateUrl: "./angular-whatsapp-intro.component.html",
-  styleUrls: [ "./angular-whatsapp-intro.component.scss" ]
+  templateUrl: "./angular-whatsapp-intro.component.html"
 })
 export class AngularWhatsappIntro implements OnInit {
   private isAngular1 = true;

@@ -110,15 +110,15 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 }
 
 [md-raised-button] {
-	border: 2px solid #a6120d !important;
-	background: transparent !important;
-	color: #a6120d !important;
-	box-shadow: none !important;
+  border: 2px solid #a6120d !important;
+  background: transparent !important;
+  color: #a6120d !important;
+  box-shadow: none !important;
 
-	&[disabled] {
-		border-color: #aaa !important;
-		color: #aaa !important;
-	}
+  &[disabled] {
+    border-color: #aaa !important;
+    color: #aaa !important;
+  }
 }
 
 tutorial-page-content {
@@ -217,7 +217,6 @@ api-ref-container {
   }
 }
 
-
 .l-pinned-top {
   position: fixed;
   top: 0px;
@@ -271,17 +270,31 @@ diffbox-container {
   }
 
   pre {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  background-color: transparent;
+    background-color: transparent;
 
-  &.line-added {
-    background: #eaffea;
-  }
+    &.line-added {
+      background: #eaffea;
+    }
 
-  &.line-removed {
-    background: #ff9ea2;
+    &.line-removed {
+      background: #ff9ea2;
+    }
   }
 }
-}
+
+@import "../../app/app.component.scss";
+
+@import "../../app/website/main-page/main.component.scss";
+@import "../../app/website/angular2-page/angular2-page.component.scss";
+@import "../../app/website/about-page/about-page.component.scss";
+@import "../../app/website/angular-whatsapp-intro/angular-whatsapp-intro.component.scss";
+@import "../../app/website/api-container/api-container.component.scss";
+@import "../../app/website/manifesto-page/manifesto-page.component.scss";
+@import "../../app/website/tutorials-container/tutorials-container.component.scss";
+@import "../../app/website/tutorials-versions/tutorial-versions.scss";
+
+// Temporary imports until Universal fixes the issue
+@import "../../app/core/diffbox.component.scss";

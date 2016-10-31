@@ -7,8 +7,7 @@ import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor
 
 @Component({
   selector: "api-container",
-  templateUrl: "./api-container.component.html",
-  styleUrls: [ "./api-container.component.scss" ]
+  templateUrl: "./api-container.component.html"
 })
 export class ApiPageContainerComponent {
   private currentApiVersion: string = "";

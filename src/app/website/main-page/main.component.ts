@@ -2,8 +2,7 @@ import {Component, Injectable} from '@angular/core';
 
 @Component({
   selector: 'main',
-  templateUrl: './main.component.html',
-  styleUrls: [ './main.component.scss' ]
+  templateUrl: './main.component.html'
 })
 @Injectable()
 export class MainComponent {
