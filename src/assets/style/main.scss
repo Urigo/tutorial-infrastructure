@@ -444,3 +444,28 @@ diffbox-container {
 .nav-links .md-primary {
 	color: #555 !important;
 }
+
+
+    &.line-added {
+      background: #eaffea;
+    }
+
+    &.line-removed {
+      background: #ff9ea2;
+    }
+  }
+}
+
+@import "../../app/app.component.scss";
+
+@import "../../app/website/main-page/main.component.scss";
+@import "../../app/website/angular2-page/angular2-page.component.scss";
+@import "../../app/website/about-page/about-page.component.scss";
+@import "../../app/website/angular-whatsapp-intro/angular-whatsapp-intro.component.scss";
+@import "../../app/website/api-container/api-container.component.scss";
+@import "../../app/website/manifesto-page/manifesto-page.component.scss";
+@import "../../app/website/tutorials-container/tutorials-container.component.scss";
+@import "../../app/website/tutorials-versions/tutorial-versions.scss";
+
+// Temporary imports until Universal fixes the issue
+@import "../../app/core/diffbox.component.scss";

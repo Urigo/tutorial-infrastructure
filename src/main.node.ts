@@ -20,12 +20,12 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
   bootstrap: [AppComponent],
   declarations: APP_DECLARAIONS,
   imports: [
-    UniversalModule,
     MdButtonModule,
     MdToolbarModule,
     FormsModule,
     routing,
-    TutorialsCoreModule
+    TutorialsCoreModule,
+    UniversalModule
   ],
   providers: []
 })

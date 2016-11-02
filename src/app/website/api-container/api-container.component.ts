@@ -4,13 +4,10 @@ import {ApiRouteDataDefinition} from "../../core/apis-routes";
 import {ApiVersion, ApiStaticDefinitionObject} from "../../core/api-definition";
 import {ANGULAR2_METEOR_API_REFERENCE} from "../../api-reference/angular2-meteor-api";
 import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor-api";
-import * as style from "./api-container.component.scss";
-import * as template from "./api-container.component.html";
 
 @Component({
   selector: "api-container",
-  template,
-  styles: [style]
+  templateUrl: "./api-container.component.html"
 })
 export class ApiPageContainerComponent {
   private currentApiVersion: string = "";
