@@ -445,6 +445,20 @@ diffbox-container {
 	color: #555 !important;
 }
 
+diffbox-container {
+  padding-left: 36px;
+  overflow: hidden;
+  display: block;
+
+  .hljs-comment {
+    color: #777;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0;
+
+    background-color: transparent;
 
     &.line-added {
       background: #eaffea;
