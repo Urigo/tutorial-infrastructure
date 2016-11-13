@@ -2,8 +2,12 @@
 @import "../../../node_modules/highlight.js/styles/default";
 @import "../../../node_modules/highlight.js/styles/github";
 
-a {
-  color: black;
+@font-face {
+    font-family: 'League Spartan';
+    src: url('../assets/fonts/leaguespartan-bold.woff2') format('woff2'),
+         url('../assets/fonts/leaguespartan-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
@@ -13,6 +17,10 @@ body {
   font-size: 18px;
   font-weight: 300;
   line-height: 1.6;
+}
+
+h1, h2 {
+	font-family: 'League Spartan', sans-serif;
 }
 
 pre {
@@ -168,10 +176,18 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
   }
 }
 
-.md-primary {
-  background: $darkerBgColor !important;
+[md-button].md-primary {
+  background: transparent !important;
   color: white !important;
   cursor: pointer !important;
+  border: 2px solid #fff !important;
+  border-radius: 3px solid #fff !important;
+  font-weight: normal !important;
+
+  &:hover {
+	  color: #fff !important;
+	  background-color: rgba(0,0,0,.1) !important;
+  }
 
   &[disabled] {
     color: lightgray !important;
@@ -179,8 +195,12 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
   }
 }
 
-[md-raised-button] {
-	border: 2px solid #a6120d !important;
+[md-button]::after {
+	display: none !important;
+}
+
+.tutorial-button {
+	border: 2px solid #a6120d;
 	background: transparent !important;
 	color: #a6120d !important;
 	box-shadow: none !important;

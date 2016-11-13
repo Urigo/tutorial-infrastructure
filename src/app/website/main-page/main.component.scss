@@ -4,6 +4,14 @@
   clear: both;
 }
 
+p {
+	font-size: 1rem;
+}
+
+.row {
+	overflow: hidden;
+}
+
 .hero {
   padding: 3rem 0;
   background-image: url("/assets/images/angular-bg.png");
@@ -13,6 +21,7 @@
   h1 {
     color: #f6f6f6;
     font-size: 1.7rem;
+	line-height: 1.4;
   }
 
     .buttons {
@@ -30,13 +39,61 @@
     }
 }
 
+[md-raised-button].hero-button {
+	background: $linkColor;
+	border: 2px solid #fff;
+	color: #fff;
+	font-weight: normal;
+	transition: all .2s;
+	margin: 5px 5px;
+	font-weight: 300;
+	font-family: inherit;
+	font-size: 16px;
+
+	&:hover {
+		background: $linkHoverColor;
+		border-color: $linkHoverColor;
+	}
+}
+
+[md-button].body-button {
+	background: transparent;
+	border: 2px solid $linkColor;
+	color: $linkColor;
+	font-weight: 300;
+	transition: all .2s;
+	font-family: inherit;
+	font-size: 16px;
+
+	&:hover {
+		background: $linkHoverColor;
+		border-color: $linkHoverColor;
+		color: #fff;
+	}
+}
+
+.video h1 {
+	margin: 3rem;
+	font-size: 1.7rem;
+	line-height: 1.4;
+}
+
+.video {
+	padding-bottom: 2rem;
+}
+
+.showcase h1 {
+	margin-bottom: 3rem;
+	font-size: 1.7rem;
+	line-height: 1.4;
+	margin-top: 0;
+}
+
 .main-unit {
   text-align: center;
   margin: 0 auto;
 
   .video-wrapper iframe {
-    width: 860px;
-    height: 480px;
     border: 2px solid #333333;
     background-color: #333333;
     border-radius: 3px;
@@ -54,7 +111,6 @@
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  width: 80%;
   margin-bottom: 30px;
 }
 
@@ -77,7 +133,7 @@
 
   .site {
     margin-bottom: 30px;
-    width: 30%;
+    width: 100%;
     float: left;
     padding-right: 15px;
     padding-left: 15px;
@@ -113,17 +169,9 @@
 }
 
 .small-hero {
-  background-color: white;
   color: $darkerBgColor;
   padding: 2rem;
-  border-radius: 5px;
-  transition: 1s background-color, 1s color;
   height: 440px;
-
-  &:hover {
-    background-color: $darkBgColor;
-    color: $lightBgColor;
-  }
 
   img {
     margin: 1rem;
@@ -139,8 +187,9 @@
 .intro {
   padding-bottom: 3rem;
   padding-top: 3rem;
-  background-color: $lightBgColor;
+  background-color: #f2f2f2;
   margin: 3rem auto;
+  overflow: hidden;
 
   h1 {
     margin-bottom: 4rem;
@@ -150,6 +199,73 @@
 .slides {
   .slide-item {
     float: left;
-    width: 50%;
+    width: 100%;
   }
+}
+
+.extras .row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	.col-sm-4 {
+		width: 100%;
+		max-width: 240px;
+		margin: 0 auto;
+
+		p {
+			text-align: center;
+			font-size: 16px;
+		}
+	}
+}
+
+.submit-app-cta p {
+	margin: 3rem auto 2rem;
+	max-width: 400px;
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+	.showcase {
+	  .site {
+	    width: 30%;
+	  }
+  }
+
+  .slides {
+    .slide-item {
+      width: 50%;
+    }
+  }
+
+  .extras .row {
+
+  	.col-sm-4 {
+  		width: 33.33%;
+
+		p {
+			text-align: left;
+		}
+  	}
+  }
+
+  .main-unit {
+    .video-wrapper iframe {
+      width: 860px;
+      height: 480px;
+    }
+}
+
+.video h1 {
+	font-size: 2rem;
+}
+
+.showcase h1 {
+	font-size: 2rem;
+}
+
+.container {
+	width: 80%;
+}
 }
