@@ -1,15 +1,21 @@
 <div class="api-container">
-  <nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
-    <tutorials-versions [options]="getOptions()"></tutorials-versions>
-    <div class="dropdown">
-      <button md-button class="md-primary">API Version: {{ currentApiVersion }}</button>
-      <div class="dropdown-content">
-        <api-versions-list></api-versions-list>
-      </div>
-    </div>
-    <api-list-items></api-list-items>
-  </nav>
-  <div class="api-content">
-    <router-outlet></router-outlet>
-  </div>
+	<nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
+		<h1>API Reference</h1>
+		<tutorials-versions [options]="getOptions()"></tutorials-versions>
+	    <div class="dropdown">
+			<button md-button class="api-button">
+				<span class="button-wrapper">
+					API version: {{ currentApiVersion }}
+					<i class="material-icons">expand_more</i>
+				</span>
+			</button>
+	    	<div class="dropdown-content">
+	        	<api-versions-list></api-versions-list>
+	    	</div>
+	    </div>
+    	<api-list-items></api-list-items>
+	</nav>
+	<div class="api-content">
+    	<router-outlet></router-outlet>
+  	</div>
 </div>

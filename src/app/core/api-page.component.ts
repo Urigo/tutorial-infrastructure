@@ -5,7 +5,7 @@ import {DummyModule} from "./dynamic-base-module";
 
 @Component({
   selector: 'api-page',
-  template: `<div class='api-container'></div>`
+  template: ``
 })
 @Injectable()
 export class ApiPageComponent implements OnInit {

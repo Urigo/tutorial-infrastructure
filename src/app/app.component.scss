@@ -79,10 +79,6 @@
 	}
 }
 
-.fill-remaining-space {
-  flex: 1 1 auto;
-}
-
 .tutorials-dropdown {
   position: relative;
   display: inline-block;
@@ -109,28 +105,63 @@
 }
 
 @media screen and (min-width: 1000px) {
-	.tutorials-dropdown:hover .dropdown-content {
-	  display: block;
+	.primary-nav {
+		margin-top: 0;
 	}
 
-	.dropdown-content {
+	[md-icon-button].nav-toggle {
 		display: none;
-		position: absolute;
-		background-color: #f9f9f9;
-		min-width: 500px;
-		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-		border-radius: 5px;
-		padding: 7px;
-    }
+	}
 
 	.nav-links {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		height: auto;
+		overflow: visible;
+
+		a {
+			display: inline-block;
+		}
 	}
 
-	md-toolbar-row {
+	.secondary-nav {
+		align-self: flex-end;
+	}
 
+	.main-toolbar {
+		overflow: visible;
+
+		md-toolbar-row {
+			flex-wrap: nowrap;
+		}
+	}
+
+	.tutorials-dropdown:hover {
+		background: #eee;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		min-width: 600px;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+		border-radius: 0;
+		padding: 5px 0 !important;
+		border: 1px solid rgba(0, 0, 0, .15);
+
+		a {
+			padding: .4rem 20px;
+			border-bottom: 1px solid #f2f2f2;
+			display: block;
+			font-weight: 300;
+			font-size: 16px;
+		}
+
+		.tutorial-steps-list .step-item {
+			padding: 0;
+		}
     }
 }

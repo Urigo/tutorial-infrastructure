@@ -114,7 +114,7 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 	  transition: ease-in-out;
   }
 
-  .step-link, .api-item-link, .apis-versions-list li {
+  .step-link {
     text-decoration: none;
     display: block;
     font-size: 14px;
@@ -392,7 +392,7 @@ diffbox-container {
 }
 
 @media screen and (min-width: 750px) {
-	.tutorials-container {
+	.tutorials-container, .api-container {
 		display: flex;
 		margin-top: 40px;
 	}
@@ -402,7 +402,7 @@ diffbox-container {
 		height: 100%;
 	}
 
-	.tutorial-content {
+	.tutorial-content, .api-content {
 		width: 60%;
 	}
 
@@ -412,7 +412,7 @@ diffbox-container {
 }
 
 @media screen and (min-width: 1000px) {
-	.tutorials-container {
+	.tutorials-container, .api-container {
 		width: 80%;
 		margin: 80px auto 0;
 	}
@@ -427,17 +427,17 @@ diffbox-container {
 		border-radius: 2px;
 	}
 
-	.tutorial-content {
+	.tutorial-content, .api-content {
 		width: 75%;
 		margin-left: 30px;
 	}
 }
 
-.tutorials-container {
+.tutorials-container, .api-container {
 	color: #555;
 
 	h1 {
-		font-family: 'Poppins', sans-serif;
+		font-family: 'League Spartan', sans-serif;
 		color: #111;
 		line-height: 1.1;
 	}
@@ -445,10 +445,6 @@ diffbox-container {
 	p {
 		color: #555;
 	}
-}
-
-.api-content {
-	padding-left: 280px;
 }
 
 .main-toolbar md-toolbar-row {
