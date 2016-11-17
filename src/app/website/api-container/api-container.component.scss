@@ -8,6 +8,21 @@
 	}
 }
 
+.api-container .side-nav a {
+	color: #222;
+	transition: all .2s;
+
+	&:hover {
+		color: $linkHoverColor;
+	}
+}
+
+.api-container {
+	.active-step a {
+		color: $linkColor;
+	}
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -24,6 +39,7 @@
     column-width: 210px !important;
     column-count: 1 !important;
 	font-size: 1rem;
+	width: 100%;
 
 	a {
 		display: block;

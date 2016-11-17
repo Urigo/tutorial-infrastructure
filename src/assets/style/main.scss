@@ -24,6 +24,7 @@ h1, h2 {
 }
 
 h1, h2, h3 {
+	font-weight: normal;
 	code {
 		background: none;
 		padding: 0;
@@ -61,6 +62,20 @@ pre {
 	-webkit-text-size-adjust: none;
 	font-size: 100%;
   }
+}
+
+.diffbox pre {
+	display: block;
+	padding: 0;
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: none;
+	border: none;
+	border-radius: 0;
 }
 
 code {
@@ -234,10 +249,15 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 }
 
 .dropdown-content {
-  column-count: 2;
-  column-width: 220px;
-  column-rule: 1px solid #ECEFF1;
-  column-gap: 0;
+	-moz-column-count: 2;
+	-moz-column-width: 220px;
+	-moz-column-rule: 1px solid #ECEFF1;
+	-moz-column-gap: 0;
+
+	column-count: 2;
+	column-width: 220px;
+	column-rule: 1px solid #ECEFF1;
+	column-gap: 0;
 
   .tutorial-steps-list {
     margin: 0 !important;

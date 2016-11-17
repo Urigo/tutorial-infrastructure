@@ -83,6 +83,8 @@
   position: relative;
   display: inline-block;
   color: #555;
+  padding: 5px 0;
+  line-height: 1;
 
   .button-inner {
 	  display: flex;
@@ -93,6 +95,7 @@
     display: none;
     background-color: #fff;
     padding: 7px;
+	line-height: 1.6;
 
 	&.visible {
 		display: block;
@@ -107,6 +110,8 @@
 @media screen and (min-width: 1000px) {
 	.primary-nav {
 		margin-top: 0;
+		display: flex;
+		align-items: center;
 	}
 
 	[md-icon-button].nav-toggle {
