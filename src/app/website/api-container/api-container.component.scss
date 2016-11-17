@@ -1,3 +1,13 @@
+.api-content a {
+	text-decoration: underline;
+	color: $linkColor;
+	transition: all .2s;
+
+	&:hover {
+		color: #222;
+	}
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -8,11 +18,25 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #fff;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     column-width: 210px !important;
     column-count: 1 !important;
+	font-size: 1rem;
+
+	a {
+		display: block;
+		padding: 8px;
+
+		&:hover {
+			background: #f2f2f2;
+		}
+	}
+
+	li {
+		border-bottom: 1px solid #f2f2f2;
+	}
   }
 }
 

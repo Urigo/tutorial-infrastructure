@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 64px 0 0;
   font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.6;
 }
@@ -23,14 +23,100 @@ h1, h2 {
 	font-family: 'League Spartan', sans-serif;
 }
 
+h1, h2, h3 {
+	code {
+		background: none;
+		padding: 0;
+	    font-size: 100%;
+	    color: inherit;
+	    background-color: none;
+		font-family: inherit;
+	}
+}
+
+h1, h2, h3,
+p, ul, li, {
+	word-break: break-word;
+}
+
 pre {
-  background: transparent;
-  border: none;
-  white-space: pre-wrap;
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+
+  code {
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	color: #333;
+	background: #f8f8f8;
+	-webkit-text-size-adjust: none;
+	font-size: 100%;
+  }
 }
 
 code {
-  white-space: pre-wrap;
+  	white-space: pre-wrap;
+  	padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+
+	a {
+		color: #c7254e;
+		text-decoration: underline;
+		transition: all .2s;
+
+		&:hover {
+			color: #222;
+		}
+	}
+}
+
+table {
+	max-width: 100%;
+	overflow-x: scroll;
+	border: 1px solid #ddd;
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: inline-block;
+
+	code {
+		background: none;
+		padding: 0;
+	    font-size: 100%;
+	    color: inherit;
+	    background-color: none;
+	}
+}
+
+th {
+	background: #f1f1f1;
+	padding: 10px;
+	text-align: left;
+
+	+ th {
+		border-left: 1px solid #eee;
+	}
+}
+
+td {
+	border-top: 1px solid #eee;
+	vertical-align: top;
+	padding: 10px;
+
+	+ td {
+		border-left: 1px solid #eee;
+	}
 }
 
 img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
@@ -139,7 +225,7 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
   margin: 0 !important;
 
   li {
-    padding: 8px !important;
+    padding: 0;
 
     a {
       text-decoration: none;
