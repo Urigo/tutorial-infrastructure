@@ -1,6 +1,6 @@
 @import "../../../assets/style/colors";
 
-$angular2-background: #1976d2;
+$background: white;
 
 a {
   text-decoration: none;
@@ -10,14 +10,27 @@ a {
 	background: #fff;
 }
 
-.angular-2 {
+.meteor-rxjs {
+  img {
+    vertical-align: middle;
+  }
+
+  .plus {
+    margin-left: 0px;
+    margin-right: 20px;
+    font-weight: bolder;
+  }
 
 	.md-primary {
 		margin: 10px;
 	}
 
+  .container {
+    color: black;
+  }
+
   .main-unit {
-    background: $angular2-background !important;
+    background: $background !important;
     color: white;
   }
 
