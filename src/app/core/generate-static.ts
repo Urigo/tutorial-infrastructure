@@ -88,7 +88,5 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
     return donePromise;
   }
 
-  runNext(urlsToLoad).then(() => {
-    console.log('Done generating ' + urlsToLoad.length + ' static HTML pages!');
-  });
+  return runNext(urlsToLoad);
 }
