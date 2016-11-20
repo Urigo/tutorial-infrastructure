@@ -6,6 +6,7 @@ import {ANGULAR2_METEOR_API_REFERENCE} from "../../api-reference/angular2-meteor
 import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor-api";
 import * as _ from "lodash";
 import {Router} from "@angular/router";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: "api-container",
@@ -14,9 +15,9 @@ import {Router} from "@angular/router";
 export class ApiPageContainerComponent implements OnInit {
   private currentApiVersion: string = '';
   private apiData: any;
-  private currentUrl: string = '';
+  private currentUrl: SafeUrl;
 
-  constructor(private activated: ActivatedApi, private router: Router) {
+  constructor(private activated: ActivatedApi, private router: Router, private sanitizier: DomSanitizer) {
     this.activated.api.subscribe((api: ApiRouteDataDefinition) => {
       this.apiData = api;
 
@@ -27,10 +28,6 @@ export class ApiPageContainerComponent implements OnInit {
         this.currentApiVersion = (<ApiVersion>api.apiVersion).visibleName || (<ApiVersion>api.apiVersion).name;
       }
     })
-  }
-
-  ngOnInit() {
-    this.currentUrl = this.router.url;
   }
 
   getOptions() {
