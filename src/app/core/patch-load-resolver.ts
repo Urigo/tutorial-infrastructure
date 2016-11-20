@@ -16,7 +16,7 @@ export class PatchLoadResolve implements Resolve<any> {
     let data: TutorialRouteData = <TutorialRouteData>route.data;
 
     let tutorialPatchObservable = this.cache.load(data.tutorialObject.id, data.tutorialObject);
-    let stepHtmlObservable = this.templatesCache.load(data.stepObject.template);
+    let stepHtmlObservable = this.templatesCache.load(data.tutorialObject.id, data.stepObject.template);
 
     return Observable.zip(tutorialPatchObservable, stepHtmlObservable, (tutorial, step) => {
       return { tutorial, step };

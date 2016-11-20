@@ -1,15 +1,14 @@
-<div class="diffbox">
-    {{test}}
-    <div class="title-panel">
-        <span class="step-number">{{step}}</span> <span class="commit-summary">{{diffDetails.summary}}</span>
-        <a target="_blank" class="github-commit-link" [href]="buildGitHubLink()">{{filename}}</a>
+<div class="diffbox" *ngFor="let filename of files">
+  <div class="title-panel">
+    <span class="step-number">{{step}}</span> <span class="commit-summary">{{diffDetails.summary}}</span>
+    <a target="_blank" class="github-commit-link" [href]="buildGitHubLink(filename)">{{filename}}</a>
+  </div>
+  <div class="code-container">
+    <div class="scroll-container">
+      <div class="line-numbers">
+        <pre *ngFor="let lineNumber of getLineNumbers(filename)" class="line-number">{{lineNumber}}</pre>
+      </div>
+      <div class="line-content" *ngIf="getFileContent(filename)" [diffboxCode]="getFileContent(filename)"></div>
     </div>
-    <div class="code-container">
-        <div class="scroll-container">
-            <div class="line-numbers">
-                <pre *ngFor="let lineNumber of getLineNumbers()" class="line-number">{{lineNumber}}</pre>
-            </div>
-            <div class="line-content" *ngIf="codeContent" [diffboxCode]="codeContent"></div>
-        </div>
-    </div>
+  </div>
 </div>

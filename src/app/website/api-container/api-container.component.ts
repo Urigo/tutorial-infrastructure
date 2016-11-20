@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {ActivatedApi} from "../../core/current-api";
 import {ApiRouteDataDefinition} from "../../core/apis-routes";
 import {ApiVersion, ApiStaticDefinitionObject} from "../../core/api-definition";
@@ -12,12 +12,11 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
   selector: "api-container",
   templateUrl: "./api-container.component.html"
 })
-export class ApiPageContainerComponent implements OnInit {
+export class ApiPageContainerComponent {
   private currentApiVersion: string = '';
   private apiData: any;
-  private currentUrl: SafeUrl;
 
-  constructor(private activated: ActivatedApi, private router: Router, private sanitizier: DomSanitizer) {
+  constructor(private activated: ActivatedApi) {
     this.activated.api.subscribe((api: ApiRouteDataDefinition) => {
       this.apiData = api;
 

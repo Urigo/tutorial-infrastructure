@@ -57,10 +57,8 @@ export class DiffBoxComponent implements OnInit {
   @ViewChild('htmlContainer') htmlContainer;
 
   private diffDetails: ParsedPatchDefinition;
-  private filename: string;
   private tutorialData: TutorialDefinition;
-  private currentFileModification: Array<SingleChange>;
-  private codeContent: string;
+  private files: string[] = [];
 
   constructor(private route: ActivatedRoute) {
   }
@@ -75,43 +73,31 @@ export class DiffBoxComponent implements OnInit {
         throw new Error(`Unable to find step ${this.step} in you tutorial ${this.tutorialName}!`);
       }
 
-      if (!this.optionalFilename) {
-        let availableFiles = Object.keys(this.diffDetails.files);
-
-        if (availableFiles.length === 1) {
-          this.filename = availableFiles[0];
-        } else if (availableFiles.length === 0) {
-          throw new Error(`Something went wrong, unable to find files in your commit ${this.diffDetails.sha}!`);
-        } else {
-          throw new Error(`Multiple files available in step ${this.step}, please specify one: ${availableFiles.join(', ')}`);
-        }
-      } else {
-        this.filename = this.optionalFilename;
-      }
-
-      this.currentFileModification = this.diffDetails.files[this.filename];
-
-      if (!this.currentFileModification) {
-        throw new Error(`File ${this.filename} does not exists in commit ${this.diffDetails.sha}`);
-      }
-
-      let lines = this.getLines();
-      let content = '';
-
-      lines.forEach((line) => {
-        content += '<pre class="' + line.cssClass + '">' + line.highlightedContent + '</pre>';
-      });
-
-      this.codeContent = content;
+      this.files = Object.keys(this.diffDetails.files);
     });
   }
 
-  buildGitHubLink(): string {
+  getFileModification(filename) {
+    return this.diffDetails.files[filename];
+  }
+
+  getFileContent(filename) {
+    let lines = this.getLines(filename);
+    let content = '';
+
+    lines.forEach((line) => {
+      content += '<pre class="' + line.cssClass + '">' + line.highlightedContent + '</pre>';
+    });
+
+    return content;
+  }
+
+  buildGitHubLink(filename: string): string {
     return `http://github.com/${this.tutorialData.gitHub}/commit/${this.diffDetails.sha}`;
   }
 
-  getLineNumbers() {
-    const lineRanges = this.currentFileModification.map((section) => {
+  getLineNumbers(filename) {
+    const lineRanges = this.getFileModification(filename).map((section) => {
       return _.range(section.lineNumbers.added.start,
         section.lineNumbers.added.start + section.lineNumbers.added.lines);
     });
@@ -125,13 +111,13 @@ export class DiffBoxComponent implements OnInit {
     }, null);
   }
 
-  getLines() {
-    const sectionLines = this.currentFileModification.map((section) => {
+  getLines(filename: string) {
+    const sectionLines = this.getFileModification(filename).map((section) => {
       let allLines = section.lines.map((line: LineContent) => {
         let highlightedContent = null;
 
         if (line.content) {
-          const ext = _.last(this.filename.split('.'));
+          const ext = _.last(filename.split('.'));
           let fileType = ext;
 
           if (ext === 'jsx') {

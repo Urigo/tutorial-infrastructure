@@ -1,5 +1,7 @@
 import {TutorialDefinition} from '../core/tutorial-definition';
 
+const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/meteor-angular2.0-socially/master/manuals/templates/';
+
 export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
   id: 'angular2-meteor-socially',
   name: 'Angular 2 Socially',
@@ -10,128 +12,128 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
     {
       url: '/bootstrap',
       name: 'Bootstrap',
-      template: '/assets/templates/angular2-meteor-socially/step_00.md',
+      template: markdownUrlBase + 'step1.md',
       hideCodeDiff: true
     },
     {
       url: '/static-template',
       name: 'Static Templates',
-      template: '/assets/templates/angular2-meteor-socially/step_01.md'
+      template: markdownUrlBase + 'step2.md'
     },
     {
       url: '/dynamic-template',
       name: 'Dynamic Templates',
-      template: '/assets/templates/angular2-meteor-socially/step_02.md'
+      template: markdownUrlBase + 'step3.md'
     },
     {
       url: '/3-way-data-binding',
       name: '3-way Data Binding',
-      template: '/assets/templates/angular2-meteor-socially/step_03.md'
+      template: markdownUrlBase + 'step4.md'
     },
     {
       url: '/adding-removing-objects-and-angular-event-handling',
       name: 'Data Management',
-      template: '/assets/templates/angular2-meteor-socially/step_04.md'
+      template: markdownUrlBase + 'step5.md'
     },
     {
       url: '/routing-and-multiple-views',
       name: 'Routing & Multiple Views',
-      template: '/assets/templates/angular2-meteor-socially/step_05.md'
+      template: markdownUrlBase + 'step6.md'
     },
     {
       url: '/bindings',
       name: 'Bindings',
-      template: '/assets/templates/angular2-meteor-socially/step_06.md'
+      template: markdownUrlBase + 'step7.md'
     },
     {
       url: '/folder-structure',
       name: 'Folder Structure',
-      template: '/assets/templates/angular2-meteor-socially/step_07.md'
+      template: markdownUrlBase + 'step8.md'
     },
     {
       url: '/users-and-authentication',
       name: 'Users & Authentication',
-      template: '/assets/templates/angular2-meteor-socially/step_08.md'
+      template: markdownUrlBase + 'step9.md'
     },
     {
       url: '/privacy-and-publish-subscribe-functions',
       name: 'Privacy & Subscriptions',
-      template: '/assets/templates/angular2-meteor-socially/step_09.md'
+      template: markdownUrlBase + 'step10.md'
     },
     {
       url: '/deploying-your-app',
       name: 'Deployment',
-      template: '/assets/templates/angular2-meteor-socially/step_10.md'
+      template: markdownUrlBase + 'step11.md'
     },
     {
       url: '/running-your-app-on-android-or-ios-with-phonegap',
       name: 'Mobile Support',
-      template: '/assets/templates/angular2-meteor-socially/step_11.md'
+      template: markdownUrlBase + 'step12.md'
     },
     {
       url: '/search-sort-pagination-and-reactive-vars',
       name: 'Filter and Pagination',
-      template: '/assets/templates/angular2-meteor-socially/step_12.md'
+      template: markdownUrlBase + 'step13.md'
     },
     {
       url: '/using-and-creating-angularjs-pipes',
       name: 'AngularJS Pipes',
-      template: '/assets/templates/angular2-meteor-socially/step_13.md'
+      template: markdownUrlBase + 'step14.md'
     },
     {
       url: '/meteor-methods',
       name: 'Meteor Methods',
-      template: '/assets/templates/angular2-meteor-socially/step_14.md'
+      template: markdownUrlBase + 'step15.md'
     },
     {
       url: '/conditional-template-directives-with-angularjs',
       name: 'Conditional Templates',
-      template: '/assets/templates/angular2-meteor-socially/step_15.md'
+      template: markdownUrlBase + 'step16.md'
     },
     {
       url: '/google-maps',
       name: 'Google Maps',
-      template: '/assets/templates/angular2-meteor-socially/step_16.md'
+      template: markdownUrlBase + 'step17.md'
     },
     {
       url: '/css-sass-and-bootstrap',
       name: 'CSS, SASS and Bootstrap',
-      template: '/assets/templates/angular2-meteor-socially/step_17.md'
+      template: markdownUrlBase + 'step18.md'
     },
     {
       url: '/angular-material-and-custom-angular-auth-forms',
       name: 'Angular2-Material & Custom Auth',
-      template: '/assets/templates/angular2-meteor-socially/step_18.md'
+      template: markdownUrlBase + 'step19.md'
     },
     {
       url: '/3rd-party-libraries',
       name: 'Third-Party Libraries',
-      template: '/assets/templates/angular2-meteor-socially/step_19.md'
+      template: markdownUrlBase + 'step20.md'
     },
     {
       url: '/files-and-uploadfs',
       name: 'Files and UploadFS',
-      template: '/assets/templates/angular2-meteor-socially/step_20.md'
+      template: markdownUrlBase + 'step21.md'
     },
     {
       url: '/packages-isolation',
       name: 'Packages Isolation',
-      template: '/assets/templates/angular2-meteor-socially/step_21.md'
+      template: markdownUrlBase + 'step22.md'
     },
     {
       url: '/ionic2',
       name: 'Ionic2',
-      template: '/assets/templates/angular2-meteor-socially/step_22.md'
+      template: markdownUrlBase + 'step23.md'
     },
     {
       url: '/ngupgrade-and-migration',
       name: 'ngUpgrade & Migration',
-      template: '/assets/templates/angular2-meteor-socially/step_23.md'
+      template: markdownUrlBase + 'step24.md'
     },
     {
       url: '/next-steps',
       name: 'Next Steps',
-      template: '/assets/templates/angular2-meteor-socially/step_24.md',
+      template: markdownUrlBase + 'step25.md',
       hideCodeDiff: true
     }
   ]

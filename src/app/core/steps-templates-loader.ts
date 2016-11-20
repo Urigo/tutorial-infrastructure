@@ -18,10 +18,17 @@ export class StepsTemplatesLoader {
     });
   }
 
-  public load(fallbackUrl?: string): Observable<any> {
+  convertToHtmlTags(tutorialName: string, markdown: string): string {
+    return markdown.replace(/\{\{\{diff_step (.*?)\}\}\}/g, (allMatch, stepNumber) => {
+      return `<diffbox tutorial="${tutorialName}" step="${stepNumber}"></diffbox>`;
+    });
+  }
+
+  public load(tutorialName, url?: string): Observable<any> {
     return this.http
-      .get(fallbackUrl)
+      .get(url)
       .map(res => res.text())
+      .map(this.convertToHtmlTags.bind(this, tutorialName))
       .map(text => marked(text))
       .map(this.escapeAngularBindings);
   }

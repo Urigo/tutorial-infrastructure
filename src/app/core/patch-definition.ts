@@ -29,7 +29,7 @@ export interface PatchDefinition {
 }
 
 export interface ParsedPatchDefinition {
-  files: Array<SingleChange>;
+  files: {[filename: string]: SingleChange[]};
   message: string;
   sha: string;
   stepNumber: string;
