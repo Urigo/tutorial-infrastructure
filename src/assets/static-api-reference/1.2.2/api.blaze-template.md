@@ -126,4 +126,5 @@ To pass parameters to a `blaze-template` directive:
 2. Add the parameters to the new template
 3. Include that new template with blaze-template
 
-      <blaze-template name="quickFormWithParameters"></blaze-template>
+
+    <blaze-template name="quickFormWithParameters"></blaze-template>

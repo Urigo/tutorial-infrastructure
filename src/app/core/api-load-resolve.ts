@@ -50,8 +50,6 @@ export class ApiLoadResolve implements Resolve<any> {
         .get(ghUrl)
         .map(res => res.text())
         .map((sourceCode) => {
-          console.log(filePath);
-
           let fileExt = _.last(filePath.split('.')).toLowerCase();
 
            if (fileExt === "md") {
