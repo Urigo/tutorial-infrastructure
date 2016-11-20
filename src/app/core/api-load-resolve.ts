@@ -2,8 +2,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { ApiRouteDataDefinition } from './apis-routes';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { ActivatedApi } from './current-api';
 import { StaticFileDefinition, ApiFile, ApiDefinition, ApiVersion } from './api-definition';
+import * as _ from 'lodash';
 let jsdoc2md = require('jsdoc-to-markdown');
 let marked = require('marked');
 
@@ -49,7 +49,17 @@ export class ApiLoadResolve implements Resolve<any> {
       return this.http
         .get(ghUrl)
         .map(res => res.text())
-        .map(sourceCode => jsdoc2md.renderSync({ source: sourceCode, 'no-cache': true }))
+        .map((sourceCode) => {
+          console.log(filePath);
+
+          let fileExt = _.last(filePath.split('.')).toLowerCase();
+
+           if (fileExt === "md") {
+             return sourceCode;
+           }
+
+           return jsdoc2md.renderSync({ source: sourceCode, 'no-cache': true })
+        })
         .map(text => marked(text))
         .map(this.escapeAngularBindings)
         .map(parsedDocs => {
