@@ -20,6 +20,10 @@ export class ApiExampleCodeHighlightDirective implements OnInit {
         lang = 'typescript';
       }
 
+
+      // TODO: Fix later
+      lang = 'typescript';
+
       this.element.nativeElement.children.forEach((line) => {
         if (line.type === 'text') {
           const highlighted = hljs.highlight(lang, line.data, true).value;
