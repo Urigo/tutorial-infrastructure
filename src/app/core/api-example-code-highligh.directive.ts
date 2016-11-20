@@ -1,5 +1,6 @@
 import { Directive, Injectable, ElementRef, OnInit, Renderer } from '@angular/core';
 import * as hljs from 'highlight.js';
+import * as _ from "lodash";
 
 @Directive({
   selector: 'code'
@@ -19,8 +20,15 @@ export class ApiExampleCodeHighlightDirective implements OnInit {
         lang = 'typescript';
       }
 
-      const highlighted = hljs.highlight(lang, this.element.nativeElement.children[0].data, true).value;
-      this.renderer.setElementProperty(this.element.nativeElement, 'innerHTML', highlighted);
+      this.element.nativeElement.children.forEach((line) => {
+        if (line.type === 'text') {
+          const highlighted = hljs.highlight(lang, line.data, true).value;
+          let a = this.renderer.createElement(null, 'span');
+          this.renderer.setElementProperty(a, 'innerHTML', highlighted);
+          this.renderer.attachViewAfter(line, [a]);
+          this.renderer.setText(line, '');
+        }
+      });
     }
   }
 }

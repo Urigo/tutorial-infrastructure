@@ -1,4 +1,3 @@
-import {DiffBoxComponent} from './diffbox.component';
 import {ApiListItems} from './api-list-items.component';
 import {ApiVersionsList} from './api-versions-list.component';
 import {MarkdownFileViewComponent} from './markdown-file.component';
@@ -17,7 +16,7 @@ import {StepsUtils} from './step-utils';
 import {ApiLoadResolve} from './api-load-resolve';
 import {ActivatedApi} from './current-api';
 import {NgModule} from '@angular/core';
-import {StepListComponent} from './steps-list.component.ts';
+import {StepListComponent} from './steps-list.component';
 import {RouterModule} from '@angular/router';
 
 
@@ -25,7 +24,6 @@ const exportsAndDeclarations = [
   StepListComponent,
   TutorialPage,
   ApiPageComponent,
-  ApiExampleCodeHighlightDirective,
   ImproveThisDocLink,
   StepNameDirective,
   TutorialNavigation,
