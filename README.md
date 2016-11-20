@@ -42,10 +42,13 @@ At the moment, while developing, try access:
 - [x] Fix main SCSS load
 - [x] Workaround for innerHTML issue of Universal
 - [x] Use NgModule
+- [x] Add support for Markdown from Tortilla
 - [ ] Beautiful Design
-- [ ] Find a solution for the images
+- [ ] Add support for Patch from Tortilla
+- [ ] Update all tutorials
+- [ ] Find a solution for the assets
 - [ ] Implement Video
-- [ ] Page title (<title>)
+- [ ] Page title support (<title>)
 - [ ] SEO support (keyword tags in <head>) + Site map
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.
 - [ ] Prepare for publish as NPM package
