@@ -1,4 +1,5 @@
 import 'angular2-universal-polyfills';
+import './_workaround';
 import * as path from 'path';
 import * as express from 'express';
 import { enableProdMode } from '@angular/core';

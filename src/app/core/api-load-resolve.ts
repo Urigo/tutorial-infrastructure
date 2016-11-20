@@ -44,10 +44,12 @@ export class ApiLoadResolve implements Resolve<any> {
       let filePath = apiFile.filePath;
       let ghUrl = 'https://raw.githubusercontent.com/' + repo + '/' + revision + '/' + filePath;
 
+      console.log(ghUrl);
+
       return this.http
         .get(ghUrl)
         .map(res => res.text())
-        .map(sourceCode => jsdoc2md.renderSync({ source: sourceCode, cache: false }))
+        .map(sourceCode => jsdoc2md.renderSync({ source: sourceCode, 'no-cache': true }))
         .map(text => marked(text))
         .map(this.escapeAngularBindings)
         .map(parsedDocs => {
