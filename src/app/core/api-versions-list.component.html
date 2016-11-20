@@ -1,5 +1,5 @@
 <ul *ngIf="apiData" class="apis-versions-list">
     <li class="api-version-list-item" *ngFor="let version of getVersionsList();" routerLinkActive="active-step" [routerLinkActiveOptions]="{exact: true}">
-        <a class="version-link" [routerLink]="createLink(version)">{{version.name}}</a>
+        <a class="version-link" [routerLink]="createLink(version)">{{version.visibleName || version.name}}</a>
     </li>
 </ul>

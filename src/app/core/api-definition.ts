@@ -7,6 +7,7 @@ export interface ApiFile {
 
 export interface ApiVersion {
   name: string;
+  visibleName?: string;
   revision: string;
   exclude?: Array<string>;
 }

@@ -22,7 +22,7 @@ export class ApiPageContainerComponent {
         this.currentApiVersion = (<ApiStaticDefinitionObject>api.apiVersion).version;
       }
       else {
-        this.currentApiVersion = (<ApiVersion>api.apiVersion).name;
+        this.currentApiVersion = (<ApiVersion>api.apiVersion).visibleName || (<ApiVersion>api.apiVersion).name;
       }
     })
   }

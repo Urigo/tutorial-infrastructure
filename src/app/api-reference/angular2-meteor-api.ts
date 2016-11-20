@@ -29,6 +29,7 @@ export const ANGULAR2_METEOR_API_REFERENCE : ApiDefinition = {
   versions: [
     {
       name: 'latest',
+      visibleName: '0.7.0',
       revision: '6e160958ac163fe476ef11548e54d216d6c20e1a',
       exclude: ['bootstrap']
     },
