@@ -31,21 +31,21 @@ export class TutorialsContainer {
   }
 
   getOptions() {
-    if (this.tutorial === ANGULAR2_METEOR_SOCIALLY || this.tutorial === ANGULAR1_METEOR_SOCIALLY) {
+    if (this.tutorial && (this.tutorial.id === ANGULAR2_METEOR_SOCIALLY.id || this.tutorial.id === ANGULAR1_METEOR_SOCIALLY.id)) {
       let index = this.tutorial.steps.findIndex((s) => {
-        return s == this.step;
+        return s.template == this.step.template;
       });
 
       return [
         {
           name: "Angular 1",
           link: this.createAbsoluteLink(StepsUtils.getStepLink(ANGULAR1_METEOR_SOCIALLY, ANGULAR1_METEOR_SOCIALLY.steps[index])),
-          active: this.tutorial === ANGULAR1_METEOR_SOCIALLY
+          active: this.tutorial.id === ANGULAR1_METEOR_SOCIALLY.id
         },
         {
           name: "Angular 2",
           link: this.createAbsoluteLink(StepsUtils.getStepLink(ANGULAR2_METEOR_SOCIALLY, ANGULAR2_METEOR_SOCIALLY.steps[index])),
-          active: this.tutorial === ANGULAR2_METEOR_SOCIALLY
+          active: this.tutorial.id === ANGULAR2_METEOR_SOCIALLY.id
         }
       ]
     }

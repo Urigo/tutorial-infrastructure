@@ -325,6 +325,12 @@ img[alt="angular1-wa-ionic-cli"], img[alt="angular1-wa-meteor-cli"] {
 		color: #fff !important;
 		border: 2px solid #dd1b16 !important;
 	}
+
+  &.active {
+    background: #a6120d !important;
+    color: #fff !important;
+    border: 2px solid #a6120d !important;
+  }
 }
 
 tutorial-page-content {
