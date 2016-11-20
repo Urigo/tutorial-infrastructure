@@ -25,12 +25,12 @@ export class TutorialNavigation {
         tutorial,
         step
       };
-    }).subscribe((data) => {
+    }).subscribe((data: any) => {
       let tutorial: TutorialDefinition = data.tutorial;
       let step: TutorialStep = data.step;
 
       let index = tutorial.steps.findIndex((s) => {
-        return s === step;
+        return s.template === step.template;
       });
 
       if (this.tutorialNavigation === 'next') {
