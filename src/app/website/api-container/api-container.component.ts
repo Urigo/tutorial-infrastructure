@@ -4,6 +4,7 @@ import {ApiRouteDataDefinition} from "../../core/apis-routes";
 import {ApiVersion, ApiStaticDefinitionObject} from "../../core/api-definition";
 import {ANGULAR2_METEOR_API_REFERENCE} from "../../api-reference/angular2-meteor-api";
 import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor-api";
+import * as _ from "lodash";
 
 @Component({
   selector: "api-container",
@@ -32,12 +33,12 @@ export class ApiPageContainerComponent {
         {
           name: "Angular 1",
           link: "/api/angular-meteor/1.3.11/",
-          active: this.apiData.apiDefinition === ANGULAR1_METEOR_API_REFERENCE
+          active: _.isEqual(this.apiData.apiDefinition, ANGULAR1_METEOR_API_REFERENCE)
         },
         {
           name: "Angular 2",
           link: "/api/angular2-meteor/latest/MeteorComponent",
-          active: this.apiData.apiDefinition === ANGULAR2_METEOR_API_REFERENCE
+          active: _.isEqual(this.apiData.apiDefinition, ANGULAR2_METEOR_API_REFERENCE)
         }
       ];
     }
