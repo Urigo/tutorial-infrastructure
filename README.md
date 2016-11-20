@@ -48,7 +48,7 @@ At the moment, while developing, try access:
 - [ ] Update all tutorials
 - [ ] Find a solution for the assets
 - [ ] Implement Video
-- [ ] Page title support (<title>)
-- [ ] SEO support (keyword tags in <head>) + Site map
+- [ ] Page title support (title tag)
+- [ ] SEO support (keyword tags in head tag) + Site map
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.
 - [ ] Prepare for publish as NPM package
