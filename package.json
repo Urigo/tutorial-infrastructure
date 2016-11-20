@@ -43,6 +43,7 @@
     "angular2-universal-polyfills": "2.1.0-rc.1",
     "body-parser": "1.15.2",
     "express": "4.14.0",
+    "font-awesome": "^4.7.0",
     "git-patch-parser": "0.2.1",
     "highlight.js": "9.7.0",
     "jsdoc-to-markdown": "2.0.1",

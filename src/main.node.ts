@@ -15,13 +15,15 @@ import {routing} from './app/app-routes';
 import {APP_DECLARAIONS} from './app/app-declarations';
 import {MdButtonModule} from '@angular2-material/button';
 import {MdToolbarModule} from '@angular2-material/toolbar';
+import {MdIconModule} from '@angular2-material/icon';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: APP_DECLARAIONS,
   imports: [
-    MdButtonModule,
-    MdToolbarModule,
+    MdButtonModule.forRoot(),
+    MdToolbarModule.forRoot(),
+    MdIconModule.forRoot(),
     FormsModule,
     routing,
     TutorialsCoreModule,
