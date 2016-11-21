@@ -7,14 +7,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <script src="/assets/js/site.js"></script>
-  <base href="/">
+  <base href="/angular-meteor-docs/">
 
   <meta name="description" content="First, let&amp;#39;s create Angular 2 basic component in the client/main.ts file:   Let&amp;#39;s understand what do we have here - MainComponent created as c">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="keywords" content="realtime, backend, websockets, graphql, apollo, angular, angular 2, meteor, Angular Bindings, realtime sync, browser, mobile, build apps fast, completely realtime, build collaborative apps, real-time, MEAN stack, JSON data, Easy authentication, oAuth, Real-time Synchronization. angular stack, MongoDB, Node.js, Creating, Angular, 2, Application">
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="alternate" type="application/rss+xml" title="Meteor Blog RSS Feed" href="http://info.meteor.com/blog/rss.xml">
   <link rel="author" href="https://plus.google.com/105270147965228044669">
   <link href="https://plus.google.com/104063475472216743156" rel="publisher">
@@ -23,11 +22,29 @@
   <meta property="os:repo" content="https://github.com/urigo/angular-meteor">
   <meta property="os:rcs_type" content="git">
   <meta property="os:src" content="git@github.com:urigo/angular-meteor.git">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      var dropdown = document.querySelector('.tutorials-dropdown');
+      var dropdownContent = document.querySelector('.dropdown-content');
+
+      navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('visible');
+      });
+
+      dropdown.addEventListener('click', function() {
+        dropdownContent.classList.toggle('visible');
+      });
+    }, false);
+  </script>
 <style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: flex; box-sizing: border-box; width: 100%; height: 64px; flex-direction: row; align-items: center; } /*# sourceMappingURL=toolbar.css.map */ </style><style>/** * A collection of mixins and CSS classes that can be used to apply elevation to a material * element. * See: https://www.google.com/design/spec/what-is-material/elevation-shadows.html * Examples: * * * .md-foo { *   @include $md-elevation(2); * *   &:active { *     @include $md-elevation(8); *   } * } * * <div id="external-card" class="md-elevation-z2"><p>Some content</p></div> * * For an explanation of the design behind how elevation is implemented, see the design doc at * https://goo.gl/Kq0k9Z. */ /** * The css property used for elevation. In most cases this should not be changed. It is exposed * as a variable for abstraction / easy use when needing to reference the property directly, for * example in a will-change rule. */ /** The default duration value for elevation transitions. */ /** The default easing value for elevation transitions. */ /** * Applies the correct css rules to an element to give it the elevation specified by $zValue. * The $zValue must be between 0 and 24. */ /** * Returns a string that can be used as the value for a transition property for elevation. * Calling this function directly is useful in situations where a component needs to transition * more than one property. * * .foo { *   transition: md-elevation-transition-property-value(), opacity 100ms ease; *   will-change: $md-elevation-property, opacity; * } */ /** * Applies the correct css rules needed to have an element transition between elevations. * This mixin should be applied to elements whose elevation values will change depending on their * context (e.g. when active or disabled). */ /** * This mixin overrides default button styles like the gray background, * the border, and the outline. */ /** Applies a property to an md-button element for each of the supported palettes. */ /** Applies a focus style to an md-button element for each of the supported palettes. */ [md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] { box-sizing: border-box; position: relative; background: transparent; cursor: pointer; user-select: none; outline: none; border: none; display: inline-block; white-space: nowrap; text-decoration: none; vertical-align: baseline; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; font-weight: 500; color: currentColor; text-align: center; margin: 0; min-width: 88px; line-height: 36px; padding: 0 16px; border-radius: 3px; } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab], .md-primary[md-button], .md-primary[md-icon-button] { color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab], .md-accent[md-button], .md-accent[md-icon-button] { color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab], .md-warn[md-button], .md-warn[md-icon-button] { color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-primary[disabled][md-button], .md-primary[disabled][md-icon-button], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-accent[disabled][md-button], .md-accent[disabled][md-icon-button], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], .md-warn[disabled][md-button], .md-warn[disabled][md-icon-button], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab], [disabled][disabled][md-button], [disabled][disabled][md-icon-button] { color: rgba(0, 0, 0, 0.38); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab], [disabled][md-button], [disabled][md-icon-button] { cursor: default; } .md-button-focus[md-raised-button]::after, .md-button-focus[md-fab]::after, .md-button-focus[md-mini-fab]::after, .md-button-focus[md-button]::after, .md-button-focus[md-icon-button]::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } .md-button-focus.md-primary[md-raised-button]::after, .md-button-focus.md-primary[md-fab]::after, .md-button-focus.md-primary[md-mini-fab]::after, .md-button-focus.md-primary[md-button]::after, .md-button-focus.md-primary[md-icon-button]::after { background-color: rgba(0, 150, 136, 0.12); } .md-button-focus.md-accent[md-raised-button]::after, .md-button-focus.md-accent[md-fab]::after, .md-button-focus.md-accent[md-mini-fab]::after, .md-button-focus.md-accent[md-button]::after, .md-button-focus.md-accent[md-icon-button]::after { background-color: rgba(156, 39, 176, 0.12); } .md-button-focus.md-warn[md-raised-button]::after, .md-button-focus.md-warn[md-fab]::after, .md-button-focus.md-warn[md-mini-fab]::after, .md-button-focus.md-warn[md-button]::after, .md-button-focus.md-warn[md-icon-button]::after { background-color: rgba(244, 67, 54, 0.12); } [md-raised-button], [md-fab], [md-mini-fab] { box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); background-color: #fafafa; transform: translate3d(0, 0, 0); transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { color: white; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { color: rgba(255, 255, 255, 0.870588); } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { color: white; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { color: rgba(0, 0, 0, 0.38); } .md-primary[md-raised-button], .md-primary[md-fab], .md-primary[md-mini-fab] { background-color: #009688; } .md-accent[md-raised-button], .md-accent[md-fab], .md-accent[md-mini-fab] { background-color: #9c27b0; } .md-warn[md-raised-button], .md-warn[md-fab], .md-warn[md-mini-fab] { background-color: #f44336; } .md-primary[disabled][md-raised-button], .md-primary[disabled][md-fab], .md-primary[disabled][md-mini-fab], .md-accent[disabled][md-raised-button], .md-accent[disabled][md-fab], .md-accent[disabled][md-mini-fab], .md-warn[disabled][md-raised-button], .md-warn[disabled][md-fab], .md-warn[disabled][md-mini-fab], [disabled][disabled][md-raised-button], [disabled][disabled][md-fab], [disabled][disabled][md-mini-fab] { background-color: rgba(0, 0, 0, 0.12); } [md-raised-button]:active, [md-fab]:active, [md-mini-fab]:active { box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); } [disabled][md-raised-button], [disabled][md-fab], [disabled][md-mini-fab] { box-shadow: none; } [md-button]:hover::after, [md-icon-button]:hover::after { position: absolute; top: 0; left: 0; bottom: 0; right: 0; content: ''; background-color: rgba(0, 0, 0, 0.12); border-radius: inherit; pointer-events: none; } [md-button]:hover.md-primary::after, [md-icon-button]:hover.md-primary::after { background-color: rgba(0, 150, 136, 0.12); } [md-button]:hover.md-accent::after, [md-icon-button]:hover.md-accent::after { background-color: rgba(156, 39, 176, 0.12); } [md-button]:hover.md-warn::after, [md-icon-button]:hover.md-warn::after { background-color: rgba(244, 67, 54, 0.12); } [md-button][disabled]:hover.md-primary, [md-button][disabled]:hover.md-accent, [md-button][disabled]:hover.md-warn, [md-button][disabled]:hover::after, [md-icon-button][disabled]:hover.md-primary, [md-icon-button][disabled]:hover.md-accent, [md-icon-button][disabled]:hover.md-warn, [md-icon-button][disabled]:hover::after { background-color: transparent; } [md-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 56px; height: 56px; padding: 0; } [md-fab] i, [md-fab] md-icon { padding: 16px 0; } [md-mini-fab] { min-width: 0; border-radius: 50%; background-color: #9c27b0; color: rgba(255, 255, 255, 0.870588); width: 40px; height: 40px; padding: 0; } [md-mini-fab] i, [md-mini-fab] md-icon { padding: 8px 0; } [md-icon-button] { min-width: 0; padding: 0; width: 40px; height: 40px; line-height: 24px; border-radius: 50%; } [md-icon-button] .md-button-wrapper > * { vertical-align: middle; } .md-button-ripple { position: absolute; top: 0; left: 0; bottom: 0; right: 0; } .md-button-ripple-round { border-radius: 50%; z-index: 1; } @media screen and (-ms-high-contrast: active) { .md-raised-button, .md-fab, .md-mini-fab { border: 1px solid #fff; } } /*# sourceMappingURL=button.css.map */ </style><style>/** The width/height of the icon element. */ /** This works because we're using ViewEncapsulation.None. If we used the default encapsulation, the selector would need to be ":host". */ md-icon { background-repeat: no-repeat; display: inline-block; fill: currentColor; height: 24px; width: 24px; } /*# sourceMappingURL=icon.css.map */ </style></head>
 
 <body>
   <app><md-toolbar class="main-toolbar md-primary"><div class="md-toolbar-layout"> <md-toolbar-row> 
-  <a class="logo-link" href="/"><img class="logo" src="/assets/images/logo.png"></a>
+  <a class="logo-link" href=""><img class="logo" src="assets/images/logo.png"></a>
 
   <button class="nav-toggle" md-icon-button=""><span class="md-button-wrapper">
     <i class="material-icons">menu</i>
@@ -39,73 +56,73 @@
         <button md-button=""><span class="md-button-wrapper"><span class="button-inner">Tutorials<i class="material-icons">arrow_drop_down</i></span>
         </span> </button>
         <div class="dropdown-content">
-          <steps-list prefix="/tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
+          <steps-list prefix="tutorials/socially"><!--template bindings={}--><ul class="tutorial-steps-list">
     <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/bootstrap">1. Bootstrap</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/bootstrap">1. Bootstrap</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/static-template">2. Static Templates</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/static-template">2. Static Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/dynamic-template">3. Dynamic Templates</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/dynamic-template">3. Dynamic Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/3-way-data-binding">4. 3-way Data Binding</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/3-way-data-binding">4. 3-way Data Binding</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/adding-removing-objects-and-angular-event-handling">5. Data Management</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/routing-and-multiple-views">6. Routing &amp; Multiple Views</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/bindings">7. Bindings</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/bindings">7. Bindings</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/folder-structure">8. Folder Structure</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/folder-structure">8. Folder Structure</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/users-and-authentication">9. Users &amp; Authentication</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/users-and-authentication">9. Users &amp; Authentication</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/privacy-and-publish-subscribe-functions">10. Privacy &amp; Subscriptions</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/deploying-your-app">11. Deployment</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/deploying-your-app">11. Deployment</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/running-your-app-on-android-or-ios-with-phonegap">12. Mobile Support</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/search-sort-pagination-and-reactive-vars">13. Filter and Pagination</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/using-and-creating-angularjs-pipes">14. AngularJS Pipes</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/meteor-methods">15. Meteor Methods</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/meteor-methods">15. Meteor Methods</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/conditional-template-directives-with-angularjs">16. Conditional Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/google-maps">17. Google Maps</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/google-maps">17. Google Maps</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/css-sass-and-bootstrap">18. CSS, SASS and Bootstrap</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/angular-material-and-custom-angular-auth-forms">19. Angular2-Material &amp; Custom Auth</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/3rd-party-libraries">20. Third-Party Libraries</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/files-and-uploadfs">21. Files and UploadFS</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/files-and-uploadfs">21. Files and UploadFS</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/packages-isolation">22. Packages Isolation</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/packages-isolation">22. Packages Isolation</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/ionic2">23. Ionic2</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/ionic2">23. Ionic2</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/ngupgrade-and-migration">24. ngUpgrade &amp; Migration</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/socially/angular2/next-steps">25. Next Steps</a>
+        <a class="step-link" href="/angular-meteor-docs/tutorials/socially/angular-meteor-docs/angular2/next-steps">25. Next Steps</a>
     </li>
     <!--template bindings={}--><li class="step-item extra-item">
-        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="tutorials/whatsapp">WhatsApp clone with Angular &amp; Meteor</a>
     </li><li class="step-item extra-item">
-        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="tutorials/migration/angular2/introduction">Blaze to Angular 2 Migration tutorial</a>
     </li><li class="step-item extra-item">
-        <a class="step-link extra-link bold" className="step-link extra-link bold" href="/training">Custom Training</a>
+        <a class="step-link extra-link bold" className="step-link extra-link bold" href="training">Custom Training</a>
     </li>
 </ul>
 </steps-list>
         </div>
       </div>
-      <a href="/api/angular2-meteor/latest/MeteorReactive">
+      <a href="api/angular2-meteor/latest/MeteorReactive">
         <button md-button=""><span class="md-button-wrapper">API Reference</span> </button>
       </a>
-      <a href="/meteor-rxjs">
+      <a href="meteor-rxjs">
         <button md-button=""><span class="md-button-wrapper">Meteor+RxJS</span> </button>
       </a>
       <a href="https://github.com/Urigo/angular2-meteor" target="_blank">
@@ -116,13 +133,13 @@
       <a href="http://info.meteor.com/blog/author/uri-goldshtein?__hstc=219992390.b4a81f3b906b078dac633307097097f5.1471207723059.1471890076881.1471938647239.7&amp;__hssc=219992390.3.1471938647239&amp;__hsfp=714783454" target="_blank">
         <button md-button=""><span class="md-button-wrapper">Blog</span> </button>
       </a>
-      <a href="/support">
+      <a href="support">
         <button md-button=""><span class="md-button-wrapper">Support</span> </button>
       </a>
-      <a href="/consulting">
+      <a href="consulting">
         <button md-button=""><span class="md-button-wrapper">Consulting</span> </button>
       </a>
-      <a href="/manifesto">
+      <a href="manifesto">
         <button md-button=""><span class="md-button-wrapper">Manifesto</span> </button>
       </a>
     </div>
@@ -134,35 +151,35 @@
 </tutorials-versions>
     <steps-list><!--template bindings={}--><ul class="tutorial-steps-list">
     <!--template bindings={}--><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/introduction">1. Introduction</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/introduction">1. Introduction</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/understanding-angular2">2. Understanding Angular 2</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/understanding-angular2">2. Understanding Angular 2</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/first-steps">3. First Steps</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/first-steps">3. First Steps</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/coexistence">4. Coexistence</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/coexistence">4. Coexistence</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/typescript">5. TypeScript</a>
-    </li><li class="step-item active-step" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/creating-angular2-application">6. Creating Angular 2 Application</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/typescript">5. TypeScript</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/router-migration">7. Router Migration</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/creating-angular2-application">6. Creating Angular 2 Application</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/main-template-migration">8. Migrate the main Blaze Template</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/router-migration">7. Router Migration</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/load-blaze-template">9. Load Blaze Template</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/main-template-migration">8. Migrate the main Blaze Template</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/blaze-template-to-angular2-component">10. Migrate Template into Component</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/load-blaze-template">9. Load Blaze Template</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/authentication-migration">11. Migrating Authentication Templates</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/blaze-template-to-angular2-component">10. Migrate Template into Component</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/todo-list-migration">12. Migrate the Todo List</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/authentication-migration">11. Migrating Authentication Templates</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/list-item-migration">13. Migrate the List Item</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/todo-list-migration">12. Migrate the Todo List</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/cleanup">14. Cleanup</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/list-item-migration">13. Migrate the List Item</a>
     </li><li class="step-item" routerLinkActive="active-step">
-        <a class="step-link" href="/tutorials/migration/angular2/next-steps">15. Next Steps</a>
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/cleanup">14. Cleanup</a>
+    </li><li class="step-item" routerLinkActive="active-step">
+        <a class="step-link" href="/angular-meteor-docs/angular-meteor-docs/tutorials/migration/angular2/next-steps">15. Next Steps</a>
     </li>
     <!--template bindings={}-->
 </ul>
@@ -171,19 +188,19 @@
   <div class="tutorial-content">
     <div class="top-navigation">
       <div class="tutorial-nav">
-        <a class="md-primary tutorial-button" md-raised-button="" tutorialNavigation="previous" aria-disabled="false" href="/tutorials/migration/angular2/typescript"><span class="md-button-wrapper">
+        <a class="md-primary tutorial-button" md-raised-button="" tutorialNavigation="previous" aria-disabled="false" href="angular-meteor-docs/tutorials/migration/angular2/typescript"><span class="md-button-wrapper">
           <span class="button-wrapper"><i class="material-icons">navigate_before</i>Previous</span>
         </span> </a>
         <a class="md-primary tutorial-button" codeDiffLink="" md-raised-button="" aria-disabled="false" href="https://github.com/dotansimha/angular2-blaze-migration-tutorial/compare/step5...step6"><span class="md-button-wrapper">
           <span class="button-wrapper"><i class="material-icons">search</i>Code Diff</span>
         </span> </a>
-        <a class="md-primary tutorial-button" md-raised-button="" tutorialNavigation="next" aria-disabled="false" href="/tutorials/migration/angular2/router-migration"><span class="md-button-wrapper">
+        <a class="md-primary tutorial-button" md-raised-button="" tutorialNavigation="next" aria-disabled="false" href="angular-meteor-docs/tutorials/migration/angular2/router-migration"><span class="md-button-wrapper">
           <span class="button-wrapper right-icon">Next<i class="material-icons">navigate_next</i></span>
         </span> </a>
       </div>
 
       <div class="improve">
-        <a class="md-primary improv-button tutorial-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/tutorials/migration/angular2/creating-angular2-application.html" aria-disabled="false"><span class="md-button-wrapper">
+        <a class="md-primary improv-button tutorial-button" md-raised-button="" href="https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website/angular-meteor-docs/tutorials/migration/angular2/creating-angular2-application.html" aria-disabled="false"><span class="md-button-wrapper">
           <span class="button-wrapper"><i class="material-icons">mode_edit</i>Improve This Document</span>
         </span> </a>
       </div>
@@ -419,8 +436,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/assets/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("/assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("/assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("/assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("/assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -2742,7 +2759,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 @font-face {
   font-family: 'League Spartan';
-  src: url("../assets/fonts/leaguespartan-bold.woff2") format("woff2"), url("../assets/fonts/leaguespartan-bold.woff") format("woff");
+  src: url("assets/fonts/leaguespartan-bold.woff2") format("woff2"), url("assets/fonts/leaguespartan-bold.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
@@ -3285,7 +3302,7 @@ p {
 
 .hero {
   padding: 3rem 0;
-  background-image: url("/assets/images/angular-bg.png");
+  background-image: url("assets/images/angular-bg.png");
   background-color: #333333;
   text-align: center; }
   .hero h1 {
@@ -3297,7 +3314,7 @@ p {
   .hero .main-logo {
     width: 260px;
     height: 260px;
-    background-image: url("/assets/images/logo-large.png");
+    background-image: url("assets/images/logo-large.png");
     background-repeat: no-repeat;
     margin: 0 auto 3rem;
     background-size: 132%;
@@ -3771,5 +3788,5 @@ tutorials-versions {
         font-style: italic;
         margin: 0 !important; }
 </style><universal-script><script>
- try {window.UNIVERSAL_CACHE = ({"APP_ID":"efa7"}) || {};} catch(e) {  console.warn("Angular Universal: There was a problem parsing data from the server")}
+ try {window.UNIVERSAL_CACHE = ({"APP_ID":"597c"}) || {};} catch(e) {  console.warn("Angular Universal: There was a problem parsing data from the server")}
 </script></universal-script></body></html>

@@ -4,7 +4,7 @@
 
 @import "../../../node_modules/font-awesome/scss/variables";
 
-$fa-font-path: "/assets/fonts";
+$fa-font-path: "assets/fonts";
 
 @import "../../../node_modules/font-awesome/scss/mixins";
 @import "../../../node_modules/font-awesome/scss/path";
@@ -21,8 +21,8 @@ $fa-font-path: "/assets/fonts";
 
 @font-face {
     font-family: 'League Spartan';
-    src: url('../assets/fonts/leaguespartan-bold.woff2') format('woff2'),
-         url('../assets/fonts/leaguespartan-bold.woff') format('woff');
+    src: url('assets/fonts/leaguespartan-bold.woff2') format('woff2'),
+         url('assets/fonts/leaguespartan-bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
