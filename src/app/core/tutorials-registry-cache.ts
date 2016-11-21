@@ -47,26 +47,33 @@ function doMapping(parsedData) {
 
 @Injectable()
 export class TutorialRegistryCache {
-  private cache: Map<string, TutorialBundle>;
+  private cache: {[tutprialId: string]: TutorialBundle} = {};
 
   constructor(private http: Http, @Inject(ORIGIN_URL) private originUrl: string) {
 
   }
 
   load(id: string, tutorialData: TutorialDefinition): Observable<TutorialBundle> {
-    let obs = <Observable<TutorialBundle>>this.http
-      .get(tutorialData.patchFile)
-      .map(res => res.text())
-      .map(gitPatchParser.parseMultiPatch)
-      .map(parseOutStepNumberAndComment)
-      .map(doMapping)
-      .map(parsedTutorial => {
-        return <TutorialBundle>{
-          steps: parsedTutorial,
-          tutorial: tutorialData
-        };
-      });
+    if (this.cache[id]) {
+      return Observable.of(this.cache[id]);
+    }
+    else {
+      return <Observable<TutorialBundle>>this.http
+        .get(tutorialData.patchFile)
+        .map(res => res.text())
+        .map(gitPatchParser.parseMultiPatch)
+        .map(parseOutStepNumberAndComment)
+        .map(doMapping)
+        .map(parsedTutorial => {
+          let cacheItem = <TutorialBundle>{
+            steps: parsedTutorial,
+            tutorial: tutorialData
+          };
 
-    return obs;
+          this.cache[id] = cacheItem
+
+          return cacheItem;
+        });
+    }
   }
 }

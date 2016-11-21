@@ -50,6 +50,8 @@ At the moment, while developing, try access:
 - [ ] Update all tutorials
 - [ ] Find a solution for the assets
 - [x] Implement Video Feature
+- [x] Patch file caching
+- [ ] Add support for deprecated APIs
 - [ ] Add support for production mode generation (links are .html)
 - [ ] Page title support (title tag)
 - [ ] SEO support (keyword tags in head tag) + Site map
