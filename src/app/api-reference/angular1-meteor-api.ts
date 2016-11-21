@@ -168,72 +168,87 @@ export const ANGULAR1_METEOR_API_REFERENCE : ApiStaticDefinition = {
         {
           name: '$meteor.collection',
           urlName: 'meteorCollection',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.meteorCollection.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.meteorCollection.md',
+          deprecated: '1.3.0',
+          removedIn: '1.3.1'
         },
         {
           name: 'AngularMeteorCollection',
           urlName: 'AngularMeteorCollection',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.AngularMeteorCollection.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.AngularMeteorCollection.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteor.object',
           urlName: 'meteorObject',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.meteorObject.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.meteorObject.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: 'AngularMeteorObject',
           urlName: 'AngularMeteorObject',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.AngularMeteorObject.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.AngularMeteorObject.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteor.subscribe',
           urlName: 'subscribe',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.subscribe.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.subscribe.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteor.call',
           urlName: 'methods',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.methods.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.methods.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: 'User Authentication',
           urlName: 'auth',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.auth.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.auth.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$scope.getReactively',
           urlName: 'getReactively',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.getReactively.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.getReactively.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: 'blaze-template directive',
           urlName: 'blaze-template',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.blaze-template.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.blaze-template.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: 'CollectionFS',
           urlName: 'files',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.collectionfs.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.collectionfs.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteorUtils',
           urlName: 'utils',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.utils.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.utils.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteor.camera',
           urlName: 'camera',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.camera.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.camera.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: '$meteor.session',
           urlName: 'session',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.session.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.session.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         },
         {
           name: 'File Extensions',
           urlName: 'ngFileExtension',
-          markdownFilePath: '/assets/static-api-reference/1.2.2/api.ngFileExtension.md'
+          markdownFilePath: '/assets/static-api-reference/1.2.2/api.ngFileExtension.md',
+          deprecated: '1.3.0', removedIn: '1.3.1'
         }
       ]
     },

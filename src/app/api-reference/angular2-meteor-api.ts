@@ -1,8 +1,27 @@
 import {ApiDefinition} from '../core/api-definition';
 
+const movedToRxjs = {
+  inVersion: '0.7.0',
+  notice: 'Moved to meteor-rxjs package'
+};
+
+const deprecations = {
+  MeteorObservable: movedToRxjs,
+  'MongoObservable.Collection': movedToRxjs,
+  ObservableCursor: movedToRxjs,
+  MeteorComponent: {
+    inVersion: '0.6.0'
+  },
+  bootstrap: {
+    inVersion: '0.6.0',
+    removedIn: '0.7.0'
+  }
+};
+
 export const ANGULAR2_METEOR_API_REFERENCE : ApiDefinition = {
   name: "angular2-meteor",
   apiRepository: 'Urigo/angular2-meteor',
+  deprecations: deprecations,
   files: [
     {
       apiTitle: 'MeteorComponent',

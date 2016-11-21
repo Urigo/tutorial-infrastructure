@@ -15,6 +15,13 @@ export interface ApiVersion {
 export interface ApiDefinition {
   name: string;
   apiRepository: string;
+  deprecations?: {
+    [apiName: string]: {
+      inVersion: string;
+      notice?: string;
+      removedIn?: string;
+    }
+  }
   files: Array<ApiFile>;
   versions: Array<ApiVersion>;
 }
@@ -23,6 +30,8 @@ export interface StaticFileDefinition {
   name: string;
   urlName: string;
   markdownFilePath: string;
+  removedIn?: string;
+  deprecated?: string;
 }
 
 export interface ApiStaticDefinitionObject {

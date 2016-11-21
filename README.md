@@ -57,8 +57,8 @@ At the moment, while developing, try access:
 - [ ] Update all tutorials to use Tortilla
 - [x] Implement Video Feature
 - [x] Patch file caching
-- [ ] Page title support (title tag)
-- [ ] Add support for deprecated APIs
+- [x] Page title support (title tag)
+- [x] Add support for deprecated APIs notice
 - [ ] SEO support (keyword tags in head tag) + Site map
 - [ ] Fix markdown anchor links (based on base tag)
 - [ ] Add paid support pages
