@@ -1,4 +1,12 @@
-## Tutorials Infra
+# Tutorials Infra
+
+## Serve static website
+
+  $ npm install -g http-server
+  $ cd static-website
+  $ http-server
+
+## Development
 
 To run:
 
