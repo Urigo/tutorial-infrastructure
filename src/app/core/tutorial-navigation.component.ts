@@ -1,10 +1,10 @@
-import { Injectable, Directive, ElementRef, Renderer, Input } from '@angular/core';
+import {Injectable, Directive, ElementRef, Renderer, Input, Inject} from '@angular/core';
 import { ActivatedTutorial } from './current-tutorial';
 import { TutorialStep, TutorialDefinition } from './tutorial-definition';
 import { Observable } from 'rxjs';
 import { StepsUtils } from './step-utils';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LocationStrategy } from '@angular/common';
+import {LocationStrategy, APP_BASE_HREF} from '@angular/common';
 
 @Directive({
   selector: '[tutorialNavigation]'
@@ -19,6 +19,7 @@ export class TutorialNavigation {
     renderer: Renderer,
     private router: Router,
     private parentRoute: ActivatedRoute,
+    @Inject(APP_BASE_HREF) private baseHref: string,
     private location: LocationStrategy) {
     Observable.zip(activated.tutorial, activated.step, (tutorial, step) => {
       return {
@@ -61,8 +62,9 @@ export class TutorialNavigation {
     });
   }
 
-  private createAbsoluteLink(relativeLink: string) {
+  createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
-    return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+    return this.baseHref + abs.replace(this.baseHref || '/', '/');
   }
 }

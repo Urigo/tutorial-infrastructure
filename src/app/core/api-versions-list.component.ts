@@ -1,8 +1,8 @@
-import { Injectable, Component, OnInit } from '@angular/core';
+import {Injectable, Component, OnInit, Inject} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ActivatedApi } from './current-api';
 import { ApiRouteDataDefinition } from './apis-routes';
-import { LocationStrategy } from '@angular/common';
+import {LocationStrategy, APP_BASE_HREF} from '@angular/common';
 import { ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition } from './api-definition';
 import * as _ from 'lodash';
 import * as template from './api-versions-list.component.html';
@@ -15,13 +15,15 @@ import * as template from './api-versions-list.component.html';
 export class ApiVersionsList implements OnInit {
   private apiData: ApiRouteDataDefinition;
 
-  constructor(private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(@Inject(APP_BASE_HREF) private baseHref: string,private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
   }
 
   createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
-    return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+    return this.baseHref + abs.replace(this.baseHref || '/', '/');
   }
+
 
   createLink(version) {
     let urlSuffix = '';
