@@ -66,12 +66,12 @@ export class ApiPageContainerComponent {
       return [
         {
           name: "Angular 1",
-          link: "/api/angular-meteor/1.3.11",
+          link: "api/angular-meteor/1.3.11",
           active: _.isEqual(this.apiData.apiDefinition, ANGULAR1_METEOR_API_REFERENCE)
         },
         {
           name: "Angular 2",
-          link: "/api/angular2-meteor/latest/MeteorReactive",
+          link: "api/angular2-meteor/latest/MeteorReactive",
           active: _.isEqual(this.apiData.apiDefinition, ANGULAR2_METEOR_API_REFERENCE)
         }
       ];

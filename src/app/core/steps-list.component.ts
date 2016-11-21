@@ -25,8 +25,7 @@ export class StepListComponent implements OnInit {
   createAbsoluteLink(relativeLink: string) {
     const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
     const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
-
-    return (this.prefix || '') + abs;
+    return (this.prefix || '') + abs.replace(global['basePath'] || '/', '/');
   }
 
   getStepLink(step: TutorialStep) {
