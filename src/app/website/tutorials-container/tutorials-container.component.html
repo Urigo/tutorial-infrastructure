@@ -24,6 +24,9 @@
       </div>
     </div>
     <h1 class="tutorial-title" stepName></h1>
+    <a class="zip-download" stepDownloadZip>
+      Note: If you skipped ahead to this section, click here to download a zip of the tutorial at this point.
+    </a>
     <div class="youtube-container" *ngIf="step && step.youtubeVideoId">
       <iframe id="ytplayer" type="text/html" width="640" height="360"
               [src]="getYoutubeLink()"

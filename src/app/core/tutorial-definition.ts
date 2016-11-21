@@ -14,6 +14,7 @@ export interface TutorialStep {
   template: string;
   youtubeVideoId?: string;
   hideCodeDiff?: boolean;
+  noZipDownload?: boolean;
 }
 
 export interface TutorialBundle {

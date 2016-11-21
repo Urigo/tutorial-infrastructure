@@ -52,21 +52,21 @@ At the moment, while developing, try access:
 - [x] Use NgModule
 - [x] Add support for Markdown from Tortilla
 - [x] Fix Code Diff link to support Tortilla tags
-- [ ] Add Download Zip (based on Tortilla tag)
-- [ ] Beautiful Design
+- [x] Add Download Zip (based on Tortilla tag)
 - [x] Add support for Patch from Tortilla
 - [ ] Update all tutorials to use Tortilla
-- [ ] Add JSDocs generate for angular2-meteor
 - [x] Implement Video Feature
 - [x] Patch file caching
-- [ ] Add support for deprecated APIs
 - [ ] Page title support (title tag)
+- [ ] Add support for deprecated APIs
 - [ ] SEO support (keyword tags in head tag) + Site map
 - [ ] Fix markdown anchor links (based on base tag)
 - [ ] Add paid support pages
+- [ ] Beautiful Design
 
 ## TODO for production
 
+- [ ] Deprecate angular2-meteor package? (@Urigo)
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
 - [ ] Test against regular HTTP servers (like GitHub pages)

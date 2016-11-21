@@ -19,6 +19,7 @@ import {NgModule} from '@angular/core';
 import {StepListComponent} from './steps-list.component';
 import {RouterModule} from '@angular/router';
 import {CodeDiffLink} from "./tutorial-code-diff.directive";
+import {StepDownloadZipLink} from "./tutorial-download-zip.directive";
 
 const exportsAndDeclarations = [
   StepListComponent,
@@ -30,7 +31,8 @@ const exportsAndDeclarations = [
   MarkdownFileViewComponent,
   ApiVersionsList,
   ApiListItems,
-  CodeDiffLink
+  CodeDiffLink,
+  StepDownloadZipLink
 ];
 
 @NgModule({
