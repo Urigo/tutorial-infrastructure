@@ -12,6 +12,16 @@ export class PageTitleService {
     this.document.title = title;
   }
 
+  setBasePath(base) {
+    let baseTag = _.filter(this.document.head.children, (tag: any) => {
+      return tag.name === 'base'
+    })[0];
+
+    if (baseTag) {
+      baseTag['attribs']['href'] = base;
+    }
+  }
+
   getMetaItem(name) {
     return _.filter(this.document.head.children, (tag: any) => {
       return tag.name === 'meta' && tag.attribs['name'] === name;

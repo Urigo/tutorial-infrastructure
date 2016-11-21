@@ -14,7 +14,7 @@ p {
 
 .hero {
   padding: 3rem 0;
-  background-image: url("/assets/images/angular-bg.png");
+  background-image: url("assets/images/angular-bg.png");
   background-color: #333333;
   text-align: center;
 
@@ -31,7 +31,7 @@ p {
     .main-logo {
       width: 260px;
       height: 260px;
-      background-image: url("/assets/images/logo-large.png");
+      background-image: url("assets/images/logo-large.png");
       background-repeat: no-repeat;
       margin: 0 auto 3rem;
       background-size: 132%;

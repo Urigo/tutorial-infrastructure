@@ -1,7 +1,6 @@
 import {Component, Injectable, ElementRef, Renderer} from '@angular/core';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
 import * as mainCss from "../assets/style/main.scss";
-import {Title} from "@angular/platform-browser";
 import {PageTitleService} from "./core/page-title.service";
 
 @Component({
@@ -10,13 +9,14 @@ import {PageTitleService} from "./core/page-title.service";
 })
 @Injectable()
 export class AppComponent {
-  constructor(eRef: ElementRef, renderer: Renderer, title: PageTitleService) {
+  constructor(eRef: ElementRef, renderer: Renderer, seo: PageTitleService) {
     let parent = eRef.nativeElement.parent;
     let styleElement = renderer.createElement(parent, "style");
     renderer.setElementProperty(styleElement, "type", "text/css");
     renderer.setText(styleElement, mainCss);
 
-    title.setTitle("Angular-Meteor - realtime full stack JavaScript development");
+    seo.setTitle("Angular-Meteor - realtime full stack JavaScript development");
+    seo.setBasePath(global['basePath'] || '/');
   }
 
   getDropdownTutorial() {
@@ -26,17 +26,17 @@ export class AppComponent {
   getExtraLinks() {
     return [
       {
-        link: '/tutorials/whatsapp',
+        link: 'tutorials/whatsapp',
         bold: true,
         name: 'WhatsApp clone with Angular & Meteor'
       },
       {
-        link: '/tutorials/migration/angular2/introduction',
+        link: 'tutorials/migration/angular2/introduction',
         bold: true,
         name: 'Blaze to Angular 2 Migration tutorial'
       },
       {
-        link: '/training',
+        link: 'training',
         bold: true,
         name: 'Custom Training'
       }

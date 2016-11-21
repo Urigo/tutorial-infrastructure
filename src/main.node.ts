@@ -1,5 +1,4 @@
 // This is a workaround for Angular2-Material shitty UMD build
-import {CommonModule} from "@angular/common";
 Object.assign(global, {
   window: {
     Map: Map,
@@ -7,6 +6,7 @@ Object.assign(global, {
   }
 });
 
+import {CommonModule, APP_BASE_HREF} from "@angular/common";
 import {TutorialsCoreModule} from './app/core/tutorials-module';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -18,6 +18,8 @@ import {MdButtonModule} from '@angular2-material/button';
 import {MdToolbarModule} from '@angular2-material/toolbar';
 import {MdIconModule} from '@angular2-material/icon';
 import {BrowserModule} from "@angular/platform-browser";
+
+const basePath = global['basePath'] = process.env['npm_config_base_path'] || "/";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -33,7 +35,9 @@ import {BrowserModule} from "@angular/platform-browser";
     TutorialsCoreModule,
     UniversalModule
   ],
-  providers: []
+  providers: [
+    {provide: APP_BASE_HREF, useValue: basePath}
+  ]
 })
 export class MainModule {
 }

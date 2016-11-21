@@ -6,7 +6,11 @@ export class StepsUtils {
     renderer.setElementAttribute(el.nativeElement, 'disabled', '');
   }
 
-  static appendRouteLink(el: ElementRef, renderer: Renderer, routeLink) {
+  static appendRouteLink(el: ElementRef, renderer: Renderer, routeLink: string) {
+    if (routeLink.charAt(0) === "/") {
+      routeLink = routeLink.substr(1);
+    }
+
     renderer.setElementAttribute(el.nativeElement, 'href', routeLink);
   }
 
