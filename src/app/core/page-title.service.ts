@@ -13,7 +13,7 @@ export class PageTitleService {
   }
 
   getMetaItem(name) {
-    return _.filter(this.document.head.children, tag => {
+    return _.filter(this.document.head.children, (tag: any) => {
       return tag.name === 'meta' && tag.attribs['name'] === name;
     })[0];
   }

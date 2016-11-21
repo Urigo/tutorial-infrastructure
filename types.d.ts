@@ -26,3 +26,9 @@ declare module '*.sass' {
 declare module "highlight.js" {
   export = hljs;
 }
+
+declare module "striptags" {
+  const strip: (str: string) => string;
+
+  export = strip;
+}

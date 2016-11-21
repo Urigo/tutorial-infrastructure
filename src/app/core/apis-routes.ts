@@ -27,19 +27,21 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
         let fileName = apiFile.apiTitle;
         let apiUrl = apiVersionName + '/' + fileName;
 
-        routes.push(<Route>{
-          path: apiUrl,
-          component: ApiPageComponent,
-          resolve: {
-            resolveData: ApiLoadResolve
-          },
-          data: {
-            isStaticApi: false,
-            apiDefinition: apiDefinition,
-            apiVersion: apiVersion,
-            apiFile: apiFile
-          }
-        });
+        if (apiVersion.exclude && apiVersion.exclude.indexOf(fileName) === -1) {
+          routes.push(<Route>{
+            path: apiUrl,
+            component: ApiPageComponent,
+            resolve: {
+              resolveData: ApiLoadResolve
+            },
+            data: {
+              isStaticApi: false,
+              apiDefinition: apiDefinition,
+              apiVersion: apiVersion,
+              apiFile: apiFile
+            }
+          });
+        }
       });
     });
   } else if (def['apis']) {
