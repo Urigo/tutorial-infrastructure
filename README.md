@@ -2,9 +2,9 @@
 
 ## Serve static website
 
-  $ npm install -g http-server
-  $ cd static-website
-  $ http-server
+    $ npm install -g http-server
+    $ cd static-website
+    $ http-server
 
 ## Development
 
