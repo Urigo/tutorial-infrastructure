@@ -62,6 +62,7 @@ At the moment, while developing, try access:
 - [ ] Add support for deprecated APIs
 - [ ] Page title support (title tag)
 - [ ] SEO support (keyword tags in head tag) + Site map
+- [ ] Fix markdown anchor links (based on base tag)
 
 ## TODO for production
 
