@@ -25,9 +25,7 @@ export class StepDownloadZipLink {
           return s.template === step.template;
         });
 
-        index--;
-
-        if (index < 0) {
+        if (index <= 0) {
           renderer.setElementStyle(el.nativeElement, 'display', 'none');
           return;
         }

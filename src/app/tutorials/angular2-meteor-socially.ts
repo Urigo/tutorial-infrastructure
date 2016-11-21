@@ -140,13 +140,16 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
     {
       url: '/ngupgrade-and-migration',
       name: 'ngUpgrade & Migration',
-      template: markdownUrlBase + 'templates/step24.md'
+      template: markdownUrlBase + 'templates/step24.md',
+      noZipDownload: true,
+      hideCodeDiff: true
     },
     {
       url: '/next-steps',
       name: 'Next Steps',
       template: markdownUrlBase + 'templates/step25.md',
-      hideCodeDiff: true
+      hideCodeDiff: true,
+      noZipDownload: true
     }
   ]
 };
