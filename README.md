@@ -43,11 +43,14 @@ At the moment, while developing, try access:
 - [x] Workaround for innerHTML issue of Universal
 - [x] Use NgModule
 - [x] Add support for Markdown from Tortilla
+- [x] Fix Code Diff link to support Tortilla tags
+- [ ] Add Download Zip (based on Tortilla tag)
 - [ ] Beautiful Design
-- [ ] Add support for Patch from Tortilla
+- [x] Add support for Patch from Tortilla
 - [ ] Update all tutorials
 - [ ] Find a solution for the assets
-- [ ] Implement Video
+- [x] Implement Video Feature
+- [ ] Add support for production mode generation (links are .html)
 - [ ] Page title support (title tag)
 - [ ] SEO support (keyword tags in head tag) + Site map
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.

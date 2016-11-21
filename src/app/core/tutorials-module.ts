@@ -18,7 +18,7 @@ import {ActivatedApi} from './current-api';
 import {NgModule} from '@angular/core';
 import {StepListComponent} from './steps-list.component';
 import {RouterModule} from '@angular/router';
-
+import {CodeDiffLink} from "./tutorial-code-diff.directive";
 
 const exportsAndDeclarations = [
   StepListComponent,
@@ -29,7 +29,8 @@ const exportsAndDeclarations = [
   TutorialNavigation,
   MarkdownFileViewComponent,
   ApiVersionsList,
-  ApiListItems
+  ApiListItems,
+  CodeDiffLink
 ];
 
 @NgModule({

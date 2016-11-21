@@ -6,6 +6,7 @@ import {ANGULAR2_METEOR_SOCIALLY} from "../../tutorials/angular2-meteor-socially
 import {ANGULAR1_METEOR_SOCIALLY} from "../../tutorials/angular-meteor-socially";
 import {StepsUtils} from "../../core/step-utils";
 import {LocationStrategy} from "@angular/common";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: "tutorial",
@@ -16,7 +17,7 @@ export class TutorialsContainer {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
 
-  constructor(current: ActivatedTutorial, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(current: ActivatedTutorial, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
     current.tutorial.subscribe(tutorial => this.tutorial = tutorial);
     current.step.subscribe(step => this.step = step);
   }
@@ -28,6 +29,10 @@ export class TutorialsContainer {
 
   getStaticRepo() {
     return "https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website";
+  }
+
+  getYoutubeLink() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.step.youtubeVideoId + '?&origin=http://angular-meteor.com');
   }
 
   getOptions() {

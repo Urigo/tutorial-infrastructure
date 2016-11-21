@@ -12,6 +12,7 @@ export interface TutorialStep {
   url: string;
   name: string;
   template: string;
+  youtubeVideoId?: string;
   hideCodeDiff?: boolean;
 }
 

@@ -22,18 +22,18 @@ export class CodeDiffLink {
         renderer.setElementAttribute(el.nativeElement, 'disabled', '');
       } else {
         let index = tutorial.steps.findIndex((s) => {
-          return s === step;
+          return s.template === step.template;
         });
 
         let compareStart = '';
 
         if (index > 0) {
-          compareStart = 'step_' + this.pad(index - 1, 2);
+          compareStart = 'step' + (index);
         } else {
           compareStart = tutorial.firstCommitCompare;
         }
 
-        let compareEnd = 'step_' + this.pad(index, 2);
+        let compareEnd = 'step' + (index + 1);
         let url = 'https://github.com/' + tutorial.gitHub + '/compare/' + compareStart + '...' + compareEnd;
 
         renderer.setElementAttribute(el.nativeElement, 'href', url);
