@@ -47,13 +47,18 @@ At the moment, while developing, try access:
 - [ ] Add Download Zip (based on Tortilla tag)
 - [ ] Beautiful Design
 - [x] Add support for Patch from Tortilla
-- [ ] Update all tutorials
-- [ ] Find a solution for the assets
+- [ ] Update all tutorials to use Tortilla
+- [ ] Add JSDocs generate for angular2-meteor
 - [x] Implement Video Feature
 - [x] Patch file caching
 - [ ] Add support for deprecated APIs
-- [ ] Add support for production mode generation (links are .html)
 - [ ] Page title support (title tag)
 - [ ] SEO support (keyword tags in head tag) + Site map
+
+## TODO for production
+
+- [ ] Find a solution for the assets
+- [ ] CSS minification in production HTMLs
+- [ ] Test against regular HTTP servers (like GitHub pages)
 - [ ] Remove angular2-meteor website and split the infrastructure for the usage.
 - [ ] Prepare for publish as NPM package
