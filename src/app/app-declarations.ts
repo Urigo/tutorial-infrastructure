@@ -6,6 +6,9 @@ import {TutorialsVersionsSelection} from './website/tutorials-versions/tutorials
 import {AppComponent} from './app.component';
 import {TutorialsContainer} from './website/tutorials-container/tutorials-container.component';
 import {MeteorRxJsPage} from "./website/meteor-rxjs/meteor-rxjs.component";
+import {ConsultingPage} from "./website/support-pages/consulting.component";
+import {TrainingPage} from "./website/support-pages/training.component";
+import {SupportPage} from "./website/support-pages/support.component";
 
 export const APP_DECLARAIONS = [
   AppComponent,
@@ -15,5 +18,8 @@ export const APP_DECLARAIONS = [
   MeteorRxJsPage,
   ApiPageContainerComponent,
   MainComponent,
-  ManifestoPageComponent
+  ManifestoPageComponent,
+  ConsultingPage,
+  TrainingPage,
+  SupportPage
 ];

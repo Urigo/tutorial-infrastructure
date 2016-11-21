@@ -61,12 +61,12 @@ At the moment, while developing, try access:
 - [x] Add support for deprecated APIs notice
 - [ ] SEO support (keyword tags in head tag) + Site map
 - [x] Fix markdown anchor links (based on base tag)
-- [ ] Add paid support pages
+- [x] Add paid support pages
 - [ ] Beautiful Design
 
 ## TODO for production
 
-- [ ] Deprecate angular2-meteor package? (@Urigo)
+- [x] Deprecate angular2-meteor package? (@Urigo)
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
 - [ ] Test against regular HTTP servers (like GitHub pages)

@@ -34,6 +34,11 @@ export class AppComponent {
         link: '/tutorials/migration/angular2/introduction',
         bold: true,
         name: 'Blaze to Angular 2 Migration tutorial'
+      },
+      {
+        link: '/training',
+        bold: true,
+        name: 'Custom Training'
       }
     ];
   }
