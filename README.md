@@ -6,9 +6,16 @@
     $ cd static-website
     $ http-server
 
+## Generate static website
+
+    $ npm install
+    $ npm run generate
+
+Then all of the generated HTML files will be in: `./static-website/` directory.
+
 ## Development
 
-To run:
+Install first:
 
     $ npm install -g typings webpack rimraf nodemon
     $ npm install
@@ -16,14 +23,10 @@ To run:
 
 And in two different Terminal tabs:
 
+    $ npm start
     $ npm run watch
-    $ npm run server
 
 Open you browser [http://localhost:3000](http://localhost:3000) !
-
-At the moment, while developing, try access:
-
-    /tutorials/angular2/socially/bootstrap
 
 ## TODO
 
