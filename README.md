@@ -63,6 +63,7 @@ At the moment, while developing, try access:
 - [ ] Page title support (title tag)
 - [ ] SEO support (keyword tags in head tag) + Site map
 - [ ] Fix markdown anchor links (based on base tag)
+- [ ] Add paid support pages
 
 ## TODO for production
 
