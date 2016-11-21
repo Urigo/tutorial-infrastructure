@@ -57,8 +57,9 @@ At the moment, while developing, try access:
 
 ## TODO for production
 
-- [ ] Find a solution for the assets
-- [ ] CSS minification in production HTMLs
+- [x] Find a solution for the assets
+- [x] Test against NPM's `http-server` (Works great!)
 - [ ] Test against regular HTTP servers (like GitHub pages)
-- [ ] Remove angular2-meteor website and split the infrastructure for the usage.
+- [ ] CSS minification in production HTMLs
+- [ ] Split the infrastructure from the website
 - [ ] Prepare for publish as NPM package
