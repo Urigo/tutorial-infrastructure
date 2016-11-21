@@ -62,7 +62,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Patch file caching
 - [x] Page title support (title tag)
 - [x] Add support for deprecated APIs notice
-- [ ] SEO support (keyword tags in head tag) + Site map
+- [x] SEO support (keyword tags in head tag)
 - [x] Fix markdown anchor links (based on base tag)
 - [x] Add paid support pages
 - [ ] Beautiful Design

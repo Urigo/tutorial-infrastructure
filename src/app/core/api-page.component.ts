@@ -2,6 +2,7 @@ import {Component, OnInit, NgModule, Injectable, ViewContainerRef, ReflectiveInj
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActivatedApi} from './current-api';
 import {DummyModule} from "./dynamic-base-module";
+import {PageTitleService} from "./page-title.service";
 
 @Component({
   selector: 'api-page',
@@ -13,7 +14,8 @@ export class ApiPageComponent implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private compiler: Compiler,
               private activated: ActivatedApi,
-              private router: Router) {
+              private router: Router,
+              private seo: PageTitleService) {
   }
 
   fixLinks(content, urlPrefix) {
@@ -27,6 +29,15 @@ export class ApiPageComponent implements OnInit {
       this.activated.updateCurrentApi(data);
 
       const content = this.fixLinks(data.resolveData.jsDoc, this.router.url);
+
+      this.seo.setSeoDescription(content);
+      this.seo.addKeywords([
+        "api",
+        "api-docs",
+        "reference",
+        "usage",
+        ...(data.apiFile.apiTitle || data.apiFile.name || " ").split(" ") || []
+      ]);
 
       @Component({
         selector: 'tutorial-container',

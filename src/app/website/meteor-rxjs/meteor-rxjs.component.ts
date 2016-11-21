@@ -8,5 +8,13 @@ import {PageTitleService} from "../../core/page-title.service";
 export class MeteorRxJsPage {
   constructor(title: PageTitleService) {
     title.setTitle('Angular-Meteor | Meteor-RxJS');
+
+    title.setSeoDescription("Harness Meteor reactivity with RxJS");
+    title.addKeywords([
+      "meteor",
+      "rxjs",
+      "reactive extensions",
+      "rx.js"
+    ]);
   }
 }

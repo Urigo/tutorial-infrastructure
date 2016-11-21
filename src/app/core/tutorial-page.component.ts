@@ -7,11 +7,12 @@ import {
   NgModule,
   ReflectiveInjector
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TutorialDefinition, TutorialStep } from './tutorial-definition';
-import { TutorialRouteData } from './tutorial-routes';
-import { ActivatedTutorial } from './current-tutorial';
+import {ActivatedRoute} from '@angular/router';
+import {TutorialDefinition, TutorialStep} from './tutorial-definition';
+import {TutorialRouteData} from './tutorial-routes';
+import {ActivatedTutorial} from './current-tutorial';
 import {DummyModule} from "./dynamic-base-module";
+import {PageTitleService} from "./page-title.service";
 
 @Injectable()
 @Component({
@@ -22,11 +23,11 @@ export class TutorialPage implements OnInit {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
 
-  constructor(
-    private route: ActivatedRoute,
-    private compiler: Compiler,
-    private viewContainerRef: ViewContainerRef,
-    private currentTutorial: ActivatedTutorial) {
+  constructor(private route: ActivatedRoute,
+              private compiler: Compiler,
+              private viewContainerRef: ViewContainerRef,
+              private currentTutorial: ActivatedTutorial,
+              private seo: PageTitleService) {
   }
 
   ngOnInit() {
@@ -38,17 +39,22 @@ export class TutorialPage implements OnInit {
       this.currentTutorial.updateCurrentStep(this.step);
       let htmlContent = data.resolveData.step;
 
+      this.seo.setSeoDescription(htmlContent);
+      this.seo.addKeywords(this.step.name.split(" ") || []);
+
       @Component({
         selector: 'tutorial-container',
         template: htmlContent
       })
-      class DynamicComponent { }
+      class DynamicComponent {
+      }
 
       @NgModule({
         imports: [DummyModule],
         declarations: [DynamicComponent]
       })
-      class DynamicModule { }
+      class DynamicModule {
+      }
 
       let factories = this.compiler.compileModuleAndAllComponentsSync(DynamicModule);
       const compFactory = factories.componentFactories.find(x => x.componentType === DynamicComponent);
