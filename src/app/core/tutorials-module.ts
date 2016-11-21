@@ -5,7 +5,6 @@ import {TutorialNavigation} from './tutorial-navigation.component';
 import {StepNameDirective} from './tutorial-name.directive';
 import {ImproveThisDocLink} from './improve-this-doc.directive';
 import {CommonModule} from '@angular/common';
-import {ApiExampleCodeHighlightDirective} from './api-example-code-highligh.directive';
 import {ApiPageComponent} from './api-page.component';
 import {TutorialPage} from './tutorial-page.component';
 import {TutorialRegistryCache} from './tutorials-registry-cache';
@@ -20,6 +19,9 @@ import {StepListComponent} from './steps-list.component';
 import {RouterModule} from '@angular/router';
 import {CodeDiffLink} from "./tutorial-code-diff.directive";
 import {StepDownloadZipLink} from "./tutorial-download-zip.directive";
+import {BrowserModule} from "@angular/platform-browser";
+import {PageTitleService} from "./page-title.service";
+import {UniversalModule} from "angular2-universal";
 
 const exportsAndDeclarations = [
   StepListComponent,
@@ -37,12 +39,14 @@ const exportsAndDeclarations = [
 
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
     RouterModule
   ],
   exports: exportsAndDeclarations,
   declarations: exportsAndDeclarations,
   providers: [
+    PageTitleService,
     PatchLoadResolve,
     TutorialRegistryCache,
     StepsTemplatesLoader,

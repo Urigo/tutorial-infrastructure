@@ -13,6 +13,7 @@ export interface ApiVersion {
 }
 
 export interface ApiDefinition {
+  name: string;
   apiRepository: string;
   files: Array<ApiFile>;
   versions: Array<ApiVersion>;
@@ -32,6 +33,7 @@ export interface ApiStaticDefinitionObject {
 }
 
 export interface ApiStaticDefinition {
+  name: string;
   apiRepository: string;
   apis: Array<ApiStaticDefinitionObject>;
 }

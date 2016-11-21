@@ -1,6 +1,7 @@
 import {ApiStaticDefinition} from '../core/api-definition';
 
 export const ANGULAR1_METEOR_API_REFERENCE : ApiStaticDefinition = {
+  name: "angular-meteor",
   apiRepository: 'Urigo/angular2-meteor',
   apis: [
     {

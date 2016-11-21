@@ -1,4 +1,5 @@
 // This is a workaround for Angular2-Material shitty UMD build
+import {CommonModule} from "@angular/common";
 Object.assign(global, {
   window: {
     Map: Map,
@@ -16,11 +17,14 @@ import {APP_DECLARAIONS} from './app/app-declarations';
 import {MdButtonModule} from '@angular2-material/button';
 import {MdToolbarModule} from '@angular2-material/toolbar';
 import {MdIconModule} from '@angular2-material/icon';
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: APP_DECLARAIONS,
   imports: [
+    BrowserModule,
+    CommonModule,
     MdButtonModule.forRoot(),
     MdToolbarModule.forRoot(),
     MdIconModule.forRoot(),

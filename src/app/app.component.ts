@@ -1,6 +1,8 @@
 import {Component, Injectable, ElementRef, Renderer} from '@angular/core';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
 import * as mainCss from "../assets/style/main.scss";
+import {Title} from "@angular/platform-browser";
+import {PageTitleService} from "./core/page-title.service";
 
 @Component({
   selector: 'app',
@@ -8,11 +10,13 @@ import * as mainCss from "../assets/style/main.scss";
 })
 @Injectable()
 export class AppComponent {
-  constructor(eRef: ElementRef, renderer: Renderer) {
+  constructor(eRef: ElementRef, renderer: Renderer, title: PageTitleService) {
     let parent = eRef.nativeElement.parent;
     let styleElement = renderer.createElement(parent, "style");
     renderer.setElementProperty(styleElement, "type", "text/css");
     renderer.setText(styleElement, mainCss);
+
+    title.setTitle("Angular-Meteor - realtime full stack JavaScript development");
   }
 
   getDropdownTutorial() {

@@ -1,6 +1,7 @@
 import {ApiDefinition} from '../core/api-definition';
 
 export const METEOR_RXJS_API_REFERENCE : ApiDefinition = {
+  name: "meteor-rxjs",
   apiRepository: 'Urigo/meteor-rxjs',
   files: [
     {

@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {PageTitleService} from "../../core/page-title.service";
 
 @Component({
   selector: "angular-whatsapp",
@@ -8,8 +9,8 @@ import {ActivatedRoute} from "@angular/router";
 export class AngularWhatsappIntro implements OnInit {
   private isAngular1 = true;
 
-  constructor(private currentRoute: ActivatedRoute) {
-
+  constructor(private currentRoute: ActivatedRoute, title: PageTitleService) {
+    title.setTitle('Angular 2 WhatsApp clone with Meteor & Ionic');
   }
 
   ngOnInit() {

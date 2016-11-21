@@ -7,6 +7,8 @@ import {ANGULAR1_METEOR_SOCIALLY} from "../../tutorials/angular-meteor-socially"
 import {StepsUtils} from "../../core/step-utils";
 import {LocationStrategy} from "@angular/common";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Observable} from "rxjs";
+import {PageTitleService} from "../../core/page-title.service";
 
 @Component({
   selector: "tutorial",
@@ -17,9 +19,18 @@ export class TutorialsContainer {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
 
-  constructor(current: ActivatedTutorial, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
-    current.tutorial.subscribe(tutorial => this.tutorial = tutorial);
-    current.step.subscribe(step => this.step = step);
+  constructor(current: ActivatedTutorial, title: PageTitleService, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+    Observable.zip(current.tutorial, current.step, (tutorial, step) => {
+      return {
+        tutorial,
+        step
+      }
+    }).subscribe(({step, tutorial}) => {
+      this.step = step;
+      this.tutorial = tutorial;
+
+      title.setTitle(`Tutorial | ${this.tutorial.name} | ${this.step.name}`);
+    })
   }
 
   private createAbsoluteLink(relativeLink: string) {
