@@ -1,0 +1,1 @@
+TODO: Write note about moving the logic to meteor-rxjs package 

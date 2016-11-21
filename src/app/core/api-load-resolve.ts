@@ -41,13 +41,16 @@ export class ApiLoadResolve implements Resolve<any> {
 
       let repo = apiFile.apiRepository || apiDefinition.apiRepository;
       let revision = apiFile.revision || apiVersion.revision;
-      let filePath = apiFile.filePath;
-      let ghUrl = 'https://raw.githubusercontent.com/' + repo + '/' + revision + '/' + filePath;
+      let filePath = apiFile.filePath || apiFile.mdFile;
 
-      console.log(ghUrl);
+      let url = 'https://raw.githubusercontent.com/' + repo + '/' + revision + '/' + filePath;
+
+      if (filePath.charAt(0) === "/" && filePath.toLowerCase().indexOf('.md') > -1) {
+        url = filePath;
+      }
 
       return this.http
-        .get(ghUrl)
+        .get(url)
         .map(res => res.text())
         .map((sourceCode) => {
           let fileExt = _.last(filePath.split('.')).toLowerCase();
