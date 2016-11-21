@@ -60,7 +60,7 @@ At the moment, while developing, try access:
 - [x] Page title support (title tag)
 - [x] Add support for deprecated APIs notice
 - [ ] SEO support (keyword tags in head tag) + Site map
-- [ ] Fix markdown anchor links (based on base tag)
+- [x] Fix markdown anchor links (based on base tag)
 - [ ] Add paid support pages
 - [ ] Beautiful Design
 

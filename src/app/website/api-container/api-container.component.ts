@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Inject} from "@angular/core";
 import {ActivatedApi} from "../../core/current-api";
 import {ApiRouteDataDefinition} from "../../core/apis-routes";
 import {
@@ -8,8 +8,6 @@ import {
 import {ANGULAR2_METEOR_API_REFERENCE} from "../../api-reference/angular2-meteor-api";
 import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor-api";
 import * as _ from "lodash";
-import {Router} from "@angular/router";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {PageTitleService} from "../../core/page-title.service";
 
 @Component({
