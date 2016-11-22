@@ -23,8 +23,7 @@ export class ApiVersionsList implements OnInit {
     let urlSuffix = '';
 
     if (this.apiData.isStaticApi) {
-      const apiFile = (<StaticFileDefinition>this.apiData.apiFile);
-      urlSuffix = apiFile.urlName;
+      urlSuffix = version.files[0].urlName;
     } else {
       const apiDef = <ApiDefinition>this.apiData.apiDefinition;
       let names = _.without(_.map(apiDef.files, item => item.apiTitle), ...(version.exclude || []));
@@ -38,12 +37,12 @@ export class ApiVersionsList implements OnInit {
     return this.router.url === url;
   }
 
-  getVersionsList() {
+  getVersionsList(): any {
     if (this.apiData.isStaticApi) {
       return _.map((<ApiStaticDefinition>this.apiData.apiDefinition).apis, (item) => {
-        return {
+        return Object.assign({
           name: item.version
-        };
+        }, item);
       });
     } else {
       return (<ApiDefinition>this.apiData.apiDefinition).versions;
