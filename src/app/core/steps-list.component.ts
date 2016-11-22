@@ -17,7 +17,7 @@ export class StepListComponent implements OnInit {
 
   private tutorialDetails: TutorialDefinition;
 
-  constructor(private utils: StepsUtils, private activated: ActivatedTutorial, private parentRoute: ActivatedRoute) {
+  constructor(private utils: StepsUtils, private router: Router, private activated: ActivatedTutorial, private parentRoute: ActivatedRoute) {
     this.extraLinks = this.extraLinks || [];
   }
 
@@ -28,6 +28,10 @@ export class StepListComponent implements OnInit {
     else {
       return this.utils.createAbsoluteLink(".." + step.url, this.parentRoute.firstChild);
     }
+  }
+
+  isCurrent(url) {
+    return this.router.url === url;
   }
 
   ngOnInit() {

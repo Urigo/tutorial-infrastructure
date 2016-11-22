@@ -15,17 +15,22 @@ import {StepsUtils} from "./step-utils";
 export class ApiListItems implements OnInit {
   private apiData: ApiRouteDataDefinition;
 
-  constructor(private utils: StepsUtils, private activated: ActivatedApi, private parentRoute: ActivatedRoute) {
+  constructor(private router: Router, private utils: StepsUtils, private activated: ActivatedApi, private parentRoute: ActivatedRoute) {
   }
 
   createLink(api) {
     if (this.apiData.isStaticApi) {
-      return this.utils.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName, this.parentRoute);
+      return this.utils.createAbsoluteLink("../../" + (<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName, this.parentRoute);
     }
     else {
-      return this.utils.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle, this.parentRoute);
+      return this.utils.createAbsoluteLink("../../" + (<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle, this.parentRoute);
     }
   }
+
+  isCurrent(url) {
+    return this.router.url === url;
+  }
+
 
   getFiles() : any {
     if (this.apiData.isStaticApi) {

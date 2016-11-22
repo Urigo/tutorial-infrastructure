@@ -1,6 +1,6 @@
 <ul *ngIf="tutorialDetails" class="tutorial-steps-list">
-    <li class="step-item" *ngFor="let step of tutorialDetails.steps; let i = index;" routerLinkActive="active-step" [routerLinkActiveOptions]="{exact: true}">
-        <a class="step-link" [routerLink]="getStepLink(step)">{{i + 1}}. {{step.name}}</a>
+    <li class="step-item" *ngFor="let step of tutorialDetails.steps; let i = index;" [ngClass]="{'active-step': isCurrent(getStepLink(step))}">
+        <a class="step-link" [href]="getStepLink(step)">{{i + 1}}. {{step.name}}</a>
     </li>
     <li class="step-item extra-item" *ngFor="let extraLink of extraLinks;">
         <a [className]="'step-link extra-link ' + (extraLink.bold ? 'bold' : '')" [href]="extraLink.link || ''">{{extraLink.name}}</a>

@@ -6,6 +6,7 @@ import {LocationStrategy, APP_BASE_HREF} from '@angular/common';
 import { ApiDefinition, ApiStaticDefinition, ApiFile, StaticFileDefinition } from './api-definition';
 import * as _ from 'lodash';
 import * as template from './api-versions-list.component.html';
+import {StepsUtils} from "./step-utils";
 
 @Component({
   selector: 'api-versions-list',
@@ -15,26 +16,26 @@ import * as template from './api-versions-list.component.html';
 export class ApiVersionsList implements OnInit {
   private apiData: ApiRouteDataDefinition;
 
-  constructor(@Inject(APP_BASE_HREF) private baseHref: string,private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(private utils: StepsUtils,private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
   }
-
-  createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
-    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
-    return this.baseHref + abs.replace(this.baseHref || '/', '/');
-  }
-
 
   createLink(version) {
     let urlSuffix = '';
 
     if (this.apiData.isStaticApi) {
-      urlSuffix = (<StaticFileDefinition>this.apiData.apiFile).urlName;
+      const apiFile = (<StaticFileDefinition>this.apiData.apiFile);
+      urlSuffix = apiFile.urlName;
     } else {
-      urlSuffix = (<ApiFile>this.apiData.apiFile).apiTitle;
+      const apiDef = <ApiDefinition>this.apiData.apiDefinition;
+      let names = _.without(_.map(apiDef.files, item => item.apiTitle), ...(version.exclude || []));
+      urlSuffix = names[0];
     }
 
-    return this.createAbsoluteLink(version.name + '/' + urlSuffix);
+    return this.utils.createAbsoluteLink('../../' + version.name + '/' + urlSuffix, this.parentRoute.firstChild);
+  }
+
+  isCurrent(url) {
+    return this.router.url === url;
   }
 
   getVersionsList() {

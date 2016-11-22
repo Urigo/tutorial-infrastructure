@@ -66,7 +66,7 @@ export class ApiPageContainerComponent {
       return [
         {
           name: "Angular 1",
-          link: "api/angular-meteor/1.3.11",
+          link: "api/angular-meteor/1.3.11/subscribe",
           active: _.isEqual(this.apiData.apiDefinition, ANGULAR1_METEOR_API_REFERENCE)
         },
         {
