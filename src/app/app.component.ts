@@ -26,7 +26,7 @@ export class AppComponent {
   getExtraLinks() {
     return [
       {
-        link: 'tutorials/whatsapp',
+        link: 'tutorials/whatsapp2-tutorial',
         bold: true,
         name: 'WhatsApp clone with Angular & Meteor'
       },

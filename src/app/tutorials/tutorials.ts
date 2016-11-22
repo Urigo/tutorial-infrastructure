@@ -32,8 +32,8 @@ export const TUTORIALS_ROUTES = [
     children: [
       {path: 'whatsapp', component: TutorialsContainer, children: createTutorialsRoutes(ANGULAR1_WHATSAPP_TUTORIALS)},
       {path: 'whatsapp2', component: TutorialsContainer, children: createTutorialsRoutes(ANGULAR2_WHATSAPP_TUTORIALS)},
-      {path: 'whatsapp', component: AngularWhatsappIntro},
-      {path: 'whatsapp2', component: AngularWhatsappIntro},
+      {path: 'whatsapp-tutorial', component: AngularWhatsappIntro},
+      {path: 'whatsapp2-tutorial', component: AngularWhatsappIntro},
       {path: 'socially', component: TutorialsContainer, children: createTutorialsRoutes(SOCIALLY_TUTORIALS)},
       {path: 'migration', component: TutorialsContainer, children: createTutorialsRoutes(MIGRATION_TUTORIALS)}
     ]

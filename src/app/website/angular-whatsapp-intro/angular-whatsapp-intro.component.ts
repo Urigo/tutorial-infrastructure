@@ -15,7 +15,7 @@ export class AngularWhatsappIntro implements OnInit {
 
   ngOnInit() {
     this.currentRoute.url.subscribe((url: Array<{path: string}>) => {
-      this.isAngular1 = url[0].path === "whatsapp";
+      this.isAngular1 = url[0].path === "whatsapp-tutorial";
     });
   }
 }
