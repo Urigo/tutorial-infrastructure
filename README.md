@@ -73,7 +73,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Fix links when not running under "/" path
 - [ ] Fix active indication on API / tutorials
 - [ ] Beautiful Design (need to fix: tutorial sidebar, api deprecation notice, tutorial video tutorial download zip)
-- [ ] Update `meteor-angular-socially` to use Tortilla
+- [x] Update `meteor-angular-socially` to use Tortilla
 - [x] Update `meteor-angular2.0-socially` to use Tortilla
 - [x] Update `blaze-angular2-migration-tutorial` to use Tortilla
 - [ ] Update WhatsApp Ionic CLI to use Tortilla

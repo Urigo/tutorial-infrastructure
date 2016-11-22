@@ -1,136 +1,140 @@
 import {TutorialDefinition} from '../core/tutorial-definition';
 
+const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/meteor-angular-socially/master/manuals/';
+
 export const ANGULAR1_METEOR_SOCIALLY : TutorialDefinition = {
   id: 'angular1-meteor-socially',
   name: 'Angular Socially',
   gitHub: 'Urigo/meteor-angular-socially',
-  patchFile: '/assets/patches/meteor-angular1-socially.multi.patch',
+  patchFile: markdownUrlBase + 'meteor-angular-socially.multi.patch',
   baseRoute: 'angular1',
   steps: [
     {
       url: '/bootstrap',
       name: 'Bootstrap',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_00.md'
+      template: markdownUrlBase + 'templates/step0.md',
+      hideCodeDiff: true
     },
     {
       url: '/static-template',
       name: 'Static Templates',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_01.md'
+      template: markdownUrlBase + 'templates/step1.md'
     },
     {
       url: '/dynamic-template',
       name: 'Dynamic Templates',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_02.md'
+      template: markdownUrlBase + 'templates/step2.md'
     },
     {
       url: '/3-way-data-binding',
       name: '3-way Data Binding',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_03.md'
+      template: markdownUrlBase + 'templates/step3.md'
     },
     {
       url: '/adding-removing-objects-and-angular-event-handling',
       name: 'Data Management',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_04.md'
+      template: markdownUrlBase + 'templates/step4.md'
     },
     {
       url: '/routing-and-multiple-views',
       name: 'Routing & Multiple Views',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_05.md'
+      template: markdownUrlBase + 'templates/step5.md'
     },
     {
       url: '/bindings',
       name: 'Bindings',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_06.md'
+      template: markdownUrlBase + 'templates/step6.md'
     },
     {
       url: '/folder-structure',
       name: 'Folder Structure',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_07.md'
+      template: markdownUrlBase + 'templates/step7.md'
     },
     {
       url: '/users-and-authentication',
       name: 'Users & Authentication',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_08.md'
+      template: markdownUrlBase + 'templates/step8.md'
     },
     {
       url: '/privacy-and-publish-subscribe-functions',
       name: 'Privacy & Subscriptions',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_09.md'
+      template: markdownUrlBase + 'templates/step9.md'
     },
     {
       url: '/deploying-your-app',
       name: 'Deployment',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_10.md'
+      template: markdownUrlBase + 'templates/step10.md'
     },
     {
       url: '/running-your-app-on-android-or-ios-with-phonegap',
       name: 'Mobile Support',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_11.md'
+      template: markdownUrlBase + 'templates/step11.md'
     },
     {
       url: '/search-sort-pagination-and-reactive-vars',
       name: 'Filter and Pagination',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_12.md'
+      template: markdownUrlBase + 'templates/step12.md'
     },
     {
       url: '/using-and-creating-angularjs-pipes',
       name: 'AngularJS Pipes',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_13.md'
+      template: markdownUrlBase + 'templates/step13.md'
     },
     {
       url: '/meteor-methods',
       name: 'Meteor Methods',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_14.md'
+      template: markdownUrlBase + 'templates/step14.md'
     },
     {
       url: '/conditional-template-directives-with-angularjs',
       name: 'Conditional Templates',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_15.md'
+      template: markdownUrlBase + 'templates/step15.md'
     },
     {
       url: '/google-maps',
       name: 'Google Maps',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_16.md'
+      template: markdownUrlBase + 'templates/step16.md'
     },
     {
       url: '/css-less-and-bootstrap',
       name: 'CSS, LESS and Bootstrap',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_17.md'
+      template: markdownUrlBase + 'templates/step17.md'
     },
     {
       url: '/angular-material-and-custom-angular-auth-forms',
       name: 'Angular2-Material & Custom Auth',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_18.md'
+      template: markdownUrlBase + 'templates/step18.md'
     },
     {
       url: '/3rd-party-libraries',
       name: 'Third-Party Libraries',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_19.md'
+      template: markdownUrlBase + 'templates/step19.md'
     },
     {
       url: '/files-and-uploadfs',
       name: 'Files and UploadFS',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_20.md'
+      template: markdownUrlBase + 'templates/step20.md'
     },
     {
       url: '/packages-isolation',
       name: 'Packages Isolation',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_21.md'
+      template: markdownUrlBase + 'templates/step21.md'
     },
     {
       url: '/ionic',
       name: 'Ionic',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_22.md'
+      template: markdownUrlBase + 'templates/step22.md'
     },
     {
       url: '/ngupgrade-and-migration',
       name: 'ngUpgrade & Migration',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_23.md'
+      template: markdownUrlBase + 'templates/step23.md'
     },
     {
       url: '/next-steps',
       name: 'Next Steps',
-      template: '/assets/templates/angular1-meteor-socially/tutorials.socially.angular1.step_24.md'
+      template: markdownUrlBase + 'templates/step24.md',
+      hideCodeDiff: true
     }
   ]
 };
