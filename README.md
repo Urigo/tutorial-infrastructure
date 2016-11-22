@@ -87,7 +87,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Deprecate angular2-meteor package? (@Urigo)
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
-- [ ] Test against regular HTTP servers (like GitHub pages)
-- [ ] CSS minification in production HTMLs
+- [x] Test against regular HTTP servers (like GitHub pages)
+- [x] CSS minification in production HTMLs
 - [ ] Split the infrastructure from the website
 - [ ] Prepare for publish as NPM package

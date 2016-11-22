@@ -23,7 +23,7 @@ export class StepListComponent implements OnInit {
 
   getStepLink(step: TutorialStep) {
     if (this.prefix && this.prefix !== '') {
-      return this.prefix + '/' + this.tutorialDetails.baseRoute + '/' + step.url;
+      return this.prefix + '/' + this.tutorialDetails.baseRoute + step.url;
     }
     else {
       return this.utils.createAbsoluteLink(".." + step.url, this.parentRoute.firstChild);

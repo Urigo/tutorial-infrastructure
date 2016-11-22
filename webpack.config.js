@@ -11,13 +11,13 @@ var commonConfig = {
     loaders: [
       // TypeScript
       { test: /\.ts$/, loaders: ['angular2-template-loader', 'awesome-typescript-loader'] },
-      { test: /\.html$/, loader: 'raw-loader' },
+      { test: /\.html$/, loaders: ['raw-loader'] },
       { test: /\.css$/, loaders: ['css-loader', 'raw-loader'] },
       { test: /\.json$/, loader: 'raw-loader' },
       {
         test: /\.scss$/,
         exclude: root('src', 'app'),
-        loaders: ["raw-loader", "sass-loader"]
+        loaders: ["raw-loader", "csso-loader", "sass-loader"]
       },
       // all css required in src/app files will be merged in js files
       { test: /\.scss$/, exclude: root('src', 'assets', 'style'), loader: 'raw!sass' }
@@ -29,7 +29,12 @@ var commonConfig = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(true),
-    new ExtractTextPlugin({ filename: "css/[name].css", disable: false, allChunks: true })
+    new ExtractTextPlugin({ filename: "css/[name].css", disable: false, allChunks: true }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ]
 };
 
