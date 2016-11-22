@@ -20,8 +20,8 @@
     "predebug": "npm run build",
     "debug:build": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
     "debug": "node --debug-brk dist/server/index.js",
-    "generate": "npm run build && npm run generate-server --generate-static --base-path=/static-website/",
-    "publish": "deployment/gh-pages.sh"
+    "generate": "npm run build && npm run generate-server --generate-static --base-path=/",
+    "publish": "npm run generate --base-path=/angular-meteor-docs/ && deployment/gh-pages.sh"
   },
   "license": "MIT",
   "dependencies": {

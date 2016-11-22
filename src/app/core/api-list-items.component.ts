@@ -20,10 +20,10 @@ export class ApiListItems implements OnInit {
 
   createLink(api) {
     if (this.apiData.isStaticApi) {
-      return this.utils.createAbsoluteLink("../../" + (<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName, this.parentRoute);
+      return this.utils.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName, this.parentRoute);
     }
     else {
-      return this.utils.createAbsoluteLink("../../" + (<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle, this.parentRoute);
+      return this.utils.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle, this.parentRoute);
     }
   }
 
