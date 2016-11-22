@@ -4,7 +4,6 @@ export interface TutorialDefinition {
   gitHub: string;
   patchFile: string;
   baseRoute: string;
-  firstCommitCompare?: string;
   steps: TutorialStep[];
 }
 

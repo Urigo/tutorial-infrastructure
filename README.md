@@ -57,7 +57,6 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Fix Code Diff link to support Tortilla tags
 - [x] Add Download Zip (based on Tortilla tag)
 - [x] Add support for Patch from Tortilla
-- [ ] Update all tutorials to use Tortilla
 - [x] Implement Video Feature
 - [x] Patch file caching
 - [x] Page title support (title tag)
@@ -66,6 +65,14 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Fix markdown anchor links (based on base tag)
 - [x] Add paid support pages
 - [ ] Beautiful Design
+- [ ] Update `meteor-angular-socially` to use Tortilla
+- [x] Update `meteor-angular2.0-socially` to use Tortilla
+- [x] Update `blaze-angular2-migration-tutorial` to use Tortilla
+- [ ] Update WhatsApp Ionic CLI to use Tortilla
+- [ ] Update WhatsApp Meteor CLI to use Tortilla
+- [ ] Update WhatsApp 2 Meteor CLI to use Tortilla
+- [ ] Update WhatsApp 2 Ionic CLI to use Tortilla
+
 
 ## TODO for production
 

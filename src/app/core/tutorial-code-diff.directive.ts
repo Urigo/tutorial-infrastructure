@@ -30,7 +30,7 @@ export class CodeDiffLink {
         if (index > 0) {
           compareStart = 'step' + (index);
         } else {
-          compareStart = tutorial.firstCommitCompare;
+          compareStart = 'root';
         }
 
         let compareEnd = 'step' + (index + 1);
