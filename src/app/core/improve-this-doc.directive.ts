@@ -11,7 +11,11 @@ export class ImproveThisDocLink implements OnInit {
   constructor(private el: ElementRef, private renderer: Renderer, private location: LocationStrategy) {
   }
 
+  getPath(path: string) {
+    return path.replace(this.location.getBaseHref(), "/");
+  }
+
   ngOnInit() {
-    this.renderer.setElementAttribute(this.el.nativeElement, 'href', this.staticRepo + this.location.path() + '.html');
+    this.renderer.setElementAttribute(this.el.nativeElement, 'href', this.staticRepo + this.getPath(this.location.path()) + '.html');
   }
 }
