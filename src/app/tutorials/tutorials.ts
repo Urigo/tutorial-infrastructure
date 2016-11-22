@@ -7,6 +7,7 @@ import {ANGULAR1_WHATSAPP_IONIC_CLI} from './angular1-whatsapp-ionic-cli';
 import {ANGULAR1_WHATSAPP_METEOR_CLI} from './angular1-whatsapp-meteor-cli';
 import {ANGULAR2_WHATSAPP_IONIC_CLI} from './angular2-whatsapp-ionic-cli';
 import {AngularWhatsappIntro} from '../website/angular-whatsapp-intro/angular-whatsapp-intro.component';
+import {ANGULAR2_WHATSAPP_METEOR_CLI} from "./angular2-whatsapp-meteor-cli";
 
 export const SOCIALLY_TUTORIALS = [
   ANGULAR2_METEOR_SOCIALLY,
@@ -23,7 +24,8 @@ export const ANGULAR1_WHATSAPP_TUTORIALS = [
 ];
 
 export const ANGULAR2_WHATSAPP_TUTORIALS = [
-  ANGULAR2_WHATSAPP_IONIC_CLI
+  ANGULAR2_WHATSAPP_IONIC_CLI,
+  ANGULAR2_WHATSAPP_METEOR_CLI
 ];
 
 export const TUTORIALS_ROUTES = [

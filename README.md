@@ -78,8 +78,8 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Update `blaze-angular2-migration-tutorial` to use Tortilla
 - [ ] Update WhatsApp Ionic CLI to use Tortilla
 - [ ] Update WhatsApp Meteor CLI to use Tortilla
-- [ ] Update WhatsApp 2 Meteor CLI to use Tortilla
-- [ ] Update WhatsApp 2 Ionic CLI to use Tortilla
+- [x] Update WhatsApp 2 Meteor CLI to use Tortilla
+- [x] Update WhatsApp 2 Ionic CLI to use Tortilla
 
 
 ## TODO for production
