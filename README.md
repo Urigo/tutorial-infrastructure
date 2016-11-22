@@ -70,6 +70,8 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] SEO support (keyword tags in head tag)
 - [x] Fix markdown anchor links (based on base tag)
 - [x] Add paid support pages
+- [x] Fix links when not running under "/" path
+- [ ] Fix active indication on API / tutorials
 - [ ] Beautiful Design (need to fix: tutorial sidebar, api deprecation notice, tutorial video tutorial download zip)
 - [ ] Update `meteor-angular-socially` to use Tortilla
 - [x] Update `meteor-angular2.0-socially` to use Tortilla

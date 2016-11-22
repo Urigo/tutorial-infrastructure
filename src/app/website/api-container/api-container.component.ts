@@ -1,4 +1,4 @@
-import {Component, Inject} from "@angular/core";
+import {Component} from "@angular/core";
 import {ActivatedApi} from "../../core/current-api";
 import {ApiRouteDataDefinition} from "../../core/apis-routes";
 import {
@@ -7,8 +7,8 @@ import {
 } from "../../core/api-definition";
 import {ANGULAR2_METEOR_API_REFERENCE} from "../../api-reference/angular2-meteor-api";
 import {ANGULAR1_METEOR_API_REFERENCE} from "../../api-reference/angular1-meteor-api";
-import * as _ from "lodash";
 import {PageTitleService} from "../../core/page-title.service";
+import * as _ from "lodash";
 
 @Component({
   selector: "api-container",
@@ -30,7 +30,7 @@ export class ApiPageContainerComponent {
 
       if (api.isStaticApi) {
         this.currentApiVersion = (<ApiStaticDefinitionObject>api.apiVersion).version;
-        const file: StaticFileDefinition =  <StaticFileDefinition>api.apiFile;
+        const file: StaticFileDefinition = <StaticFileDefinition>api.apiFile;
         titleComponent = file.name;
 
         if (file.deprecated) {

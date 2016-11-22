@@ -1,11 +1,10 @@
-import {Component, Injectable, Inject} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, Injectable} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
 import {ActivatedTutorial} from "../../core/current-tutorial";
 import {TutorialDefinition, TutorialStep} from "../../core/tutorial-definition";
 import {ANGULAR2_METEOR_SOCIALLY} from "../../tutorials/angular2-meteor-socially";
 import {ANGULAR1_METEOR_SOCIALLY} from "../../tutorials/angular-meteor-socially";
 import {StepsUtils} from "../../core/step-utils";
-import {LocationStrategy, APP_BASE_HREF} from "@angular/common";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Observable} from "rxjs";
 import {PageTitleService} from "../../core/page-title.service";
@@ -19,7 +18,7 @@ export class TutorialsContainer {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
 
-  constructor(private utils: StepsUtils, @Inject(APP_BASE_HREF) private baseHref: string, current: ActivatedTutorial, title: PageTitleService, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(private utils: StepsUtils, current: ActivatedTutorial, title: PageTitleService, private sanitizer: DomSanitizer, private parentRoute: ActivatedRoute) {
     Observable.zip(current.tutorial, current.step, (tutorial, step) => {
       return {
         tutorial,
@@ -34,7 +33,7 @@ export class TutorialsContainer {
   }
 
   getStaticRepo() {
-    return "https://github.com/Urigo/tutorial-infrastructure/edit/master/static-website";
+    return "https://github.com/Urigo/angular-meteor-docs/edit/gh-pages";
   }
 
   getYoutubeLink() {
