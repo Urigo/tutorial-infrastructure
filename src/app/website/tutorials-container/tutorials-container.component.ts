@@ -19,7 +19,7 @@ export class TutorialsContainer {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
 
-  constructor(@Inject(APP_BASE_HREF) private baseHref: string, current: ActivatedTutorial, title: PageTitleService, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(private utils: StepsUtils, @Inject(APP_BASE_HREF) private baseHref: string, current: ActivatedTutorial, title: PageTitleService, private sanitizer: DomSanitizer, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
     Observable.zip(current.tutorial, current.step, (tutorial, step) => {
       return {
         tutorial,
@@ -31,12 +31,6 @@ export class TutorialsContainer {
 
       title.setTitle(`Tutorial | ${this.tutorial.name} | ${this.step.name}`);
     })
-  }
-
-  createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute.root });
-    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
-    return abs.replace(this.baseHref || '/', '/');
   }
 
   getStaticRepo() {
@@ -56,12 +50,12 @@ export class TutorialsContainer {
       return [
         {
           name: "Angular 1",
-          link: this.createAbsoluteLink(StepsUtils.getStepLink(ANGULAR1_METEOR_SOCIALLY, ANGULAR1_METEOR_SOCIALLY.steps[index])),
+          link: this.utils.createAbsoluteLink("angular1" + ANGULAR1_METEOR_SOCIALLY.steps[index].url, this.parentRoute),
           active: this.tutorial.id === ANGULAR1_METEOR_SOCIALLY.id
         },
         {
           name: "Angular 2",
-          link: this.createAbsoluteLink(StepsUtils.getStepLink(ANGULAR2_METEOR_SOCIALLY, ANGULAR2_METEOR_SOCIALLY.steps[index])),
+          link: this.utils.createAbsoluteLink("angular2" + ANGULAR2_METEOR_SOCIALLY.steps[index].url, this.parentRoute),
           active: this.tutorial.id === ANGULAR2_METEOR_SOCIALLY.id
         }
       ]

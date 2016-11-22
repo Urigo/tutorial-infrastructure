@@ -5,6 +5,7 @@ import { ApiRouteDataDefinition } from './apis-routes';
 import {LocationStrategy, APP_BASE_HREF} from '@angular/common';
 import { ApiFile, ApiVersion, ApiStaticDefinitionObject, ApiDefinition } from './api-definition';
 import * as template from './api-list-items.component.html';
+import {StepsUtils} from "./step-utils";
 
 @Component({
   selector: 'api-list-items',
@@ -14,21 +15,15 @@ import * as template from './api-list-items.component.html';
 export class ApiListItems implements OnInit {
   private apiData: ApiRouteDataDefinition;
 
-  constructor(@Inject(APP_BASE_HREF) private baseHref: string, private activated: ActivatedApi, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
-  }
-
-  createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
-    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
-    return this.baseHref + abs.replace(this.baseHref || '/', '/');
+  constructor(private utils: StepsUtils, private activated: ActivatedApi, private parentRoute: ActivatedRoute) {
   }
 
   createLink(api) {
     if (this.apiData.isStaticApi) {
-      return this.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName);
+      return this.utils.createAbsoluteLink((<ApiStaticDefinitionObject>this.apiData.apiVersion).version + '/' + api.urlName, this.parentRoute);
     }
     else {
-      return this.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle);
+      return this.utils.createAbsoluteLink((<ApiVersion>this.apiData.apiVersion).name + '/' + api.apiTitle, this.parentRoute);
     }
   }
 

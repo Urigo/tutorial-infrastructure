@@ -3,7 +3,6 @@ import { ActivatedTutorial } from './current-tutorial';
 import { TutorialStep, TutorialDefinition } from './tutorial-definition';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StepsUtils } from './step-utils';
-import {LocationStrategy, APP_BASE_HREF} from '@angular/common';
 import * as template from './steps-list.component.html';
 
 @Component({
@@ -18,18 +17,17 @@ export class StepListComponent implements OnInit {
 
   private tutorialDetails: TutorialDefinition;
 
-  constructor(@Inject(APP_BASE_HREF) private baseHref: string, private activated: ActivatedTutorial, private router: Router, private parentRoute: ActivatedRoute, private location: LocationStrategy) {
+  constructor(private utils: StepsUtils, private activated: ActivatedTutorial, private parentRoute: ActivatedRoute) {
     this.extraLinks = this.extraLinks || [];
   }
 
-  createAbsoluteLink(relativeLink: string) {
-    const tree = this.router.createUrlTree([relativeLink], { relativeTo: this.parentRoute });
-    const abs = this.location.prepareExternalUrl(this.router.serializeUrl(tree));
-    return (this.prefix || '') + abs.replace(this.baseHref || '/', '/');
-  }
-
   getStepLink(step: TutorialStep) {
-    return this.createAbsoluteLink(StepsUtils.getStepLink(this.tutorialDetails, step));
+    if (this.prefix && this.prefix !== '') {
+      return this.prefix + '/' + this.tutorialDetails.baseRoute + '/' + step.url;
+    }
+    else {
+      return this.utils.createAbsoluteLink(".." + step.url, this.parentRoute.firstChild);
+    }
   }
 
   ngOnInit() {

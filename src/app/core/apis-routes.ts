@@ -26,6 +26,7 @@ export function createApiRoutes(def: ApiDefinition|ApiStaticDefinition) {
       apiDefinition.files.forEach((apiFile: ApiFile) => {
         let fileName = apiFile.apiTitle;
         let apiUrl = apiVersionName + '/' + fileName;
+        apiVersion.exclude = apiVersion.exclude || [];
 
         if (apiVersion.exclude && apiVersion.exclude.indexOf(fileName) === -1) {
           routes.push(<Route>{
