@@ -6,12 +6,18 @@
     $ cd static-website
     $ http-server
 
-## Generate static website
+## Generate static website for local usage
+
+    $ npm install
+    $ npm run generate-local
+
+Then all of the generated HTML files will be in: `./static-website/` directory.
+
+## Generate static website for publishing (gh-pages)
 
     $ npm install
     $ npm run generate
-
-Then all of the generated HTML files will be in: `./static-website/` directory.
+    $ npm run publish
 
 ## Development
 
