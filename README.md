@@ -76,7 +76,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Update `meteor-angular-socially` to use Tortilla
 - [x] Update `meteor-angular2.0-socially` to use Tortilla
 - [x] Update `blaze-angular2-migration-tutorial` to use Tortilla
-- [ ] Update WhatsApp Ionic CLI to use Tortilla
+- [x] Update WhatsApp Ionic CLI to use Tortilla
 - [ ] Update WhatsApp Meteor CLI to use Tortilla
 - [x] Update WhatsApp 2 Meteor CLI to use Tortilla
 - [x] Update WhatsApp 2 Ionic CLI to use Tortilla
