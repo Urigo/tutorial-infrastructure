@@ -2,6 +2,7 @@ import {Component, Injectable, ElementRef, Renderer} from '@angular/core';
 import {ANGULAR2_METEOR_SOCIALLY} from './tutorials/angular2-meteor-socially';
 import * as mainCss from "../assets/style/main.scss";
 import {PageTitleService} from "./core/page-title.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app',
@@ -9,7 +10,7 @@ import {PageTitleService} from "./core/page-title.service";
 })
 @Injectable()
 export class AppComponent {
-  constructor(eRef: ElementRef, renderer: Renderer, seo: PageTitleService) {
+  constructor(private router: Router, eRef: ElementRef, renderer: Renderer, seo: PageTitleService) {
     let parent = eRef.nativeElement.parent;
     let styleElement = renderer.createElement(parent, "style");
     renderer.setElementProperty(styleElement, "type", "text/css");
@@ -21,6 +22,10 @@ export class AppComponent {
 
   getDropdownTutorial() {
     return ANGULAR2_METEOR_SOCIALLY;
+  }
+
+  isSupportPage() {
+    return this.router.url.indexOf('support') > -1;
   }
 
   getExtraLinks() {
