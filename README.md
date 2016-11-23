@@ -84,7 +84,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 
 ## TODO for production
 
-- [ ] Angular 2 API docs pages: meteor-rxjs, angular2-compilers
+- [x] Angular 2 API docs pages: meteor-rxjs, angular2-compilers
 - [x] Deprecate angular2-meteor package? (@Urigo)
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
