@@ -19,9 +19,15 @@ export class ApiPageComponent implements OnInit {
   }
 
   fixLinks(content, urlPrefix) {
-    return content.replace(/href="(#.*?)"/g, (match, group) => {
+    let path = content.replace(/href="(#.*?)"/g, (match, group) => {
       return 'href="' + urlPrefix + group + '"';
     });
+
+    if (path.charAt(0) === "/") {
+      path = path.substr(1);
+    }
+
+    return path;
   }
 
   ngOnInit() {
