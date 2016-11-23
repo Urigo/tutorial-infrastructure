@@ -4,7 +4,7 @@ const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/meteor-angular2
 
 export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
   id: 'angular2-meteor-socially',
-  name: 'Angular 2 Socially',
+  name: 'Angular2-Meteor - Socially',
   gitHub: 'Urigo/meteor-angular2.0-socially',
   patchFile: markdownUrlBase + 'meteor-angular2-socially.multi.patch',
   baseRoute: 'angular2',

@@ -1,7 +1,15 @@
 tutorials-versions {
-  margin-left: 10px;
+  text-align: center !important;
+  margin-left: 0;
   margin-top: 10px;
   display: block;
+}
+
+.tutorial-name {
+  width: 100%;
+  border-bottom: 1px white solid;
+  padding: 5px;
+  text-align: center;
 }
 
 .top-navigation {

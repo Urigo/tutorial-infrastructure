@@ -4,7 +4,7 @@ const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/IonicCLI-Meteor
 
 export const ANGULAR1_WHATSAPP_IONIC_CLI: TutorialDefinition = {
   id: 'ionic-tutorial',
-  name: 'WhatsApp clone with Angular 1 and Ionic CLI',
+  name: 'WhatsApp Clone with Meteor and Ionic CLI',
   gitHub: 'Urigo/IonicCLI-Meteor-WhatsApp',
   patchFile: markdownUrlBase + 'whatsapp1-ionic-cli.multi.patch',
   baseRoute: 'ionic',
