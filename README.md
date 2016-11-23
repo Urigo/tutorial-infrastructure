@@ -72,18 +72,19 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Add paid support pages
 - [x] Fix links when not running under "/" path
 - [ ] Fix active indication on API / tutorials
-- [ ] Beautiful Design (need to fix: tutorial sidebar, api deprecation notice, tutorial video tutorial download zip)
+- [ ] Beautiful Design 
 - [x] Update `meteor-angular-socially` to use Tortilla
 - [x] Update `meteor-angular2.0-socially` to use Tortilla
 - [x] Update `blaze-angular2-migration-tutorial` to use Tortilla
 - [x] Update WhatsApp Ionic CLI to use Tortilla
-- [ ] Update WhatsApp Meteor CLI to use Tortilla
+- [x] Update WhatsApp Meteor CLI to use Tortilla
 - [x] Update WhatsApp 2 Meteor CLI to use Tortilla
 - [x] Update WhatsApp 2 Ionic CLI to use Tortilla
 
 
 ## TODO for production
 
+- [ ] Angular 2 API docs pages: meteor-rxjs, angular2-compilers
 - [x] Deprecate angular2-meteor package? (@Urigo)
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
