@@ -98,6 +98,32 @@ ul.apis-list {
 	}
 }
 
+.api-content .deprecation-notice {
+	background: #ffeaea;
+	padding: 1rem 1rem 1rem 65px;
+	position: relative;
+	border: 2px solid #a53a3a;
+	color: #a53a3a;
+	border-radius: 4px;
+
+	&::before {
+		content: "error_outline";
+		font-family: 'Material Icons';
+		width: 65px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-style: normal;
+		line-height: 1;
+		font-size: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #a53a3a;
+	}
+}
+
 @media screen and (min-width: 1000px) {
 
 	.api-content {
