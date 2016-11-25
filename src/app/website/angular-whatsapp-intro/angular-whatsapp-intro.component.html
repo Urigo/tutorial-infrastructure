@@ -7,7 +7,8 @@
     tutorial also available for Angular 2! Click here ></a>
 </div>
 <div class="img-title">
-  <img src="assets/images/whatsapp.png"/>
+  <img *ngIf="isAngular1" src="assets/images/whatsapp.png"/>
+  <img *ngIf="!isAngular1" src="assets/images/whatsapp2.png"/>
 </div>
 <div class="tutorial-links">
   <a href="tutorials/whatsapp2/ionic/setup" *ngIf="!isAngular1" md-raised-button class="md-primary tutorial-button">Get
