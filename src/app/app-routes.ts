@@ -8,6 +8,7 @@ import {MeteorRxJsPage} from "./website/meteor-rxjs/meteor-rxjs.component";
 import {ConsultingPage} from "./website/support-pages/consulting.component";
 import {SupportPage} from "./website/support-pages/support.component";
 import {TrainingPage} from "./website/support-pages/training.component";
+import {PageNotFound} from "./website/not-found/not-found.component";
 
 export const APP_ROUTES: Routes = [].concat(
   TUTORIALS_ROUTES,
@@ -18,6 +19,7 @@ export const APP_ROUTES: Routes = [].concat(
     {path: 'consulting', component: ConsultingPage},
     {path: 'support', component: SupportPage},
     {path: 'training', component: TrainingPage},
+    {path: '404', component: PageNotFound},
     {path: '**', component: MainComponent}
   ]
 );

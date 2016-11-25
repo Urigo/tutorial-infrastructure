@@ -9,6 +9,7 @@ import {MeteorRxJsPage} from "./website/meteor-rxjs/meteor-rxjs.component";
 import {ConsultingPage} from "./website/support-pages/consulting.component";
 import {TrainingPage} from "./website/support-pages/training.component";
 import {SupportPage} from "./website/support-pages/support.component";
+import {PageNotFound} from "./website/not-found/not-found.component";
 
 export const APP_DECLARAIONS = [
   AppComponent,
@@ -21,5 +22,6 @@ export const APP_DECLARAIONS = [
   ManifestoPageComponent,
   ConsultingPage,
   TrainingPage,
-  SupportPage
+  SupportPage,
+  PageNotFound
 ];
