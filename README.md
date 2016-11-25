@@ -87,6 +87,8 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [ ] Add textarea onclick for tutorial code diff
 - [ ] Add input onclick for command line instructions
 - [ ] Add back angular 1 socially videos
+- [ ] Add "improve this doc" for tutorial instructions
+- [ ] Add "improve this code" for diff box
 
 ## TODO for production
 
