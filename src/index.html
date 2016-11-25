@@ -67,10 +67,10 @@
           var height = target.offsetHeight;
           var width = target.offsetWidth;
           var inputElement = document.createElement('input');
-          inputElement.value = target.innerHTML;
+          inputElement.value = target.innerText;
           var dollarIndex = inputElement.value.indexOf('$ ');
 
-          if (dollarIndex > -1 && target.innerHTML.trim().indexOf("\n") === -1) {
+          if (dollarIndex > -1 && target.innerText.trim().indexOf("\n") === -1) {
             var startIndex = dollarIndex;
 
             window.setTimeout(function () {
