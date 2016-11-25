@@ -84,7 +84,9 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Fix active indication on API / tutorials in production
 - [ ] Angular 2 API docs missing `bootstrap` page
 - [ ] Go through all tutorials and make sure all works
-
+- [ ] Add textarea onclick for tutorial code diff
+- [ ] Add input onclick for command line instructions
+- [ ] Add back angular 1 socially videos
 
 ## TODO for production
 
