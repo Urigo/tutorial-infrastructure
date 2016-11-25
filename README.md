@@ -83,10 +83,9 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Update default API docs page for angular2-meteor
 - [x] Fix active indication on API / tutorials in production
 - [ ] Angular 2 API docs missing `bootstrap` page
-- [ ] Go through all tutorials and make sure all works
-- [ ] Add textarea onclick for tutorial code diff
-- [ ] Add input onclick for command line instructions
-- [ ] Add back angular 1 socially videos
+- [x] Go through all tutorials and make sure all works
+- [x] Add input onclick for command line instructions
+- [x] Add back angular 1 socially videos
 - [ ] Add "improve this doc" for tutorial instructions
 - [ ] Add "improve this code" for diff box
 - [ ] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)

@@ -615,6 +615,16 @@ diffbox-container {
   }
 }
 
+.terminal-input {
+  font-size: 13px;
+  font-family: monospace;
+  background: transparent;
+  border: none;
+  color: rgb(51, 51, 51);
+  outline: none;
+  margin-left: 5px;
+}
+
 @import "../../app/app.component.scss";
 
 @import "../../app/website/main-page/main.component.scss";
