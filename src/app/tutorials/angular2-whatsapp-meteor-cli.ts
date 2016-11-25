@@ -48,6 +48,7 @@ export const ANGULAR2_WHATSAPP_METEOR_CLI: TutorialDefinition = {
       url: '/summary',
       name: 'Summary',
       template: markdownUrlBase + 'templates/step8.md',
+      hideCodeDiff: true
     }
   ]
 };

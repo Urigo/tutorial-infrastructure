@@ -58,6 +58,8 @@ export class TutorialRegistryCache {
       return Observable.of(this.cache[id]);
     }
     else {
+      console.log("Loading URL: ", tutorialData.patchFile);
+
       return <Observable<TutorialBundle>>this.http
         .get(tutorialData.patchFile)
         .map(res => res.text())

@@ -25,6 +25,8 @@ export class StepsTemplatesLoader {
   }
 
   public load(tutorialName, url?: string): Observable<any> {
+    console.log("Loading file: ", url);
+
     return this.http
       .get(url)
       .map(res => res.text())

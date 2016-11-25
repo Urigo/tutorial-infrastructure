@@ -23,6 +23,8 @@ export class ApiLoadResolve implements Resolve<any> {
     if (routeData.isStaticApi) {
       let apiFile = <StaticFileDefinition>routeData.apiFile;
 
+      console.log("Loading URL: ", apiFile.markdownFilePath);
+
       return this.http
         .get(apiFile.markdownFilePath)
         .map(res => res.text())
