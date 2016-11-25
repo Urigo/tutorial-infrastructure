@@ -89,6 +89,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [ ] Add back angular 1 socially videos
 - [ ] Add "improve this doc" for tutorial instructions
 - [ ] Add "improve this code" for diff box
+- [ ] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)
 
 ## TODO for production
 
