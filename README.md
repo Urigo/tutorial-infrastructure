@@ -82,20 +82,21 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Google Analytics
 - [x] Update default API docs page for angular2-meteor
 - [x] Fix active indication on API / tutorials in production
-- [ ] Angular 2 API docs missing `bootstrap` page
 - [x] Go through all tutorials and make sure all works
 - [x] Add input onclick for command line instructions
 - [x] Add back angular 1 socially videos
 - [x] Add "improve this tutorial" for tutorial instructions
-- [ ] Add "improve this code" for diff box
 - [x] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)
 - [x] Sitemap + robots.txt
+- [ ] Angular 2 API docs missing `bootstrap` page
+- [ ] Add "improve this code" for diff box (need to to talk about this one)
+- [ ] Add support for standard PATCH file that GitHub supports (instead of format-patch)
 
 ## TODO for production
 
 - [x] GitHub Pages deployment with domain and SSL
 - [x] Angular 2 API docs pages: meteor-rxjs, angular2-compilers
-- [x] Deprecate angular2-meteor package? (@Urigo)
+- [x] Deprecate angular2-meteor package
 - [x] Find a solution for the assets
 - [x] Test against NPM's `http-server` (Works great!)
 - [x] Test against regular HTTP servers (like GitHub pages)
