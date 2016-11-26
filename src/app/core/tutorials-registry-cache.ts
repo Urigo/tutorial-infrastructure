@@ -63,7 +63,6 @@ export class TutorialRegistryCache {
         .get(url)
         .map(res => res.text())
         .map(parseMultiPatch)
-        .do(console.log)
         .map(parseOutStepNumberAndComment)
         .map(doMapping)
         .map(parsedTutorial => {
