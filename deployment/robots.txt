@@ -1,0 +1,1 @@
+Sitemap: http://angular-meteor.com/sitemap.xml

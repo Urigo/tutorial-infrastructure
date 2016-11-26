@@ -89,6 +89,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Add "improve this tutorial" for tutorial instructions
 - [ ] Add "improve this code" for diff box
 - [x] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)
+- [x] Sitemap + robots.txt
 
 ## TODO for production
 

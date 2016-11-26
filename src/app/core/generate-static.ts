@@ -4,6 +4,7 @@ const mkdirp = require('mkdirp');
 const path = require('path');
 const rimraf = require('rimraf');
 const copydir = require('copy-dir');
+const moment = require('moment');
 
 function ensureDirectoryExistence(filePath) {
   var dirname = path.dirname(filePath);
@@ -27,6 +28,46 @@ export let handleRoutesArray = (arr, resultArr, base = '/') => {
 };
 
 export function generateStaticWebsite(baseHost, port, routesArray, outputLocation, assetsDirectory) {
+  let siteMapArr = [];
+
+  function generateSiteMap(pathArr: string[]) {
+    console.log("Generating sitemap.xml file");
+
+    return new Promise((resolve) => {
+      let base = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+      pathArr.forEach((path) => {
+        let priority;
+        let depth = (path.split('/') || []).length;
+
+        if (depth === 0 || depth === 1) {
+          priority = "1.0"
+        }
+        else if (depth === 2) {
+          priority = "0.8"
+        }
+        else {
+          priority = "0.5";
+        }
+
+        base += `
+    <url>
+        <loc>http://angular-meteor.com${path}</loc>
+        <lastmod>${ moment().format('YYYY-MM-DD') }</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>${ priority }</priority>
+    </url>`
+      });
+
+      base += `</urlset>`;
+
+      let fullFilePath = path.join(outputLocation, 'sitemap.xml');
+      fs.writeFileSync(fullFilePath, base);
+
+      resolve();
+    });
+  }
+
   function generateStaticForUrl(fullBaseUrl, urlPath): Promise<string> {
     let url = fullBaseUrl + urlPath;
 
@@ -73,6 +114,8 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
           filePath = 'index';
         }
 
+        siteMapArr.push(filePath);
+
         filePath = filePath + '.html';
         let fullFilePath = path.join(outputLocation, filePath);
         mkdirp.sync(path.dirname(fullFilePath));
@@ -82,7 +125,9 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
         runNext(arr, i + 1);
       });
     } else {
-      r();
+      generateSiteMap(siteMapArr).then(() => {
+        r();
+      });
     }
 
     return donePromise;

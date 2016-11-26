@@ -3314,6 +3314,12 @@
       "from": "mkdirp@>=0.5.0 <0.6.0",
       "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
     },
+    "moment": {
+      "version": "2.17.0",
+      "from": "moment@latest",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.17.0.tgz",
+      "dev": true
+    },
     "ms": {
       "version": "0.7.1",
       "from": "ms@0.7.1",
