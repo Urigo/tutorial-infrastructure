@@ -2,7 +2,6 @@ export interface TutorialDefinition {
   id: string;
   name: string;
   gitHub: string;
-  patchFile: string;
   baseRoute: string;
   steps: TutorialStep[];
 }

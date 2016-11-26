@@ -6,7 +6,6 @@ export const ANGULAR2_WHATSAPP_METEOR_CLI: TutorialDefinition = {
   id: 'whatsapp2-meteor-tutorial',
   name: 'WhatsApp Clone with Meteor CLI and Ionic 2',
   gitHub: 'Urigo/Ionic2-MeteorCLI-WhatsApp',
-  patchFile: markdownUrlBase + 'whatsapp2-meteor-cli.multi.patch',
   baseRoute: 'meteor',
   steps: [
     {

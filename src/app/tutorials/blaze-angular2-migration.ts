@@ -6,7 +6,6 @@ export const BLAZE_TO_ANGULAR2_MIGRATION: TutorialDefinition = {
   id: 'migration-angular2',
   name: 'Blaze to Angular 2 Migration',
   gitHub: 'dotansimha/angular2-blaze-migration-tutorial',
-  patchFile: markdownUrlBase + 'blaze-to-angular2-migration.multi.patch	',
   baseRoute: 'angular2',
   steps: [
     {

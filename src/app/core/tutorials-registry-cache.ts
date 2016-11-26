@@ -1,9 +1,8 @@
-import { Observable } from 'rxjs';
-import { Injectable, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-import { TutorialDefinition, TutorialBundle } from './tutorial-definition';
-import { ORIGIN_URL } from 'angular2-platform-node';
-const gitPatchParser = require('git-patch-parser');
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import {TutorialDefinition, TutorialBundle} from './tutorial-definition';
+import {parseMultiPatch} from "./patch-parser";
 
 function capitalizeFirstLetter(message) {
   return message.charAt(0).toUpperCase() + message.slice(1);
@@ -49,7 +48,7 @@ function doMapping(parsedData) {
 export class TutorialRegistryCache {
   private cache: {[tutprialId: string]: TutorialBundle} = {};
 
-  constructor(private http: Http, @Inject(ORIGIN_URL) private originUrl: string) {
+  constructor(private http: Http) {
 
   }
 
@@ -58,12 +57,13 @@ export class TutorialRegistryCache {
       return Observable.of(this.cache[id]);
     }
     else {
-      console.log("Loading URL: ", tutorialData.patchFile);
+      const url = "https://github.com/" + tutorialData.gitHub + "/commit/master.patch";
 
       return <Observable<TutorialBundle>>this.http
-        .get("https://raw.githubusercontent.com/" + tutorialData.gitHub + tutorialData.patchFile)
+        .get(url)
         .map(res => res.text())
-        .map(gitPatchParser.parseMultiPatch)
+        .map(parseMultiPatch)
+        .do(console.log)
         .map(parseOutStepNumberAndComment)
         .map(doMapping)
         .map(parsedTutorial => {

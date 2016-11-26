@@ -6,7 +6,6 @@ export const ANGULAR2_METEOR_SOCIALLY : TutorialDefinition = {
   id: 'angular2-meteor-socially',
   name: 'Angular2-Meteor - Socially',
   gitHub: 'Urigo/meteor-angular2.0-socially',
-  patchFile: markdownUrlBase + 'meteor-angular2-socially.multi.patch',
   baseRoute: 'angular2',
   steps: [
     {
