@@ -64,22 +64,29 @@
       document.querySelectorAll('.tutorial-content pre code').forEach(function(item){
         item.addEventListener('click', function(event) {
           var target = event.target;
-          var height = target.offsetHeight;
           var width = target.offsetWidth;
-          var inputElement = document.createElement('input');
-          inputElement.value = target.innerText;
-          var dollarIndex = inputElement.value.indexOf('$ ');
+          var dollarIndex = target.innerText.indexOf('$ ');
 
-          if (dollarIndex > -1 && target.innerText.trim().indexOf("\n") === -1) {
+          if (dollarIndex > -1) {
+            var inputElement = document.createElement('textarea');
+            inputElement.innerHTML = target.innerText.replace(/\r?\n/g, '\n').replace(/\n$/, "");
+            var linesCounts = inputElement.innerHTML.split("\n").length;
+            inputElement.setAttribute("spellcheck", "false");
+            inputElement.setAttribute("rows", linesCounts);
             var startIndex = dollarIndex;
+            var endIndex = inputElement.value.length;
+
+            if (target.innerText.trim().indexOf("\n") > -1) {
+              endIndex = target.innerText.trim().indexOf("\n");
+            }
 
             window.setTimeout(function () {
-              inputElement.setSelectionRange(startIndex + 2, inputElement.value.length);
+              inputElement.setSelectionRange(startIndex + 2, endIndex);
             }, 0);
 
             inputElement.className = 'terminal-input';
-            inputElement.style.height = (height - 2) + 'px';
             inputElement.style.width = width + 'px';
+            inputElement.style.lineHeight = window.getComputedStyle(target, null).getPropertyValue('line-height');
 
             var t = target.parentNode.replaceChild(inputElement, target);
 
