@@ -1,6 +1,6 @@
 import {TutorialDefinition} from '../core/tutorial-definition';
 
-const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/meteor-angular-socially/master/manuals/';
+const markdownUrlBase = '/master/manuals/';
 
 export const ANGULAR1_METEOR_SOCIALLY : TutorialDefinition = {
   id: 'angular1-meteor-socially',

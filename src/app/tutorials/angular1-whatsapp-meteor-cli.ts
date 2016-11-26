@@ -1,6 +1,6 @@
 import {TutorialDefinition} from '../core/tutorial-definition';
 
-const markdownUrlBase = 'https://raw.githubusercontent.com/Urigo/Ionic-MeteorCLI-WhatsApp/master/manuals/';
+const markdownUrlBase = '/master/manuals/';
 
 export const ANGULAR1_WHATSAPP_METEOR_CLI: TutorialDefinition = {
   id: 'whatsapp-meteor-tutorial',

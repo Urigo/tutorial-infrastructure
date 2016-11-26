@@ -28,7 +28,7 @@ export class StepsTemplatesLoader {
     console.log("Loading file: ", url);
 
     return this.http
-      .get(url)
+      .get("https://raw.githubusercontent.com/" + url)
       .map(res => res.text())
       .map(this.convertToHtmlTags.bind(this, tutorialName))
       .map(text => marked(text))

@@ -86,7 +86,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Go through all tutorials and make sure all works
 - [x] Add input onclick for command line instructions
 - [x] Add back angular 1 socially videos
-- [ ] Add "improve this doc" for tutorial instructions
+- [x] Add "improve this tutorial" for tutorial instructions
 - [ ] Add "improve this code" for diff box
 - [x] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)
 

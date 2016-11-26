@@ -61,7 +61,7 @@ export class TutorialRegistryCache {
       console.log("Loading URL: ", tutorialData.patchFile);
 
       return <Observable<TutorialBundle>>this.http
-        .get(tutorialData.patchFile)
+        .get("https://raw.githubusercontent.com/" + tutorialData.gitHub + tutorialData.patchFile)
         .map(res => res.text())
         .map(gitPatchParser.parseMultiPatch)
         .map(parseOutStepNumberAndComment)

@@ -1,6 +1,6 @@
 import {TutorialDefinition} from '../core/tutorial-definition';
 
-const markdownUrlBase = 'https://raw.githubusercontent.com/dotansimha/angular2-blaze-migration-tutorial/master/manuals/';
+const markdownUrlBase = '/master/manuals/';
 
 export const BLAZE_TO_ANGULAR2_MIGRATION: TutorialDefinition = {
   id: 'migration-angular2',

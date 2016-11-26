@@ -32,8 +32,13 @@ export class TutorialsContainer {
     })
   }
 
-  getStaticRepo() {
-    return "https://github.com/Urigo/angular-meteor-docs/edit/gh-pages";
+  getTutorialMarkdownLink() {
+    if (this.tutorial && this.step) {
+      return "https://github.com/" + this.tutorial.gitHub + "/edit" + this.step.template;
+    }
+    else {
+      return '';
+    }
   }
 
   getYoutubeLink() {
