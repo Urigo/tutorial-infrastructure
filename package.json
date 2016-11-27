@@ -7,11 +7,9 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "prebuild": "npm run lint",
-    "build": "npm run build-only && npm run bundle",
+    "build": "tsc || echo not ok",
     "prepublish": "npm run build",
-    "build-only": "tsc || echo not ok",
-    "lint": "tslint src/**/*.ts",
-    "bundle": "rollup -i ./dist/index.js -o ./dist/bundles/index.umd.js -n meteor.rxjs -c rollup.config.js"
+    "lint": "tslint src/**/*.ts"
   },
   "license": "MIT",
   "dependencies": {
