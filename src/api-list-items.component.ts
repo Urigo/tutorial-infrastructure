@@ -3,12 +3,16 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ActivatedApi} from './current-api';
 import {ApiRouteDataDefinition} from './apis-routes';
 import {ApiFile, ApiVersion, ApiStaticDefinitionObject, ApiDefinition} from './api-definition';
-import * as template from './api-list-items.component.html';
 import {StepsUtils} from './step-utils';
 
 @Component({
   selector: 'api-list-items',
-  template
+  template: `
+<ul *ngIf="apiData" class="apis-list">
+    <li class="api-list-item" *ngFor="let api of getFiles();" [ngClass]="{'active-step': isCurrent(createLink(api))}">
+        <a class="api-item-link" [href]="createLink(api)">{{ api.apiTitle }}</a>
+    </li>
+</ul>`
 })
 @Injectable()
 export class ApiListItems implements OnInit {

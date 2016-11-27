@@ -1,5 +1,0 @@
-<ul *ngIf="apiData" class="apis-list">
-    <li class="api-list-item" *ngFor="let api of getFiles();" [ngClass]="{'active-step': isCurrent(createLink(api))}">
-        <a class="api-item-link" [href]="createLink(api)">{{ api.apiTitle }}</a>
-    </li>
-</ul>

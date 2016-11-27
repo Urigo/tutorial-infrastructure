@@ -5,12 +5,16 @@ import * as _ from 'lodash';
 import {ActivatedApi} from './current-api';
 import {ApiRouteDataDefinition} from './apis-routes';
 import {ApiDefinition, ApiStaticDefinition} from './api-definition';
-import * as template from './api-versions-list.component.html';
 import {StepsUtils} from './step-utils';
 
 @Component({
   selector: 'api-versions-list',
-  template
+  template: `
+<ul *ngIf="apiData" class="apis-versions-list">
+    <li class="api-version-list-item" *ngFor="let version of getVersionsList();" [ngClass]="{'active-step': isCurrent(createLink(version))}">
+        <a class="version-link" [href]="createLink(version)">{{version.visibleName || version.name}}</a>
+    </li>
+</ul>`
 })
 @Injectable()
 export class ApiVersionsList implements OnInit {

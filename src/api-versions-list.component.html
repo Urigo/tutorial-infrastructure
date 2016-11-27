@@ -1,5 +1,0 @@
-<ul *ngIf="apiData" class="apis-versions-list">
-    <li class="api-version-list-item" *ngFor="let version of getVersionsList();" [ngClass]="{'active-step': isCurrent(createLink(version))}">
-        <a class="version-link" [href]="createLink(version)">{{version.visibleName || version.name}}</a>
-    </li>
-</ul>
