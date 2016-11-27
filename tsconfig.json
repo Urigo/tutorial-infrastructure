@@ -5,11 +5,12 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "dist",
     "sourceMap": true,
     "sourceRoot": "src",
     "target": "es5",
     "lib": ["es6", "dom"],
+    "outDir": "./dist",
+    "rootDir": "./src"
     "types": [
       "body-parser",
       "compression",
@@ -25,7 +26,8 @@
     ]
   },
   "files": [
-    "types.d.ts"
+    "types.d.ts",
+    "src/index.ts"
   ],
   "exclude": [
     "node_modules"
