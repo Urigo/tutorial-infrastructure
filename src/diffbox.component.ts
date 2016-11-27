@@ -66,7 +66,7 @@ export class DiffBoxCode {
       </div>
     </div>
   </div>
-</div>`
+</div>`,
   styles: [
     `
 .diffbox {
