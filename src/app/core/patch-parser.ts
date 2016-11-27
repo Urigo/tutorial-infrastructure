@@ -19,7 +19,7 @@ export function parsePatch(contents) {
     // XXX won't work with spaces in filenames
     const fileNameMatch = /^\+\+\+ b\/(.+)$/m.exec(part);
 
-    if (! fileNameMatch) {
+    if (!fileNameMatch) {
       // This was probably a deleted file
       return;
     }
@@ -39,7 +39,7 @@ export function parsePatch(contents) {
 }
 
 export function parseMultiPatch(contents) {
-  contents = contents.replace(/\n\+/g, "\n");
+  //contents = contents.replace(/\n[+-]{1}/g, "\n");
   const patchStart = /^From /gm;
 
   let match = null;
@@ -74,20 +74,18 @@ export function parseUnifiedDiff(diffContents) {
   const contentPatchLines: any[] = diffLines.slice(0, diffLines.length - 1);
 
   const parsedLines = contentPatchLines.map((line: any) => {
-    if (! line) {
+    if (!line) {
       // The last line ends up being an empty string
       return null;
     }
 
     if (/^@/.test(line)) {
-      let type = "lineNumbers";
-
       const lineNumberMatch = /^@@ -(\d+),?(\d+)? \+(\d+),?(\d+)? @@/.exec(line).map((str) => {
         return parseInt(str, 10);
       });
 
       return {
-        type,
+        type: "lineNumbers",
         lineNumbers: {
           removed: {
             start: lineNumberMatch[1],
@@ -123,17 +121,19 @@ export function parseUnifiedDiff(diffContents) {
   let currSection;
 
   parsedLines.forEach((line: any) => {
-    if (line.type == "lineNumbers") {
-      if (currSection) {
-        sections.push(currSection);
-      }
+    if (line !== null) {
+      if (line.type == "lineNumbers") {
+        if (currSection) {
+          sections.push(currSection);
+        }
 
-      currSection = {
-        lines: [],
-        lineNumbers: line.lineNumbers
-      };
-    } else {
-      currSection.lines.push(line);
+        currSection = {
+          lines: [],
+          lineNumbers: line.lineNumbers
+        };
+      } else {
+        currSection.lines.push(line);
+      }
     }
   });
 

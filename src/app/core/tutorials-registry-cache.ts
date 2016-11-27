@@ -44,24 +44,32 @@ function doMapping(parsedData) {
   return stepToPatch;
 }
 
+let cache: {[tutprialId: string]: TutorialBundle} = {};
+
 @Injectable()
 export class TutorialRegistryCache {
-  private cache: {[tutprialId: string]: TutorialBundle} = {};
-
-  constructor(private http: Http) {
-
-  }
+  constructor(private http: Http) {}
 
   load(id: string, tutorialData: TutorialDefinition): Observable<TutorialBundle> {
-    if (this.cache[id]) {
-      return Observable.of(this.cache[id]);
+
+    if (cache[id]) {
+      console.log("Fetch from cache: ", id);
+      return Observable.of(cache[id]);
     }
     else {
-      const url = "https://github.com/" + tutorialData.gitHub + "/commit/master.patch";
+      console.log("Fetch from remote: ", id);
 
       return <Observable<TutorialBundle>>this.http
-        .get(url)
-        .map(res => res.text())
+        .get("http://first-commit.com/api/" + tutorialData.gitHub)
+        .map(res => res.json())
+        .map(res => res['sha'])
+        .flatMap(firstCommitId => {
+          console.log("Found first commit of " + tutorialData.gitHub + ": " + firstCommitId);
+          const url = "https://github.com/" + tutorialData.gitHub + "/compare/" + firstCommitId + "...master.patch";
+
+          return this.http.get(url)
+        })
+        .map(res => res['text']())
         .map(parseMultiPatch)
         .map(parseOutStepNumberAndComment)
         .map(doMapping)
@@ -71,7 +79,7 @@ export class TutorialRegistryCache {
             tutorial: tutorialData
           };
 
-          this.cache[id] = cacheItem
+          cache[id] = cacheItem;
 
           return cacheItem;
         });

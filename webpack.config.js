@@ -52,7 +52,8 @@ var serverConfig = {
     __filename: true,
     process: true,
     Buffer: true
-  }
+  },
+  devtool: 'eval'
 };
 
 

@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 let markdown = require('markdown').markdown;
 let marked = require('marked');
 
+let cache: any = {};
+
 @Injectable()
 export class StepsTemplatesLoader {
   private cache: Map<string, string>;
@@ -25,13 +27,23 @@ export class StepsTemplatesLoader {
   }
 
   public load(tutorialName, url?: string): Observable<any> {
-    console.log("Loading file: ", url);
+    if (cache[url]) {
+      console.log("Loading file from cache: ", url);
 
-    return this.http
-      .get("https://raw.githubusercontent.com/" + url)
-      .map(res => res.text())
-      .map(this.convertToHtmlTags.bind(this, tutorialName))
-      .map(text => marked(text))
-      .map(this.escapeAngularBindings);
+      return Observable.of(cache[url]);
+    }
+    else {
+      console.log("Loading file from remote: ", url);
+
+      return this.http
+        .get("https://raw.githubusercontent.com/" + url)
+        .map(res => res.text())
+        .map(this.convertToHtmlTags.bind(this, tutorialName))
+        .map(text => marked(text))
+        .map(this.escapeAngularBindings)
+        .do(item => {
+          cache[url] = item;
+        });
+    }
   }
 }
