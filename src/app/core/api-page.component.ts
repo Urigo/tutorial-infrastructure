@@ -34,7 +34,9 @@ export class ApiPageComponent implements OnInit {
     this.route.data.subscribe((data: any) => {
       this.activated.updateCurrentApi(data);
 
-      const content = this.fixLinks(data.resolveData.jsDoc, this.router.url);
+      const content = this.fixLinks(data.resolveData.jsDoc, this.router.url).replace(/name="(.*?)"/g, (match, group) => {
+        return 'name="' + group + '" class="anchor-offset"';
+      });
 
       this.seo.setSeoDescription(content);
       this.seo.addKeywords([

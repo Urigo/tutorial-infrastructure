@@ -625,6 +625,13 @@ diffbox-container {
   resize: none;
 }
 
+.anchor-offset {
+  display: block;
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+}
+
 @import "../../app/app.component.scss";
 
 @import "../../app/website/main-page/main.component.scss";
