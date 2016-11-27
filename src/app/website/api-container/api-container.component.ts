@@ -71,7 +71,7 @@ export class ApiPageContainerComponent {
         },
         {
           name: "Angular 2",
-          link: "api/angular2-meteor/latest/Meteor+RxJS",
+          link: "api/angular2-meteor/latest/Meteor-RxJS",
           active: _.isEqual(this.apiData.apiDefinition, ANGULAR2_METEOR_API_REFERENCE)
         }
       ];
