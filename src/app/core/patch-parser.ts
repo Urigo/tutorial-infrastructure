@@ -121,7 +121,7 @@ export function parseUnifiedDiff(diffContents) {
   let currSection;
 
   parsedLines.forEach((line: any) => {
-    if (line !== null) {
+    if (line !== null && line.content !== ' No newline at end of file') {
       if (line.type == "lineNumbers") {
         if (currSection) {
           sections.push(currSection);

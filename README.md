@@ -89,7 +89,7 @@ Open you browser [http://localhost:3000](http://localhost:3000) !
 - [x] Added 404 page with gh-pages support (https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/)
 - [x] Sitemap + robots.txt
 - [ ] Angular 2 API docs missing `bootstrap` page
-- [ ] Add "improve this code" for diff box (need to to talk about this one)
+- [ ] Add "improve this code" for diff box
 - [x] Add support for standard PATCH file that GitHub supports (instead of format-patch)
 
 ## TODO for production
