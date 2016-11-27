@@ -10,7 +10,7 @@
     "target": "es5",
     "lib": ["es6", "dom"],
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
     "types": [
       "body-parser",
       "compression",
