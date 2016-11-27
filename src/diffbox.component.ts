@@ -1,7 +1,7 @@
 import {ActivatedRoute} from '@angular/router';
 import {Input, Component, Optional, OnInit, ViewChild} from '@angular/core';
 import {Compiler, NgModule, Directive, ReflectiveInjector, ViewContainerRef} from '@angular/core';
-import {ParsedPatchDefinition, LineContent} from './patch-definition';
+import {ParsedPatchDefinition, LineContent, SingleChange} from './patch-definition';
 import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
@@ -138,7 +138,7 @@ export class DiffBoxComponent implements OnInit {
     });
   }
 
-  getFileModification(filename) {
+  getFileModification(filename): SingleChange[] {
     return this.diffDetails.files[filename];
   }
 
