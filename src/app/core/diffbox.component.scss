@@ -32,6 +32,21 @@
       overflow: hidden;
     }
 
+    &:hover > .improve-code {
+      // TODO: Implement
+      display: none;
+    }
+
+    .improve-code {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 5px;
+      cursor: pointer;
+    }
+
     .line-numbers {
       text-align: right;
       -moz-user-select: none;
