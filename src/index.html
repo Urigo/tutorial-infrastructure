@@ -69,7 +69,7 @@
 
           if (dollarIndex > -1) {
             var inputElement = document.createElement('textarea');
-            inputElement.innerHTML = target.innerText.replace(/\r?\n/g, '\n').replace(/\n$/, "");
+            inputElement.innerHTML = target.innerText.replace(/\r?\n/g, '\n').replace(/\n$/, "").trim();
             var linesCounts = inputElement.innerHTML.split("\n").length;
             inputElement.setAttribute("spellcheck", "false");
             inputElement.setAttribute("rows", linesCounts);
