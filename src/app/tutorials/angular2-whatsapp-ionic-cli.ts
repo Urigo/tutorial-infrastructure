@@ -12,43 +12,43 @@ export const ANGULAR2_WHATSAPP_IONIC_CLI: TutorialDefinition = {
       url: '/setup',
       name: 'Initial setup',
       template: markdownUrlBase + 'templates/step1.md',
-      youtubeVideoId: 'rpTAGoSmVcE'
+      //youtubeVideoId: 'rpTAGoSmVcE'
     },
     {
       url: '/chats-page',
       name: 'Chats page',
       template: markdownUrlBase + 'templates/step2.md',
-      youtubeVideoId: 'hZLyASyZiqo'
+      //youtubeVideoId: 'hZLyASyZiqo'
     },
     {
       url: '/meteor-server-side',
       name: 'Realtime Meteor Server',
       template: markdownUrlBase + 'templates/step3.md',
-      youtubeVideoId: 'T_118SkJZ4o'
+      //youtubeVideoId: 'T_118SkJZ4o'
     },
     {
       url: '/messages-page',
       name: 'Messages Page',
       template: markdownUrlBase + 'templates/step4.md',
-      youtubeVideoId: 'FqyDObNCzqE'
+      //youtubeVideoId: 'FqyDObNCzqE'
     },
     {
       url: '/authentication',
       name: 'Authentication',
       template: markdownUrlBase + 'templates/step5.md',
-      youtubeVideoId: 'ONY1L9cD5BY'
+      //youtubeVideoId: 'ONY1L9cD5BY'
     },
     {
       url: '/chats-mutations',
       name: 'Chats Creation & Removal',
       template: markdownUrlBase + 'templates/step6.md',
-      youtubeVideoId: 'Y_6SU1dEWCA'
+      //youtubeVideoId: 'Y_6SU1dEWCA'
     },
     {
       url: '/privacy',
       name: 'Privacy & Security',
       template: markdownUrlBase + 'templates/step7.md',
-      youtubeVideoId: 'CGeClgrUSeQ'
+      //youtubeVideoId: 'CGeClgrUSeQ'
     },
     {
       url: '/summary',
