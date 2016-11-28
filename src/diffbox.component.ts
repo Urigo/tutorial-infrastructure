@@ -100,7 +100,7 @@ export class DiffBoxCode {
   overflow: hidden;
 }
 .diffbox .code-container:hover > .improve-code {
-  display: none;
+  display: block;
 }
 .diffbox .code-container .improve-code {
   display: none;
@@ -163,7 +163,11 @@ export class DiffBoxComponent implements OnInit {
 
   getImproveLink(filename): string {
     if (this.tutorialData && this.tutorialData.improveCodeUrlResolve) {
-      this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
+      const url = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
+
+      if (url && url !== '') {
+        return url;
+      }
     }
 
     return '';
