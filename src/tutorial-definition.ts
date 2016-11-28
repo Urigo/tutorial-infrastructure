@@ -1,4 +1,5 @@
 import {ParsedPatchDefinition} from './patch-definition';
+import {Observable} from "rxjs";
 
 export interface TutorialDefinition {
   id: string;
@@ -6,7 +7,7 @@ export interface TutorialDefinition {
   gitHub: string;
   baseRoute: string;
   steps: TutorialStep[];
-  improveCodeUrlResolve?: (tutorial: TutorialDefinition, patchDetails: ParsedPatchDefinition, filename: string, stepNumber: string) => string;
+  improveCodeUrlResolve?: (tutorial: TutorialDefinition, patchDetails: ParsedPatchDefinition, filename: string, stepNumber: string) => Observable<{ url: string }>;
 }
 
 export interface TutorialStep {

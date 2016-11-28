@@ -5,6 +5,7 @@ import {ParsedPatchDefinition, LineContent, SingleChange} from './patch-definiti
 import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
+import {Observable} from "rxjs";
 
 @Directive({
   selector: '[diffboxCode]'
@@ -61,8 +62,8 @@ export class DiffBoxCode {
         </div>
         <div class="line-content" [diffboxCode]="getFileContent(filename)"></div>
       </div>
-      <div class="improve-code" *ngIf="getImproveLink(filename) !== ''">
-        <a [href]="getImproveLink(filename)">Improve this code</a>
+      <div class="improve-code" *ngIf="(getImproveLink(filename) | async)?.url !== ''">
+        <a [href]="(getImproveLink(filename) | async)?.url">Improve this code</a>
       </div>
     </div>
   </div>
@@ -161,16 +162,18 @@ export class DiffBoxComponent implements OnInit {
     return this.diffDetails.files[filename];
   }
 
-  getImproveLink(filename): string {
+  getImproveLink(filename): Observable<{ url: string}> {
     if (this.tutorialData && this.tutorialData.improveCodeUrlResolve) {
-      const url = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
+      const urlObs = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
 
-      if (url && url !== '') {
-        return url;
+      if (urlObs) {
+        return urlObs;
       }
     }
 
-    return '';
+    return Observable.of({
+      url: ''
+    });
   }
 
   getFileContent(filename) {
