@@ -61,8 +61,8 @@ export class DiffBoxCode {
         </div>
         <div class="line-content" [diffboxCode]="getFileContent(filename)"></div>
       </div>
-      <div class="improve-code">
-        Improve this code
+      <div class="improve-code" *ngIf="getImproveLink(filename) !== ''">
+        <a [href]="getImproveLink(filename)">Improve this code</a>
       </div>
     </div>
   </div>
@@ -159,6 +159,14 @@ export class DiffBoxComponent implements OnInit {
 
   getFileModification(filename): SingleChange[] {
     return this.diffDetails.files[filename];
+  }
+
+  getImproveLink(filename): string {
+    if (this.tutorialData && this.tutorialData.improveCodeUrlResolve) {
+      this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
+    }
+
+    return '';
   }
 
   getFileContent(filename) {
