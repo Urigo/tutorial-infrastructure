@@ -1,5 +1,6 @@
 import {ParsedPatchDefinition} from './patch-definition';
 import {Observable} from 'rxjs';
+import {Http} from '@angular/http';
 
 export interface TutorialDefinition {
   id: string;
@@ -11,7 +12,8 @@ export interface TutorialDefinition {
     tutorial: TutorialDefinition,
     patchDetails: ParsedPatchDefinition,
     filename: string,
-    stepNumber: string) => Observable<{ url: string }>;
+    stepNumber: string,
+    http: Http) => Observable<{ url: string }>;
 }
 
 export interface TutorialStep {

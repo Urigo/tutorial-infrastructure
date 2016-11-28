@@ -6,6 +6,7 @@ import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
 import {Observable} from 'rxjs';
+import {Http} from '@angular/http';
 
 @Directive({
   selector: '[diffboxCode]'
@@ -141,7 +142,7 @@ export class DiffBoxComponent implements OnInit {
   private tutorialData: TutorialDefinition;
   private files: string[] = [];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private http: Http) {
   }
 
   ngOnInit() {
@@ -164,7 +165,7 @@ export class DiffBoxComponent implements OnInit {
 
   getImproveLink(filename): Observable<{ url: string}> {
     if (this.tutorialData && this.tutorialData.improveCodeUrlResolve) {
-      const urlObs = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step);
+      const urlObs = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step, this.http);
 
       if (urlObs) {
         return urlObs;
