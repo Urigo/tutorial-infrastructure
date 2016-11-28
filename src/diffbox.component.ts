@@ -5,7 +5,7 @@ import {ParsedPatchDefinition, LineContent, SingleChange} from './patch-definiti
 import {TutorialDefinition} from './tutorial-definition';
 import * as _ from 'lodash';
 import * as hljs from 'highlight.js';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Directive({
   selector: '[diffboxCode]'
