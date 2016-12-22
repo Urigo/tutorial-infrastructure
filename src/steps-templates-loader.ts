@@ -20,7 +20,7 @@ export class StepsTemplatesLoader {
   }
 
   convertToHtmlTags(tutorialName: string, markdown: string): string {
-    return markdown.replace(/\{\{\{diff_step (.*?)\}\}\}/g, (allMatch, stepNumber) => {
+    return markdown.replace(/\{\{\{diff_step ([0-9\.]*).*?\}\}\}/g, (allMatch, stepNumber) => {
       return `<diffbox tutorial="${tutorialName}" step="${stepNumber}"></diffbox>`;
     });
   }
