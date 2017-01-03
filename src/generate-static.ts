@@ -121,11 +121,16 @@ export function generateStaticWebsite(baseHost, port, routesArray, outputLocatio
 
         siteMapArr.push(filePath);
 
+        let filePathIndex = filePath + '/index.html';
         filePath = filePath + '.html';
         let fullFilePath = path.join(outputLocation, filePath);
+        let fullFilePathIndex = path.join(outputLocation, filePathIndex);
         mkdirp.sync(path.dirname(fullFilePath));
+        mkdirp.sync(path.dirname(fullFilePathIndex));
         fs.writeFileSync(fullFilePath, result.html);
-        console.log('Done writing to file:' + fullFilePath);
+        fs.writeFileSync(fullFilePathIndex, result.html);
+
+        console.log('Done writing to files:' + [fullFilePath, fullFilePathIndex].join(', '));
 
         runNext(arr, i + 1);
       });
