@@ -1,6 +1,6 @@
 {
   "name": "angular-meteor-tutorials-infrastructure",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Angular-Meteor's tutorials infrastructure",
   "main": "dist/index.js",
   "module": "dist/index.js",

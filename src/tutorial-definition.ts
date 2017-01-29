@@ -7,13 +7,20 @@ export interface TutorialDefinition {
   name: string;
   gitHub: string;
   baseRoute: string;
-  steps: TutorialStep[];
+  versions: {[gitTagIdentifier: string]: {
+    routeName: string;
+    isLatest: boolean;
+    steps: TutorialStep[];
+  }};
+  steps?: TutorialStep[];
   improveCodeUrlResolve?: (
     tutorial: TutorialDefinition,
     patchDetails: ParsedPatchDefinition,
     filename: string,
     stepNumber: string,
-    http: Http) => Observable<{ url: string }>;
+    http: Http) => Observable<{
+      url: string;
+    }>;
 }
 
 export interface TutorialStep {
