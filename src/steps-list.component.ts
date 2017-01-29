@@ -42,7 +42,19 @@ export class StepListComponent implements OnInit {
 
   ngOnInit() {
     if (this.tutorialToDisplay) {
-      this.tutorialDetails = this.tutorialToDisplay;
+      let latest: any = {};
+
+      Object.keys(this.tutorialToDisplay.versions).forEach((versionIdentifier: string) => {
+         const version = this.tutorialToDisplay.versions[versionIdentifier];
+
+         if (version.isLatest) {
+           latest = version;
+         }
+      });
+
+      this.tutorialDetails = Object.assign(latest, {
+        steps: latest.steps
+      });
     } else {
       this.activated.tutorial.subscribe((tutorial) => this.tutorialDetails = tutorial);
     }

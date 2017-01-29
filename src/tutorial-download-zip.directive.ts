@@ -9,19 +9,21 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class StepDownloadZipLink {
   constructor(private activated: ActivatedTutorial, el: ElementRef, renderer: Renderer) {
-    Observable.zip(activated.tutorial, activated.step, (tutorial, step) => {
+    Observable.zip(activated.tutorial, activated.step, activated.steps, (tutorial, step, steps) => {
       return {
         tutorial,
-        step
+        step,
+        steps
       };
     }).subscribe((data) => {
       let tutorial: TutorialDefinition = data.tutorial;
       let step: TutorialStep = data.step;
+      let steps: TutorialStep[] = data.steps;
 
       if (step.noZipDownload) {
         renderer.setElementStyle(el.nativeElement, 'display', 'none');
       } else {
-        let index = tutorial.steps.findIndex((s) => {
+        let index = steps.findIndex((s) => {
           return s.template === step.template;
         });
 

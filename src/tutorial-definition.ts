@@ -12,7 +12,6 @@ export interface TutorialDefinition {
     isLatest: boolean;
     steps: TutorialStep[];
   }};
-  steps?: TutorialStep[];
   improveCodeUrlResolve?: (
     tutorial: TutorialDefinition,
     patchDetails: ParsedPatchDefinition,

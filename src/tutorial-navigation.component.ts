@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 
 import {ActivatedTutorial} from './current-tutorial';
-import {TutorialStep, TutorialDefinition} from './tutorial-definition';
+import {TutorialStep} from './tutorial-definition';
 import {StepsUtils} from './step-utils';
 
 @Directive({
@@ -18,24 +18,24 @@ export class TutorialNavigation {
               renderer: Renderer,
               private currentRoute: ActivatedRoute,
               private utils: StepsUtils) {
-    Observable.zip(activated.tutorial, activated.step, (tutorial, step) => {
+    Observable.zip(activated.step, activated.steps, (step, steps) => {
       return {
-        tutorial,
-        step
+        step,
+        steps
       };
     }).subscribe((data: any) => {
-      let tutorial: TutorialDefinition = data.tutorial;
       let step: TutorialStep = data.step;
+      let steps: TutorialStep[] = data.steps;
 
-      let index = tutorial.steps.findIndex((s) => {
+      let index = steps.findIndex((s) => {
         return s.template === step.template;
       });
 
       if (this.tutorialNavigation === 'next') {
-        if (index === tutorial.steps.length - 1) {
+        if (index === steps.length - 1) {
           utils.disableElement(el, renderer);
         } else {
-          let next = tutorial.steps[index + 1];
+          let next = steps[index + 1];
 
           if (next) {
             utils.appendRouteLink(el, renderer, utils.createAbsoluteLink('../' + next.url, this.currentRoute.firstChild));
@@ -47,7 +47,7 @@ export class TutorialNavigation {
         if (index === 0) {
           utils.disableElement(el, renderer);
         } else {
-          let previous = tutorial.steps[index - 1];
+          let previous = steps[index - 1];
 
           if (previous) {
             utils.appendRouteLink(el, renderer, utils.createAbsoluteLink('../' + previous.url, this.currentRoute.firstChild));

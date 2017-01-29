@@ -7,6 +7,7 @@ export interface TutorialRouteData {
   stepObject: TutorialStep;
   tutorialObject: TutorialDefinition;
   gitTagRevision: string;
+  steps: TutorialStep[];
 }
 
 export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>) {
@@ -38,9 +39,8 @@ export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>)
           },
           data: <TutorialRouteData>{
             stepObject: step,
-            tutorialObject: Object.assign(tutorial, {
-              steps: steps
-            }),
+            tutorialObject: tutorial,
+            steps: steps,
             gitTagRevision: tutorialGitIdentifier
           }
         });

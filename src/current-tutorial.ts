@@ -4,6 +4,7 @@ import { TutorialDefinition, TutorialStep } from './tutorial-definition';
 export class ActivatedTutorial {
   public tutorial: Subject<TutorialDefinition>;
   public step: Subject<TutorialStep>;
+  public steps: Subject<TutorialStep[]>;
 
   constructor() {
     this.step = new Subject<TutorialStep>();
@@ -16,5 +17,9 @@ export class ActivatedTutorial {
 
   updateCurrentStep(step: TutorialStep) {
     this.step.next(step);
+  }
+
+  updateCurrentSteps(steps: TutorialStep[]) {
+    this.steps.next(steps);
   }
 }

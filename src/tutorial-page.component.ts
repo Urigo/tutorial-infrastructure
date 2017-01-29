@@ -22,6 +22,7 @@ import {PageTitleService} from './page-title.service';
 export class TutorialPage implements OnInit {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
+  private steps: TutorialStep[];
 
   constructor(private route: ActivatedRoute,
               private compiler: Compiler,
@@ -35,8 +36,10 @@ export class TutorialPage implements OnInit {
       let routeData = <TutorialRouteData>data;
       this.tutorial = <TutorialDefinition>routeData.tutorialObject;
       this.step = <TutorialStep>routeData.stepObject;
+      this.steps = <TutorialStep[]>routeData.steps;
       this.currentTutorial.updateCurrentTutorial(this.tutorial);
       this.currentTutorial.updateCurrentStep(this.step);
+      this.currentTutorial.updateCurrentSteps(this.steps);
       let htmlContent = data.resolveData.step;
 
       this.seo.setSeoDescription(htmlContent);
