@@ -8,7 +8,8 @@ export interface TutorialDefinition {
   gitHub: string;
   baseRoute: string;
   versions: {[gitTagIdentifier: string]: {
-    routeName: string;
+    urlName: string;
+    displayName: string;
     isLatest: boolean;
     steps: TutorialStep[];
   }};

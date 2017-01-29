@@ -20,7 +20,7 @@ export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>)
       const versionData = tutorial.versions[tutorialGitIdentifier];
       const steps = versionData.steps;
       const isLatest = versionData.isLatest;
-      const routeName = versionData.routeName;
+      const routeName = versionData.urlName;
 
       steps.forEach((step: TutorialStep) => {
         let stepUrl;
