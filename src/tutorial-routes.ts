@@ -28,7 +28,7 @@ export function createTutorialsRoutes(tutorialsArray: Array<TutorialDefinition>)
         if (isLatest) {
           stepUrl = baseUrl + step.url;
         } else {
-          stepUrl = baseUrl + routeName + '/' + step.url;
+          stepUrl = baseUrl + '/' + routeName + step.url;
         }
 
         config.push(<Route>{

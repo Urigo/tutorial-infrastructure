@@ -27,12 +27,8 @@ export class StepsTemplatesLoader {
 
   public load(tutorialName, url?: string): Observable<any> {
     if (cache[url]) {
-      console.log('Loading file from cache: ', url);
-
       return Observable.of(cache[url]);
     } else {
-      console.log('Loading file from remote: ', url);
-
       return this.http
         .get('https://raw.githubusercontent.com/' + url)
         .map(res => res.text())

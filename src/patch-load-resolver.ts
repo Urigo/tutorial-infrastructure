@@ -14,12 +14,12 @@ export class PatchLoadResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     let data: TutorialRouteData = <TutorialRouteData>route.data;
-
-    let tutorialPatchObservable = this.cache.load(data.tutorialObject.id, data.tutorialObject);
-    let stepHtmlObservable = this.templatesCache.load(data.tutorialObject.id, data.tutorialObject.gitHub + data.stepObject.template);
+    const templatePath = data.tutorialObject.gitHub + '/' + data.gitTagRevision + data.stepObject.template;
+    let tutorialPatchObservable = this.cache.load(data.tutorialObject.id, data.gitTagRevision, data.tutorialObject);
+    let stepHtmlObservable = this.templatesCache.load(data.tutorialObject.id, templatePath);
 
     return Observable.zip(tutorialPatchObservable, stepHtmlObservable, (tutorial, step) => {
-      return { tutorial, step };
+      return { tutorial, step, gitTagRevision: data.gitTagRevision, steps: data.steps };
     });
   }
 }

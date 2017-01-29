@@ -8,7 +8,7 @@ import {StepsUtils} from './step-utils';
   selector: 'steps-list',
   template: `
 <ul *ngIf="tutorialDetails" class="tutorial-steps-list">
-    <li class="step-item" *ngFor="let step of tutorialDetails.steps; let i = index;" [ngClass]="{'active-step': isCurrent(getStepLink(step))}">
+    <li class="step-item" *ngFor="let step of allSteps; let i = index;" [ngClass]="{'active-step': isCurrent(getStepLink(step))}">
         <a class="step-link" [href]="getStepLink(step)">{{i + 1}}. {{step.name}}</a>
     </li>
     <li class="step-item extra-item" *ngFor="let extraLink of extraLinks;">
@@ -23,6 +23,7 @@ export class StepListComponent implements OnInit {
   @Optional() @Input('extraLinks') extraLinks: Array<any>;
 
   private tutorialDetails: TutorialDefinition;
+  private allSteps: TutorialStep[];
 
   constructor(private utils: StepsUtils, private router: Router, private activated: ActivatedTutorial, private parentRoute: ActivatedRoute) {
     this.extraLinks = this.extraLinks || [];
@@ -42,21 +43,23 @@ export class StepListComponent implements OnInit {
 
   ngOnInit() {
     if (this.tutorialToDisplay) {
-      let latest: any = {};
-
       Object.keys(this.tutorialToDisplay.versions).forEach((versionIdentifier: string) => {
          const version = this.tutorialToDisplay.versions[versionIdentifier];
 
          if (version.isLatest) {
-           latest = version;
+           this.allSteps = version.steps;
          }
       });
 
-      this.tutorialDetails = Object.assign(latest, {
-        steps: latest.steps
-      });
+      this.tutorialDetails = this.tutorialToDisplay;
     } else {
-      this.activated.tutorial.subscribe((tutorial) => this.tutorialDetails = tutorial);
+      this.activated.tutorial.subscribe((tutorialToDisplay) => {
+        this.tutorialDetails = tutorialToDisplay;
+      });
+
+      this.activated.steps.subscribe((allSteps) => {
+        this.allSteps = allSteps;
+      });
     }
   }
 }

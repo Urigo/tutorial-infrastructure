@@ -1,8 +1,8 @@
-import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {TutorialDefinition, TutorialBundle} from './tutorial-definition';
-import {parseMultiPatch} from './patch-parser';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { TutorialDefinition, TutorialBundle } from './tutorial-definition';
+import { parseMultiPatch } from './patch-parser';
 
 function capitalizeFirstLetter(message) {
   return message.charAt(0).toUpperCase() + message.slice(1);
@@ -48,23 +48,22 @@ let cache: {[tutprialId: string]: TutorialBundle} = {};
 
 @Injectable()
 export class TutorialRegistryCache {
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
-  load(id: string, tutorialData: TutorialDefinition): Observable<TutorialBundle> {
-
-    if (cache[id]) {
-      console.log('Fetch from cache: ', id);
-      return Observable.of(cache[id]);
+  load(id: string, revision: string, tutorialData: TutorialDefinition): Observable<TutorialBundle> {
+    if (cache[id + '_' + revision]) {
+      return Observable.of(cache[id + '_' + revision]);
     } else {
-      console.log('Fetch from remote: ', id);
-
-      return <Observable<TutorialBundle>>this.http
-        .get('http://first-commit.com/api/' + tutorialData.gitHub)
+      return this.http.get('https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=manuals/templates/root.md&sha=' + revision)
         .map(res => res.json())
-        .map(res => res['sha'])
+        .map(res => res[0].sha)
         .flatMap(firstCommitId => {
-          console.log('Found first commit of ' + tutorialData.gitHub + ': ' + firstCommitId);
-          const url = 'https://github.com/' + tutorialData.gitHub + '/compare/' + firstCommitId + '...master.patch';
+          if (!firstCommitId) {
+            throw new Error('Unable to find first commit with root.md modification!');
+          }
+
+          const url = 'https://github.com/' + tutorialData.gitHub + '/compare/' + firstCommitId + '...' + revision + '.patch';
 
           return this.http.get(url);
         })
@@ -78,7 +77,7 @@ export class TutorialRegistryCache {
             tutorial: tutorialData
           };
 
-          cache[id] = cacheItem;
+          cache[id + '_' + revision] = cacheItem;
 
           return cacheItem;
         });

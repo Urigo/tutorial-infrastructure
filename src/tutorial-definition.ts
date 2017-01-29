@@ -17,6 +17,7 @@ export interface TutorialDefinition {
     patchDetails: ParsedPatchDefinition,
     filename: string,
     stepNumber: string,
+    revision: string,
     http: Http) => Observable<{
       url: string;
     }>;

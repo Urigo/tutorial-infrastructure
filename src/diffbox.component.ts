@@ -141,15 +141,18 @@ export class DiffBoxComponent implements OnInit {
   private diffDetails: ParsedPatchDefinition;
   private tutorialData: TutorialDefinition;
   private files: string[] = [];
+  private revision: string;
 
   constructor(private route: ActivatedRoute, private http: Http) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: any) => {
-      let tutorialBundle = data.resolveData.tutorial;
+      const tutorialBundle = data.resolveData.tutorial;
+      const revision = data.resolveData.gitTagRevision;
       this.diffDetails = tutorialBundle.steps[this.step];
       this.tutorialData = tutorialBundle.tutorial;
+      this.revision = revision;
 
       if (!this.diffDetails) {
         throw new Error(`Unable to find step ${this.step} in you tutorial ${this.tutorialName}!`);
@@ -165,7 +168,7 @@ export class DiffBoxComponent implements OnInit {
 
   getImproveLink(filename): Observable<{ url: string}> {
     if (this.tutorialData && this.tutorialData.improveCodeUrlResolve) {
-      const urlObs = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step, this.http);
+      const urlObs = this.tutorialData.improveCodeUrlResolve(this.tutorialData, this.diffDetails, filename, this.step, this.revision, this.http);
 
       if (urlObs) {
         return urlObs;

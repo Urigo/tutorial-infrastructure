@@ -9,6 +9,7 @@ export class ActivatedTutorial {
   constructor() {
     this.step = new Subject<TutorialStep>();
     this.tutorial = new Subject<TutorialDefinition>();
+    this.steps = new Subject<TutorialStep[]>();
   }
 
   updateCurrentTutorial(tutorial: TutorialDefinition) {
