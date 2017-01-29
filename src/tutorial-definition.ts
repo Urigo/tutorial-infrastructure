@@ -5,11 +5,12 @@ import {Http} from '@angular/http';
 export interface TutorialDefinition {
   id: string;
   name: string;
+  deprecated?: boolean;
   gitHub: string;
   baseRoute: string;
   versions: {[gitTagIdentifier: string]: {
     urlName: string;
-    displayName: string;
+    displayName?: string;
     isLatest: boolean;
     steps: TutorialStep[];
   }};
