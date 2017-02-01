@@ -11,6 +11,7 @@ export interface TutorialDefinition {
   versions: {[gitTagIdentifier: string]: {
     urlName: string;
     displayName?: string;
+    dateString?: string;
     isLatest: boolean;
     steps: TutorialStep[];
   }};
