@@ -46,6 +46,18 @@ function doMapping(parsedData) {
 
 let cache: { [tutprialId: string]: TutorialBundle } = {};
 
+
+const CLIENT_ID = process.env.CLIENT_ID || null;
+const CLIENT_SECRET = process.env.CLIENT_SECRET || null;
+
+const withAuth = url => {
+  if (CLIENT_ID && CLIENT_SECRET) {
+    return `${url}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`;
+  }
+
+  return url;
+};
+
 @Injectable()
 export class TutorialRegistryCache {
   constructor(private http: Http) {
@@ -55,26 +67,34 @@ export class TutorialRegistryCache {
     if (cache[id + '_' + revision]) {
       return Observable.of(cache[id + '_' + revision]);
     } else {
-      const rootUrl =
-        'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/.tortilla/manuals/templates/root.tmpl&sha=' + revision;
-      const alternativeRootUrl =
-        'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/manuals/templates/root.md.tmpl&sha=' + revision;
+      const rootUrl = withAuth(
+        'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/.tortilla/manuals/templates/root.tmpl&sha=' + revision);
+      const alternativeRootUrl = withAuth(
+        'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/manuals/templates/root.md.tmpl&sha=' + revision);
+      const alternativeRootUrl2 = withAuth(
+        'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/manuals/templates/root.md&sha=' + revision);
+
+      console.log('Loading remote first commit URL: ', rootUrl);
 
       return this.http.get(rootUrl)
         .map(res => res.json())
         .map(res => res && res[0] && res[0].sha ? res[0].sha : null)
         .flatMap(res => res === null ?
-          this.http.get(alternativeRootUrl).do(() => console.log('Loading legacy', alternativeRootUrl)).map(res => res.json())
+          this.http.get(alternativeRootUrl).do(() => console.log('Loading legacy remote URL', alternativeRootUrl)).map(res => res.json())
+            .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
+          Observable.of(res))
+        .flatMap(res => res === null ?
+          this.http.get(alternativeRootUrl2).do(() => console.log('Loading legacy remote URL', alternativeRootUrl2)).map(res => res.json())
             .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
           Observable.of(res))
         .flatMap(firstCommitId => {
           if (!firstCommitId) {
-            throw new Error('Unable to find first commit with root.tmpl modification!');
+            throw new Error('Unable to find first commit with root.tmpl or root.md modification!');
           }
 
           const url = 'https://github.com/' + tutorialData.gitHub + '/compare/' + firstCommitId + '...' + revision + '.patch';
 
-          console.log('Will load path from URL: ', url);
+          console.log('Will load patch from URL: ', url);
 
           return this.http.get(url);
         })

@@ -8,7 +8,7 @@ let markdown = require('markdown').markdown;
 })
 export class MarkdownFileViewComponent implements OnInit {
   @Input('template') mdFilePath: string;
-  private content: string = '';
+  private content = '';
 
   constructor(private http: Http) {
 
