@@ -20,9 +20,9 @@ export class StepsTemplatesLoader {
   }
 
   convertToHtmlTags(tutorialName: string, markdown: string): string {
-    return markdown.replace(/\{\{\{diff_step ([0-9\.]*).*?\}\}\}/g, (allMatch, stepNumber) => {
+    return markdown.replace(/\{\{\{(diffStep|diff_step) ["]{0,1}([0-9\.]*)["]{0,1}.*?\}\}\}/g, (allMatch, temp, stepNumber) => {
       return `<diffbox tutorial="${tutorialName}" step="${stepNumber}"></diffbox>`;
-    });
+    }).replace(/\{\{\{navStep .*?\}\}\}/g, '');
   }
 
   public load(tutorialName, url?: string): Observable<any> {

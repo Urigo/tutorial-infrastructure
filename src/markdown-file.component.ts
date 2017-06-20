@@ -19,6 +19,8 @@ export class MarkdownFileViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Will load MD from: ', this.mdFilePath);
+
     this.http.get(this.mdFilePath)
       .map(res => res.text())
       .map(text => markdown.toHTML(text))
