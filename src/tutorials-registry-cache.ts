@@ -74,19 +74,26 @@ export class TutorialRegistryCache {
       const alternativeRootUrl2 = withAuth(
         'https://api.github.com/repos/' + tutorialData.gitHub + '/commits?path=/manuals/templates/root.md&sha=' + revision);
 
+      const alt1 = res => res === null ?
+        this.http.get(alternativeRootUrl).do(() => console.log('Loading legacy remote URL', alternativeRootUrl)).map(res => res.json())
+          .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
+        Observable.of(res);
+
+      const alt2 = res => res === null ?
+        this.http.get(alternativeRootUrl2).do(() => console.log('Loading legacy remote URL', alternativeRootUrl2)).map(res => res.json())
+          .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
+        Observable.of(res);
+
       console.log('Loading remote first commit URL: ', rootUrl);
 
       return this.http.get(rootUrl)
         .map(res => res.json())
         .map(res => res && res[0] && res[0].sha ? res[0].sha : null)
-        .flatMap(res => res === null ?
-          this.http.get(alternativeRootUrl).do(() => console.log('Loading legacy remote URL', alternativeRootUrl)).map(res => res.json())
-            .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
-          Observable.of(res))
-        .flatMap(res => res === null ?
-          this.http.get(alternativeRootUrl2).do(() => console.log('Loading legacy remote URL', alternativeRootUrl2)).map(res => res.json())
-            .map(res => res && res[0] && res[0].sha ? res[0].sha : null) :
-          Observable.of(res))
+        .catch(() => alt1(null))
+        .catch(() => alt2(null))
+        .flatMap(res => alt1(res))
+        .catch(() => alt2(null))
+        .flatMap(res => alt2(res))
         .flatMap(firstCommitId => {
           if (!firstCommitId) {
             throw new Error('Unable to find first commit with root.tmpl or root.md modification!');
