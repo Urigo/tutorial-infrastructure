@@ -36,7 +36,7 @@ export class CodeDiffLink {
         }
 
         let compareEnd = 'step' + (index + 1);
-        let url = 'https://github.com/' + tutorial.gitHub + '/compare/' + compareStart + '...' + compareEnd;
+        let url = `https://github.com/${tutorial.gitHub}/compare/${compareStart}...${compareEnd}`;
 
         renderer.setElementAttribute(el.nativeElement, 'href', url);
       }

@@ -23,6 +23,7 @@ export class TutorialPage implements OnInit {
   private tutorial: TutorialDefinition;
   private step: TutorialStep;
   private steps: TutorialStep[];
+  private branch: string;
 
   constructor(private route: ActivatedRoute,
               private compiler: Compiler,
@@ -37,9 +38,11 @@ export class TutorialPage implements OnInit {
       this.tutorial = <TutorialDefinition>routeData.tutorialObject;
       this.step = <TutorialStep>routeData.stepObject;
       this.steps = <TutorialStep[]>routeData.steps;
+      this.branch = <string>routeData.gitTagRevision;
       this.currentTutorial.updateCurrentTutorial(this.tutorial);
       this.currentTutorial.updateCurrentStep(this.step);
       this.currentTutorial.updateCurrentSteps(this.steps);
+      this.currentTutorial.updateCurrentBranch(this.branch);
       let htmlContent = data.resolveData.step;
 
       this.seo.setSeoDescription(htmlContent);

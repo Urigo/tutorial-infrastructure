@@ -20,6 +20,7 @@ import {ApiLoadResolve} from './api-load-resolve';
 import {ActivatedApi} from './current-api';
 import {StepListComponent} from './steps-list.component';
 import {CodeDiffLink} from './tutorial-code-diff.directive';
+import {HistoryLink} from './tutorial-history.directive';
 import {StepDownloadZipLink} from './tutorial-download-zip.directive';
 import {PageTitleService} from './page-title.service';
 
@@ -34,6 +35,7 @@ const exportsAndDeclarations = [
   ApiVersionsList,
   ApiListItems,
   CodeDiffLink,
+  HistoryLink,
   StepDownloadZipLink
 ];
 
