@@ -40,6 +40,7 @@ export class TutorialPage implements OnInit {
       this.currentTutorial.updateCurrentTutorial(this.tutorial);
       this.currentTutorial.updateCurrentStep(this.step);
       this.currentTutorial.updateCurrentSteps(this.steps);
+      this.currentTutorial.updateCurrentGitTagRevision(data.gitTagRevision);
       let htmlContent = data.resolveData.step;
 
       this.seo.setSeoDescription(htmlContent);
